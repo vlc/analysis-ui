@@ -1,6 +1,6 @@
-import {loadBundle, loadBundles} from 'lib/actions'
+import {loadBundle} from 'lib/actions'
 import {getForProject as loadModifications} from 'lib/actions/modifications'
-import {loadProject, loadProjects} from 'lib/actions/project'
+import {loadProject} from 'lib/actions/project'
 import {loadRegion} from 'lib/actions/region'
 import List from 'lib/components/modification/list'
 import ProjectTitle from 'lib/components/project-title'
@@ -14,11 +14,9 @@ const noProjectId = (pid) => !pid || pid === 'undefined'
  * Show Select Project if a project has not been selected
  */
 const ModificationsPage: any = withInitialFetch(
-  ({bundle, bundles, project, projects, region}) => {
+  ({bundle, project, region}) => {
     if (!project) {
-      return (
-        <SelectProject bundles={bundles} projects={projects} region={region} />
-      )
+      return <SelectProject region={region._id} />
     } else {
       return (
         <>
@@ -31,12 +29,7 @@ const ModificationsPage: any = withInitialFetch(
   async (dispatch, query) => {
     const {projectId, regionId} = query
     if (noProjectId(projectId)) {
-      const results = await Promise.all([
-        dispatch(loadBundles({regionId})),
-        dispatch(loadProjects({regionId})),
-        dispatch(loadRegion(regionId))
-      ])
-      return {bundles: results[0], projects: results[1], region: results[2]}
+      return {region: await dispatch(loadRegion(regionId))}
     } else {
       const results = await Promise.all([
         dispatch(loadProject(projectId)),

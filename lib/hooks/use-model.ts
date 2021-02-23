@@ -1,14 +1,20 @@
 import useSWR, {ConfigInterface, responseInterface} from 'swr'
 import {useContext, useCallback} from 'react'
 
-import {putJSON, safeDelete, SafeResponse} from 'lib/utils/safe-fetch'
+import {
+  putJSON,
+  ResponseError,
+  safeDelete,
+  SafeResponse
+} from 'lib/utils/safe-fetch'
 
 import {UserContext} from '../user'
 
 type UseModelResponse<T> = {
   data: T
+  error?: Error
   remove: () => Promise<SafeResponse>
-  response: responseInterface<T, SafeResponse>
+  response: responseInterface<T, ResponseError>
   update: (newProperties: Partial<T>) => Promise<SafeResponse>
 }
 
@@ -25,7 +31,7 @@ export function createUseModel<T extends CL.IModel>(collectionName: string) {
   ): UseModelResponse<T> {
     const user = useContext(UserContext)
     const url = `/api/db/${collectionName}/${_id}`
-    const response = useSWR<T, SafeResponse>([url, user], {
+    const response = useSWR<T, ResponseError>(_id ? [url, user] : null, {
       ...SWRConfigDefaults,
       ...config
     })
@@ -59,6 +65,7 @@ export function createUseModel<T extends CL.IModel>(collectionName: string) {
 
     return {
       data: response.data,
+      error: response.error?.error,
       remove,
       response,
       update

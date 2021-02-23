@@ -73,6 +73,12 @@ declare namespace CL {
     bounds: Bounds
   }
 
+  export interface Project extends IModel {
+    bundleId: string
+    regionId: string
+    variants: string[]
+  }
+
   /**
    * Analysis request presets
    */

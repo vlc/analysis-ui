@@ -1,10 +1,5 @@
-import {Box, Button, Heading, Stack, Flex} from '@chakra-ui/core'
-import {
-  faCog,
-  faDatabase,
-  faCube,
-  faMap
-} from '@fortawesome/free-solid-svg-icons'
+import {Button, Heading, Stack, Flex} from '@chakra-ui/core'
+import {faCog, faDatabase, faMap} from '@fortawesome/free-solid-svg-icons'
 
 import useRouteTo from 'lib/hooks/use-route-to'
 import message from 'lib/message'
@@ -12,9 +7,9 @@ import message from 'lib/message'
 import Icon from './icon'
 import IconButton from './icon-button'
 import InnerDock from './inner-dock'
-import ListGroupItem from './list-group-item'
+import Projects from './projects'
 
-export default function SelectProject({bundles, projects, region}) {
+export default function SelectProject({region}) {
   const routeToBundleCreate = useRouteTo('bundleCreate', {regionId: region._id})
   const routeToProjectCreate = useRouteTo('projectCreate', {
     regionId: region._id
@@ -38,57 +33,26 @@ export default function SelectProject({bundles, projects, region}) {
         </Flex>
 
         <Stack px={2}>
-          {bundles.length > 0 ? (
-            <Button
-              isFullWidth
-              leftIcon='small-add'
-              onClick={routeToProjectCreate}
-              variantColor='green'
-            >
-              {message('project.createAction')}
-            </Button>
-          ) : (
-            <Button
-              isFullWidth
-              onClick={routeToBundleCreate}
-              variantColor='green'
-            >
-              <Icon icon={faDatabase} />
-              &nbsp;&nbsp;{message('project.uploadBundle')}
-            </Button>
-          )}
+          <Button
+            isFullWidth
+            leftIcon='small-add'
+            onClick={routeToProjectCreate}
+            variantColor='green'
+          >
+            {message('project.createAction')}
+          </Button>
+          <Button
+            isFullWidth
+            onClick={routeToBundleCreate}
+            variantColor='green'
+          >
+            <Icon icon={faDatabase} />
+            &nbsp;&nbsp;{message('project.uploadBundle')}
+          </Button>
         </Stack>
 
-        {projects.length > 0 && (
-          <Box textAlign='center'>{message('project.goToExisting')}</Box>
-        )}
-
-        <Stack px={2} spacing={0}>
-          {projects.map((project) => (
-            <Project key={project._id} project={project} />
-          ))}
-        </Stack>
+        <Projects regionId={region._id} />
       </Stack>
     </InnerDock>
-  )
-}
-
-function Project({project, ...p}) {
-  const goToModifications = useRouteTo('modifications', {
-    regionId: project.regionId,
-    projectId: project._id
-  })
-  return (
-    <ListGroupItem
-      leftIcon={() => (
-        <Box pr={3}>
-          <Icon icon={faCube} />
-        </Box>
-      )}
-      onClick={goToModifications}
-      {...p}
-    >
-      {project.name}
-    </ListGroupItem>
   )
 }
