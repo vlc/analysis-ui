@@ -171,7 +171,7 @@ declare namespace CL {
    * Access Grids
    */
 
-  export type GridHeader = {
+  export interface GridHeader {
     zoom: number
     west: number
     north: number
@@ -179,7 +179,7 @@ declare namespace CL {
     height: number
   }
 
-  export type AccessGridHeader = GridHeader & {
+  export interface AccessGridHeader extends GridHeader {
     depth: number
     version: number
   }
@@ -188,7 +188,7 @@ declare namespace CL {
 
   export type AccessGrid = AccessGridHeader &
     AccessGridMetadata & {
-      data: Int32Array
+      data: Int32Array[]
       errors: unknown[]
       warnings: any
       contains(x: number, y: number, z: number): boolean
