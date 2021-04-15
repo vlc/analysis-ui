@@ -23,7 +23,8 @@ function TitleMessage({fetchStatus, project}) {
   let title = 'Analyze results'
   if (fetchStatus) title = fetchStatus
   else if (!project) title = 'Select a project'
-  else if (!isochrone) title = 'Compute travel time'
+  else if (!isochrone || isochrone?.features.length === 0)
+    title = 'Compute travel time'
   else if (profileRequestHasChanged)
     title = 'Results are out of sync with settings'
   else if (!opportunityDataset)

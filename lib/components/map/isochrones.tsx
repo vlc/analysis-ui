@@ -1,4 +1,3 @@
-import {FeatureGroup} from 'react-leaflet'
 import {useSelector} from 'react-redux'
 
 import colors from 'lib/constants/colors'
