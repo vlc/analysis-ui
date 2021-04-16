@@ -21,8 +21,7 @@ import ConfirmButton from './confirm-button'
 import {DeleteIcon} from './icons'
 import Combobox from './combobox'
 
-const getOptionLabel = (b) =>
-  `${b.name}${b.status === 'DONE' ? '' : `: ${b.status}`}`
+const getOptionLabel = (b) => b.name
 
 const hasContent = (s) => s.length > 0
 
@@ -59,9 +58,9 @@ export default function EditBundle() {
   const {data: projects} = useProjects({query: {regionId}})
 
   const goToBundles = useRouteTo('bundles', {regionId})
-  const goToBundleEdit = useRouteTo('bundleEdit', {regionId})
+  const goToBundleEdit = useRouteTo('bundle', {regionId})
   const [bundleId, setBundleId] = useState(router.query.bundleId as string)
-  const originalBundle = bundles?.find((b) => b._id === bundleId)
+  const originalBundle = bundles.find((b) => b._id === bundleId)
   const [bundle, setBundle] = useState(originalBundle)
 
   const setName = useCallback(
