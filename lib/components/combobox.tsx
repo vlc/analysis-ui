@@ -21,20 +21,6 @@ import Tip from 'lib/components/tip'
 
 const noop = () => {}
 
-interface Option {
-  label: string
-  value: string
-}
-
-const options: Option[] = []
-
-for (let i = 0; i < 50; i++) {
-  options.push({
-    label: 'Hello ' + i,
-    value: `${i}`
-  })
-}
-
 interface ComboboxProps<T> {
   isDisabled?: boolean
   isEqual?: (a: T, b: T) => boolean
