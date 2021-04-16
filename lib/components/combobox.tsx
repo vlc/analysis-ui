@@ -7,6 +7,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  Portal,
   Spinner,
   Stack,
   Text,
@@ -38,7 +39,7 @@ interface ComboboxProps<T> {
   isDisabled?: boolean
   isEqual?: (a: T, b: T) => boolean
   isLoading?: boolean
-  onChange: (newValue: T) => Promise<void>
+  onChange: (newValue: T) => Promise<void> | void
   options: T[]
   placeholder?: string
   getOptionLabel?: (option: T) => string
@@ -153,6 +154,7 @@ const Trigger = forwardRef(
 const defaultGetOptionLabel = fpGet('label')
 const defaultGetOptionValue = fpGet('value')
 const defaultIsEqual = (a: any, b: any) => a === b
+const minWidth = 300
 
 export default function Combobox<T>({
   getOptionLabel = defaultGetOptionLabel,
@@ -171,16 +173,19 @@ export default function Combobox<T>({
     options.find((o) => isEqual(o, value))
   )
   const {isOpen, onClose, onOpen} = useDisclosure()
+  const [popoverWidth, setPopoverWidth] = useState(minWidth)
 
   useEffect(() => {
     if (value != null) setSelectedValue(options.find((o) => isEqual(o, value)))
   }, [isEqual, options, value])
 
   const finalOnChange = useCallback(
-    async (newValue: T) => {
-      setSelectedValue(newValue)
+    (newValue: T) => {
       onClose()
-      await onChange(newValue)
+      setSelectedValue(newValue)
+      requestAnimationFrame(async () => {
+        await onChange(newValue)
+      })
     },
     [onChange, onClose, setSelectedValue]
   )
@@ -214,30 +219,46 @@ export default function Combobox<T>({
   }
 
   return (
-    <Popover initialFocusRef={inputRef} isOpen={true} onClose={onClose} isLazy>
+    <Popover
+      initialFocusRef={inputRef}
+      isOpen={true}
+      onClose={onClose}
+      placement='bottom-start'
+      isLazy
+    >
       <PopoverTrigger>
-        <Trigger
-          isDisabled={false}
-          isLoading={isLoading}
-          label={selectedValue ? getOptionLabel(selectedValue) : placeholder}
-          onClick={noop}
-          shadow='outline'
-          width={width}
-        />
-      </PopoverTrigger>
-      <PopoverContent mb={3} shadow='lg' width='320px'>
-        <PopoverBody p={0}>
-          <ComboboxSearch<T>
-            inputRef={inputRef}
-            placeholder={placeholder}
-            getOptionLabel={getOptionLabel}
-            getOptionValue={getOptionValue}
-            onChange={finalOnChange}
-            options={options}
-            value={selectedValue}
+        <div
+          ref={(ref) => {
+            const width = ref?.getBoundingClientRect()?.width
+            console.log('div.width', width)
+            if (width > minWidth) setPopoverWidth(width)
+          }}
+        >
+          <Trigger
+            isDisabled={false}
+            isLoading={isLoading}
+            label={selectedValue ? getOptionLabel(selectedValue) : placeholder}
+            onClick={noop}
+            shadow='outline'
+            width={width}
           />
-        </PopoverBody>
-      </PopoverContent>
+        </div>
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent mb={3} shadow='lg' width={popoverWidth}>
+          <PopoverBody p={0}>
+            <ComboboxSearch<T>
+              inputRef={inputRef}
+              placeholder={placeholder}
+              getOptionLabel={getOptionLabel}
+              getOptionValue={getOptionValue}
+              onChange={finalOnChange}
+              options={options}
+              value={selectedValue}
+            />
+          </PopoverBody>
+        </PopoverContent>
+      </Portal>
     </Popover>
   )
 }

@@ -1,5 +1,6 @@
 import {
   Alert,
+  Box,
   Button,
   FormControl,
   FormLabel,
@@ -10,16 +11,15 @@ import {
 import get from 'lodash/fp/get'
 import {useRouter} from 'next/router'
 import {useCallback, useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
 
-import {deleteBundle, saveBundle} from 'lib/actions'
+import {useBundles, useProjects} from 'lib/hooks/use-collection'
 import useInput from 'lib/hooks/use-controlled-input'
 import useRouteTo from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 
 import ConfirmButton from './confirm-button'
 import {DeleteIcon} from './icons'
-import Select from './select'
+import Combobox from './combobox'
 
 const getOptionLabel = (b) =>
   `${b.name}${b.status === 'DONE' ? '' : `: ${b.status}`}`
@@ -52,16 +52,16 @@ function BundleNameInput({name, onChange, ...p}) {
  * Edit bundle is keyed by the bundle ID and will be completely unmounted and
  * recreated when that changes.
  */
-export default function EditBundle(p) {
-  const dispatch = useDispatch()
+export default function EditBundle() {
   const router = useRouter()
-  const bundles = useSelector(get('region.bundles'))
-
   const regionId = router.query.regionId as string
+  const {data: bundles, remove, update} = useBundles({query: {regionId}})
+  const {data: projects} = useProjects({query: {regionId}})
+
   const goToBundles = useRouteTo('bundles', {regionId})
   const goToBundleEdit = useRouteTo('bundleEdit', {regionId})
-  const [bundleId, setBundleId] = useState(router.query.bundleId)
-  const originalBundle = bundles.find((b) => b._id === bundleId)
+  const [bundleId, setBundleId] = useState(router.query.bundleId as string)
+  const originalBundle = bundles?.find((b) => b._id === bundleId)
   const [bundle, setBundle] = useState(originalBundle)
 
   const setName = useCallback(
@@ -70,24 +70,27 @@ export default function EditBundle(p) {
   )
 
   // If this bundle has project's associated with it. Disable deletion.
-  const disableDelete = p.bundleProjects.length > 0
+  const totalBundleProjects =
+    projects?.filter((p) => p.bundleId === bundleId).length ?? 0
 
   async function _deleteBundle() {
     goToBundles()
-    dispatch(deleteBundle(bundleId))
+    await remove(bundle._id)
   }
 
   async function _saveBundle() {
-    const b = await dispatch(saveBundle(bundle))
-    setBundle(b) // nonce update
+    const res = await update(bundle._id, bundle)
+    if (res.ok) {
+      setBundle(res.data) // nonce update
+    }
   }
 
-  function selectBundle(result) {
+  function selectBundle(result: CL.Bundle) {
     setBundleId(result._id)
     goToBundleEdit({bundleId: result._id})
   }
 
-  function setFeedName(feedId, name) {
+  function setFeedName(feedId: string, name: string) {
     if (bundle) {
       setBundle({
         ...bundle,
@@ -103,19 +106,16 @@ export default function EditBundle(p) {
 
   return (
     <Stack spacing={8}>
-      <FormControl>
-        <FormLabel htmlFor='selectBundle'>{message('bundle.select')}</FormLabel>
-        <div>
-          <Select
-            inputId='selectBundle'
-            options={bundles}
-            getOptionLabel={getOptionLabel}
-            getOptionValue={get('_id')}
-            onChange={selectBundle}
-            value={bundles.find((b) => b._id === bundleId)}
-          />
-        </div>
-      </FormControl>
+      <Box>
+        <Combobox<CL.Bundle>
+          getOptionLabel={getOptionLabel}
+          getOptionValue={get('_id')}
+          onChange={selectBundle}
+          options={bundles || []}
+          placeholder='Select an existing bundle'
+          value={originalBundle}
+        />
+      </Box>
 
       {bundle && bundleId === router.query.bundleId && (
         <Stack spacing={4}>
@@ -155,10 +155,10 @@ export default function EditBundle(p) {
             {message('bundle.save')}
           </Button>
 
-          {disableDelete ? (
+          {totalBundleProjects > 0 ? (
             <Alert status='info'>
               {message('bundle.deleteDisabled', {
-                projects: p.bundleProjects.length
+                projects: totalBundleProjects
               })}
             </Alert>
           ) : (

@@ -5,7 +5,7 @@ import {useState} from 'react'
 import useRouteTo from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 
-import Select from './select'
+import Combobox from './combobox'
 
 const getOptionLabel = (b: CL.Bundle) =>
   `${b.name}${b.status === 'DONE' ? '' : `: ${b.status}`}`
@@ -31,12 +31,12 @@ export default function SelectBundle({
         {message('bundle.select')}
       </FormLabel>
       <div>
-        <Select
-          inputId='selectBundle'
-          options={bundles}
+        <Combobox<CL.Bundle>
           getOptionLabel={getOptionLabel}
           getOptionValue={get('_id')}
           onChange={selectBundle}
+          options={bundles}
+          placeholder='Select a bundle'
           value={bundles.find((b) => b._id === bundleId)}
         />
       </div>
