@@ -3,16 +3,16 @@ import NewSelect from 'lib/components/combobox'
 import Select from 'lib/components/select'
 
 interface Option {
-  label: string
-  value: string
+  name: string
+  _id: string
 }
 
 const options: Option[] = []
 
 for (let i = 0; i < 50; i++) {
   options.push({
-    label: 'Hello ' + i,
-    value: `${i}`
+    name: 'Hello ' + i,
+    _id: `${i}`
   })
 }
 

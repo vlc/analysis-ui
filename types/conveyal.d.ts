@@ -157,6 +157,8 @@ declare namespace CL {
     feeds: FeedSummary[]
     osmId: string
     regionId: string
+    status: string
+    statusText: string
   }
 
   export interface Project extends IModel {

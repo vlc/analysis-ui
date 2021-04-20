@@ -11,9 +11,9 @@ import {
   Spinner,
   Stack,
   Text,
+  useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react'
-import fpGet from 'lodash/fp/get'
 import {RefObject, useCallback, useEffect, useRef, useState} from 'react'
 
 import {ChevronDown} from 'lib/components/icons'
@@ -21,31 +21,76 @@ import Tip from 'lib/components/tip'
 
 const noop = () => {}
 
-interface ComboboxProps<T> {
+interface OptionType {
+  name: string
+  _id: string
+}
+
+interface OptionComponentProps<T extends OptionType> {
+  isSelected: boolean
+  onClick: (option: T) => void
+  option: T
+}
+
+interface ComboboxProps<T extends OptionType> {
   isDisabled?: boolean
   isEqual?: (a: T, b: T) => boolean
   isLoading?: boolean
   onChange: (newValue: T) => Promise<void> | void
   options: T[]
   placeholder?: string
-  getOptionLabel?: (option: T) => string
-  getOptionValue?: (option: T) => string
+  renderOption?: (props: OptionComponentProps<T>) => React.ReactNode
   value?: T
   variant?: 'ghost' | 'normal'
   width?: string
 }
 
-interface ComboboxSearchProps<T> extends ComboboxProps<T> {
+interface ComboboxSearchProps<T extends OptionType> extends ComboboxProps<T> {
   inputRef: RefObject<HTMLInputElement>
 }
 
-function ComboboxSearch<T>({
+function DefaultOption<T extends OptionType>({
+  isSelected,
+  onClick,
+  option
+}: OptionComponentProps<T>) {
+  const bg = useColorModeValue(
+    isSelected ? 'blue.50' : 'white',
+    isSelected ? 'blue.900' : 'gray.900'
+  )
+  return (
+    <Box
+      key={option._id}
+      bg={bg}
+      cursor='pointer'
+      onClick={() => onClick(option)}
+      px={3}
+      py={2}
+      _hover={{
+        bg: 'blue.500',
+        color: 'white'
+      }}
+      rounded={0}
+      fontSize='lg'
+    >
+      <Text
+        overflowX='hidden'
+        textAlign='left'
+        textOverflow='ellipsis'
+        whiteSpace='nowrap'
+      >
+        {option.name}
+      </Text>
+    </Box>
+  )
+}
+
+function ComboboxSearch<T extends OptionType>({
   inputRef,
-  getOptionLabel,
-  getOptionValue,
   onChange,
   options,
   placeholder,
+  renderOption,
   value
 }: ComboboxSearchProps<T>) {
   const [filter, setFilter] = useState('')
@@ -53,13 +98,11 @@ function ComboboxSearch<T>({
 
   useEffect(() => {
     if (filter?.length > 0) {
-      setDisplayedOptions(
-        options.filter((o) => getOptionLabel(o).indexOf(filter) > -1)
-      )
+      setDisplayedOptions(options.filter((o) => o.name.indexOf(filter) > -1))
     } else {
       setDisplayedOptions(options)
     }
-  }, [filter, getOptionLabel, options])
+  }, [filter, options])
 
   return (
     <Stack spacing={0}>
@@ -72,32 +115,14 @@ function ComboboxSearch<T>({
         variant='flushed'
         value={filter}
       />
-      <Stack spacing={0} maxHeight='5.5rem' overflowY='scroll'>
-        {displayedOptions.map((r) => (
-          <Box
-            key={getOptionValue(r)}
-            bg={r === value ? 'blue.50' : 'white'}
-            cursor='pointer'
-            onClick={() => onChange(r)}
-            px={3}
-            py={2}
-            _hover={{
-              bg: 'blue.500',
-              color: 'white'
-            }}
-            rounded={0}
-            fontSize='lg'
-          >
-            <Text
-              overflowX='hidden'
-              textAlign='left'
-              textOverflow='ellipsis'
-              whiteSpace='nowrap'
-            >
-              {getOptionLabel(r)}
-            </Text>
-          </Box>
-        ))}
+      <Stack spacing={0} maxHeight={200} overflowY='scroll'>
+        {displayedOptions.map((option) =>
+          renderOption({
+            onClick: onChange,
+            option,
+            isSelected: option === value
+          })
+        )}
       </Stack>
     </Stack>
   )
@@ -137,20 +162,17 @@ const Trigger = forwardRef(
   }
 )
 
-const defaultGetOptionLabel = fpGet('label')
-const defaultGetOptionValue = fpGet('value')
 const defaultIsEqual = (a: any, b: any) => a === b
 const minWidth = 300
 
-export default function Combobox<T>({
-  getOptionLabel = defaultGetOptionLabel,
-  getOptionValue = defaultGetOptionValue,
+export default function Combobox<T extends OptionType>({
   isDisabled = false,
   isEqual = defaultIsEqual,
   isLoading = false,
   onChange,
   options,
   placeholder = 'Search',
+  renderOption = (p) => <DefaultOption {...p} />,
   value,
   width = '100%'
 }: ComboboxProps<T>) {
@@ -184,7 +206,7 @@ export default function Combobox<T>({
             <Trigger
               isDisabled={isDisabled}
               isLoading={isLoading}
-              label={getOptionLabel(selectedValue)}
+              label={selectedValue.name}
               onClick={onOpen}
               width={width}
             />
@@ -216,14 +238,13 @@ export default function Combobox<T>({
         <div
           ref={(ref) => {
             const width = ref?.getBoundingClientRect()?.width
-            console.log('div.width', width)
             if (width > minWidth) setPopoverWidth(width)
           }}
         >
           <Trigger
             isDisabled={false}
             isLoading={isLoading}
-            label={selectedValue ? getOptionLabel(selectedValue) : placeholder}
+            label={selectedValue ? selectedValue.name : placeholder}
             onClick={noop}
             shadow='outline'
             width={width}
@@ -236,10 +257,9 @@ export default function Combobox<T>({
             <ComboboxSearch<T>
               inputRef={inputRef}
               placeholder={placeholder}
-              getOptionLabel={getOptionLabel}
-              getOptionValue={getOptionValue}
               onChange={finalOnChange}
               options={options}
+              renderOption={renderOption}
               value={selectedValue}
             />
           </PopoverBody>
