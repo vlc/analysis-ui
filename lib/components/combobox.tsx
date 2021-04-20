@@ -1,7 +1,7 @@
 import {
   Box,
   Flex,
-  forwardRef,
+  FlexProps,
   Input,
   Popover,
   PopoverBody,
@@ -54,24 +54,26 @@ function DefaultOption<T extends OptionType>({
   onClick,
   option
 }: OptionComponentProps<T>) {
-  const bg = useColorModeValue(
-    isSelected ? 'blue.50' : 'white',
-    isSelected ? 'blue.900' : 'gray.900'
-  )
+  const focusBg = useColorModeValue('blue.50', 'blue.900')
   return (
     <Box
-      key={option._id}
-      bg={bg}
+      bg={isSelected ? 'blue.500' : 'inherit'}
+      color={isSelected ? 'blue.500' : 'inherit'}
+      fontSize='lg'
       cursor='pointer'
+      key={option._id}
       onClick={() => onClick(option)}
       px={3}
       py={2}
+      rounded={0}
+      tabIndex={0}
       _hover={{
         bg: 'blue.500',
         color: 'white'
       }}
-      rounded={0}
-      fontSize='lg'
+      _focus={{
+        bg: focusBg
+      }}
     >
       <Text
         overflowX='hidden'
@@ -128,39 +130,49 @@ function ComboboxSearch<T extends OptionType>({
   )
 }
 
-const Trigger = forwardRef(
-  ({isDisabled, isLoading, label, onClick, width, ...p}, ref) => {
-    return (
-      <Flex
-        align='center'
-        borderWidth='1px'
-        cursor='pointer'
-        onClick={isDisabled ? noop : onClick}
-        onFocus={isDisabled ? noop : onClick}
-        py={2}
-        px={3}
-        justify='space-between'
-        ref={ref}
-        role='group'
-        tabIndex={0}
-        rounded='md'
-        width={width}
-        {...p}
-      >
-        <Box pr={3}>{label}</Box>
-        <Box borderLeftWidth='1px' opacity={0.3} pl={3}>
-          {isLoading ? (
-            <Box pt={1}>
-              <Spinner size='xs' />
-            </Box>
-          ) : (
-            <ChevronDown />
-          )}
-        </Box>
-      </Flex>
-    )
-  }
-)
+function Trigger({
+  isDisabled,
+  isLoading,
+  label,
+  onClick,
+  width,
+  ...p
+}: {
+  isDisabled?: boolean
+  isLoading?: boolean
+  label: string
+  onClick: () => void
+  width: string
+} & FlexProps) {
+  return (
+    <Flex
+      align='center'
+      borderWidth='1px'
+      cursor='pointer'
+      onClick={isDisabled ? noop : onClick}
+      onFocus={isDisabled ? noop : onClick}
+      py={2}
+      px={3}
+      justify='space-between'
+      role='group'
+      tabIndex={0}
+      rounded='md'
+      width={width}
+      {...p}
+    >
+      <Box pr={3}>{label}</Box>
+      <Box borderLeftWidth='1px' opacity={0.3} pl={3}>
+        {isLoading ? (
+          <Box pt={1}>
+            <Spinner size='xs' />
+          </Box>
+        ) : (
+          <ChevronDown />
+        )}
+      </Box>
+    </Flex>
+  )
+}
 
 const defaultIsEqual = (a: any, b: any) => a === b
 const minWidth = 300
