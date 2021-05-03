@@ -15,7 +15,7 @@ declare namespace CL {
   /**
    * Commonly used bounds object
    */
-  export type Bounds = {
+  export interface Bounds {
     north: number
     south: number
     east: number
@@ -147,14 +147,31 @@ declare namespace CL {
     sourceName: string
   }
 
+  export interface GTFSErrorSummary {
+    field?: string
+    file?: string
+    line?: number
+    message: string
+  }
+
+  export interface GTFSErrorTypeSummary {
+    count: number
+    priority: 'HIGH' | 'MEDIUM' | 'LOW' | 'UNKNOWN'
+    someErrors: GTFSErrorSummary[]
+    type: string
+  }
+
   export interface FeedSummary {
     feedId: string
     name: string
+    serviceStart: string
+    serviceEnd: string
+    errors?: GTFSErrorTypeSummary[]
   }
 
   export interface Bundle extends IModel {
     feedGroupId: string
-    feeds: FeedSummary[]
+    feeds?: FeedSummary[]
     osmId: string
     regionId: string
     status: string
@@ -217,6 +234,42 @@ declare namespace CL {
     branch: string
     commit: string
     version: string
+  }
+
+  export type TaskState = 'ACTIVE' | 'ERROR' | 'DONE'
+
+  export type TaskLogEntry = {
+    level: string
+    time: number
+    message: string
+  }
+
+  export type TaskWorkProduct = {
+    id: string
+    regionId: string
+    type: 'BUNDLE' | 'REGIONAL_ANALYSIS'
+  }
+
+  export type Task = {
+    completionTime?: number
+    detail: string
+    id: string
+    percentComplete: number
+    startTime?: number
+    state: TaskState
+    secondsActive: number
+    secondsComplete: number
+    title: string
+    workProduct?: TaskWorkProduct
+  }
+
+  /**
+   * Server Activity
+   */
+  export type Activity = {
+    systemStatusMessages: unknown[]
+    taskBacklog: number
+    taskProgress: Task[]
   }
 
   /**
