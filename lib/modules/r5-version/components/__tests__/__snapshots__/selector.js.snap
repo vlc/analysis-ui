@@ -97,6 +97,7 @@ exports[`Component SelectR5Version snapshot(mount) 1`] = `
             }
             value={
               Object {
+
                 "label": "v6.4 (recommended)",
                 "value": "v6.4",
               }

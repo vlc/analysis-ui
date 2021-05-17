@@ -425,7 +425,7 @@ Object {
       "transitModes": "BUS,TRAM,RAIL,SUBWAY,FERRY,CABLE_CAR,GONDOLA,FUNICULAR",
       "variantIndex": -1,
       "walkSpeed": 1.3888888888888888,
-      "workerVersion": "v6.4",
+      "workerVersion": "v6.3",
     },
   ],
   "resultsSettings": Array [],
