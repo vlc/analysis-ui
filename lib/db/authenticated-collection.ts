@@ -36,6 +36,9 @@ const collections = {
   },
   regions: {
     singular: 'region'
+  },
+  'regional-analyses': {
+    singular: 'regionalAnalysis'
   }
 }
 

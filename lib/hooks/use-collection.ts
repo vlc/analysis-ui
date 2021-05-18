@@ -62,6 +62,8 @@ type UseCollection<T> = {
   config?: SWRConfiguration
 }
 
+const EMPTY_ARRAY = []
+
 export default function useCollection<T extends CL.IModel>(
   collectionName: string,
   {query, options, config}: UseCollection<T> = {}
@@ -125,7 +127,7 @@ export default function useCollection<T extends CL.IModel>(
 
   return {
     create,
-    data: response.data,
+    data: response.data ?? EMPTY_ARRAY,
     error: response.error?.error,
     remove,
     response,

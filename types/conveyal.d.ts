@@ -57,7 +57,7 @@ declare namespace CL {
   /**
    * Base DB Model with common properties.
    */
-  export interface IModel extends Record {
+  export interface IModel {
     _id: ObjectID
     accessGroup: string
     nonce: ObjectID
@@ -184,6 +184,10 @@ declare namespace CL {
     variants: string[]
   }
 
+  export interface RegionalAnalysis extends GridHeader, IModel {
+    workerVersion: string
+  }
+
   /**
    * Access Grids
    */
@@ -283,5 +287,13 @@ declare namespace CL {
   export interface Page<T>
     extends React.FunctionComponent<T & {query: CL.Query}> {
     Layout?: React.FunctionComponent
+  }
+
+  /**
+   * A "profile request" object
+   */
+  export interface ProfileRequest {
+    bounds: CL.Bounds
+    workerVersion: string
   }
 }
