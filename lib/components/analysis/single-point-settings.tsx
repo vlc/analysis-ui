@@ -48,6 +48,7 @@ import {secondsToHhMmString} from 'lib/utils/time'
 
 import ControlledSelect from '../controlled-select'
 import {ChevronDown, ChevronUp, CodeIcon, MouseIcon} from '../icons'
+import ModeSummary from '../mode-summary'
 import Presets from '../presets'
 
 import DownloadMenu from './download-menu'
@@ -56,7 +57,6 @@ import AdvancedSettings from './advanced-settings'
 import ModeSelector from './mode-selector'
 import CreateRegional from './create-regional'
 import getFeedsRoutesAndStops from 'lib/actions/get-feeds-routes-and-stops'
-import ModeSummary from './mode-summary'
 
 const SPACING_XS = 2
 const SPACING = 5

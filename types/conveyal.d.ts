@@ -185,7 +185,42 @@ declare namespace CL {
   }
 
   export interface RegionalAnalysis extends GridHeader, IModel {
+    bundleId: string
+    // On older versions of regional analyses
+    cutoffMinutes?: number
+    travelTimePercentile?: number
+
+    // v6.0 and up all have the following set
+    cutoffsMinutes?: number[]
+    destinationPointSetIds?: string[]
+    travelTimePercentiles?: number[]
+
+    projectId: string
+    regionId: string
+    request: {
+      accessModes: string
+      date: string
+      egressModes: string
+      fromTime: number
+      originPointSetKey?: string
+      toTime: number
+      transitModes: string
+    }
+    resultStorage?: Record<string, string>
+
+    variant: number
     workerVersion: string
+  }
+
+  export interface RegionalJob {
+    complete: number
+    jobId: string
+    statusText: string
+    total: number
+  }
+
+  export interface AggregationArea extends IModel {
+    regionId: string
   }
 
   /**

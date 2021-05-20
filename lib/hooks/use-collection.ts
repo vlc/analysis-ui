@@ -62,8 +62,6 @@ type UseCollection<T> = {
   config?: SWRConfiguration
 }
 
-const EMPTY_ARRAY = []
-
 export default function useCollection<T extends CL.IModel>(
   collectionName: string,
   {query, options, config}: UseCollection<T> = {}
@@ -76,6 +74,7 @@ export default function useCollection<T extends CL.IModel>(
     router.isReady && !isLoading ? [url, user] : null,
     config
   )
+  const emptyArray = useMemo<T[]>(() => [], [])
   const {mutate, revalidate} = response
   // Helper function for updating values when using a collection
   const update = useCallback(
@@ -127,7 +126,7 @@ export default function useCollection<T extends CL.IModel>(
 
   return {
     create,
-    data: response.data ?? EMPTY_ARRAY,
+    data: response.data ?? emptyArray,
     error: response.error?.error,
     remove,
     response,
@@ -148,7 +147,13 @@ export function createUseCollection<T extends CL.IModel>(
 }
 
 // Create an instance of each collection type
+export const useAggregationAreas = createUseCollection<CL.AggregationArea>(
+  'aggregationAreas'
+)
 export const useBundles = createUseCollection<CL.Bundle>('bundles')
+export const useSpatialDatasets = createUseCollection<CL.SpatialDataset>(
+  'opportunityDatasets'
+)
 export const useProjects = createUseCollection<CL.Project>('projects')
 export const usePresets = createUseCollection<CL.Preset>('presets')
 export const useRegions = createUseCollection<CL.Region>('regions')

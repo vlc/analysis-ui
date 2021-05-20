@@ -25,10 +25,10 @@ export function routeTo(key: PageKey, props: Record<string, string>) {
 
 function replaceProps(str: string, obj: Record<string, string>) {
   if (!obj) return {as: str}
-  const query = {}
+  const query: Record<string, string> = {}
   Object.keys(obj).forEach((k) => {
     const key = `[${k}]`
-    if (str.includes(key)) {
+    if (str.includes(key) && typeof obj[k] === 'string') {
       str = str.replace(`[${k}]`, obj[k])
     } else {
       query[k] = obj[k]

@@ -23,7 +23,9 @@ export const setActiveAggregationArea = createAction(
   'set active aggregation area'
 )
 
-export const setAggregationArea = (aa) => async (dispatch) => {
+export const setAggregationArea = (aa: CL.AggregationArea) => async (
+  dispatch
+) => {
   dispatch(setActiveAggregationArea(aa))
 
   const rawGrid = await dispatch(

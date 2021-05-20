@@ -11,7 +11,6 @@ import {
   useToast
 } from '@chakra-ui/react'
 import fpGet from 'lodash/fp/get'
-import get from 'lodash/get'
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
@@ -21,6 +20,7 @@ import {
   uploadAggregationArea
 } from 'lib/actions/aggregation-areas'
 import {ChevronDown, ChevronUp} from 'lib/components/icons'
+import {useAggregationAreas} from 'lib/hooks/use-collection'
 import useInput from 'lib/hooks/use-controlled-input'
 import useFileInput from 'lib/hooks/use-file-input'
 import message from 'lib/message'
@@ -30,8 +30,6 @@ import selectActiveAggregationArea from 'lib/selectors/active-aggregation-area'
 import Select from '../select'
 import FileSizeInputHelper from '../file-size-input-helper'
 
-const selectAggregationAreas = fpGet('region.aggregationAreas')
-
 // Getters for react-select
 const getName = fpGet('name')
 const getId = fpGet('_id')
@@ -39,7 +37,9 @@ const getId = fpGet('_id')
 export default function AggregationArea({regionId}) {
   const dispatch = useDispatch()
   const activeAggregationArea = useSelector(selectActiveAggregationArea)
-  const aas = useSelector(selectAggregationAreas)
+  const {data: aggregationAreas} = useAggregationAreas({
+    query: {regionId}
+  })
   const showUpload = useDisclosure()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -63,8 +63,10 @@ export default function AggregationArea({regionId}) {
           name='aggregateTo'
           getOptionLabel={getName}
           getOptionValue={getId}
-          options={aas}
-          value={aas.find((aa) => aa._id === get(activeAggregationArea, '_id'))}
+          options={aggregationAreas}
+          value={aggregationAreas.find(
+            (aa) => aa._id === activeAggregationArea?._id
+          )}
           onChange={setActive}
         />
       </FormControl>

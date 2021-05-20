@@ -1,10 +1,8 @@
 /** Actions for regional analysis */
 import get from 'lodash/get'
-import sortBy from 'lodash/sortBy'
 import {createAction} from 'redux-actions'
 
 import {API} from 'lib/constants'
-import R5Version from 'lib/modules/r5-version'
 import createGrid from 'lib/utils/create-grid'
 import predictJobTimeRemaining from 'lib/utils/predict-job-time-remaining'
 
@@ -17,23 +15,6 @@ const REGIONAL_URL = API.Regional
 export const setRegionalAnalysis = createAction('set regional analysis')
 export const setRegionalAnalyses = createAction('set regional analyses')
 export const setActiveRegionalJobs = createAction('set active regional jobs')
-
-export const load = (regionId) =>
-  fetch({
-    url: `${REGION_URL}/${regionId}/regional`,
-    next(response) {
-      const analyses = sortBy(response.value, (a) => -a.createdAt) // newest at the top
-      return [
-        setRegionalAnalyses(analyses),
-        R5Version.actions.setUsedVersions(
-          analyses.map((a) => ({
-            name: a.name,
-            version: a.workerVersion
-          }))
-        )
-      ]
-    }
-  })
 
 // Show time if...at least one task is complete AND either the regional analysis
 // was created more than five minutes ago or there is more than one acitve worker.

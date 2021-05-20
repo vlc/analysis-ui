@@ -1,9 +1,8 @@
 import {Box, Flex, Heading, Stack, Text, Progress} from '@chakra-ui/react'
 import {format} from 'd3-format'
-import React from 'react'
 
-import {ALink} from './link'
-import Bolts from './worker-bolts'
+import {ALink} from 'lib/components/link'
+import Bolts from 'lib/components/worker-bolts'
 
 // Round everything above a million
 const toSI = format('.4~s')

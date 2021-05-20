@@ -11,37 +11,29 @@ import {
   Alert,
   AlertIcon,
   AlertDescription,
-  Center
+  Center,
+  useToast
 } from '@chakra-ui/react'
-import find from 'lodash/find'
-import get from 'lodash/get'
-import omit from 'lodash/omit'
 import dynamic from 'next/dynamic'
+import {useRouter} from 'next/router'
 import React, {useCallback} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
 
-import {setSearchParameter} from 'lib/actions'
-import {
-  deleteRegionalAnalysis,
-  updateRegionalAnalysis
-} from 'lib/actions/analysis/regional'
-import fetchAction from 'lib/actions/fetch'
 import {ChevronLeft, DeleteIcon, DownloadIcon} from 'lib/components/icons'
 import {API} from 'lib/constants'
 import useControlledInput from 'lib/hooks/use-controlled-input'
+import useRouteTo, {useShallowRouteTo} from 'lib/hooks/use-route-to'
+import useUser from 'lib/hooks/use-user'
 import message from 'lib/message'
-import selectActiveAnalysis from 'lib/selectors/active-regional-analysis'
-import selectCutoff from 'lib/selectors/regional-display-cutoff'
-import selectPercentile from 'lib/selectors/regional-display-percentile'
-import selectPointset from 'lib/selectors/regional-display-destination-pointset'
+import authFetch, {authFetchText} from 'lib/utils/auth-fetch'
 import downloadObjectAsJson from 'lib/utils/download-json'
+import {SafeResponse} from 'lib/utils/safe-fetch'
 
 import {ConfirmDialog} from '../confirm-button'
 import Editable from '../editable'
 import IconButton from '../icon-button'
-import RunningAnalysis from '../running-analysis'
+import ActiveJob from 'lib/regional/active-job'
 
-import ProfileRequestDisplay from './profile-request-display'
+import DestinationPointsetSelector from './destination-pointset-select'
 
 const AggregationArea = dynamic(() => import('../map/aggregation-area'), {
   ssr: false
@@ -56,92 +48,58 @@ const DotMap = dynamic(
 const RegionalLayer = dynamic(() => import('../map/regional'), {
   ssr: false
 })
-const RegionalResults = dynamic(() => import('./regional-results'), {
-  ssr: false
-})
 
 // Ensure valid analysis name
 const nameIsValid = (s) => s && s.length > 0
 
-// Get full qualifier for opportunity datasets
-const getFullODName = (od) => `${od?.sourceName}: ${od?.name}`
+export default function Regional({
+  analysis,
+  job,
+  remove,
+  update
+}: {
+  analysis: CL.RegionalAnalysis
+  job?: CL.RegionalJob
+  remove: () => Promise<SafeResponse<CL.RegionalAnalysis>>
+  update: (
+    updates: Partial<CL.RegionalAnalysis>
+  ) => Promise<SafeResponse<CL.RegionalAnalysis[]>>
+}) {
+  const isComplete = job == null
+  const cutoffsMinutes = analysis.cutoffsMinutes ?? []
+  const percentiles = analysis.travelTimePercentiles ?? []
+  const router = useRouter()
+  const query = router.query as CL.Query
+  const goBack = useRouteTo('regionalAnalyses')
+  const routeTo = useShallowRouteTo('regionalAnalyses', {
+    analysisId: analysis._id
+  })
 
-// Type to title
-const csvResultsTypeToTitle = {
-  ACCESS: 'Access CSV',
-  PATHS: 'Paths CSV',
-  TIMES: 'Times CSV'
-}
-
-export default function Regional(p) {
-  const isComplete = !p.job
-  const analysis = useSelector(selectActiveAnalysis)
-  const dispatch = useDispatch<any>()
-  const cutoffsMinutes = analysis.cutoffsMinutes
-  const percentiles = analysis.travelTimePercentiles
-
-  const onChangeCutoff = useCallback(
-    (v) => dispatch(setSearchParameter('cutoff', v)),
-    [dispatch]
-  )
+  const onChangeCutoff = useCallback((v) => routeTo({cutoff: v}), [routeTo])
   const cutoffInput = useControlledInput({
     onChange: onChangeCutoff,
     parse: parseInt,
-    value: useSelector(selectCutoff)
+    value: query.cutoff
   })
 
-  const onChangePercentile = useCallback(
-    (v) => dispatch(setSearchParameter('percentile', v)),
-    [dispatch]
-  )
+  const onChangePercentile = useCallback((v) => routeTo({percentile: v}), [
+    routeTo
+  ])
   const percentileInput = useControlledInput({
     onChange: onChangePercentile,
     parse: parseInt,
-    value: useSelector(selectPercentile)
+    value: query.percentile
   })
 
-  const activePointSet = useSelector(selectPointset)
-  const activePointSetId = get(activePointSet, '_id')
+  const activePointSetId = query.destinationPointSetId
   const onChangeDestinationPointSet = useCallback(
-    (v) => dispatch(setSearchParameter('destinationPointSetId', v)),
-    [dispatch]
+    (v) => routeTo({destinationPointSetId: v}),
+    [routeTo]
   )
-  const destinationPointSetInput = useControlledInput({
-    onChange: onChangeDestinationPointSet,
-    value: activePointSetId
-  })
 
   async function _remove() {
-    await dispatch(deleteRegionalAnalysis(analysis._id))
-    return dispatch(setSearchParameter('analysisId'))
-  }
-
-  async function _downloadCSVResults(type) {
-    const url = await dispatch(
-      fetchAction({url: `${API.Regional}/${analysis._id}/csv/${type}`})
-    )
-    window.open(url)
-  }
-
-  async function _downloadRequestJSON() {
-    const data = await dispatch(
-      fetchAction({url: `${API.Regional}/${analysis._id}`})
-    )
-    downloadObjectAsJson({data, filename: analysis.name + '.json'})
-  }
-
-  /**
-   * Perform an authenticated fetch to get a presigned URL to download a grid
-   * from S3, then download it. Pass in the path to fetch.
-   */
-  async function _downloadProjectGIS(e) {
-    e.preventDefault()
-    const value = await dispatch(
-      fetchAction({
-        url: `${API.Regional}/${analysis._id}/grid/tiff?cutoff=${cutoffInput.value}&percentile=${percentileInput.value}&destinationPointSetId=${activePointSetId}`
-      })
-    )
-    window.open(get(value, 'url'))
+    await remove()
+    return goBack()
   }
 
   return (
@@ -156,26 +114,15 @@ export default function Regional(p) {
         </>
       )}
 
-      <Flex
-        align='center'
-        borderBottomWidth='1px'
-        className={p.saveInProgress ? 'disableAndDim' : ''}
-        p={2}
-        width='320px'
-      >
-        <IconButton
-          label='All regional analyses'
-          onClick={() => dispatch(setSearchParameter('analysisId'))}
-        >
+      <Flex align='center' borderBottomWidth='1px' p={2} width='320px'>
+        <IconButton label='All regional analyses' onClick={goBack}>
           <ChevronLeft />
         </IconButton>
 
         <Box flex='1' fontSize='xl' fontWeight='bold' ml={2} overflow='hidden'>
           <Editable
             isValid={nameIsValid}
-            onChange={(name) =>
-              dispatch(updateRegionalAnalysis({...analysis, name}))
-            }
+            onChange={(name) => update({name})}
             value={analysis.name}
           />
         </Box>
@@ -195,7 +142,7 @@ export default function Regional(p) {
         </Flex>
       </Flex>
 
-      {p.job && <RunningAnalysis job={p.job} />}
+      {job && <ActiveJob job={job} />}
 
       <Stack spacing={4} px={4} py={4}>
         {analysis?.request?.originPointSetKey != null ? (
@@ -208,13 +155,13 @@ export default function Regional(p) {
         ) : (
           <Stack spacing={4}>
             {Array.isArray(analysis.destinationPointSetIds) && (
-              <Select {...destinationPointSetInput}>
-                {analysis.destinationPointSetIds.map((id) => (
-                  <option key={id} value={id}>
-                    {getFullODName(find(p.opportunityDatasets, ['_id', id]))}
-                  </option>
-                ))}
-              </Select>
+              <Box>
+                <DestinationPointsetSelector
+                  analysis={analysis}
+                  onChange={onChangeDestinationPointSet}
+                  value={activePointSetId}
+                />
+              </Box>
             )}
 
             <Stack isInline>
@@ -242,50 +189,109 @@ export default function Regional(p) {
         )}
 
         {isComplete && (
-          <Menu isLazy>
-            <MenuButton as={Button} colorScheme='blue'>
-              <Center>
-                <DownloadIcon />
-                &nbsp; Download results
-              </Center>
-            </MenuButton>
-            <MenuList>
-              <MenuItem
-                isDisabled={analysis.request.originPointSetKey != null}
-                onClick={_downloadProjectGIS}
-              >
-                GeoTIFF
-              </MenuItem>
-              <MenuItem onClick={_downloadRequestJSON}>
-                Scenario and modification JSON
-              </MenuItem>
-              {Object.keys(analysis.resultStorage || {}).map((type) => (
-                <MenuItem key={type} onClick={() => _downloadCSVResults(type)}>
-                  {csvResultsTypeToTitle[type]}
-                </MenuItem>
-              ))}
-            </MenuList>
-          </Menu>
+          <Box>
+            <DownloadMenu
+              analysis={analysis}
+              cutoff={cutoffInput.value}
+              percentile={percentileInput.value}
+              pointSetId={activePointSetId}
+            />
+          </Box>
         )}
       </Stack>
-
-      <ProfileRequestDisplay
-        bundleId={analysis.bundleId}
-        profileRequest={{
-          ...omit(analysis, 'request'),
-          ...analysis.request
-        }}
-        projectId={analysis.projectId}
-      />
-
-      {isComplete && analysis?.request?.originPointSetKey == null && (
-        <RegionalResults
-          analysis={analysis}
-          analysisId={analysis._id}
-          regionId={analysis.regionId}
-          {...p}
-        />
-      )}
     </>
+  )
+}
+
+// Type to title
+const csvResultsTypeToTitle = {
+  ACCESS: 'Access CSV',
+  PATHS: 'Paths CSV',
+  TIMES: 'Times CSV'
+}
+
+function DownloadMenu({
+  analysis,
+  cutoff,
+  percentile,
+  pointSetId
+}: {
+  analysis: CL.RegionalAnalysis
+  cutoff: number
+  percentile: number
+  pointSetId: string
+}) {
+  const {user} = useUser()
+  const toast = useToast({
+    position: 'top',
+    status: 'error',
+    title: 'Download failed'
+  })
+  async function _downloadCSVResults(type: string) {
+    const res = await authFetchText(
+      `${API.Regional}/${analysis._id}/csv/${type}`,
+      user
+    )
+    if (res.ok) {
+      window.open(res.data)
+    } else if (res.ok === false) {
+      toast({description: res.error.message})
+    }
+  }
+
+  async function _downloadRequestJSON() {
+    const res = await authFetch(`${API.Regional}/${analysis._id}`, user)
+    if (res.ok) {
+      downloadObjectAsJson({
+        data: res.data,
+        filename: analysis.name + '.json'
+      })
+    } else if (res.ok === false) {
+      toast({description: res.error.message})
+    }
+  }
+
+  /**
+   * Perform an authenticated fetch to get a presigned URL to download a grid
+   * from S3, then download it. Pass in the path to fetch.
+   */
+  async function _downloadProjectGIS(e) {
+    e.preventDefault()
+    const res = await authFetch<{url: string}>(
+      `${API.Regional}/${analysis._id}/grid/tiff?cutoff=${cutoff}&percentile=${percentile}&destinationPointSetId=${pointSetId}`,
+      user
+    )
+    if (res.ok) {
+      window.open(res.data.url)
+    } else if (res.ok === false) {
+      toast({description: res.error.message})
+    }
+  }
+
+  return (
+    <Menu isLazy>
+      <MenuButton as={Button} colorScheme='blue'>
+        <Center>
+          <DownloadIcon />
+          &nbsp; Download results
+        </Center>
+      </MenuButton>
+      <MenuList>
+        <MenuItem
+          isDisabled={analysis.request.originPointSetKey != null}
+          onClick={_downloadProjectGIS}
+        >
+          GeoTIFF
+        </MenuItem>
+        <MenuItem onClick={_downloadRequestJSON}>
+          Scenario and modification JSON
+        </MenuItem>
+        {Object.keys(analysis.resultStorage || {}).map((type) => (
+          <MenuItem key={type} onClick={() => _downloadCSVResults(type)}>
+            {csvResultsTypeToTitle[type]}
+          </MenuItem>
+        ))}
+      </MenuList>
+    </Menu>
   )
 }

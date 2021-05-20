@@ -13,7 +13,7 @@ const alwaysValid = (_?: any) => true
 type EditableProps = {
   iconSize?: ButtonProps['size']
   isValid?: (_?: string) => boolean
-  onChange: (newValue: string) => void
+  onChange: (newValue: string) => Promise<any>
   placeholder?: string
   value: string
 }
@@ -74,6 +74,13 @@ function HiddenInput({
   onClose,
   placeholder,
   value
+}: {
+  iconSize?: ButtonProps['size']
+  isValid?: (_?: string) => boolean
+  onChange: (newValue: string) => Promise<any>
+  onClose: () => void
+  placeholder?: string
+  value: string
 }) {
   const input = useInput({
     test: isValid,
