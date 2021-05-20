@@ -1,3 +1,5 @@
+import {RECOMMENDED_R5_VERSION} from '../../lib/modules/r5-version/constants'
+
 import Region from '../models/region'
 import scratchRegion from '../fixtures/regions/scratch.json'
 
@@ -47,7 +49,7 @@ export const defaultAnalysisSettings = {
   toTime: 32400,
   transitModes: 'BUS,TRAM,RAIL,SUBWAY,FERRY,CABLE_CAR,GONDOLA,FUNICULAR',
   walkSpeed: 1.3888888888888888,
-  workerVersion: 'v6.0.1',
+  workerVersion: RECOMMENDED_R5_VERSION,
   variantIndex: -1
 }
 
@@ -63,7 +65,7 @@ export function getDefaultRegion(): Region {
 
   // Create a default bundle
   defaultRegion.getBundle(
-    scratchRegion.feedAgencyName,
+    scratchRegion.bundleName,
     scratchRegion.GTFSfile,
     scratchRegion.PBFfile
   )

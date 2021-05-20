@@ -1,17 +1,16 @@
-describe.skip('Login Command', () => {
-  before(() => {
-    cy.login()
-  })
+if (Cypress.env('authEnabled')) {
+  describe('Logging in', () => {
+    it('should be logged in', () => {
+      // Now run your test...
+      cy.request('/api/auth/me').then(({body: user}) => {
+        expect(user['http://conveyal/accessGroup']).to.equal(
+          Cypress.env('accessGroup')
+        )
+        expect(user.idToken).not.to.be.undefined
+      })
 
-  it('should log the user in behind the scenes and set the cookie', () => {
-    cy.visit('/')
-
-    cy.contains(Cypress.env('username'))
-    cy.contains(Cypress.env('accessGroup'))
+      cy.visitHome()
+      cy.contains(Cypress.env('accessGroup'))
+    })
   })
-
-  it('should persist the cookie between tests', () => {
-    cy.getCookie('a0:state').should('exist')
-    cy.getCookie('a0:session').should('exist')
-  })
-})
+}

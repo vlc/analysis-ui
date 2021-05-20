@@ -161,9 +161,14 @@ declare namespace Cypress {
     findTask(title: string): Chainable<JQuery<HTMLElement>>
 
     /**
+     * Get the Toast portal.
+     */
+    getToastPortal(): Chainable<JQuery<HTMLElement>>
+
+    /**
      * Get a Toast.
      */
-    findToast(): Chainable<JQuery<HTMLElement>>
+    findToast(name: string | RegExp): Chainable<JQuery<HTMLElement>>
 
     /**
      * Get the LeafletMap.
@@ -205,6 +210,11 @@ declare namespace Cypress {
      * Wait until the spinner is gone and loading is complete.
      */
     loadingComplete(): Chainable<boolean>
+
+    /**
+     * Set the cookies
+     */
+    login(): Chainable<void>
 
     /**
      * Check if the map is centered on a set of coordinates.
