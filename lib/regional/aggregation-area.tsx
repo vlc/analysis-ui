@@ -27,29 +27,38 @@ import message from 'lib/message'
 import OpportunityDatasets from 'lib/modules/opportunity-datasets'
 import selectActiveAggregationArea from 'lib/selectors/active-aggregation-area'
 
-import Select from '../select'
-import FileSizeInputHelper from '../file-size-input-helper'
+import Select from 'lib/components/select'
+import FileSizeInputHelper from 'lib/components/file-size-input-helper'
+import {useShallowRouteTo} from 'lib/hooks/use-route-to'
 
 // Getters for react-select
 const getName = fpGet('name')
 const getId = fpGet('_id')
 
-export default function AggregationArea({regionId}) {
-  const dispatch = useDispatch()
-  const activeAggregationArea = useSelector(selectActiveAggregationArea)
-  const {data: aggregationAreas} = useAggregationAreas({
+export default function AggregationArea({
+  aggregationAreaId,
+  regionId
+}: {
+  aggregationAreaId?: string
+  regionId: string
+}) {
+  const {data: aggregationAreas, response} = useAggregationAreas({
     query: {regionId}
   })
+  const activeAggregationArea = aggregationAreas.find(
+    (a) => a._id === aggregationAreaId
+  )
+  const routeTo = useShallowRouteTo('regionalAnalyses')
   const showUpload = useDisclosure()
   const [isLoading, setIsLoading] = useState(false)
 
-  async function setActive(aa) {
+  async function setActive(aa: CL.AggregationArea) {
     if (aa) {
       setIsLoading(true)
-      await dispatch(setAggregationArea(aa))
+      routeTo({aggregationAreaId: aa._id})
       setIsLoading(false)
     } else {
-      dispatch(setActiveAggregationArea())
+      routeTo({aggregationAreaId: null})
     }
   }
 

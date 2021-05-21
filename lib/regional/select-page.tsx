@@ -6,25 +6,7 @@ import useControlledInput from 'lib/hooks/use-controlled-input'
 import useRouteTo from 'lib/hooks/use-route-to'
 
 import ActiveJob from './active-job'
-
-function getDefaultCutoff(a: CL.RegionalAnalysis): number {
-  if (Array.isArray(a.cutoffsMinutes))
-    return a.cutoffsMinutes[Math.floor(a.cutoffsMinutes.length / 2)]
-  return a.cutoffMinutes
-}
-
-function getDefaultDestinationPointSet(a: CL.RegionalAnalysis): string | void {
-  const ids = a.destinationPointSetIds
-  if (Array.isArray(ids)) return ids[0]
-}
-
-function getDefaultPercentile(a: CL.RegionalAnalysis): number {
-  if (Array.isArray(a.travelTimePercentiles))
-    return a.travelTimePercentiles[
-      Math.floor(a.travelTimePercentiles.length / 2)
-    ]
-  return a.travelTimePercentile
-}
+import {getDefaultVariants} from './utils'
 
 /**
  * Component for selecting a regional analysis and displaying active jobs.
@@ -40,14 +22,10 @@ export default function RegionalSelectPage({
 }) {
   const goToRegional = useRouteTo('regionalAnalyses', {regionId})
   const onChange = useCallback(
-    (a?: CL.RegionalAnalysis) => {
-      goToRegional({
-        analysisId: a?._id,
-        cutoff: a ? getDefaultCutoff(a) : undefined,
-        destinationPointSetId: a ? getDefaultDestinationPointSet(a) : undefined,
-        percentile: a ? getDefaultPercentile(a) : undefined
-      })
-    },
+    (a?: CL.RegionalAnalysis) =>
+      a == null
+        ? goToRegional()
+        : goToRegional({analysisId: a._id, ...getDefaultVariants(a)}),
     [goToRegional]
   )
   const input = useControlledInput({

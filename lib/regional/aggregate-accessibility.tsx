@@ -10,14 +10,14 @@ import {
   SliderThumb,
   Stack
 } from '@chakra-ui/react'
-import {Fragment, useState, useEffect} from 'react'
+import {Fragment, useState, useMemo} from 'react'
 import {scaleLinear} from 'd3-scale'
 import {format as d3Format} from 'd3-format'
 
 import colors from 'lib/constants/colors'
 import message from 'lib/message'
 
-import * as Panel from '../panel'
+import * as Panel from 'lib/components/panel'
 
 const WIDTH = 290
 const HEIGHT = 225
@@ -36,7 +36,7 @@ const PERCENTILE_OF_ACCESSIBILITY = 10
 /**
  * This component renders the aggregate accessibility display (histograms and percentiles).
  */
-export default function AggregateAccessibilityComponent({
+export default function AggregateAccessibilityDisplay({
   accessToName,
   aggregateAccessibility,
   comparisonAccessToName,
@@ -45,21 +45,17 @@ export default function AggregateAccessibilityComponent({
   regionalAnalysisName,
   weightByName
 }) {
-  const [xScale, setXScale] = useState(() =>
-    createXScale(aggregateAccessibility, comparisonAggregateAccessibility)
-  )
-  const [yScale, setYScale] = useState(() =>
-    createYScale(aggregateAccessibility, comparisonAggregateAccessibility)
-  )
   const [percentile, setPercentile] = useState(PERCENTILE_OF_ACCESSIBILITY)
-
-  // Update the scales if the accessibility changes
-  useEffect(() => {
-    setXScale(() =>
-      createXScale(aggregateAccessibility, comparisonAggregateAccessibility)
+  const xScale = useMemo(() => {
+    return createXScale(
+      aggregateAccessibility,
+      comparisonAggregateAccessibility
     )
-    setYScale(() =>
-      createYScale(aggregateAccessibility, comparisonAggregateAccessibility)
+  }, [aggregateAccessibility, comparisonAggregateAccessibility])
+  const yScale = useMemo(() => {
+    return createYScale(
+      aggregateAccessibility,
+      comparisonAggregateAccessibility
     )
   }, [aggregateAccessibility, comparisonAggregateAccessibility])
 
