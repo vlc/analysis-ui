@@ -3,20 +3,30 @@ const unlog = {log: false}
 // Shortened helper for `findByRole('button', {name: /Name/})
 Cypress.Commands.add('findButton', (name) => cy.findByRole('button', {name}))
 
+// Get the toast portal
+Cypress.Commands.add('getToastPortal', () => cy.get('#chakra-toast-portal'))
+
 // Get a toast
-Cypress.Commands.add('findToast', () =>
-  cy.get('#chakra-toast-portal').findByRole('alert')
+Cypress.Commands.add('findToast', (name: string | RegExp) =>
+  cy.getToastPortal().findByText(name)
 )
 
 // Get a task
 Cypress.Commands.add('findTask', (title: string) =>
-  cy.get('#TaskList').findByTitle(title).parent().parent()
+  cy
+    .get('#TaskList', {
+      timeout: 240_000
+    })
+    .findByTitle(title)
+    .parent()
+    .parent()
 )
 
 // Load the home page. Wait for the "Skeleton" to disappear
 Cypress.Commands.add('visitHome', () => {
   cy.log('visitHome')
   cy.visit('/', {log: false})
+  cy.findButton(/Set up a new region/)
   cy.get('#LoadingSkeleton', {log: false}).should('not.exist')
 })
 
@@ -132,19 +142,4 @@ Cypress.Commands.add('navTo', (menuItemTitle) => {
   return cy
     .navComplete()
     .then(() => Cypress.log({displayName: 'navTo:complete', message: title}))
-})
-
-Cypress.Commands.add('login', function () {
-  cy.getCookie('a0:state').then((cookie) => {
-    // If the cookie already exists, skip the login
-    if (cookie) return
-
-    cy.visit('/')
-    cy.findByLabelText('Email').type(Cypress.env('username'))
-    cy.findByLabelText('Password').type(Cypress.env('password'))
-    cy.findByRole('button', {name: 'Log In'}).click()
-
-    // Should show the home page
-    cy.findByText(new RegExp(Cypress.env('username')))
-  })
 })
