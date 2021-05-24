@@ -83,8 +83,10 @@ export default class AuthenticatedCollection {
       _id: new ObjectID().toString(),
       accessGroup: this.accessGroup,
       nonce: new ObjectID().toString(),
+      createdAt: new Date(),
       createdBy: this.user.email,
-      updatedBy: this.user.email
+      updatedBy: this.user.email,
+      updatedAt: new Date()
     })
   }
 
@@ -147,7 +149,8 @@ export default class AuthenticatedCollection {
         $set: {
           ...omitImmutable(newValues),
           nonce: new ObjectID().toString(),
-          updatedBy: this.user.email
+          updatedBy: this.user.email,
+          updatedAt: new Date()
         }
       },
       {

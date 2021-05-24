@@ -1,0 +1,29 @@
+name: 'Run Cypress tests on staging'
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  cypressRemote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - uses: cypress-io/github-action@v2
+        with:
+          config: baseUrl=https://conveyal.dev
+        env:
+          CYPRESS_apiUrl: https://staging-api.conveyal.com
+          CYPRESS_authEnabled: true
+          CYPRESS_appSession0: ${{ secrets.AUTH0_APP_SESSION_0 }}
+          CYPRESS_appSession1: ${{ secrets.AUTH0_APP_SESSION_1 }}
+
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots

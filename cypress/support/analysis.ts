@@ -94,7 +94,7 @@ Cypress.Commands.add('fetchResults', () => {
     .wait(200)
   // fetch results button usually disappears when clicked, but may not always
   // when it returns, we know the results have been fetched
-  cy.findByRole('button', {name: /^Fetch results$/i, timeout: 240000}).should(
+  cy.findByRole('button', {name: /^Fetch results$/i, timeout: 300_000}).should(
     'exist'
   )
 })
@@ -171,7 +171,9 @@ Cypress.Commands.add(
     cy.findByRole('button', {name: /Create/}).click()
 
     // Ensure the success toast is shown, and click on it
-    cy.findToast().click({force: true})
+    cy.findToast(
+      /Regional analysis has been created successfully\. Click here to view progress/
+    ).click({force: true})
 
     // Navigates to regional analysis page
     cy.findByRole('heading', {name: /Regional Analyses/i, timeout: 15000})
