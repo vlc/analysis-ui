@@ -5,8 +5,9 @@ import Select from 'lib/components/select'
 import useControlledInput from 'lib/hooks/use-controlled-input'
 import useRouteTo from 'lib/hooks/use-route-to'
 
+import {getDefaultVariants} from '../utils'
+
 import ActiveJob from './active-job'
-import {getDefaultVariants} from './utils'
 
 /**
  * Component for selecting a regional analysis and displaying active jobs.

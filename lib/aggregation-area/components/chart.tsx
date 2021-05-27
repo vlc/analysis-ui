@@ -36,7 +36,7 @@ const PERCENTILE_OF_ACCESSIBILITY = 10
 /**
  * This component renders the aggregate accessibility display (histograms and percentiles).
  */
-export default function AggregateAccessibilityDisplay({
+export default function AggregateAccessibilityChart({
   accessToName,
   aggregateAccessibility,
   comparisonAccessToName,
@@ -44,6 +44,14 @@ export default function AggregateAccessibilityDisplay({
   comparisonRegionalAnalysisName,
   regionalAnalysisName,
   weightByName
+}: {
+  accessToName: string
+  aggregateAccessibility: CL.AggregateAccessibility
+  comparisonAccessToName?: string
+  comparisonAggregateAccessibility?: CL.AggregateAccessibility
+  comparisonRegionalAnalysisName?: string
+  regionalAnalysisName: string
+  weightByName: string
 }) {
   const [percentile, setPercentile] = useState(PERCENTILE_OF_ACCESSIBILITY)
   const xScale = useMemo(() => {

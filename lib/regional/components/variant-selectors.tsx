@@ -12,38 +12,33 @@ import useControlledInput from 'lib/hooks/use-controlled-input'
 import DestinationPointsetSelector from './destination-pointset-select'
 
 export default function VariantSelectors({
-  analysis,
-  cutoff,
-  percentile,
-  pointSetId,
+  analysisVariant,
   onChangeCutoff,
   onChangePercentile,
   onChangePointSet
 }: {
-  analysis: CL.RegionalAnalysis
-  cutoff: number
-  percentile: number
-  pointSetId: string
+  analysisVariant: CL.RegionalAnalysisVariant
   onChangeCutoff: (cutoff: number) => void
   onChangePercentile: (percentile: number) => void
   onChangePointSet: (pointSetId: string) => void
 }) {
+  const {analysis} = analysisVariant
   const cutoffsMinutes = analysis.cutoffsMinutes ?? []
   const percentiles = analysis.travelTimePercentiles ?? []
   const cutoffInput = useControlledInput({
     onChange: onChangeCutoff,
     parse: parseInt,
-    value: cutoff
+    value: analysisVariant.cutoff
   })
   const percentileInput = useControlledInput({
     onChange: onChangePercentile,
     parse: parseInt,
-    value: percentile
+    value: analysisVariant.percentile
   })
 
   return (
     <Stack spacing={4} px={4} py={4}>
-      {analysis?.request?.originPointSetKey != null ? (
+      {analysis.request?.originPointSetKey != null ? (
         <Alert status='info'>
           <AlertIcon />
           <AlertDescription>
@@ -57,7 +52,7 @@ export default function VariantSelectors({
               <DestinationPointsetSelector
                 analysis={analysis}
                 onChange={onChangePointSet}
-                value={pointSetId}
+                value={analysisVariant.pointSetId}
               />
             </Box>
           )}

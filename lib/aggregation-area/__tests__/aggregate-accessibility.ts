@@ -15,18 +15,20 @@ const contains = (width, height) => (x, y) =>
 describe('utils > aggregation accessibility', () => {
   it('should work', () => {
     // if we think of these as population, the two right cells of the top row have population of 100 and 25
-    const population = {
+    const population: CL.ParsedGrid = {
       contains: contains(3, 2),
-      data: [
+      getValue: (_0, _1) => 0,
+      data: Int32Array.from([
         10000,
         100,
         25, // aggregation area overlaps rightmost two cells
         10000,
         10000,
         10000
-      ],
+      ]),
       height: 2,
       min: 0,
+      max: Number.MAX_VALUE, // unused
       north: 50,
       west: 49,
       width: 3,
@@ -35,23 +37,28 @@ describe('utils > aggregation accessibility', () => {
 
     // The aggregation area starts in the second cell of the weights and doesn't cover the lower row
     // it covers 50% of the top center (100 people) and 100% of the top right (25 people)
-    const aggregationArea = {
-      grid: {
-        contains: contains(2, 1),
-        data: [50000, 100000],
-        height: 1,
-        min: 0,
-        north: 50,
-        west: 50,
-        width: 2,
-        zoom: 9
-      }
+    const aggregationArea: CL.ParsedGrid = {
+      contains: contains(2, 1),
+      getValue: (_0, _1) => 0, // unused here
+      data: Int32Array.from([50000, 100000]),
+      height: 1,
+      min: 0,
+      max: Number.MAX_VALUE, // unused here
+      north: 50,
+      west: 50,
+      width: 2,
+      zoom: 9
     }
 
     // Accessibility starts two cells north and two cells west of aggregation area
-    const accessibility = {
+    const accessibility: CL.RegionalGrid = {
+      analysisId: '',
+      cutoff: 0,
+      percentile: 0,
+      pointSetId: '',
       contains: contains(4, 4),
-      data: [
+      getValue: (_0, _1) => 0,
+      data: Int32Array.from([
         100,
         100,
         100,
@@ -68,9 +75,10 @@ describe('utils > aggregation accessibility', () => {
         100,
         100,
         100
-      ],
+      ]),
       height: 4,
       min: 0,
+      max: Number.MAX_VALUE,
       north: 48,
       west: 48,
       width: 4,

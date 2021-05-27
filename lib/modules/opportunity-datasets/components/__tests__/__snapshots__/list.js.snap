@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Opportunity Datasets > Components > List should render without errors 1`] = `
-<ListOpportunityDatasets>
+<ListOpportunityDatasets
+  regionId="12345"
+>
   <Stack
     spacing={5}
   >
@@ -45,18 +47,18 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
                 key=".0"
                 query={
                   Object {
-                    "regionId": undefined,
+                    "regionId": "12345",
                   }
                 }
                 to="opportunitiesUpload"
               >
                 <Link
-                  href="/regions/undefined/opportunities/upload"
+                  href="/regions/12345/opportunities/upload"
                   passHref={true}
                 >
                   <Button
                     colorScheme="green"
-                    href="/regions/undefined/opportunities/upload"
+                    href="/regions/12345/opportunities/upload"
                     leftIcon={<FaPlus />}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
@@ -104,14 +106,14 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
                         }
                       }
                       className="chakra-button"
-                      href="/regions/undefined/opportunities/upload"
+                      href="/regions/12345/opportunities/upload"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       type="button"
                     >
                       <button
                         className="chakra-button css-ywjnlx"
-                        href="/regions/undefined/opportunities/upload"
+                        href="/regions/12345/opportunities/upload"
                         onClick={[Function]}
                         onMouseEnter={[Function]}
                         type="button"
@@ -254,7 +256,9 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
           <div
             className="css-0"
           >
-            <Memo(OpportunityDatasetSelector)>
+            <Memo(OpportunityDatasetSelector)
+              regionId="12345"
+            >
               <ForwardRef
                 aria-label="Destination opportunity layer"
                 getOptionLabel={[Function]}

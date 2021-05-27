@@ -1,27 +1,50 @@
 import InnerDock from 'lib/components/inner-dock'
-import MapLayout from 'lib/layouts/map'
+import LoadingScreen from 'lib/components/loading-screen'
 import useRegionalAnalyses from 'lib/hooks/use-regional-analyses'
 import useRegionalJobs from 'lib/hooks/use-regional-jobs'
-import ResultsPage from 'lib/regional/results-page'
-import LoadingScreen from 'lib/components/loading-screen'
+import MapLayout from 'lib/layouts/map'
+import ActiveAnalysisPage from 'lib/regional/components/active-analysis-page'
+import ResultsPage from 'lib/regional/components/results-page'
+import {getValidComparisonAnalyses, useVariant} from 'lib/regional/utils'
 
-export default function RegionalPage({query}: {query: CL.Query}) {
+const RegionalPage: CL.Page = ({query}) => {
   const {analysisId, regionId} = query
   const regionalAnalysisCollection = useRegionalAnalyses(regionId)
-  const activeAnalysis = regionalAnalysisCollection.data.find(
-    (ra) => ra._id === analysisId
-  )
+  const allAnalyses = regionalAnalysisCollection.data
+  const activeAnalysis = allAnalyses.find((ra) => ra._id === analysisId)
   const {data: jobs} = useRegionalJobs(regionId)
+  const activeJob = jobs.find((j) => j.jobId === analysisId)
+
+  // Construct the parsed query objects
+  const analysisVariant: CL.RegionalAnalysisVariant = useVariant(
+    activeAnalysis,
+    parseInt(query.cutoff, 10),
+    parseInt(query.percentile, 10),
+    query.pointSetId
+  )
+
+  // Get valid comparison analyses
+  const comparisonAnalyses = activeAnalysis
+    ? getValidComparisonAnalyses(allAnalyses, jobs, activeAnalysis)
+    : []
 
   return (
     <InnerDock>
       {activeAnalysis ? (
-        <ResultsPage
-          analysis={activeAnalysis}
-          jobs={jobs}
-          query={query}
-          regionalAnalysisCollection={regionalAnalysisCollection}
-        />
+        activeJob ? (
+          <ActiveAnalysisPage
+            activeJob={activeJob}
+            analysisVariant={analysisVariant}
+            regionalAnalysisCollection={regionalAnalysisCollection}
+          />
+        ) : (
+          <ResultsPage
+            analysisVariant={analysisVariant}
+            comparisonAnalyses={comparisonAnalyses}
+            query={query}
+            regionalAnalysisCollection={regionalAnalysisCollection}
+          />
+        )
       ) : (
         <LoadingScreen />
       )}
@@ -29,4 +52,6 @@ export default function RegionalPage({query}: {query: CL.Query}) {
   )
 }
 
-Object.assign(RegionalPage, {Layout: MapLayout})
+RegionalPage.Layout = MapLayout
+
+export default RegionalPage

@@ -29,6 +29,9 @@ export default function authFetch<T>(
   })
 }
 
+/**
+ * Authenticated fetch with a simple text resposne
+ */
 export function authFetchText(
   url: string,
   user?: IUser,

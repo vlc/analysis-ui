@@ -68,6 +68,7 @@ async function parseErrorMessageFromResponse(
   }
 }
 
+const toArrayBuffer = (res: Response) => res.arrayBuffer()
 const toText = (res: Response) => res.text()
 const toJSON = (res: Response) => res.json()
 
@@ -82,6 +83,9 @@ export function fetchData<T>(url: string, options?: RequestInit) {
       ...options?.headers
     }
   })
+}
+export function fetchBuffer(url: string, options?: RequestInit) {
+  return safeFetch<ArrayBuffer>(url, toArrayBuffer, options)
 }
 
 /**

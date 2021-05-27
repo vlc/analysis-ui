@@ -1,8 +1,8 @@
 import {Box, Stack} from '@chakra-ui/react'
 
-import {ChevronRight} from '../icons'
-import ModeIconBox from '../mode-icon'
-import Tip from '../tip'
+import {ChevronRight} from './icons'
+import ModeIconBox from './mode-icon'
+import Tip from './tip'
 
 export default function ModeSummary({
   accessModes,

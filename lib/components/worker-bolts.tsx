@@ -1,5 +1,4 @@
 import {Box} from '@chakra-ui/react'
-import React from 'react'
 
 import {BoltIcon} from './icons'
 import Tip from './tip'

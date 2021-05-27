@@ -1,5 +1,7 @@
 // eslint-disable-next-line
 declare namespace CL {
+  import {RGBColor} from 'd3-color'
+
   /**
    * Common geospatial coordinate types
    */
@@ -212,6 +214,14 @@ declare namespace CL {
     workerVersion: string
   }
 
+  export interface RegionalAnalysisVariant {
+    analysis: RegionalAnalysis
+    cutoff: number
+    percentile: number
+    pointSetId: string
+    isValid: boolean
+  }
+
   export interface RegionalJob {
     complete: number
     jobId: string
@@ -219,8 +229,27 @@ declare namespace CL {
     total: number
   }
 
+  export interface RegionalDisplayScale {
+    breaks: number[]
+    colorRange: RGBColor[]
+    colorizer: (v: number) => number[]
+    error: false | unknown
+  }
+
   export interface AggregationArea extends IModel {
     regionId: string
+  }
+
+  export interface AggregateAccessibility {
+    minAccessibility: number
+    maxAccessibility: number
+    percentiles: number[]
+    weightedAverage: number
+    bins: {
+      value: number
+      min: number
+      max: number
+    }[]
   }
 
   /**
@@ -319,8 +348,8 @@ declare namespace CL {
   /**
    * Base page component
    */
-  export interface Page<T>
-    extends React.FunctionComponent<T & {query: CL.Query}> {
+  export interface Page<T = {query: CL.Query}>
+    extends React.FunctionComponent<T> {
     Layout?: React.FunctionComponent
   }
 

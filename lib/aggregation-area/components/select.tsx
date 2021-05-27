@@ -17,7 +17,9 @@ import OpportunityDatasets from 'lib/modules/opportunity-datasets'
 import Select from 'lib/components/select'
 import {useShallowRouteTo} from 'lib/hooks/use-route-to'
 
+// import AggregateAccessibilityChart from './chart'
 import CreateAggregationArea from './create'
+import GeoJSONOutline from './geojson-outline'
 
 // Getters for react-select
 const getName = fpGet('name')
@@ -36,7 +38,7 @@ export default function AggregationArea({
   const activeAggregationArea = aggregationAreas.find(
     (a) => a._id === aggregationAreaId
   )
-  const routeTo = useShallowRouteTo('regionalAnalyses')
+  const routeTo = useShallowRouteTo('regionalAnalysis')
   const showUpload = useDisclosure()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -86,11 +88,23 @@ export default function AggregationArea({
       )}
 
       {activeAggregationArea && (
+        <GeoJSONOutline aggregationArea={activeAggregationArea} />
+      )}
+
+      {activeAggregationArea && !isLoading && (
         <FormControl>
           <FormLabel>{message('analysis.weightBy')}</FormLabel>
           <OpportunityDatasets.components.Selector regionId={regionId} />
         </FormControl>
       )}
+
+      {/*activeAggregationArea && (
+        <Box px={4}>
+          <AggregateAccessibilityChart
+            aggregationArea={activeAggregationArea}
+          />
+        </Box>
+      )*/}
     </Stack>
   )
 }

@@ -1,4 +1,3 @@
-import get from 'lodash/get'
 import range from 'lodash/range'
 
 const N_HISTOGRAM_BINS = 15
@@ -14,16 +13,14 @@ const N_HISTOGRAM_BINS = 15
  *        analysis results)
  */
 export default function getAggregateAccessibility(
-  accessibility,
-  aggregationArea,
-  weights
-) {
-  const aa = get(aggregationArea, 'grid')
-  if (weights == null || aa == null || accessibility == null) {
-    return
-  }
-
-  if (accessibility.zoom !== weights.zoom || accessibility.zoom !== aa.zoom) {
+  accessibility: CL.RegionalGrid,
+  aggregationArea: CL.ParsedGrid,
+  weights: CL.ParsedGrid
+): CL.AggregateAccessibility {
+  if (
+    accessibility.zoom !== weights.zoom ||
+    accessibility.zoom !== aggregationArea.zoom
+  ) {
     console.error('Zoom levels of all grids in weighted average must match!')
   }
 
@@ -34,13 +31,13 @@ export default function getAggregateAccessibility(
   // Pass one: find min and max from aggregationArea
   // aggregationArea is probably the smallest grid and is guaranteed to contain
   // all pixels
-  for (let y = 0, pixel = 0; y < aa.height; y++) {
+  for (let y = 0, pixel = 0; y < aggregationArea.height; y++) {
     // Transform to coordinates in other grid; all grids have same zoom, so
     // translate based on the difference in where the edges of the grid are
-    const accessY = y + aa.north - accessibility.north
-    for (let x = 0; x < aa.width; x++, pixel++) {
-      if (aa.data[pixel] > 0) {
-        const accessX = x + aa.west - accessibility.west
+    const accessY = y + aggregationArea.north - accessibility.north
+    for (let x = 0; x < aggregationArea.width; x++, pixel++) {
+      if (aggregationArea.data[pixel] > 0) {
+        const accessX = x + aggregationArea.west - accessibility.west
         const accessibilityThisCell = accessibility.contains(accessX, accessY)
           ? accessibility.data[accessY * accessibility.width + accessX]
           : 0
@@ -59,12 +56,12 @@ export default function getAggregateAccessibility(
   const weightedAccessibility = []
 
   // pass two: accumulate into bins
-  for (let y = 0, pixel = 0; y < aa.height; y++) {
-    const accessY = y + aa.north - accessibility.north
-    const weightY = y + aa.north - weights.north
-    for (let x = 0; x < aa.width; x++, pixel++) {
-      if (aa.data[pixel] > 0) {
-        const accessX = x + aa.west - accessibility.west
+  for (let y = 0, pixel = 0; y < aggregationArea.height; y++) {
+    const accessY = y + aggregationArea.north - accessibility.north
+    const weightY = y + aggregationArea.north - weights.north
+    for (let x = 0; x < aggregationArea.width; x++, pixel++) {
+      if (aggregationArea.data[pixel] > 0) {
+        const accessX = x + aggregationArea.west - accessibility.west
         const accessibilityThisCell = accessibility.contains(accessX, accessY)
           ? accessibility.data[accessY * accessibility.width + accessX]
           : 0
@@ -80,9 +77,10 @@ export default function getAggregateAccessibility(
         if (binIndex === N_HISTOGRAM_BINS) binIndex--
 
         // how much of this cell is within the aggregationArea
-        const aggregationAreaWeightThisCell = aa.data[pixel] / 100000
+        const aggregationAreaWeightThisCell =
+          aggregationArea.data[pixel] / 100000
 
-        const weightX = x + aa.west - weights.west
+        const weightX = x + aggregationArea.west - weights.west
         const weightThisCell = weights.contains(weightX, weightY)
           ? weights.data[weightY * weights.width + weightX]
           : 0

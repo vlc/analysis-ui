@@ -308,7 +308,7 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                     query={
                                       Object {
                                         "bundleId": undefined,
-                                        "regionId": undefined,
+                                        "regionId": "1",
                                       }
                                     }
                                     to="bundle"
@@ -317,18 +317,18 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                       query={
                                         Object {
                                           "bundleId": undefined,
-                                          "regionId": undefined,
+                                          "regionId": "1",
                                         }
                                       }
                                       to="bundle"
                                     >
                                       <Link
-                                        href="/regions/undefined/bundles/undefined"
+                                        href="/regions/1/bundles/[bundleId]?bundleId=undefined"
                                         passHref={true}
                                       >
                                         <a
                                           className=""
-                                          href="/regions/undefined/bundles/undefined"
+                                          href="/regions/1/bundles/undefined"
                                           onClick={[Function]}
                                           onMouseEnter={[Function]}
                                         >

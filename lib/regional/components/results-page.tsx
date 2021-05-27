@@ -1,43 +1,25 @@
 import {Alert, AlertIcon, FormControl, FormLabel} from '@chakra-ui/react'
 import fpGet from 'lodash/fp/get'
-import dynamic from 'next/dynamic'
 import {useCallback} from 'react'
 
+import AggregationAreas from 'lib/aggregation-area/components/select'
 import Select from 'lib/components/select'
 import {UseCollectionResponse} from 'lib/hooks/use-collection'
 import useControlledInput from 'lib/hooks/use-controlled-input'
 import {useShallowRouteTo} from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 
-import AggregationAreaUpload from './aggregation-area'
-import Aggregation from './aggregation'
-import ActiveJob from './active-job'
+import AccessMap from './access-map'
 import DownloadMenu from './download-menu'
 import RegionalHeading from './heading'
+import Legend from './legend'
 import RequestDisplay from './request'
-import {getComparisonVariants, getValidComparisonAnalyses} from './utils'
 import VariantSelectors from './variant-selectors'
 
-const AggregationArea = dynamic(
-  () => import('lib/components/map/aggregation-area'),
-  {
-    ssr: false
-  }
-)
-const AnalysisBounds = dynamic(
-  () => import('lib/components/map/analysis-bounds'),
-  {
-    ssr: false
-  }
-)
-const DotMap = dynamic(
-  () => import('lib/modules/opportunity-datasets/components/dotmap'),
-  {ssr: false}
-)
-const RegionalLayer = dynamic(() => import('lib/components/map/regional'), {
-  ssr: false
-})
-const RegionalLegend = dynamic(() => import('./legend'))
+import {useRegionalAnalysisGrid} from '../api'
+import {useDisplayGrid} from '../display-grid'
+import {useDisplayScale} from '../display-scale'
+import {getComparisonVariants, useVariant} from '../utils'
 
 const getId = fpGet('_id')
 const getName = fpGet('name')
@@ -46,23 +28,19 @@ const getName = fpGet('name')
  * View an active or completed regional analysis.
  */
 export default function ResultsPage({
-  analysis,
-  jobs,
+  analysisVariant,
+  comparisonAnalyses,
   query,
   regionalAnalysisCollection
 }: {
-  analysis: CL.RegionalAnalysis
-  jobs: CL.RegionalJob[]
+  analysisVariant: CL.RegionalAnalysisVariant
+  comparisonAnalyses: CL.RegionalAnalysis[]
   query: CL.Query
   regionalAnalysisCollection: UseCollectionResponse<CL.RegionalAnalysis>
 }) {
-  const allAnalyses = regionalAnalysisCollection.data
-  const {analysisId, comparisonAnalysisId, regionId} = query
-  const routeTo = useShallowRouteTo('regionalAnalyses', {
-    analysisId,
-    regionId,
-    comparisonAnalysisId
-  })
+  const {analysis} = analysisVariant
+  const routeTo = useShallowRouteTo('regionalAnalysis')
+
   const onChangeComparisonAnalysis = useCallback(
     (v) =>
       v == null
@@ -75,34 +53,34 @@ export default function ResultsPage({
   )
   const comparisonAnalysisInput = useControlledInput({
     onChange: onChangeComparisonAnalysis,
-    value: allAnalyses.find((a) => a._id === comparisonAnalysisId)
+    value: regionalAnalysisCollection.data.find(
+      (a) => a._id === query.comparisonAnalysisId
+    )
   })
   const comparisonAnalysis = comparisonAnalysisInput.value
-  const activeJob = jobs.find((j) => j.jobId === analysis._id)
+
+  // Construct the parsed query objects
+  const comparisonVariant: CL.RegionalAnalysisVariant = useVariant(
+    comparisonAnalysis,
+    parseInt(query.comparisonCutoff, 10),
+    parseInt(query.comparisonPercentile, 10),
+    query.comparisonPointSetId
+  )
+
+  const grid = useRegionalAnalysisGrid(analysisVariant)
+  const comparisonGrid = useRegionalAnalysisGrid(comparisonVariant)
+  const displayGrid = useDisplayGrid(grid, comparisonGrid)
+  const displayScale = useDisplayScale(displayGrid)
 
   /**
-   * Show results?
-   * When an originPointSetKey is set, we cannot display the in the application and can only offer the
+   * Display results?
+   * When an originPointSetKey is set, we cannot display the map in the application and can only offer the
    * ability to download the data that has been created for manual inspection.
    */
-  const showResults = activeJob == null && analysis.request?.originPointSetKey
+  const displayResults = analysis.request?.originPointSetKey == null
 
   return (
     <>
-      {!showResults ? (
-        <AnalysisBounds analysis={analysis} />
-      ) : (
-        <>
-          <RegionalLegend
-            analysis={analysis}
-            comparisonAnalysis={comparisonAnalysis}
-          />
-          <DotMap />
-          <RegionalLayer />
-          <AggregationArea />
-        </>
-      )}
-
       <RegionalHeading
         analysis={analysis}
         remove={() => regionalAnalysisCollection.remove(analysis._id)}
@@ -111,31 +89,28 @@ export default function ResultsPage({
         }
       />
 
-      {activeJob && <ActiveJob job={activeJob} />}
-
       <VariantSelectors
-        analysis={analysis}
-        cutoff={query.cutoff}
-        percentile={query.percentile}
-        pointSetId={query.destinationPointSetId}
+        analysisVariant={analysisVariant}
         onChangeCutoff={(v) => routeTo({cutoff: v})}
         onChangePercentile={(v) => routeTo({percentile: v})}
         onChangePointSet={(v) => routeTo({destinationPointSetId: v})}
       />
 
-      {showResults && (
-        <DownloadMenu
-          analysis={analysis}
-          cutoff={query.cutoff}
-          percentile={query.percentile}
-          pointSetId={query.destinationPointSetId}
-        />
-      )}
+      <DownloadMenu analysisVariant={analysisVariant} />
 
       <RequestDisplay analysis={analysis} />
 
-      {showResults && (
+      {displayResults && (
         <>
+          <AccessMap grid={displayGrid} displayScale={displayScale} />
+
+          <Legend
+            analysisVariant={analysisVariant}
+            comparisonVariant={comparisonVariant}
+            displayGrid={displayGrid}
+            displayScale={displayScale}
+          />
+
           <FormControl px={4}>
             <FormLabel htmlFor={comparisonAnalysisInput.id}>
               {message('analysis.compareTo')}
@@ -146,7 +121,7 @@ export default function ResultsPage({
               getOptionLabel={getName}
               getOptionValue={getId}
               onChange={comparisonAnalysisInput.onChange}
-              options={getValidComparisonAnalyses(allAnalyses, jobs, analysis)}
+              options={comparisonAnalyses}
               value={comparisonAnalysis}
             />
           </FormControl>
@@ -161,25 +136,21 @@ export default function ResultsPage({
               )}
 
               <VariantSelectors
-                analysis={comparisonAnalysis}
-                cutoff={query.comparisonCutoff}
-                percentile={query.comparisonPercentile}
-                pointSetId={query.pointSetId}
+                analysisVariant={comparisonVariant}
                 onChangeCutoff={(v) => routeTo({comparisonCutoff: v})}
                 onChangePercentile={(v) => routeTo({comparisonPercentile: v})}
                 onChangePointSet={(v) =>
                   routeTo({comparisonDestinationPointSetId: v})
                 }
               />
+
               <RequestDisplay analysis={comparisonAnalysis} color='red' />
             </>
           )}
 
-          <AggregationAreaUpload regionId={regionId} />
-
-          <Aggregation
-            comparisonAnalysis={comparisonAnalysis}
-            analysis={analysis}
+          <AggregationAreas
+            aggregationAreaId={query.aggregationAreaId}
+            regionId={analysis.regionId}
           />
         </>
       )}
