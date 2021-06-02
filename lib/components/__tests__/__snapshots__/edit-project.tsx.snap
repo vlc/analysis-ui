@@ -942,7 +942,6 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                                       }
                                                       visualElement={
                                                         Object {
-                                                          "addChild": [Function],
                                                           "addValue": [Function],
                                                           "addVariantChild": [Function],
                                                           "animationState": Object {
@@ -954,8 +953,8 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                                           },
                                                           "blockInitialAnimation": false,
                                                           "build": [Function],
+                                                          "children": Set {},
                                                           "clearAllListeners": [Function],
-                                                          "clearState": [Function],
                                                           "current": <section
                                                             class="chakra-popover__content css-wdh6r4"
                                                             id="popover-content-3"
@@ -974,22 +973,27 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                                           "getLayoutId": [Function],
                                                           "getLayoutState": [Function],
                                                           "getProjectionAnimationProgress": [Function],
+                                                          "getProjectionParent": [Function],
                                                           "getProps": [Function],
                                                           "getStaticValue": [Function],
                                                           "getValue": [Function],
                                                           "getVariant": [Function],
                                                           "getVariantContext": [Function],
                                                           "hasValue": [Function],
-                                                          "isHoverEventsEnabled": true,
                                                           "isMounted": [Function],
                                                           "isPresenceRoot": true,
                                                           "isPresent": true,
-                                                          "isStatic": false,
+                                                          "isProjectionReady": [Function],
                                                           "isVisible": undefined,
+                                                          "layoutTree": FlatTree {
+                                                            "children": Array [],
+                                                            "isDirty": false,
+                                                          },
                                                           "lockProjectionTarget": [Function],
                                                           "makeTargetAnimatable": [Function],
                                                           "manuallyAnimateOnMount": false,
                                                           "measureViewportBox": [Function],
+                                                          "mount": [Function],
                                                           "notifyAnimationComplete": [Function],
                                                           "notifyAnimationStart": [Function],
                                                           "notifyBeforeLayoutMeasure": [Function],
@@ -999,6 +1003,7 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                                           "notifyLayoutUpdate": [Function],
                                                           "notifyRender": [Function],
                                                           "notifySetAxisTarget": [Function],
+                                                          "notifyUnmount": [Function],
                                                           "notifyUpdate": [Function],
                                                           "notifyViewportBoxUpdate": [Function],
                                                           "onAnimationComplete": [Function],
@@ -1009,14 +1014,17 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                                           "onLayoutUpdate": [Function],
                                                           "onRender": [Function],
                                                           "onSetAxisTarget": [Function],
+                                                          "onUnmount": [Function],
                                                           "onUpdate": [Function],
                                                           "onViewportBoxUpdate": [Function],
+                                                          "parent": undefined,
                                                           "path": Array [],
                                                           "pointTo": [Function],
                                                           "presence": 0,
                                                           "presenceId": undefined,
                                                           "projection": Object {
                                                             "isEnabled": false,
+                                                            "isHydrated": false,
                                                             "isTargetLocked": false,
                                                             "target": Object {
                                                               "x": Object {
@@ -1041,9 +1049,10 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                                           },
                                                           "readValue": [Function],
                                                           "rebaseProjectionTarget": [Function],
-                                                          "ref": [Function],
                                                           "removeValue": [Function],
                                                           "resetTransform": [Function],
+                                                          "resolveRelativeTargetBox": [Function],
+                                                          "restoreTransform": [Function],
                                                           "scheduleRender": [Function],
                                                           "scheduleUpdateLayoutProjection": [Function],
                                                           "setBaseTarget": [Function],
@@ -1052,19 +1061,18 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                                           "setProps": [Function],
                                                           "setStaticValue": [Function],
                                                           "setVisibility": [Function],
-                                                          "snapshotViewportBox": [Function],
+                                                          "shouldResetTransform": [Function],
                                                           "sortNodePosition": [Function],
                                                           "startLayoutAnimation": [Function],
                                                           "stopLayoutAnimation": [Function],
-                                                          "suspendHoverEvents": [Function],
                                                           "syncRender": [Function],
                                                           "treeType": "dom",
                                                           "unlockProjectionTarget": [Function],
-                                                          "updateLayoutMeasurement": [Function],
+                                                          "unmount": [Function],
                                                           "updateLayoutProjection": [Function],
                                                           "updatePropListeners": [Function],
+                                                          "updateTreeLayoutProjection": [Function],
                                                           "variantChildren": Set {},
-                                                          "withoutTransform": [Function],
                                                         }
                                                       }
                                                     />
