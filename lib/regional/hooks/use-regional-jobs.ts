@@ -3,7 +3,6 @@ import useSWR from 'swr'
 import {API} from 'lib/constants'
 import useUser from 'lib/hooks/use-user'
 import authFetch from 'lib/utils/auth-fetch'
-import {ResponseError} from 'lib/utils/safe-fetch'
 
 import predictJobTimeRemaining from '../predict-job-time-remaining'
 
@@ -20,21 +19,22 @@ function getJobStatus(job) {
 /**
  * SWR expects errors to throw.
  */
-async function swrFetcher(regionId: string, user: CL.User) {
+async function swrFetcher(
+  regionId: string,
+  user: CL.User
+): Promise<CL.RegionalJob[]> {
   const url = `${API.Region}/${regionId}/regional/running`
   const response = await authFetch<CL.RegionalJob[]>(url, user)
-  if (response.ok) return response.data
+  if (response.ok)
+    return response.data.map((v) => ({...v, statusText: getJobStatus(v)}))
   throw response
 }
 
 export default function useRegionalJobs(regionId: string): CL.RegionalJob[] {
   const {user} = useUser()
   // Request activity on a specific interval
-  const response = useSWR<CL.RegionalJob[], ResponseError>(
-    () => (user ? [regionId, user] : null),
-    swrFetcher,
-    {refreshInterval}
-  )
+  const swrKey = () => (user ? [regionId, user] : null)
+  const {data: regionalJobs} = useSWR(swrKey, swrFetcher, {refreshInterval})
 
-  return response.data?.map((v) => ({...v, statusText: getJobStatus(v)}))
+  return regionalJobs
 }
