@@ -54,7 +54,7 @@ export function useVariant(
 export function getDefaultVariants(analysis: CL.RegionalAnalysis) {
   return {
     cutoff: getDefaultCutoff(analysis),
-    destinationPointSetId: getDefaultDestinationPointSet(analysis),
+    pointSetId: getDefaultDestinationPointSet(analysis),
     percentile: getDefaultPercentile(analysis)
   }
 }
@@ -87,15 +87,15 @@ export function getComparisonVariants(
   }
 
   let pointSetId = getDefaultDestinationPointSet(comparison)
-  if (pointSets.indexOf(query.comparisonDestinationPointSetId) > -1) {
-    pointSetId = query.comparisonDestinationPointSetId
-  } else if (pointSets.indexOf(query.destinationPointSetId) > -1) {
-    pointSetId = query.destinationPointSetId
+  if (pointSets.indexOf(query.comparisonPointSetId) > -1) {
+    pointSetId = query.comparisonPointSetId
+  } else if (pointSets.indexOf(query.pointSetId) > -1) {
+    pointSetId = query.pointSetId
   }
 
   return {
     comparisonCutoff: cutoff,
-    comparisonDestinationPointSetId: pointSetId,
+    comparisonPointSetId: pointSetId,
     comparisonPercentile: percentile
   }
 }
@@ -165,6 +165,7 @@ export function variantIsCompatible(
   variant: CL.RegionalAnalysisVariant
 ): boolean {
   const {analysis} = variant
+  if (analysis == null) return false
   if (Array.isArray(analysis.cutoffsMinutes)) {
     if (analysis.cutoffsMinutes.indexOf(variant.cutoff) === -1) return false
   } else if (analysis.cutoffMinutes !== variant.cutoff) return false

@@ -19,7 +19,7 @@ const alertText = 'GTFS validation, clearer charts, and more.'
 const findOptions: FindOneOptions<CL.Region> = {sort: {name: 1}}
 
 export default withAuth(function SelectRegionPage() {
-  const {data: regions} = useRegions({
+  const {data: regions, response} = useRegions({
     options: findOptions
   })
   const {user} = useUser()
@@ -70,7 +70,7 @@ export default withAuth(function SelectRegionPage() {
         >
           Set up a new region
         </Button>
-        {regions == null ? (
+        {regions.length === 0 && response.isValidating ? (
           <Skeleton id='LoadingSkeleton' height='20px' />
         ) : (
           <Stack spacing={4}>

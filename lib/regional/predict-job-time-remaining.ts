@@ -14,9 +14,9 @@ const fiveMin = ms('5m')
  * Store the last computed time and an average time per task for each job to
  * use for helping to predict the average time remaining.
  */
-export default function predictTimeRemaining(job) {
+export default function predictTimeRemaining(job: CL.RegionalJob) {
   const {jobId: id, complete, total} = job
-  const {createdAt} = job.regionalAnalysis
+  const createdAt = new Date(job.regionalAnalysis.createdAt).valueOf()
   const time = Date.now()
 
   const remainingTasks = total - complete

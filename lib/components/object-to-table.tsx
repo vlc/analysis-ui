@@ -12,8 +12,8 @@ export const TDTitle = ({children}) => (
     as='td'
     overflow='hidden'
     fontWeight={600}
-    px={4}
-    py={2}
+    px={3}
+    py={1}
     style={{
       textOverflow: 'ellipsis'
     }}
@@ -56,7 +56,7 @@ export default function ObjectToTable({color = 'blue', object}) {
                 border='none'
                 overflowX='auto'
                 pr={3}
-                py={2}
+                py={1}
               >
                 {stringifyIfObject(object[k])}
               </Box>

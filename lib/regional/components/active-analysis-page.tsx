@@ -1,11 +1,14 @@
+import dynamic from 'next/dynamic'
+
 import {UseCollectionResponse} from 'lib/hooks/use-collection'
 import {useShallowRouteTo} from 'lib/hooks/use-route-to'
 
 import ActiveJob from './active-job'
-import AnalysisBounds from './analysis-bounds'
 import RegionalHeading from './heading'
 import RequestDisplay from './request'
 import VariantSelectors from './variant-selectors'
+
+const AnalysisBounds = dynamic(() => import('./analysis-bounds'), {ssr: false})
 
 /**
  * View an active or completed regional analysis.
@@ -43,7 +46,7 @@ export default function ActiveAnalysisPage({
         analysisVariant={analysisVariant}
         onChangeCutoff={(v) => routeTo({cutoff: v})}
         onChangePercentile={(v) => routeTo({percentile: v})}
-        onChangePointSet={(v) => routeTo({destinationPointSetId: v})}
+        onChangePointSet={(v) => routeTo({pointSetId: v})}
       />
 
       <RequestDisplay analysis={analysis} />

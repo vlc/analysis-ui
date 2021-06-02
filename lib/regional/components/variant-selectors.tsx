@@ -7,6 +7,7 @@ import {
   AlertDescription
 } from '@chakra-ui/react'
 
+import Tip from 'lib/components/tip'
 import useControlledInput from 'lib/hooks/use-controlled-input'
 
 import DestinationPointsetSelector from './destination-pointset-select'
@@ -37,7 +38,7 @@ export default function VariantSelectors({
   })
 
   return (
-    <Stack spacing={4} px={4} py={4}>
+    <Stack>
       {analysis.request?.originPointSetKey != null ? (
         <Alert status='info'>
           <AlertIcon />
@@ -46,7 +47,7 @@ export default function VariantSelectors({
           </AlertDescription>
         </Alert>
       ) : (
-        <Stack spacing={4}>
+        <Stack>
           {Array.isArray(analysis.destinationPointSetIds) && (
             <Box>
               <DestinationPointsetSelector
@@ -59,23 +60,27 @@ export default function VariantSelectors({
 
           <Stack isInline>
             {Array.isArray(cutoffsMinutes) && (
-              <Select {...cutoffInput}>
-                {cutoffsMinutes.map((m) => (
-                  <option key={m} value={m}>
-                    {m} minutes
-                  </option>
-                ))}
-              </Select>
+              <Tip label='Travel time: Cutoff (minutes)'>
+                <Select {...cutoffInput}>
+                  {cutoffsMinutes.map((m) => (
+                    <option key={m} value={m}>
+                      {m} minutes
+                    </option>
+                  ))}
+                </Select>
+              </Tip>
             )}
 
             {Array.isArray(percentiles) && (
-              <Select {...percentileInput}>
-                {percentiles.map((p) => (
-                  <option key={p} value={p}>
-                    {p}th percentile
-                  </option>
-                ))}
-              </Select>
+              <Tip label='Travel time: Percentile'>
+                <Select {...percentileInput}>
+                  {percentiles.map((p) => (
+                    <option key={p} value={p}>
+                      {p}th percentile
+                    </option>
+                  ))}
+                </Select>
+              </Tip>
             )}
           </Stack>
         </Stack>

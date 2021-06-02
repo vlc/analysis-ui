@@ -21,12 +21,10 @@ export default function RegionalSelectPage({
   jobs: CL.RegionalJob[]
   regionId: string
 }) {
-  const goToRegional = useRouteTo('regionalAnalyses', {regionId})
+  const goToRegional = useRouteTo('regionalAnalysis', {regionId})
   const onChange = useCallback(
-    (a?: CL.RegionalAnalysis) =>
-      a == null
-        ? goToRegional()
-        : goToRegional({analysisId: a._id, ...getDefaultVariants(a)}),
+    (a: CL.RegionalAnalysis) =>
+      goToRegional({analysisId: a._id, ...getDefaultVariants(a)}),
     [goToRegional]
   )
   const input = useControlledInput({
@@ -52,7 +50,6 @@ export default function RegionalSelectPage({
       )}
       <Box px={4}>
         <Select
-          isClearable
           key={`analysis-${input.value}`} // Dont show deleted analyses as selected
           onChange={input.onChange}
           getOptionLabel={(v: CL.RegionalAnalysis) => v.name}

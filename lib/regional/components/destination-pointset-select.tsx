@@ -1,7 +1,9 @@
 import {Select} from '@chakra-ui/react'
 
+import Tip from 'lib/components/tip'
 import useControlledInput from 'lib/hooks/use-controlled-input'
-import {useSpatialDatasets} from 'lib/hooks/use-collection'
+
+import {useDestinationPointSets} from '../destination-pointsets'
 
 // Get full qualifier for spatial datasets
 const getFullName = (od: CL.SpatialDataset) => `${od?.sourceName}: ${od?.name}`
@@ -16,25 +18,17 @@ export default function DestinationPointsetSelect({
   value: string
 }) {
   const input = useControlledInput({onChange, value})
-  const {data: spatialDatasets} = useSpatialDatasets({
-    query: {
-      _id: {$in: analysis.destinationPointSetIds}
-    },
-    options: {
-      projection: {
-        name: 1,
-        sourceName: 1
-      }
-    }
-  })
+  const spatialDatasets = useDestinationPointSets(analysis)
 
   return (
-    <Select {...input}>
-      {spatialDatasets.map((sd) => (
-        <option key={sd._id} value={sd._id}>
-          {getFullName(sd)}
-        </option>
-      ))}
-    </Select>
+    <Tip label='Destination point set'>
+      <Select {...input}>
+        {spatialDatasets.map((sd) => (
+          <option key={sd._id} value={sd._id}>
+            {getFullName(sd)}
+          </option>
+        ))}
+      </Select>
+    </Tip>
   )
 }

@@ -1,25 +1,44 @@
-import {Alert, AlertIcon, FormControl, FormLabel} from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  FormControl,
+  FormLabel,
+  Stack
+} from '@chakra-ui/react'
 import fpGet from 'lodash/fp/get'
-import {useCallback} from 'react'
+import dynamic from 'next/dynamic'
+import {useCallback, useEffect} from 'react'
 
-import AggregationAreas from 'lib/aggregation-area/components/select'
+import AggregationAreaChart from 'lib/aggregation-area/components/chart'
+import SelectAggregationArea from 'lib/aggregation-area/components/select'
 import Select from 'lib/components/select'
-import {UseCollectionResponse} from 'lib/hooks/use-collection'
+import {
+  useAggregationAreas,
+  UseCollectionResponse
+} from 'lib/hooks/use-collection'
 import useControlledInput from 'lib/hooks/use-controlled-input'
 import {useShallowRouteTo} from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 
-import AccessMap from './access-map'
 import DownloadMenu from './download-menu'
 import RegionalHeading from './heading'
-import Legend from './legend'
 import RequestDisplay from './request'
 import VariantSelectors from './variant-selectors'
 
-import {useRegionalAnalysisGrid} from '../api'
-import {useDisplayGrid} from '../display-grid'
-import {useDisplayScale} from '../display-scale'
-import {getComparisonVariants, useVariant} from '../utils'
+import useDisplayGrid from '../hooks/use-display-grid'
+import useDisplayScale from '../hooks/use-display-scale'
+import useRegionalAnalysisGrid from '../hooks/use-regional-grid'
+import useSpatialDatasetsInRegion from '../hooks/use-spatial-datasets'
+import useSpatialDatasetGrid from '../hooks/use-spatial-dataset-grid'
+import {getComparisonVariants, useVariant, variantIsCompatible} from '../utils'
+
+const AccessMap = dynamic(() => import('./access-map'), {ssr: false})
+const Legend = dynamic(() => import('./legend'), {ssr: false})
+const AggregationAreaOutline = dynamic(
+  () => import('lib/aggregation-area/components/geojson-outline'),
+  {ssr: false}
+)
 
 const getId = fpGet('_id')
 const getName = fpGet('name')
@@ -42,9 +61,14 @@ export default function ResultsPage({
   const routeTo = useShallowRouteTo('regionalAnalysis')
 
   const onChangeComparisonAnalysis = useCallback(
-    (v) =>
+    (v?: CL.RegionalAnalysis) =>
       v == null
-        ? routeTo({comparisonAnalysisId: null})
+        ? routeTo({
+            comparisonAnalysisId: null,
+            comparisonCutoff: null,
+            comparisonPercentile: null,
+            comparisonPointSetId: null
+          })
         : routeTo({
             comparisonAnalysisId: v._id,
             ...getComparisonVariants(v, query)
@@ -67,10 +91,32 @@ export default function ResultsPage({
     query.comparisonPointSetId
   )
 
+  // Redirect to a valid comparison variant if one has not been selected.
+  useEffect(() => {
+    if (
+      comparisonVariant.analysis != null &&
+      !variantIsCompatible(comparisonVariant)
+    ) {
+      routeTo({
+        comparisonAnalysisId: comparisonVariant.analysis._id,
+        ...getComparisonVariants(comparisonVariant.analysis, query)
+      })
+    }
+  }, [comparisonVariant, query, routeTo])
+
   const grid = useRegionalAnalysisGrid(analysisVariant)
   const comparisonGrid = useRegionalAnalysisGrid(comparisonVariant)
   const displayGrid = useDisplayGrid(grid, comparisonGrid)
   const displayScale = useDisplayScale(displayGrid)
+  const {data: aggregationAreas} = useAggregationAreas({
+    query: {regionId: analysis.regionId}
+  })
+  const activeAggregationArea = aggregationAreas.find(
+    (a) => a._id === query.aggregationAreaId
+  )
+  const spatialDatasets = useSpatialDatasetsInRegion(analysis.regionId)
+  const sdName = (id: string) => spatialDatasets.find((s) => s._id === id)?.name
+  const weightsGrid = useSpatialDatasetGrid(query.weightsGridId)
 
   /**
    * Display results?
@@ -89,14 +135,16 @@ export default function ResultsPage({
         }
       />
 
-      <VariantSelectors
-        analysisVariant={analysisVariant}
-        onChangeCutoff={(v) => routeTo({cutoff: v})}
-        onChangePercentile={(v) => routeTo({percentile: v})}
-        onChangePointSet={(v) => routeTo({destinationPointSetId: v})}
-      />
+      <Stack p={4} shouldWrapChildren>
+        <VariantSelectors
+          analysisVariant={analysisVariant}
+          onChangeCutoff={(v) => routeTo({cutoff: v})}
+          onChangePercentile={(v) => routeTo({percentile: v})}
+          onChangePointSet={(v) => routeTo({pointSetId: v})}
+        />
 
-      <DownloadMenu analysisVariant={analysisVariant} />
+        <DownloadMenu analysisVariant={analysisVariant} />
+      </Stack>
 
       <RequestDisplay analysis={analysis} />
 
@@ -109,9 +157,10 @@ export default function ResultsPage({
             comparisonVariant={comparisonVariant}
             displayGrid={displayGrid}
             displayScale={displayScale}
+            spatialDatasets={spatialDatasets}
           />
 
-          <FormControl px={4}>
+          <FormControl px={4} pt={4}>
             <FormLabel htmlFor={comparisonAnalysisInput.id}>
               {message('analysis.compareTo')}
             </FormLabel>
@@ -129,29 +178,65 @@ export default function ResultsPage({
           {comparisonAnalysis && (
             <>
               {analysis.workerVersion !== comparisonAnalysis.workerVersion && (
-                <Alert status='error'>
+                <Alert status='error' pt={2}>
                   <AlertIcon />
                   {message('r5Version.comparisonIsDifferent')}
                 </Alert>
               )}
 
-              <VariantSelectors
-                analysisVariant={comparisonVariant}
-                onChangeCutoff={(v) => routeTo({comparisonCutoff: v})}
-                onChangePercentile={(v) => routeTo({comparisonPercentile: v})}
-                onChangePointSet={(v) =>
-                  routeTo({comparisonDestinationPointSetId: v})
-                }
-              />
+              <Box px={4} pt={2} pb={4}>
+                <VariantSelectors
+                  analysisVariant={comparisonVariant}
+                  onChangeCutoff={(v) => routeTo({comparisonCutoff: v})}
+                  onChangePercentile={(v) => routeTo({comparisonPercentile: v})}
+                  onChangePointSet={(v) => routeTo({comparisonPointSetId: v})}
+                />
+              </Box>
 
               <RequestDisplay analysis={comparisonAnalysis} color='red' />
             </>
           )}
 
-          <AggregationAreas
-            aggregationAreaId={query.aggregationAreaId}
+          <SelectAggregationArea
+            activeAggregationArea={activeAggregationArea}
+            aggregationAreas={aggregationAreas}
             regionId={analysis.regionId}
           />
+
+          {activeAggregationArea && (
+            <>
+              <AggregationAreaOutline aggregationArea={activeAggregationArea} />
+
+              <FormControl>
+                <FormLabel>{message('analysis.weightBy')}</FormLabel>
+                <Select
+                  getOptionLabel={getName}
+                  getOptionValue={getId}
+                  onChange={(v: CL.SpatialDataset) =>
+                    routeTo({weightsGridId: v._id})
+                  }
+                  options={spatialDatasets}
+                  value={spatialDatasets.find(
+                    (sd) => sd._id === query.weightsGridId
+                  )}
+                />
+              </FormControl>
+
+              {weightsGrid && (
+                <AggregationAreaChart
+                  aggregationArea={activeAggregationArea}
+                  accessToName={sdName(analysisVariant.pointSetId)}
+                  comparisonAccessToName={sdName(comparisonVariant?.pointSetId)}
+                  comparisonGrid={comparisonGrid}
+                  comparisonRegionalAnalysisName={comparisonAnalysis?.name}
+                  grid={grid}
+                  regionalAnalysisName={analysis.name}
+                  weights={weightsGrid}
+                  weightByName={sdName(query.weightsGridId)}
+                />
+              )}
+            </>
+          )}
         </>
       )}
     </>

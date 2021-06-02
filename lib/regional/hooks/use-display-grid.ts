@@ -6,7 +6,7 @@ import {useMemo} from 'react'
  * @param comparisonGrid
  * @returns
  */
-export function useDisplayGrid(
+export default function useDisplayGrid(
   grid?: CL.RegionalGrid,
   comparisonGrid?: CL.RegionalGrid
 ) {

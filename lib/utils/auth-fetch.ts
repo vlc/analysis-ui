@@ -1,13 +1,19 @@
-import {IUser} from '../user'
+import {parse} from 'cookie'
 
-import {fetchData, fetchText, SafeResponse} from './safe-fetch'
+import {safeFetch, SafeResponse} from './safe-fetch'
 
-export function createAuthHeaders(user?: IUser) {
+export function createAuthHeaders(user?: CL.User) {
   const headers = {
     Authorization: `bearer ${user?.idToken}`
   }
-  if (user?.adminTempAccessGroup)
-    headers['X-Conveyal-Access-Group'] = user.adminTempAccessGroup
+
+  // Add the admin access group for administrators if it exists.
+  if (user?.accessGroup === process.env.NEXT_PUBLIC_ADMIN_ACCESS_GROUP) {
+    const adminTempAccessGroup = parse(document.cookie).adminTempAccessGroup
+    if (adminTempAccessGroup?.length > 0) {
+      headers['X-Conveyal-Access-Group'] = adminTempAccessGroup
+    }
+  }
   return headers
 }
 
@@ -16,28 +22,11 @@ export function createAuthHeaders(user?: IUser) {
  */
 export default function authFetch<T>(
   url: string,
-  user?: IUser,
+  user: CL.User,
+  parser: (res: Response) => Promise<T> = (res) => res.json(),
   options?: RequestInit
 ): Promise<SafeResponse<T>> {
-  return fetchData(url, {
-    mode: 'cors',
-    ...options,
-    headers: {
-      ...createAuthHeaders(user),
-      ...options?.headers
-    }
-  })
-}
-
-/**
- * Authenticated fetch with a simple text resposne
- */
-export function authFetchText(
-  url: string,
-  user?: IUser,
-  options?: RequestInit
-): Promise<SafeResponse<string>> {
-  return fetchText(url, {
+  return safeFetch(url, parser, {
     mode: 'cors',
     ...options,
     headers: {

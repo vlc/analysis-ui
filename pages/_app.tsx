@@ -50,7 +50,7 @@ export default function ConveyalAnalysis({
               <title>Conveyal Analysis</title>
             </Head>
             <Layout>
-              {router.isReady && !router.isSsr ? (
+              {router.isReady ? (
                 <Component query={router.query} {...pageProps} />
               ) : (
                 <LoadingScreen />

@@ -10,7 +10,6 @@ import {
 } from 'react'
 
 import {API} from 'lib/constants'
-import {IUser} from 'lib/user'
 import authFetch from 'lib/utils/auth-fetch'
 import {getParsedItem, stringifyAndSet} from 'lib/utils/local-storage'
 import {ResponseError} from 'lib/utils/safe-fetch'
@@ -47,7 +46,7 @@ export default function useActivity(): UseActivityResponse {
 /**
  * SWR expects errors to throw.
  */
-async function swrFetcher(user: IUser) {
+async function swrFetcher(user: CL.User) {
   const response = await authFetch<CL.Activity>(API.Activity, user)
   if (response.ok) return response.data
   throw response

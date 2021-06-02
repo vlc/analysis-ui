@@ -13,10 +13,10 @@ import {useState} from 'react'
 import FileSizeInputHelper from 'lib/components/file-size-input-helper'
 import useInput from 'lib/hooks/use-controlled-input'
 import useFileInput from 'lib/hooks/use-file-input'
-import useUser from 'lib/hooks/use-user'
+import {useShallowRouteTo} from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 
-import {createAggregationAreas} from '../api'
+import useCreateAggregationAreas from '../hooks/use-create-aggregation-areas'
 
 /**
  * Form for creating aggregation areas
@@ -26,7 +26,8 @@ export default function CreateAggregationArea({onClose, regionId}) {
   const fileInput = useFileInput()
   const [uploading, setUploading] = useState(false)
   const toast = useToast({position: 'top'})
-  const {user} = useUser()
+  const createAggregationAreas = useCreateAggregationAreas(regionId)
+  const routeTo = useShallowRouteTo('regionalAnalysis')
 
   const nameInput = useInput({value: ''})
   const attributeInput = useInput({value: 'attribute'})
@@ -45,7 +46,7 @@ export default function CreateAggregationArea({onClose, regionId}) {
     }
 
     try {
-      const res = await createAggregationAreas(formData, regionId, user)
+      const res = await createAggregationAreas(formData)
       if (res.ok === false) {
         toast({
           status: 'error',
@@ -61,8 +62,8 @@ export default function CreateAggregationArea({onClose, regionId}) {
           isClosable: true
         })
 
-        // TODO redirect to new aggregation area
-        res.data[0]._id
+        // Redirect to new aggregation area
+        routeTo({aggregationAreaId: res.data[0]._id})
 
         onClose()
       }

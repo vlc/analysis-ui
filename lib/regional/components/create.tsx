@@ -26,31 +26,29 @@ import sort from 'lodash/sortBy'
 import {useCallback, useMemo, useState} from 'react'
 import {useSelector, useStore} from 'react-redux'
 
+import DocsLink from 'lib/components/docs-link'
 import {AddIcon} from 'lib/components/icons'
-import {API} from 'lib/constants'
+import Select from 'lib/components/select'
 import useInput from 'lib/hooks/use-controlled-input'
 import useRouteTo from 'lib/hooks/use-route-to'
-import useUser from 'lib/hooks/use-user'
+import useRouterQuery from 'lib/hooks/use-router-query'
 import message from 'lib/message'
 import {
   activeOpportunityDataset,
   opportunityDatasets as selectOpportunityDatasets
 } from 'lib/modules/opportunity-datasets/selectors'
 import {versionToNumber} from 'lib/modules/r5-version/utils'
-import selectCurrentRegionId from 'lib/selectors/current-region-id'
 import selectMaxTripDurationMinutes from 'lib/selectors/max-trip-duration-minutes'
 import selectTravelTimePercentile from 'lib/selectors/travel-time-percentile'
-import authenticatedFetch from 'lib/utils/auth-fetch'
 import calculateGridPoints from 'lib/utils/calculate-grid-points'
 
-import Select from '../select'
-import DocsLink from '../docs-link'
+import useCreateRegionalAnalysis from '../hooks/use-create-regional-analysis'
 
 // For react-select options
 const getId = fpGet('_id')
 
 // Combine the source name with the name
-const getFullODName = (od) => od.label || `${od.sourceName}: ${od.name}`
+const getFullODName = (d: CL.SpatialDataset) => `${d.sourceName}: ${d.name}`
 
 const testContent = (s) => s && s.length > 0
 
@@ -130,9 +128,11 @@ function CreatedRegionalToast({onClose, regionId}) {
   )
 }
 
-const defaultOriginPointSet = {
-  label: 'Rectangular Grid',
-  value: 'rectangular-grid'
+const originPointSetDefaultGridId = 'rectangular-grid'
+const defaultOriginPointSet: Partial<CL.SpatialDataset> = {
+  _id: originPointSetDefaultGridId,
+  name: 'Rectangular Grid',
+  sourceName: 'Default'
 }
 
 function useProfileRequest(isComparison: boolean) {
@@ -150,17 +150,19 @@ function useProfileRequest(isComparison: boolean) {
 
 function CreateModal({onClose, isComparison, projectId, variantIndex}) {
   const toast = useToast()
-  const {user} = useUser()
+  const createRegionalAnalysis = useCreateRegionalAnalysis()
+  const {regionId} = useRouterQuery()
   const profileRequest = useProfileRequest(isComparison)
   const [error, setError] = useState<string | null>(null)
   const [isCreating, setIsCreating] = useState(false)
   const opportunityDatasets = useSelector(selectOpportunityDatasets)
   const selectedOpportunityDataset = useSelector(activeOpportunityDataset)
-  const [originPointSet, setOriginPointSet] = useState(defaultOriginPointSet)
+  const [originPointSet, setOriginPointSet] = useState<
+    Partial<CL.SpatialDataset>
+  >(defaultOriginPointSet)
   const [destinationPointSets, setDestinationPointSets] = useState(
     selectedOpportunityDataset ? [selectedOpportunityDataset._id] : []
   )
-  const regionId = useSelector(selectCurrentRegionId)
   const maxTripDurationMinutes = useSelector(selectMaxTripDurationMinutes)
   const travelTimePercentile = useSelector(selectTravelTimePercentile)
   const workerVersion = get(profileRequest, 'workerVersion', '')
@@ -226,19 +228,18 @@ function CreateModal({onClose, isComparison, projectId, variantIndex}) {
       cutoffsMinutes,
       destinationPointSetIds: destinationPointSets,
       originPointSetId:
-        originPointSet.value !== 'grid' ? get(originPointSet, '_id') : null,
+        originPointSet._id !== originPointSetDefaultGridId
+          ? originPointSet?._id
+          : null,
       name: nameInput.value,
       percentiles,
       projectId,
       variantIndex
     }
 
-    const response = await authenticatedFetch(API.Regional, user, {
-      method: 'POST',
-      body: JSON.stringify(options)
-    })
+    try {
+      await createRegionalAnalysis(options)
 
-    if (response.ok === true) {
       onClose() // Close modal before showing the toast
 
       toast({
@@ -247,10 +248,12 @@ function CreateModal({onClose, isComparison, projectId, variantIndex}) {
           <CreatedRegionalToast onClose={onClose} regionId={regionId} />
         )
       })
-    } else {
-      console.error(response)
+    } catch (e: unknown) {
+      console.error(e)
       setIsCreating(false)
-      setError(response.error.message)
+      if (e instanceof Error) {
+        setError(e.message)
+      }
     }
   }
 

@@ -23,7 +23,7 @@ export default function RegionalHeading({
     updates: Partial<CL.RegionalAnalysis>
   ) => Promise<SafeResponse<CL.RegionalAnalysis[]>>
 }) {
-  const goBack = useRouteTo('regionalAnalyses')
+  const goBack = useRouteTo('regionalAnalyses', {regionId: analysis.regionId})
 
   async function _remove() {
     await remove()

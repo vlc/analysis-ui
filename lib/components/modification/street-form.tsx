@@ -94,7 +94,7 @@ export default function StreetForm({modification, update, ...p}) {
         </Flex>
         {bikeSwitch.value && (
           <Stack spacing={4}>
-            <FormControl isInvalid={!bikeTimeFactor.isValid}>
+            <FormControl isInvalid={bikeTimeFactor.isInvalid}>
               <FormLabel htmlFor={bikeTimeFactor.id}>
                 Bike Time Factor
               </FormLabel>

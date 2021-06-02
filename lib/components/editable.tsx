@@ -128,7 +128,7 @@ function HiddenInput({
         placeholder={placeholder}
         variant='flushed'
       />
-      {input.isValid && (
+      {!input.isInvalid && (
         <IconButton
           isDisabled={isSaving}
           label='Save'

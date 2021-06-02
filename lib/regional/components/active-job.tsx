@@ -17,7 +17,7 @@ export default function RunningAnalysis({job, ...p}) {
       <Flex align='flex-start' justify='space-between'>
         <Heading size='sm'>
           <ALink
-            to='regionalAnalyses'
+            to='regionalAnalysis'
             query={{
               analysisId: job.jobId,
               regionId: job.regionalAnalysis.regionId

@@ -1,11 +1,8 @@
 import {color as parseColor, rgb, RGBColor} from 'd3-color'
 import {schemeBlues, schemeReds} from 'd3-scale-chromatic'
-import get from 'lodash/get'
+import {useMemo} from 'react'
 import {ckmeans, sample} from 'simple-statistics'
-import {createSelector} from 'reselect'
 import {constructor as XorShift} from 'xorshift'
-
-import selectDisplayGrid from './regional-display-grid'
 
 // Max sampled values. CKMeans dramatically slows down after 1000 values. See
 // bench/ckmeans.js for why we ended up with 1000.
@@ -53,13 +50,32 @@ function createColorizer(breaks: number[], colorRange: RGBColor[]) {
 
 const negate = (b: number) => -b
 
-export default createSelector(selectDisplayGrid, (grid?: CL.RegionalGrid) => {
-  if (!grid || get(grid, 'data.length') < 1) return null
+/**
+ *
+ */
+export default function useDisplayScale(
+  grid?: CL.RegionalGrid
+): CL.RegionalDisplayScale {
+  return useMemo(() => {
+    if (grid == null || grid.data?.length < 1) return null
+    return createDisplayScale(grid)
+  }, [grid])
+}
+
+/**
+ * Generate a color scale based on the contents of a regional grid.
+ * @param grid
+ * @returns DisplayScale
+ */
+export function createDisplayScale(
+  grid: CL.RegionalGrid
+): CL.RegionalDisplayScale {
   if (grid.min === grid.max) {
     return {
       breaks: [],
       colorRange: [],
-      colorizer: () => [0, 0, 0, 0]
+      colorizer: () => [0, 0, 0, 0],
+      error: false
     }
   }
 
@@ -75,13 +91,12 @@ export default createSelector(selectDisplayGrid, (grid?: CL.RegionalGrid) => {
       // Ensure that the max is included. Random sampling may have missed it.
       breaks[breaks.length - 1] = grid.max
 
-      const scale = {
+      return {
         breaks,
         colorizer: createColorizer(breaks, colorRange),
         colorRange,
         error: false
       }
-      return scale
     }
 
     // All values are negative
@@ -187,7 +202,7 @@ export default createSelector(selectDisplayGrid, (grid?: CL.RegionalGrid) => {
       error: e
     }
   }
-})
+}
 
 // Filtering out the zeros seems to give more nuanced breaks. There are a huge
 // amount of zeros.

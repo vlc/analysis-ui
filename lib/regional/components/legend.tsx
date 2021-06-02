@@ -18,6 +18,22 @@ import {getAccessibilityLabel} from '../utils'
 
 const textFormat = format(',.0f')
 
+function ComparisonLabel(p: {
+  spatialDatasets: CL.SpatialDataset[]
+  variant: CL.RegionalAnalysisVariant
+}) {
+  const label = getAccessibilityLabel(p.variant, p.spatialDatasets)
+  return (
+    <Box px={4}>
+      <Text color='red.500'>
+        <em>minus</em>
+      </Text>
+      <Heading size='xs'>{p.variant.analysis.name}</Heading>
+      <Text>{label}</Text>
+    </Box>
+  )
+}
+
 /**
  * Render a regional analysis legend.
  */
@@ -25,17 +41,17 @@ export default function RegionalLegend({
   analysisVariant,
   comparisonVariant,
   displayGrid,
-  displayScale
+  displayScale,
+  spatialDatasets
 }: {
   analysisVariant: CL.RegionalAnalysisVariant
   comparisonVariant?: CL.RegionalAnalysisVariant
   displayGrid: CL.RegionalGrid
   displayScale: CL.RegionalDisplayScale
+  spatialDatasets: CL.SpatialDataset[]
 }) {
   const legendBackround = useColorModeValue('white', 'gray.900')
-  const accessToLabel = getAccessibilityLabel(analysisVariant, [])
-  const comparisonAccessToLabel =
-    comparisonVariant && getAccessibilityLabel(comparisonVariant, [])
+  const accessToLabel = getAccessibilityLabel(analysisVariant, spatialDatasets)
 
   return (
     <MapControl position='bottomleft'>
@@ -55,14 +71,11 @@ export default function RegionalLegend({
           <Text>{accessToLabel}</Text>
         </Box>
 
-        {comparisonAccessToLabel && (
-          <Box px={4}>
-            <Text color='red.500'>
-              <em>minus</em>
-            </Text>
-            <Heading size='xs'>{comparisonVariant.analysis.name}</Heading>
-            <Text>{comparisonAccessToLabel}</Text>
-          </Box>
+        {comparisonVariant?.analysis && (
+          <ComparisonLabel
+            spatialDatasets={spatialDatasets}
+            variant={comparisonVariant}
+          />
         )}
 
         {displayGrid && displayScale ? (

@@ -1,7 +1,7 @@
 import {useUser} from '@auth0/nextjs-auth0'
 
 import {AUTH_DISABLED} from 'lib/constants'
-import {localUser, IUser} from 'lib/user'
+import {localUser} from 'lib/user'
 
 function useLocalUser() {
   return {
@@ -10,12 +10,12 @@ function useLocalUser() {
   }
 }
 
-function useIUser() {
+function useConveyalUser() {
   const response = useUser()
   return {
     ...response,
-    user: response?.user as IUser
+    user: response?.user as CL.User
   }
 }
 
-export default AUTH_DISABLED ? useLocalUser : useIUser
+export default AUTH_DISABLED ? useLocalUser : useConveyalUser

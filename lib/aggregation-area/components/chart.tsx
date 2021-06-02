@@ -19,6 +19,9 @@ import message from 'lib/message'
 
 import * as Panel from 'lib/components/panel'
 
+import getAggregateAccessibility from '../aggregate-accessibility'
+import {useAggregationAreaGrid} from '../api'
+
 const WIDTH = 290
 const HEIGHT = 225
 const X_SCALE_HEIGHT = 30
@@ -33,26 +36,46 @@ const FONT_SIZE = 10
  */
 const PERCENTILE_OF_ACCESSIBILITY = 10
 
+function useAggregateAccessibility(
+  accessibility: CL.RegionalGrid,
+  aggregationArea: CL.AggregationArea,
+  weights: CL.ParsedGrid
+): CL.AggregateAccessibility {
+  const aggregationAreaGrid = useAggregationAreaGrid(aggregationArea)
+  return useMemo(
+    () =>
+      accessibility != null && aggregationAreaGrid != null && weights != null
+        ? getAggregateAccessibility(accessibility, aggregationAreaGrid, weights)
+        : null,
+    [accessibility, aggregationAreaGrid, weights]
+  )
+}
+
 /**
  * This component renders the aggregate accessibility display (histograms and percentiles).
  */
-export default function AggregateAccessibilityChart({
-  accessToName,
-  aggregateAccessibility,
-  comparisonAccessToName,
-  comparisonAggregateAccessibility,
-  comparisonRegionalAnalysisName,
-  regionalAnalysisName,
-  weightByName
-}: {
+export default function AggregateAccessibilityChart(p: {
+  aggregationArea: CL.AggregationArea
   accessToName: string
-  aggregateAccessibility: CL.AggregateAccessibility
   comparisonAccessToName?: string
-  comparisonAggregateAccessibility?: CL.AggregateAccessibility
+  comparisonGrid?: CL.RegionalGrid
   comparisonRegionalAnalysisName?: string
+  grid: CL.RegionalGrid
   regionalAnalysisName: string
   weightByName: string
+  weights: CL.ParsedGrid
 }) {
+  const aggregateAccessibility = useAggregateAccessibility(
+    p.grid,
+    p.aggregationArea,
+    p.weights
+  )
+  const comparisonAggregateAccessibility = useAggregateAccessibility(
+    p.comparisonGrid,
+    p.aggregationArea,
+    p.weights
+  )
+
   const [percentile, setPercentile] = useState(PERCENTILE_OF_ACCESSIBILITY)
   const xScale = useMemo(() => {
     return createXScale(
@@ -84,7 +107,7 @@ export default function AggregateAccessibilityChart({
             yScale={yScale}
           />
           <XScale xScale={xScale} />
-          <YScale weightByName={weightByName} yScale={yScale} />
+          <YScale weightByName={p.weightByName} yScale={yScale} />
           <PercentileLine
             color={colors.PROJECT_PERCENTILE_COLOR}
             x={xScale(percentiles)}
@@ -127,9 +150,9 @@ export default function AggregateAccessibilityChart({
       </FormControl>
 
       <AggregateAccessibilityReadout
-        name={regionalAnalysisName}
-        weightByName={weightByName}
-        accessToName={accessToName}
+        name={p.regionalAnalysisName}
+        weightByName={p.weightByName}
+        accessToName={p.accessToName}
         // invert: 90th percentile of accessibility means accessibility that
         // high or greater is experienced by 10% of the population
         percentage={100 - percentile}
@@ -139,9 +162,9 @@ export default function AggregateAccessibilityChart({
 
       {comparisonAggregateAccessibility && (
         <AggregateAccessibilityReadout
-          name={comparisonRegionalAnalysisName}
-          weightByName={weightByName}
-          accessToName={comparisonAccessToName}
+          name={p.comparisonRegionalAnalysisName}
+          weightByName={p.weightByName}
+          accessToName={p.comparisonAccessToName}
           // invert: 90th percentile of accessibility means accessibility that
           // high or greater is experienced by 10% of the population
           percentage={100 - percentile}

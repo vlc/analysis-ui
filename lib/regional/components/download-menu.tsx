@@ -14,7 +14,7 @@ import {
   useDownloadCSVResults,
   useDownloadProjectGIS,
   useDownloadRequestJSON
-} from '../api'
+} from '../hooks/use-download-results'
 
 // Type to title
 const csvResultsTypeToTitle = {
@@ -44,7 +44,7 @@ export default function DownloadMenu({
 
   return (
     <Menu isLazy>
-      <MenuButton as={Button} colorScheme='blue'>
+      <MenuButton as={Button} colorScheme='blue' isFullWidth>
         <Center>
           <DownloadIcon />
           &nbsp; Download results
