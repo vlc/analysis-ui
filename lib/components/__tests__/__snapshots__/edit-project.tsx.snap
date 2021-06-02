@@ -184,7 +184,6 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                               <Input
                                 id="00000000-0000-0000-0000-000000000000"
                                 isInvalid={true}
-                                isValid={false}
                                 onChange={[Function]}
                               >
                                 <Styled(input)
@@ -230,7 +229,6 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                   className="chakra-input"
                                   disabled={false}
                                   id="00000000-0000-0000-0000-000000000000"
-                                  isValid={false}
                                   onBlur={[Function]}
                                   onChange={[Function]}
                                   onFocus={[Function]}
@@ -243,7 +241,6 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                     className="chakra-input css-18q2db8"
                                     disabled={false}
                                     id="00000000-0000-0000-0000-000000000000"
-                                    isValid={false}
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onFocus={[Function]}
@@ -323,12 +320,12 @@ exports[`Component EditProject snapshot(mount) 1`] = `
                                       to="bundle"
                                     >
                                       <Link
-                                        href="/regions/1/bundles/[bundleId]?bundleId=undefined"
+                                        href="/regions/1/bundles/[bundleId]?"
                                         passHref={true}
                                       >
                                         <a
                                           className=""
-                                          href="/regions/1/bundles/undefined"
+                                          href="/regions/1/bundles/[bundleId]?"
                                           onClick={[Function]}
                                           onMouseEnter={[Function]}
                                         >

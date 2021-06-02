@@ -21,12 +21,12 @@ import useCreateAggregationAreas from '../hooks/use-create-aggregation-areas'
 /**
  * Form for creating aggregation areas
  */
-export default function CreateAggregationArea({onClose, regionId}) {
+export default function CreateAggregationArea({onClose}) {
   const [union, setUnion] = useState(true)
   const fileInput = useFileInput()
   const [uploading, setUploading] = useState(false)
   const toast = useToast({position: 'top'})
-  const createAggregationAreas = useCreateAggregationAreas(regionId)
+  const createAggregationAreas = useCreateAggregationAreas()
   const routeTo = useShallowRouteTo('regionalAnalysis')
 
   const nameInput = useInput({value: ''})

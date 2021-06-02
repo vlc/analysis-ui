@@ -14,7 +14,6 @@ const getId = fpGet('_id')
 export default function AggregationArea(p: {
   activeAggregationArea?: CL.AggregationArea
   aggregationAreas: CL.AggregationArea[]
-  regionId: string
 }) {
   const routeTo = useShallowRouteTo('regionalAnalysis')
   const [isLoading, setIsLoading] = useState(false)

@@ -200,7 +200,6 @@ export default function ResultsPage({
           <SelectAggregationArea
             activeAggregationArea={activeAggregationArea}
             aggregationAreas={aggregationAreas}
-            regionId={analysis.regionId}
           />
 
           {activeAggregationArea && (

@@ -19,8 +19,7 @@ import message from 'lib/message'
 
 import * as Panel from 'lib/components/panel'
 
-import getAggregateAccessibility from '../aggregate-accessibility'
-import {useAggregationAreaGrid} from '../api'
+import useAggregateAccessibility from '../hooks/use-aggregate-accessibility'
 
 const WIDTH = 290
 const HEIGHT = 225
@@ -35,21 +34,6 @@ const FONT_SIZE = 10
  * are using population-weighted job accessibility).
  */
 const PERCENTILE_OF_ACCESSIBILITY = 10
-
-function useAggregateAccessibility(
-  accessibility: CL.RegionalGrid,
-  aggregationArea: CL.AggregationArea,
-  weights: CL.ParsedGrid
-): CL.AggregateAccessibility {
-  const aggregationAreaGrid = useAggregationAreaGrid(aggregationArea)
-  return useMemo(
-    () =>
-      accessibility != null && aggregationAreaGrid != null && weights != null
-        ? getAggregateAccessibility(accessibility, aggregationAreaGrid, weights)
-        : null,
-    [accessibility, aggregationAreaGrid, weights]
-  )
-}
 
 /**
  * This component renders the aggregate accessibility display (histograms and percentiles).

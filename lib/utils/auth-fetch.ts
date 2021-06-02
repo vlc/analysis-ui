@@ -1,5 +1,3 @@
-import {parse} from 'cookie'
-
 import {safeFetch, SafeResponse} from './safe-fetch'
 
 export function createAuthHeaders(user?: CL.User) {
@@ -9,7 +7,7 @@ export function createAuthHeaders(user?: CL.User) {
 
   // Add the admin access group for administrators if it exists.
   if (user?.accessGroup === process.env.NEXT_PUBLIC_ADMIN_ACCESS_GROUP) {
-    const adminTempAccessGroup = parse(document.cookie).adminTempAccessGroup
+    const adminTempAccessGroup = window.__user?.adminTempAccessGroup
     if (adminTempAccessGroup?.length > 0) {
       headers['X-Conveyal-Access-Group'] = adminTempAccessGroup
     }

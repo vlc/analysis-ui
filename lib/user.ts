@@ -22,7 +22,7 @@ export const localUser: CL.User = {
   idToken: 'idToken'
 }
 
-// Get an CL.User from a Session
+// Get a CL.User from a Session
 export function userFromSession(
   req: IncomingMessage,
   session: Session
@@ -55,6 +55,13 @@ export function getUser(serverSideUser?: CL.User): undefined | CL.User {
 
 export function storeUser(user: CL.User): void {
   if (!process.browser || AUTH_DISABLED) return
+
+  // Add the adminTempAccessGroup for admins
+  if (user.accessGroup === process.env.NEXT_PUBLIC_ADMIN_ACCESS_GROUP) {
+    const adminTempAccessGroup = parse(document.cookie || '')
+      .adminTempAccessGroup
+    if (adminTempAccessGroup) user.adminTempAccessGroup = adminTempAccessGroup
+  }
 
   // Store the user on window, requiring a new session on each tab/page
   window.__user = user
