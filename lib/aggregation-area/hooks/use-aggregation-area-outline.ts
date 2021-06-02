@@ -8,8 +8,9 @@ export default function useAggregationAreaOutline(
   aggregationArea: CL.AggregationArea
 ) {
   const grid = useAggregationAreaGrid(aggregationArea)
-  const geojson = useMemo(() => (grid != null ? computeOutline(grid) : null), [
-    grid
-  ])
+  const geojson = useMemo(
+    () => (grid != null ? computeOutline(grid) : null),
+    [grid]
+  )
   return geojson
 }

@@ -198,9 +198,9 @@ const Slices = memo<SlicesProps>(({color, percentileCurves, yScale}) => {
   // a "slice" is the segment between two percentile curves
   const slices: [number, number][][] = []
   for (let slice = 1; slice < percentileCurves.length; slice++) {
-    const combinedValues: [number, number][] = percentileCurves[
-      slice
-    ].map((d, i) => [d, percentileCurves[slice - 1][i]])
+    const combinedValues: [number, number][] = percentileCurves[slice].map(
+      (d, i) => [d, percentileCurves[slice - 1][i]]
+    )
     slices.push(combinedValues)
   }
 

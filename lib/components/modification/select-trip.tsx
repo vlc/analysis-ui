@@ -12,11 +12,10 @@ const getTripId = fpGet('trip_id')
  * Trip selector.
  */
 export default function SelectTrip({feed, patternTrips, routes, ...p}) {
-  const trips = useMemo(() => getTrips(feed, patternTrips, routes), [
-    feed,
-    patternTrips,
-    routes
-  ])
+  const trips = useMemo(
+    () => getTrips(feed, patternTrips, routes),
+    [feed, patternTrips, routes]
+  )
 
   return (
     <ControlledSelect

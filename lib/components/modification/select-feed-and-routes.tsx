@@ -42,9 +42,8 @@ export default function SelectFeedAndRoutes({
   const bounds = useSelector(selectModificationBounds)
   const routePatterns = useSelector(selectRoutePatterns)
   const selectedFeed = useSelector(selectModificationFeed)
-  const [currentRoutePatterns, setCurrentRoutePatterns] = useState(
-    routePatterns
-  )
+  const [currentRoutePatterns, setCurrentRoutePatterns] =
+    useState(routePatterns)
   const leaflet = useLeaflet()
   useEffect(() => {
     if (routePatterns !== currentRoutePatterns) {

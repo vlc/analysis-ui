@@ -37,8 +37,9 @@ export function userFromSession(
   }
 
   if (user.accessGroup === process.env.NEXT_PUBLIC_ADMIN_ACCESS_GROUP) {
-    const adminTempAccessGroup = parse(req.headers.cookie || '')
-      .adminTempAccessGroup
+    const adminTempAccessGroup = parse(
+      req.headers.cookie || ''
+    ).adminTempAccessGroup
     if (adminTempAccessGroup) user.adminTempAccessGroup = adminTempAccessGroup
   }
 
@@ -58,8 +59,9 @@ export function storeUser(user: CL.User): void {
 
   // Add the adminTempAccessGroup for admins
   if (user.accessGroup === process.env.NEXT_PUBLIC_ADMIN_ACCESS_GROUP) {
-    const adminTempAccessGroup = parse(document.cookie || '')
-      .adminTempAccessGroup
+    const adminTempAccessGroup = parse(
+      document.cookie || ''
+    ).adminTempAccessGroup
     if (adminTempAccessGroup) user.adminTempAccessGroup = adminTempAccessGroup
   }
 

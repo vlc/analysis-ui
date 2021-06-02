@@ -1,8 +1,7 @@
 import {createUseCollection} from './use-collection'
 
-const useCollection = createUseCollection<CL.RegionalAnalysis>(
-  'regional-analyses'
-)
+const useCollection =
+  createUseCollection<CL.RegionalAnalysis>('regional-analyses')
 
 /**
  * Default way of querying regional analyses.

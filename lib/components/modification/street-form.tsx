@@ -37,9 +37,10 @@ export default function StreetForm({modification, update, ...p}) {
     value: modification.allowedModes.includes(BICYCLE)
   })
   const bikeTimeFactor = useInput({
-    onChange: useCallback((bikeTimeFactor) => update({bikeTimeFactor}), [
-      update
-    ]),
+    onChange: useCallback(
+      (bikeTimeFactor) => update({bikeTimeFactor}),
+      [update]
+    ),
     parse: parseFloat,
     test: isValidFloat,
     value: modification.bikeTimeFactor
@@ -66,9 +67,10 @@ export default function StreetForm({modification, update, ...p}) {
     value: modification.allowedModes.includes(WALK)
   })
   const walkTimeFactor = useInput({
-    onChange: useCallback((walkTimeFactor) => update({walkTimeFactor}), [
-      update
-    ]),
+    onChange: useCallback(
+      (walkTimeFactor) => update({walkTimeFactor}),
+      [update]
+    ),
     parse: parseFloat,
     test: isValidFloat,
     value: modification.walkTimeFactor

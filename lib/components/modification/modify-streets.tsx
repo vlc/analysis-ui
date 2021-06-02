@@ -57,7 +57,8 @@ export default function ModifyStreets({modification, update}) {
   // Handle create, delete, and edit
   const onGeometryChange = useCallback(() => {
     if (featureGroupRef.current) {
-      const featureCollection = featureGroupRef.current.leafletElement.toGeoJSON()
+      const featureCollection =
+        featureGroupRef.current.leafletElement.toGeoJSON()
       if (isFeatureCollection(featureCollection)) {
         const polygons = featureCollection.features
           .filter((feature) => {

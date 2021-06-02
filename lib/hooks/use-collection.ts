@@ -147,9 +147,8 @@ export function createUseCollection<T extends CL.IModel>(
 }
 
 // Create an instance of each collection type
-export const useAggregationAreas = createUseCollection<CL.AggregationArea>(
-  'aggregationAreas'
-)
+export const useAggregationAreas =
+  createUseCollection<CL.AggregationArea>('aggregationAreas')
 export const useBundles = createUseCollection<CL.Bundle>('bundles')
 export const useSpatialDatasets = createUseCollection<CL.SpatialDataset>(
   'opportunityDatasets'

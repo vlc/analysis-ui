@@ -114,9 +114,10 @@ export default function ProfileRequestEditor({
     project
   )
 
-  const setDate = useCallback((date) => updateProfileRequest({date}), [
-    updateProfileRequest
-  ])
+  const setDate = useCallback(
+    (date) => updateProfileRequest({date}),
+    [updateProfileRequest]
+  )
   const dateInput = useInput({
     onChange: setDate,
     value: profileRequest.date
@@ -348,10 +349,10 @@ export default function ProfileRequestEditor({
 const decayFunctionTypes = ['step', 'logistic', 'exponential', 'linear']
 
 function DecayFunction({isDisabled, update, value}) {
-  const onChangeType = useCallback((type) => update({...value, type}), [
-    update,
-    value
-  ])
+  const onChangeType = useCallback(
+    (type) => update({...value, type}),
+    [update, value]
+  )
   const typeInput = useInput({
     value: value.type,
     onChange: onChangeType
