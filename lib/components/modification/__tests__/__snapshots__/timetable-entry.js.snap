@@ -46,6 +46,8 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
@@ -56,7 +58,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
       flexDirection="column"
     >
       <div
-        className="chakra-stack css-4daikc"
+        className="chakra-stack css-egoftb"
       >
         <FormControl
           key=".0"
@@ -97,7 +99,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                   id="field-1-label"
                 >
                   <label
-                    className="chakra-form__label css-1qqx8g3"
+                    className="chakra-form__label css-10m1y3x"
                     htmlFor="field-1"
                     id="field-1-label"
                   >
@@ -109,7 +111,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                 columns={5}
               >
                 <Grid
-                  templateColumns="repeat(5, 1fr)"
+                  templateColumns="repeat(5, minmax(0, 1fr))"
                 >
                   <Styled(div)
                     __css={
@@ -125,13 +127,13 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                         "gridRow": undefined,
                         "gridRowGap": undefined,
                         "gridTemplateAreas": undefined,
-                        "gridTemplateColumns": "repeat(5, 1fr)",
+                        "gridTemplateColumns": "repeat(5, minmax(0, 1fr))",
                         "gridTemplateRows": undefined,
                       }
                     }
                   >
                     <div
-                      className="css-1l2zrv3"
+                      className="css-nturbv"
                     >
                       <Day
                         day="Monday"
@@ -148,9 +150,11 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             __css={Object {}}
                             className="chakra-checkbox"
                             fontWeight="normal"
+                            onClick={[Function]}
                           >
                             <label
-                              className="chakra-checkbox css-wun7cp"
+                              className="chakra-checkbox css-fnpc6t"
+                              onClick={[Function]}
                             >
                               <input
                                 checked={true}
@@ -226,7 +230,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-checkbox__control css-co2d90"
+                                  className="chakra-checkbox__control css-joz5u0"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onMouseEnter={[Function]}
@@ -358,21 +362,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "strokeWidth": 2,
                                                       }
                                                     }
-                                                    variants={
-                                                      Object {
-                                                        "checked": Object {
-                                                          "opacity": 1,
-                                                          "strokeDashoffset": 0,
-                                                          "transition": Object {
-                                                            "duration": 0.2,
-                                                          },
-                                                        },
-                                                        "unchecked": Object {
-                                                          "opacity": 0,
-                                                          "strokeDashoffset": 16,
-                                                        },
-                                                      }
-                                                    }
                                                     viewBox="0 0 12 10"
                                                     width="1.2em"
                                                   >
@@ -386,21 +375,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                           "strokeDasharray": 16,
                                                           "strokeDashoffset": 0,
                                                           "strokeWidth": 2,
-                                                        }
-                                                      }
-                                                      variants={
-                                                        Object {
-                                                          "checked": Object {
-                                                            "opacity": 1,
-                                                            "strokeDashoffset": 0,
-                                                            "transition": Object {
-                                                              "duration": 0.2,
-                                                            },
-                                                          },
-                                                          "unchecked": Object {
-                                                            "opacity": 0,
-                                                            "strokeDashoffset": 16,
-                                                          },
                                                         }
                                                       }
                                                       viewBox="0 0 12 10"
@@ -464,7 +438,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "current": <svg
                                                           class="css-da6t8b"
                                                           style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                          variants="[object Object]"
                                                           viewBox="0 0 12 10"
                                                         >
                                                           <polyline
@@ -541,7 +514,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                               <svg
                                                                 class="css-da6t8b"
                                                                 style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                                variants="[object Object]"
                                                                 viewBox="0 0 12 10"
                                                               >
                                                                 <polyline
@@ -760,7 +732,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -887,7 +858,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -1049,7 +1019,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -1176,7 +1145,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -1317,7 +1285,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 onTouchStart={[Function]}
                               >
                                 <span
-                                  className="chakra-checkbox__label css-sklcna"
+                                  className="chakra-checkbox__label css-1sgc0qu"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onTouchStart={[Function]}
@@ -1344,9 +1312,11 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             __css={Object {}}
                             className="chakra-checkbox"
                             fontWeight="normal"
+                            onClick={[Function]}
                           >
                             <label
-                              className="chakra-checkbox css-wun7cp"
+                              className="chakra-checkbox css-fnpc6t"
+                              onClick={[Function]}
                             >
                               <input
                                 checked={true}
@@ -1422,7 +1392,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-checkbox__control css-co2d90"
+                                  className="chakra-checkbox__control css-joz5u0"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onMouseEnter={[Function]}
@@ -1554,21 +1524,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "strokeWidth": 2,
                                                       }
                                                     }
-                                                    variants={
-                                                      Object {
-                                                        "checked": Object {
-                                                          "opacity": 1,
-                                                          "strokeDashoffset": 0,
-                                                          "transition": Object {
-                                                            "duration": 0.2,
-                                                          },
-                                                        },
-                                                        "unchecked": Object {
-                                                          "opacity": 0,
-                                                          "strokeDashoffset": 16,
-                                                        },
-                                                      }
-                                                    }
                                                     viewBox="0 0 12 10"
                                                     width="1.2em"
                                                   >
@@ -1582,21 +1537,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                           "strokeDasharray": 16,
                                                           "strokeDashoffset": 0,
                                                           "strokeWidth": 2,
-                                                        }
-                                                      }
-                                                      variants={
-                                                        Object {
-                                                          "checked": Object {
-                                                            "opacity": 1,
-                                                            "strokeDashoffset": 0,
-                                                            "transition": Object {
-                                                              "duration": 0.2,
-                                                            },
-                                                          },
-                                                          "unchecked": Object {
-                                                            "opacity": 0,
-                                                            "strokeDashoffset": 16,
-                                                          },
                                                         }
                                                       }
                                                       viewBox="0 0 12 10"
@@ -1660,7 +1600,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "current": <svg
                                                           class="css-da6t8b"
                                                           style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                          variants="[object Object]"
                                                           viewBox="0 0 12 10"
                                                         >
                                                           <polyline
@@ -1737,7 +1676,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                               <svg
                                                                 class="css-da6t8b"
                                                                 style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                                variants="[object Object]"
                                                                 viewBox="0 0 12 10"
                                                               >
                                                                 <polyline
@@ -1956,7 +1894,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -2083,7 +2020,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -2245,7 +2181,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -2372,7 +2307,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -2513,7 +2447,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 onTouchStart={[Function]}
                               >
                                 <span
-                                  className="chakra-checkbox__label css-sklcna"
+                                  className="chakra-checkbox__label css-1sgc0qu"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onTouchStart={[Function]}
@@ -2540,9 +2474,11 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             __css={Object {}}
                             className="chakra-checkbox"
                             fontWeight="normal"
+                            onClick={[Function]}
                           >
                             <label
-                              className="chakra-checkbox css-wun7cp"
+                              className="chakra-checkbox css-fnpc6t"
+                              onClick={[Function]}
                             >
                               <input
                                 checked={true}
@@ -2618,7 +2554,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-checkbox__control css-co2d90"
+                                  className="chakra-checkbox__control css-joz5u0"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onMouseEnter={[Function]}
@@ -2750,21 +2686,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "strokeWidth": 2,
                                                       }
                                                     }
-                                                    variants={
-                                                      Object {
-                                                        "checked": Object {
-                                                          "opacity": 1,
-                                                          "strokeDashoffset": 0,
-                                                          "transition": Object {
-                                                            "duration": 0.2,
-                                                          },
-                                                        },
-                                                        "unchecked": Object {
-                                                          "opacity": 0,
-                                                          "strokeDashoffset": 16,
-                                                        },
-                                                      }
-                                                    }
                                                     viewBox="0 0 12 10"
                                                     width="1.2em"
                                                   >
@@ -2778,21 +2699,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                           "strokeDasharray": 16,
                                                           "strokeDashoffset": 0,
                                                           "strokeWidth": 2,
-                                                        }
-                                                      }
-                                                      variants={
-                                                        Object {
-                                                          "checked": Object {
-                                                            "opacity": 1,
-                                                            "strokeDashoffset": 0,
-                                                            "transition": Object {
-                                                              "duration": 0.2,
-                                                            },
-                                                          },
-                                                          "unchecked": Object {
-                                                            "opacity": 0,
-                                                            "strokeDashoffset": 16,
-                                                          },
                                                         }
                                                       }
                                                       viewBox="0 0 12 10"
@@ -2856,7 +2762,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "current": <svg
                                                           class="css-da6t8b"
                                                           style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                          variants="[object Object]"
                                                           viewBox="0 0 12 10"
                                                         >
                                                           <polyline
@@ -2933,7 +2838,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                               <svg
                                                                 class="css-da6t8b"
                                                                 style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                                variants="[object Object]"
                                                                 viewBox="0 0 12 10"
                                                               >
                                                                 <polyline
@@ -3152,7 +3056,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -3279,7 +3182,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -3441,7 +3343,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -3568,7 +3469,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -3709,7 +3609,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 onTouchStart={[Function]}
                               >
                                 <span
-                                  className="chakra-checkbox__label css-sklcna"
+                                  className="chakra-checkbox__label css-1sgc0qu"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onTouchStart={[Function]}
@@ -3736,9 +3636,11 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             __css={Object {}}
                             className="chakra-checkbox"
                             fontWeight="normal"
+                            onClick={[Function]}
                           >
                             <label
-                              className="chakra-checkbox css-wun7cp"
+                              className="chakra-checkbox css-fnpc6t"
+                              onClick={[Function]}
                             >
                               <input
                                 checked={true}
@@ -3814,7 +3716,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-checkbox__control css-co2d90"
+                                  className="chakra-checkbox__control css-joz5u0"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onMouseEnter={[Function]}
@@ -3946,21 +3848,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "strokeWidth": 2,
                                                       }
                                                     }
-                                                    variants={
-                                                      Object {
-                                                        "checked": Object {
-                                                          "opacity": 1,
-                                                          "strokeDashoffset": 0,
-                                                          "transition": Object {
-                                                            "duration": 0.2,
-                                                          },
-                                                        },
-                                                        "unchecked": Object {
-                                                          "opacity": 0,
-                                                          "strokeDashoffset": 16,
-                                                        },
-                                                      }
-                                                    }
                                                     viewBox="0 0 12 10"
                                                     width="1.2em"
                                                   >
@@ -3974,21 +3861,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                           "strokeDasharray": 16,
                                                           "strokeDashoffset": 0,
                                                           "strokeWidth": 2,
-                                                        }
-                                                      }
-                                                      variants={
-                                                        Object {
-                                                          "checked": Object {
-                                                            "opacity": 1,
-                                                            "strokeDashoffset": 0,
-                                                            "transition": Object {
-                                                              "duration": 0.2,
-                                                            },
-                                                          },
-                                                          "unchecked": Object {
-                                                            "opacity": 0,
-                                                            "strokeDashoffset": 16,
-                                                          },
                                                         }
                                                       }
                                                       viewBox="0 0 12 10"
@@ -4052,7 +3924,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "current": <svg
                                                           class="css-da6t8b"
                                                           style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                          variants="[object Object]"
                                                           viewBox="0 0 12 10"
                                                         >
                                                           <polyline
@@ -4129,7 +4000,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                               <svg
                                                                 class="css-da6t8b"
                                                                 style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                                variants="[object Object]"
                                                                 viewBox="0 0 12 10"
                                                               >
                                                                 <polyline
@@ -4348,7 +4218,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -4475,7 +4344,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -4637,7 +4505,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -4764,7 +4631,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -4905,7 +4771,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 onTouchStart={[Function]}
                               >
                                 <span
-                                  className="chakra-checkbox__label css-sklcna"
+                                  className="chakra-checkbox__label css-1sgc0qu"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onTouchStart={[Function]}
@@ -4932,9 +4798,11 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             __css={Object {}}
                             className="chakra-checkbox"
                             fontWeight="normal"
+                            onClick={[Function]}
                           >
                             <label
-                              className="chakra-checkbox css-wun7cp"
+                              className="chakra-checkbox css-fnpc6t"
+                              onClick={[Function]}
                             >
                               <input
                                 checked={true}
@@ -5010,7 +4878,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-checkbox__control css-co2d90"
+                                  className="chakra-checkbox__control css-joz5u0"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onMouseEnter={[Function]}
@@ -5142,21 +5010,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "strokeWidth": 2,
                                                       }
                                                     }
-                                                    variants={
-                                                      Object {
-                                                        "checked": Object {
-                                                          "opacity": 1,
-                                                          "strokeDashoffset": 0,
-                                                          "transition": Object {
-                                                            "duration": 0.2,
-                                                          },
-                                                        },
-                                                        "unchecked": Object {
-                                                          "opacity": 0,
-                                                          "strokeDashoffset": 16,
-                                                        },
-                                                      }
-                                                    }
                                                     viewBox="0 0 12 10"
                                                     width="1.2em"
                                                   >
@@ -5170,21 +5023,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                           "strokeDasharray": 16,
                                                           "strokeDashoffset": 0,
                                                           "strokeWidth": 2,
-                                                        }
-                                                      }
-                                                      variants={
-                                                        Object {
-                                                          "checked": Object {
-                                                            "opacity": 1,
-                                                            "strokeDashoffset": 0,
-                                                            "transition": Object {
-                                                              "duration": 0.2,
-                                                            },
-                                                          },
-                                                          "unchecked": Object {
-                                                            "opacity": 0,
-                                                            "strokeDashoffset": 16,
-                                                          },
                                                         }
                                                       }
                                                       viewBox="0 0 12 10"
@@ -5248,7 +5086,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                         "current": <svg
                                                           class="css-da6t8b"
                                                           style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                          variants="[object Object]"
                                                           viewBox="0 0 12 10"
                                                         >
                                                           <polyline
@@ -5325,7 +5162,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                               <svg
                                                                 class="css-da6t8b"
                                                                 style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                                variants="[object Object]"
                                                                 viewBox="0 0 12 10"
                                                               >
                                                                 <polyline
@@ -5544,7 +5380,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -5671,7 +5506,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -5833,7 +5667,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                     <svg
                                                       class="css-da6t8b"
                                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                      variants="[object Object]"
                                                       viewBox="0 0 12 10"
                                                     >
                                                       <polyline
@@ -5960,7 +5793,6 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                                       "current": <svg
                                                         class="css-da6t8b"
                                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                        variants="[object Object]"
                                                         viewBox="0 0 12 10"
                                                       >
                                                         <polyline
@@ -6101,7 +5933,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 onTouchStart={[Function]}
                               >
                                 <span
-                                  className="chakra-checkbox__label css-sklcna"
+                                  className="chakra-checkbox__label css-1sgc0qu"
                                   data-checked=""
                                   onMouseDown={[Function]}
                                   onTouchStart={[Function]}
@@ -6128,9 +5960,11 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             __css={Object {}}
                             className="chakra-checkbox"
                             fontWeight="normal"
+                            onClick={[Function]}
                           >
                             <label
-                              className="chakra-checkbox css-wun7cp"
+                              className="chakra-checkbox css-fnpc6t"
+                              onClick={[Function]}
                             >
                               <input
                                 checked={false}
@@ -6205,7 +6039,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-checkbox__control css-co2d90"
+                                  className="chakra-checkbox__control css-joz5u0"
                                   onMouseDown={[Function]}
                                   onMouseEnter={[Function]}
                                   onMouseLeave={[Function]}
@@ -6247,7 +6081,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 onTouchStart={[Function]}
                               >
                                 <span
-                                  className="chakra-checkbox__label css-sklcna"
+                                  className="chakra-checkbox__label css-1sgc0qu"
                                   onMouseDown={[Function]}
                                   onTouchStart={[Function]}
                                 >
@@ -6273,9 +6107,11 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             __css={Object {}}
                             className="chakra-checkbox"
                             fontWeight="normal"
+                            onClick={[Function]}
                           >
                             <label
-                              className="chakra-checkbox css-wun7cp"
+                              className="chakra-checkbox css-fnpc6t"
+                              onClick={[Function]}
                             >
                               <input
                                 checked={false}
@@ -6350,7 +6186,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-checkbox__control css-co2d90"
+                                  className="chakra-checkbox__control css-joz5u0"
                                   onMouseDown={[Function]}
                                   onMouseEnter={[Function]}
                                   onMouseLeave={[Function]}
@@ -6392,7 +6228,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 onTouchStart={[Function]}
                               >
                                 <span
-                                  className="chakra-checkbox__label css-sklcna"
+                                  className="chakra-checkbox__label css-1sgc0qu"
                                   onMouseDown={[Function]}
                                   onTouchStart={[Function]}
                                 >
@@ -6458,7 +6294,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                     id="field-2-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       htmlFor="00000000-0000-0000-0000-000000000000"
                       id="field-2-label"
                     >
@@ -6498,7 +6334,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}
-                          paddingRight={10}
+                          paddingEnd={10}
                           placeholder=""
                           type="text"
                           value="00:15:00"
@@ -6547,7 +6383,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
-                            paddingRight={10}
+                            paddingEnd={10}
                             placeholder=""
                             readOnly={false}
                             required={false}
@@ -6555,7 +6391,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             value="00:15:00"
                           >
                             <input
-                              className="chakra-input css-1hmrg96"
+                              className="chakra-input css-1qkmlc7"
                               disabled={false}
                               id="00000000-0000-0000-0000-000000000000"
                               onBlur={[Function]}
@@ -6589,8 +6425,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 Object {
                                   "fontSize": "md",
                                   "height": 10,
-                                  "paddingX": undefined,
-                                  "right": "0",
+                                  "insetEnd": "0",
                                   "width": 10,
                                 }
                               }
@@ -6601,7 +6436,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               width="unset"
                             >
                               <div
-                                className="chakra-input__right-element css-15qe6bf"
+                                className="chakra-input__right-element css-13i7m2h"
                               >
                                 HH:mm:ss
                               </div>
@@ -6664,7 +6499,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                     id="field-3-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       htmlFor="00000000-0000-0000-0000-000000000000"
                       id="field-3-label"
                     >
@@ -6698,7 +6533,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                           isInvalid={false}
                           key=".0"
                           onChange={[Function]}
-                          paddingRight={10}
+                          paddingEnd={10}
                           value="08:00"
                         >
                           <Styled(input)
@@ -6745,13 +6580,13 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
-                            paddingRight={10}
+                            paddingEnd={10}
                             readOnly={false}
                             required={false}
                             value="08:00"
                           >
                             <input
-                              className="chakra-input css-1hmrg96"
+                              className="chakra-input css-1qkmlc7"
                               disabled={false}
                               id="00000000-0000-0000-0000-000000000000"
                               onBlur={[Function]}
@@ -6783,8 +6618,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 Object {
                                   "fontSize": "md",
                                   "height": 10,
-                                  "paddingX": undefined,
-                                  "right": "0",
+                                  "insetEnd": "0",
                                   "width": 10,
                                 }
                               }
@@ -6795,7 +6629,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               width="unset"
                             >
                               <div
-                                className="chakra-input__right-element css-15qe6bf"
+                                className="chakra-input__right-element css-13i7m2h"
                               >
                                 HH:mm
                               </div>
@@ -6858,7 +6692,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                     id="field-4-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       htmlFor="00000000-0000-0000-0000-000000000000"
                       id="field-4-label"
                     >
@@ -6892,7 +6726,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                           isInvalid={false}
                           key=".0"
                           onChange={[Function]}
-                          paddingRight={10}
+                          paddingEnd={10}
                           value="16:00"
                         >
                           <Styled(input)
@@ -6939,13 +6773,13 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
-                            paddingRight={10}
+                            paddingEnd={10}
                             readOnly={false}
                             required={false}
                             value="16:00"
                           >
                             <input
-                              className="chakra-input css-1hmrg96"
+                              className="chakra-input css-1qkmlc7"
                               disabled={false}
                               id="00000000-0000-0000-0000-000000000000"
                               onBlur={[Function]}
@@ -6977,8 +6811,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 Object {
                                   "fontSize": "md",
                                   "height": 10,
-                                  "paddingX": undefined,
-                                  "right": "0",
+                                  "insetEnd": "0",
                                   "width": 10,
                                 }
                               }
@@ -6989,7 +6822,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                               width="unset"
                             >
                               <div
-                                className="chakra-input__right-element css-15qe6bf"
+                                className="chakra-input__right-element css-13i7m2h"
                               >
                                 HH:mm
                               </div>
@@ -7015,9 +6848,11 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
             __css={Object {}}
             className="chakra-checkbox"
             fontWeight="normal"
+            onClick={[Function]}
           >
             <label
-              className="chakra-checkbox css-wun7cp"
+              className="chakra-checkbox css-fnpc6t"
+              onClick={[Function]}
             >
               <input
                 aria-disabled={false}
@@ -7094,7 +6929,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
               >
                 <span
                   aria-hidden={true}
-                  className="chakra-checkbox__control css-co2d90"
+                  className="chakra-checkbox__control css-joz5u0"
                   onMouseDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
@@ -7136,7 +6971,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                 onTouchStart={[Function]}
               >
                 <span
-                  className="chakra-checkbox__label css-sklcna"
+                  className="chakra-checkbox__label css-1sgc0qu"
                   onMouseDown={[Function]}
                   onTouchStart={[Function]}
                 >
@@ -7162,12 +6997,10 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
             }
             aria-orientation="horizontal"
             className="chakra-divider"
-            role="separator"
           >
             <hr
               aria-orientation="horizontal"
               className="chakra-divider css-svjswr"
-              role="separator"
             />
           </Styled(hr)>
         </Divider>
@@ -7217,6 +7050,8 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
               __css={
                 Object {
                   "& > *:not(style) ~ *:not(style)": Object {
+                    "marginBottom": 0,
+                    "marginEnd": 0,
                     "marginStart": 0,
                     "marginTop": 4,
                   },
@@ -7228,7 +7063,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
               mb={4}
             >
               <div
-                className="chakra-stack css-1pjbls6"
+                className="chakra-stack css-1u5a18p"
               >
                 <Heading
                   key=".0"
@@ -7246,7 +7081,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                     className="chakra-heading"
                   >
                     <h2
-                      className="chakra-heading css-14g9y4z"
+                      className="chakra-heading css-9f6g39"
                     >
                       <span>
                         Phasing 
@@ -7313,7 +7148,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                                 target="_blank"
                               >
                                 <a
-                                  className="chakra-link css-1hx0uqu"
+                                  className="chakra-link css-jcsocw"
                                   href="https://docs.conveyal.com/edit-scenario/phasing"
                                   onBlur={[Function]}
                                   onClick={[Function]}
@@ -7404,7 +7239,7 @@ exports[`Component TimetableEntry snapshot(mount) 1`] = `
                           id="field-7-label"
                         >
                           <label
-                            className="chakra-form__label css-1qqx8g3"
+                            className="chakra-form__label css-10m1y3x"
                             htmlFor="phaseAtStop"
                             id="field-7-label"
                           >

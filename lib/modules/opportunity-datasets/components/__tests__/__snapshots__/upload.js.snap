@@ -12,6 +12,8 @@ exports[`upload should render without errors 1`] = `
         __css={
           Object {
             "& > *:not(style) ~ *:not(style)": Object {
+              "marginBottom": 0,
+              "marginEnd": 0,
               "marginStart": 0,
               "marginTop": 4,
             },
@@ -22,7 +24,7 @@ exports[`upload should render without errors 1`] = `
         flexDirection="column"
       >
         <div
-          className="chakra-stack css-4daikc"
+          className="chakra-stack css-egoftb"
         >
           <Heading
             key=".0"
@@ -40,7 +42,7 @@ exports[`upload should render without errors 1`] = `
               className="chakra-heading"
             >
               <h2
-                className="chakra-heading css-1hm1kf2"
+                className="chakra-heading css-18j379d"
               >
                 Upload a new spatial dataset
               </h2>
@@ -97,7 +99,7 @@ exports[`upload should render without errors 1`] = `
                     id="field-1-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       htmlFor="Name"
                       id="field-1-label"
                     >
@@ -108,7 +110,7 @@ exports[`upload should render without errors 1`] = `
                           __css={
                             Object {
                               "color": "red.500",
-                              "ml": 1,
+                              "marginStart": 1,
                             }
                           }
                           aria-hidden={true}
@@ -117,7 +119,7 @@ exports[`upload should render without errors 1`] = `
                         >
                           <span
                             aria-hidden={true}
-                            className="chakra-form__required-indicator css-nnjw4v"
+                            className="chakra-form__required-indicator css-1ssjhh"
                             role="presentation"
                           >
                             *
@@ -181,7 +183,7 @@ exports[`upload should render without errors 1`] = `
                   >
                     <input
                       aria-required={true}
-                      className="chakra-input css-18q2db8"
+                      className="chakra-input css-ujci2j"
                       disabled={false}
                       id="Name"
                       name="Name"
@@ -237,7 +239,7 @@ exports[`upload should render without errors 1`] = `
                     id="field-2-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       htmlFor="files"
                       id="field-2-label"
                     >
@@ -247,7 +249,7 @@ exports[`upload should render without errors 1`] = `
                           __css={
                             Object {
                               "color": "red.500",
-                              "ml": 1,
+                              "marginStart": 1,
                             }
                           }
                           aria-hidden={true}
@@ -256,7 +258,7 @@ exports[`upload should render without errors 1`] = `
                         >
                           <span
                             aria-hidden={true}
-                            className="chakra-form__required-indicator css-nnjw4v"
+                            className="chakra-form__required-indicator css-1ssjhh"
                             role="presentation"
                           >
                             *
@@ -330,7 +332,7 @@ exports[`upload should render without errors 1`] = `
                     <input
                       aria-describedby="field-2-helptext"
                       aria-required={true}
-                      className="chakra-input css-18q2db8"
+                      className="chakra-input css-ujci2j"
                       disabled={false}
                       id="files"
                       multiple={true}
@@ -360,7 +362,7 @@ exports[`upload should render without errors 1`] = `
                       id="field-2-helptext"
                     >
                       <div
-                        className="chakra-form__helper-text css-1qoocny"
+                        className="chakra-form__helper-text css-1y1zyf5"
                         id="field-2-helptext"
                       >
                         Max file size is 
@@ -391,7 +393,7 @@ exports[`upload should render without errors 1`] = `
               className="chakra-heading"
             >
               <h2
-                className="chakra-heading css-14g9y4z"
+                className="chakra-heading css-9f6g39"
               >
                 CSV Options
               </h2>
@@ -405,6 +407,8 @@ exports[`upload should render without errors 1`] = `
               __css={
                 Object {
                   "& > *:not(style) ~ *:not(style)": Object {
+                    "marginBottom": 0,
+                    "marginEnd": 0,
                     "marginStart": "0.5rem",
                     "marginTop": 0,
                   },
@@ -415,7 +419,7 @@ exports[`upload should render without errors 1`] = `
               flexDirection="row"
             >
               <div
-                className="chakra-stack css-loe1j3"
+                className="chakra-stack css-x9juev"
               >
                 <FormControl
                   flex="1"
@@ -463,7 +467,7 @@ exports[`upload should render without errors 1`] = `
                           id="field-3-label"
                         >
                           <label
-                            className="chakra-form__label css-1qqx8g3"
+                            className="chakra-form__label css-10m1y3x"
                             data-disabled=""
                             htmlFor="latField"
                             id="field-3-label"
@@ -474,7 +478,7 @@ exports[`upload should render without errors 1`] = `
                                 __css={
                                   Object {
                                     "color": "red.500",
-                                    "ml": 1,
+                                    "marginStart": 1,
                                   }
                                 }
                                 aria-hidden={true}
@@ -483,7 +487,7 @@ exports[`upload should render without errors 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-form__required-indicator css-nnjw4v"
+                                  className="chakra-form__required-indicator css-1ssjhh"
                                   role="presentation"
                                 >
                                   *
@@ -551,7 +555,7 @@ exports[`upload should render without errors 1`] = `
                         >
                           <input
                             aria-required={true}
-                            className="chakra-input css-18q2db8"
+                            className="chakra-input css-ujci2j"
                             defaultValue="lat"
                             disabled={true}
                             id="latField"
@@ -613,7 +617,7 @@ exports[`upload should render without errors 1`] = `
                           id="field-4-label"
                         >
                           <label
-                            className="chakra-form__label css-1qqx8g3"
+                            className="chakra-form__label css-10m1y3x"
                             data-disabled=""
                             htmlFor="lonField"
                             id="field-4-label"
@@ -624,7 +628,7 @@ exports[`upload should render without errors 1`] = `
                                 __css={
                                   Object {
                                     "color": "red.500",
-                                    "ml": 1,
+                                    "marginStart": 1,
                                   }
                                 }
                                 aria-hidden={true}
@@ -633,7 +637,7 @@ exports[`upload should render without errors 1`] = `
                               >
                                 <span
                                   aria-hidden={true}
-                                  className="chakra-form__required-indicator css-nnjw4v"
+                                  className="chakra-form__required-indicator css-1ssjhh"
                                   role="presentation"
                                 >
                                   *
@@ -701,7 +705,7 @@ exports[`upload should render without errors 1`] = `
                         >
                           <input
                             aria-required={true}
-                            className="chakra-input css-18q2db8"
+                            className="chakra-input css-ujci2j"
                             defaultValue="lon"
                             disabled={true}
                             id="lonField"
@@ -769,7 +773,7 @@ exports[`upload should render without errors 1`] = `
                     id="field-7-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       data-disabled=""
                       htmlFor="freeform"
                       id="field-7-label"
@@ -841,7 +845,7 @@ exports[`upload should render without errors 1`] = `
                                 target="_blank"
                               >
                                 <a
-                                  className="chakra-link css-1n35k0b"
+                                  className="chakra-link css-kr7lk2"
                                   href="https://docs.conveyal.com//prepare-inputs/upload-opportunity-data#csv"
                                   onBlur={[Function]}
                                   onClick={[Function]}
@@ -899,15 +903,26 @@ exports[`upload should render without errors 1`] = `
                   <Styled(label)
                     __css={
                       Object {
+                        "--slider-thumb-x": "var(--slider-track-diff)",
+                        "--slider-track-diff": "calc(var(--slider-track-width) - var(--slider-track-height))",
+                        "--slider-track-height": "1rem",
+                        "--slider-track-width": "1.875rem",
+                        "_rtl": Object {
+                          "--slider-thumb-x": "calc(-1 * var(--slider-track-diff))",
+                        },
                         "display": "inline-block",
                         "lineHeight": "normal",
                         "verticalAlign": "middle",
                       }
                     }
                     className="chakra-switch"
+                    data-disabled=""
+                    onClick={[Function]}
                   >
                     <label
-                      className="chakra-switch css-r74jfy"
+                      className="chakra-switch css-1glqkmk"
+                      data-disabled=""
+                      onClick={[Function]}
                     >
                       <input
                         aria-disabled={true}
@@ -954,11 +969,11 @@ exports[`upload should render without errors 1`] = `
                             "cursor": "pointer",
                             "display": "inline-flex",
                             "flexShrink": 0,
-                            "h": "1rem",
+                            "height": "var(--slider-track-height)",
                             "justifyContent": "flex-start",
                             "p": "2px",
                             "transition": "all 120ms",
-                            "w": "1.875rem",
+                            "width": "var(--slider-track-width)",
                           }
                         }
                         aria-hidden={true}
@@ -971,7 +986,7 @@ exports[`upload should render without errors 1`] = `
                       >
                         <span
                           aria-hidden={true}
-                          className="chakra-switch__track css-5femyx"
+                          className="chakra-switch__track css-1b2twv6"
                           data-disabled=""
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
@@ -982,20 +997,19 @@ exports[`upload should render without errors 1`] = `
                             __css={
                               Object {
                                 "_checked": Object {
-                                  "transform": "translateX(0.875rem)",
+                                  "transform": "translateX(var(--slider-thumb-x))",
                                 },
                                 "bg": "white",
-                                "borderRadius": "full",
-                                "h": "1rem",
-                                "transform": "translateX(0)",
+                                "borderRadius": "inherit",
+                                "height": "var(--slider-track-height)",
                                 "transition": "transform 250ms",
-                                "w": "1rem",
+                                "width": "var(--slider-track-height)",
                               }
                             }
                             className="chakra-switch__thumb"
                           >
                             <span
-                              className="chakra-switch__thumb css-uh46nq"
+                              className="chakra-switch__thumb css-1t2ag9e"
                             />
                           </Styled(span)>
                         </span>
@@ -1050,7 +1064,7 @@ exports[`upload should render without errors 1`] = `
                     id="field-8-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       data-disabled=""
                       htmlFor="idField"
                       id="field-8-label"
@@ -1061,7 +1075,7 @@ exports[`upload should render without errors 1`] = `
                           __css={
                             Object {
                               "color": "red.500",
-                              "ml": 1,
+                              "marginStart": 1,
                             }
                           }
                           aria-hidden={true}
@@ -1070,7 +1084,7 @@ exports[`upload should render without errors 1`] = `
                         >
                           <span
                             aria-hidden={true}
-                            className="chakra-form__required-indicator css-nnjw4v"
+                            className="chakra-form__required-indicator css-1ssjhh"
                             role="presentation"
                           >
                             *
@@ -1136,7 +1150,7 @@ exports[`upload should render without errors 1`] = `
                   >
                     <input
                       aria-required={true}
-                      className="chakra-input css-18q2db8"
+                      className="chakra-input css-ujci2j"
                       disabled={true}
                       id="idField"
                       name="idField"
@@ -1194,7 +1208,7 @@ exports[`upload should render without errors 1`] = `
                     id="field-9-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       data-disabled=""
                       htmlFor="countField"
                       id="field-9-label"
@@ -1257,7 +1271,7 @@ exports[`upload should render without errors 1`] = `
                     required={false}
                   >
                     <input
-                      className="chakra-input css-18q2db8"
+                      className="chakra-input css-ujci2j"
                       disabled={true}
                       id="countField"
                       name="countField"
@@ -1321,7 +1335,7 @@ exports[`upload should render without errors 1`] = `
                     id="field-10-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       data-disabled=""
                       htmlFor="paired"
                       id="field-10-label"
@@ -1339,15 +1353,26 @@ exports[`upload should render without errors 1`] = `
                   <Styled(label)
                     __css={
                       Object {
+                        "--slider-thumb-x": "var(--slider-track-diff)",
+                        "--slider-track-diff": "calc(var(--slider-track-width) - var(--slider-track-height))",
+                        "--slider-track-height": "1rem",
+                        "--slider-track-width": "1.875rem",
+                        "_rtl": Object {
+                          "--slider-thumb-x": "calc(-1 * var(--slider-track-diff))",
+                        },
                         "display": "inline-block",
                         "lineHeight": "normal",
                         "verticalAlign": "middle",
                       }
                     }
                     className="chakra-switch"
+                    data-disabled=""
+                    onClick={[Function]}
                   >
                     <label
-                      className="chakra-switch css-r74jfy"
+                      className="chakra-switch css-1glqkmk"
+                      data-disabled=""
+                      onClick={[Function]}
                     >
                       <input
                         aria-disabled={true}
@@ -1394,11 +1419,11 @@ exports[`upload should render without errors 1`] = `
                             "cursor": "pointer",
                             "display": "inline-flex",
                             "flexShrink": 0,
-                            "h": "1rem",
+                            "height": "var(--slider-track-height)",
                             "justifyContent": "flex-start",
                             "p": "2px",
                             "transition": "all 120ms",
-                            "w": "1.875rem",
+                            "width": "var(--slider-track-width)",
                           }
                         }
                         aria-hidden={true}
@@ -1411,7 +1436,7 @@ exports[`upload should render without errors 1`] = `
                       >
                         <span
                           aria-hidden={true}
-                          className="chakra-switch__track css-5femyx"
+                          className="chakra-switch__track css-1b2twv6"
                           data-disabled=""
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
@@ -1422,20 +1447,19 @@ exports[`upload should render without errors 1`] = `
                             __css={
                               Object {
                                 "_checked": Object {
-                                  "transform": "translateX(0.875rem)",
+                                  "transform": "translateX(var(--slider-thumb-x))",
                                 },
                                 "bg": "white",
-                                "borderRadius": "full",
-                                "h": "1rem",
-                                "transform": "translateX(0)",
+                                "borderRadius": "inherit",
+                                "height": "var(--slider-track-height)",
                                 "transition": "transform 250ms",
-                                "w": "1rem",
+                                "width": "var(--slider-track-height)",
                               }
                             }
                             className="chakra-switch__thumb"
                           >
                             <span
-                              className="chakra-switch__thumb css-uh46nq"
+                              className="chakra-switch__thumb css-1t2ag9e"
                             />
                           </Styled(span)>
                         </span>
@@ -1490,7 +1514,7 @@ exports[`upload should render without errors 1`] = `
                     id="field-11-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       data-disabled=""
                       htmlFor="latField2"
                       id="field-11-label"
@@ -1502,7 +1526,7 @@ exports[`upload should render without errors 1`] = `
                           __css={
                             Object {
                               "color": "red.500",
-                              "ml": 1,
+                              "marginStart": 1,
                             }
                           }
                           aria-hidden={true}
@@ -1511,7 +1535,7 @@ exports[`upload should render without errors 1`] = `
                         >
                           <span
                             aria-hidden={true}
-                            className="chakra-form__required-indicator css-nnjw4v"
+                            className="chakra-form__required-indicator css-1ssjhh"
                             role="presentation"
                           >
                             *
@@ -1575,7 +1599,7 @@ exports[`upload should render without errors 1`] = `
                   >
                     <input
                       aria-required={true}
-                      className="chakra-input css-18q2db8"
+                      className="chakra-input css-ujci2j"
                       disabled={true}
                       id="latField2"
                       name="latField2"
@@ -1633,7 +1657,7 @@ exports[`upload should render without errors 1`] = `
                     id="field-12-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       data-disabled=""
                       htmlFor="lonField2"
                       id="field-12-label"
@@ -1645,7 +1669,7 @@ exports[`upload should render without errors 1`] = `
                           __css={
                             Object {
                               "color": "red.500",
-                              "ml": 1,
+                              "marginStart": 1,
                             }
                           }
                           aria-hidden={true}
@@ -1654,7 +1678,7 @@ exports[`upload should render without errors 1`] = `
                         >
                           <span
                             aria-hidden={true}
-                            className="chakra-form__required-indicator css-nnjw4v"
+                            className="chakra-form__required-indicator css-1ssjhh"
                             role="presentation"
                           >
                             *
@@ -1718,7 +1742,7 @@ exports[`upload should render without errors 1`] = `
                   >
                     <input
                       aria-required={true}
-                      className="chakra-input css-18q2db8"
+                      className="chakra-input css-ujci2j"
                       disabled={true}
                       id="lonField2"
                       name="lonField2"
@@ -1787,7 +1811,7 @@ exports[`upload should render without errors 1`] = `
               type="submit"
             >
               <button
-                className="chakra-button css-ywjnlx"
+                className="chakra-button css-r1h8jx"
                 disabled={false}
                 type="submit"
               >
@@ -1795,11 +1819,14 @@ exports[`upload should render without errors 1`] = `
                   marginEnd="0.5rem"
                 >
                   <Styled(span)
+                    alignSelf="center"
                     className="chakra-button__icon"
+                    display="inline-flex"
+                    flexShrink={0}
                     marginEnd="0.5rem"
                   >
                     <span
-                      className="chakra-button__icon css-ktvjz1"
+                      className="chakra-button__icon css-1wh2kri"
                     >
                       <FaPlus
                         aria-hidden={true}

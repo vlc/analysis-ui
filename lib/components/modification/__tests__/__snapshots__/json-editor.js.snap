@@ -16,6 +16,8 @@ exports[`Components > Modification > JSON Editor should render 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
@@ -26,7 +28,7 @@ exports[`Components > Modification > JSON Editor should render 1`] = `
       flexDirection="column"
     >
       <div
-        className="chakra-stack css-4daikc"
+        className="chakra-stack css-egoftb"
       >
         <Text
           key=".0"
@@ -105,7 +107,7 @@ exports[`Components > Modification > JSON Editor should render 1`] = `
             onFocus={[Function]}
           >
             <textarea
-              className="chakra-textarea css-d8oix8"
+              className="chakra-textarea css-vqgoot"
               defaultValue="{
   \\"name\\": \\"hello\\"
 }"
@@ -167,7 +169,7 @@ exports[`Components > Modification > JSON Editor should render 1`] = `
             type="button"
           >
             <button
-              className="chakra-button css-1uiu0j2"
+              className="chakra-button css-3v23rq"
               onClick={[Function]}
               type="button"
             >

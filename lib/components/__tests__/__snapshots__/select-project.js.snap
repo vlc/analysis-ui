@@ -134,6 +134,8 @@ exports[`Component > SelectProject 1`] = `
                       __css={
                         Object {
                           "& > *:not(style) ~ *:not(style)": Object {
+                            "marginBottom": 0,
+                            "marginEnd": 0,
                             "marginStart": 0,
                             "marginTop": 4,
                           },
@@ -146,7 +148,7 @@ exports[`Component > SelectProject 1`] = `
                       py={4}
                     >
                       <div
-                        className="chakra-stack css-ct7syb"
+                        className="chakra-stack css-ejfpxo"
                       >
                         <Flex
                           align="center"
@@ -169,7 +171,7 @@ exports[`Component > SelectProject 1`] = `
                             pl={2}
                           >
                             <div
-                              className="css-1ruoioj"
+                              className="css-12m6pm2"
                             >
                               <Heading
                                 flex="1"
@@ -188,7 +190,7 @@ exports[`Component > SelectProject 1`] = `
                                   flex="1"
                                 >
                                   <h2
-                                    className="chakra-heading css-o8drfs"
+                                    className="chakra-heading css-1cy2trb"
                                   >
                                     Mock Region
                                   </h2>
@@ -279,7 +281,7 @@ exports[`Component > SelectProject 1`] = `
                                           >
                                             <button
                                               aria-label="Edit region settings"
-                                              className="chakra-button css-1o9h2ju"
+                                              className="chakra-button css-rswj2l"
                                               onBlur={[Function]}
                                               onClick={[Function]}
                                               onFocus={[Function]}
@@ -336,6 +338,8 @@ exports[`Component > SelectProject 1`] = `
                             __css={
                               Object {
                                 "& > *:not(style) ~ *:not(style)": Object {
+                                  "marginBottom": 0,
+                                  "marginEnd": 0,
                                   "marginStart": 0,
                                   "marginTop": "0.5rem",
                                 },
@@ -347,7 +351,7 @@ exports[`Component > SelectProject 1`] = `
                             px={2}
                           >
                             <div
-                              className="chakra-stack css-i652e9"
+                              className="chakra-stack css-r3gboo"
                             >
                               <Button
                                 colorScheme="green"
@@ -402,7 +406,7 @@ exports[`Component > SelectProject 1`] = `
                                   type="button"
                                 >
                                   <button
-                                    className="chakra-button css-1uiu0j2"
+                                    className="chakra-button css-3v23rq"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -432,6 +436,8 @@ exports[`Component > SelectProject 1`] = `
                             __css={
                               Object {
                                 "& > *:not(style) ~ *:not(style)": Object {
+                                  "marginBottom": 0,
+                                  "marginEnd": 0,
                                   "marginStart": 0,
                                   "marginTop": 0,
                                 },
@@ -443,7 +449,7 @@ exports[`Component > SelectProject 1`] = `
                             px={2}
                           >
                             <div
-                              className="chakra-stack css-obiul0"
+                              className="chakra-stack css-v3sj77"
                             >
                               <Project
                                 key=".$1"
@@ -565,7 +571,7 @@ exports[`Component > SelectProject 1`] = `
                                       whiteSpace="break-spaces"
                                     >
                                       <button
-                                        className="chakra-button css-3aw1nz"
+                                        className="chakra-button css-1804bf1"
                                         onClick={[Function]}
                                         type="button"
                                       >
@@ -573,11 +579,14 @@ exports[`Component > SelectProject 1`] = `
                                           marginEnd="0.5rem"
                                         >
                                           <Styled(span)
+                                            alignSelf="center"
                                             className="chakra-button__icon"
+                                            display="inline-flex"
+                                            flexShrink={0}
                                             marginEnd="0.5rem"
                                           >
                                             <span
-                                              className="chakra-button__icon css-ktvjz1"
+                                              className="chakra-button__icon css-1wh2kri"
                                             >
                                               <FaCube
                                                 aria-hidden={true}

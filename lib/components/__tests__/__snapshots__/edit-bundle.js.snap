@@ -33,6 +33,8 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
@@ -43,7 +45,7 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
       flexDirection="column"
     >
       <div
-        className="chakra-stack css-4daikc"
+        className="chakra-stack css-egoftb"
       >
         <Flex
           justify="space-between"
@@ -89,7 +91,7 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                   className="chakra-heading"
                 >
                   <h2
-                    className="chakra-heading css-uv65y"
+                    className="chakra-heading css-1jb3vzl"
                   >
                     Edit bundle
                   </h2>
@@ -147,7 +149,7 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                   type="button"
                 >
                   <button
-                    className="chakra-button css-ywjnlx"
+                    className="chakra-button css-r1h8jx"
                     onClick={[Function]}
                     type="button"
                   >
@@ -156,11 +158,14 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                       marginStart="0.5rem"
                     >
                       <Styled(span)
+                        alignSelf="center"
                         className="chakra-button__icon"
+                        display="inline-flex"
+                        flexShrink={0}
                         marginStart="0.5rem"
                       >
                         <span
-                          className="chakra-button__icon css-1oeb2oe"
+                          className="chakra-button__icon css-1hzyiq5"
                         >
                           <FaPlus
                             aria-hidden={true}
@@ -258,7 +263,7 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                         id="field-1-label"
                       >
                         <label
-                          className="chakra-form__label css-1qqx8g3"
+                          className="chakra-form__label css-10m1y3x"
                           htmlFor="00000000-0000-0000-0000-000000000000"
                           id="field-1-label"
                         >
@@ -323,7 +328,7 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                         value="Mock Bundle"
                       >
                         <input
-                          className="chakra-input css-18q2db8"
+                          className="chakra-input css-ujci2j"
                           disabled={false}
                           id="00000000-0000-0000-0000-000000000000"
                           onBlur={[Function]}
@@ -399,7 +404,7 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
             type="button"
           >
             <button
-              className="chakra-button css-1fbzhv4"
+              className="chakra-button css-12tv2mq"
               disabled={true}
               onClick={[Function]}
               title="Save renamed bundle/feed names"
@@ -492,7 +497,7 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                         aria-controls="popover-content-3"
                         aria-expanded={false}
                         aria-haspopup="dialog"
-                        className="chakra-button css-1po5o27"
+                        className="chakra-button css-1xns1gq"
                         id="popover-trigger-3"
                         onClick={[Function]}
                         type="button"
@@ -501,11 +506,14 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                           marginEnd="0.5rem"
                         >
                           <Styled(span)
+                            alignSelf="center"
                             className="chakra-button__icon"
+                            display="inline-flex"
+                            flexShrink={0}
                             marginEnd="0.5rem"
                           >
                             <span
-                              className="chakra-button__icon css-ktvjz1"
+                              className="chakra-button__icon css-1wh2kri"
                             >
                               <FaTrash
                                 aria-hidden={true}
@@ -567,14 +575,14 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                             style="position: absolute; z-index: 10000; top: 0px; left: 0px; right: 0px;"
                           >
                             <div
-                              class="css-n0uled"
-                              style="visibility: hidden; position: absolute; left: 0px; top: 0px;"
+                              class="chakra-popover__popper css-1qq679y"
+                              style="visibility: hidden; position: absolute; min-width: max-content;"
                             >
                               <section
-                                class="chakra-popover__content css-xjibc0"
+                                class="chakra-popover__content css-wdh6r4"
                                 id="popover-content-3"
                                 role="dialog"
-                                style="transform-origin: top center; opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
+                                style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
                                 tabindex="-1"
                               />
                             </div>
@@ -601,39 +609,43 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                             <Styled(div)
                               __css={
                                 Object {
-                                  "maxW": "xs",
-                                  "w": "100%",
                                   "zIndex": 10,
                                 }
                               }
+                              className="chakra-popover__popper"
                               style={
                                 Object {
-                                  "left": "0",
+                                  "--popper-arrow-shadow-color": undefined,
+                                  "--popper-arrow-size": undefined,
+                                  "minWidth": "max-content",
                                   "position": "absolute",
-                                  "top": "0",
                                   "visibility": "hidden",
                                 }
                               }
                             >
                               <div
-                                className="css-n0uled"
+                                className="chakra-popover__popper css-1qq679y"
                                 style={
                                   Object {
-                                    "left": "0",
+                                    "--popper-arrow-shadow-color": undefined,
+                                    "--popper-arrow-size": undefined,
+                                    "minWidth": "max-content",
                                     "position": "absolute",
-                                    "top": "0",
                                     "visibility": "hidden",
                                   }
                                 }
                               >
-                                <Styled(Component)
+                                <ForwardRef
                                   __css={
                                     Object {
+                                      "--popover-bg": "colors.white",
+                                      "--popper-arrow-bg": "var(--popover-bg)",
+                                      "--popper-arrow-shadow-color": "colors.gray.200",
                                       "_focus": Object {
                                         "boxShadow": "outline",
                                         "outline": 0,
                                       },
-                                      "bg": "white",
+                                      "bg": "var(--popover-bg)",
                                       "border": "1px solid",
                                       "borderColor": "inherit",
                                       "borderRadius": "md",
@@ -641,20 +653,18 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                                       "display": "flex",
                                       "flexDirection": "column",
                                       "position": "relative",
+                                      "width": "xs",
                                       "zIndex": "inherit",
                                     }
                                   }
-                                  animate="exit"
                                   className="chakra-popover__content"
                                   id="popover-content-3"
-                                  initial={false}
                                   onBlur={[Function]}
                                   onKeyDown={[Function]}
-                                  onUpdate={[Function]}
                                   role="dialog"
                                   style={
                                     Object {
-                                      "transformOrigin": "top center",
+                                      "transformOrigin": "var(--popper-transform-origin)",
                                     }
                                   }
                                   tabIndex={-1}
@@ -694,17 +704,37 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                                   }
                                 >
                                   <ForwardRef(MotionComponent)
+                                    __css={
+                                      Object {
+                                        "--popover-bg": "colors.white",
+                                        "--popper-arrow-bg": "var(--popover-bg)",
+                                        "--popper-arrow-shadow-color": "colors.gray.200",
+                                        "_focus": Object {
+                                          "boxShadow": "outline",
+                                          "outline": 0,
+                                        },
+                                        "bg": "var(--popover-bg)",
+                                        "border": "1px solid",
+                                        "borderColor": "inherit",
+                                        "borderRadius": "md",
+                                        "boxShadow": "sm",
+                                        "display": "flex",
+                                        "flexDirection": "column",
+                                        "position": "relative",
+                                        "width": "xs",
+                                        "zIndex": "inherit",
+                                      }
+                                    }
                                     animate="exit"
-                                    className="chakra-popover__content css-xjibc0"
+                                    className="chakra-popover__content"
                                     id="popover-content-3"
                                     initial={false}
                                     onBlur={[Function]}
                                     onKeyDown={[Function]}
-                                    onUpdate={[Function]}
                                     role="dialog"
                                     style={
                                       Object {
-                                        "transformOrigin": "top center",
+                                        "transformOrigin": "var(--popper-transform-origin)",
                                       }
                                     }
                                     tabIndex={-1}
@@ -743,8 +773,29 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                                       }
                                     }
                                   >
-                                    <section
-                                      className="chakra-popover__content css-xjibc0"
+                                    <Styled(section)
+                                      __css={
+                                        Object {
+                                          "--popover-bg": "colors.white",
+                                          "--popper-arrow-bg": "var(--popover-bg)",
+                                          "--popper-arrow-shadow-color": "colors.gray.200",
+                                          "_focus": Object {
+                                            "boxShadow": "outline",
+                                            "outline": 0,
+                                          },
+                                          "bg": "var(--popover-bg)",
+                                          "border": "1px solid",
+                                          "borderColor": "inherit",
+                                          "borderRadius": "md",
+                                          "boxShadow": "sm",
+                                          "display": "flex",
+                                          "flexDirection": "column",
+                                          "position": "relative",
+                                          "width": "xs",
+                                          "zIndex": "inherit",
+                                        }
+                                      }
+                                      className="chakra-popover__content"
                                       id="popover-content-3"
                                       onBlur={[Function]}
                                       onKeyDown={[Function]}
@@ -753,25 +804,62 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                                         Object {
                                           "opacity": 0,
                                           "transform": "scale(0.95) translateZ(0)",
-                                          "transformOrigin": "top center",
+                                          "transformOrigin": "var(--popper-transform-origin)",
                                           "visibility": "hidden",
                                         }
                                       }
                                       tabIndex={-1}
-                                    />
+                                    >
+                                      <section
+                                        className="chakra-popover__content css-wdh6r4"
+                                        id="popover-content-3"
+                                        onBlur={[Function]}
+                                        onKeyDown={[Function]}
+                                        role="dialog"
+                                        style={
+                                          Object {
+                                            "opacity": 0,
+                                            "transform": "scale(0.95) translateZ(0)",
+                                            "transformOrigin": "var(--popper-transform-origin)",
+                                            "visibility": "hidden",
+                                          }
+                                        }
+                                        tabIndex={-1}
+                                      />
+                                    </Styled(section)>
                                     <Component
+                                      __css={
+                                        Object {
+                                          "--popover-bg": "colors.white",
+                                          "--popper-arrow-bg": "var(--popover-bg)",
+                                          "--popper-arrow-shadow-color": "colors.gray.200",
+                                          "_focus": Object {
+                                            "boxShadow": "outline",
+                                            "outline": 0,
+                                          },
+                                          "bg": "var(--popover-bg)",
+                                          "border": "1px solid",
+                                          "borderColor": "inherit",
+                                          "borderRadius": "md",
+                                          "boxShadow": "sm",
+                                          "display": "flex",
+                                          "flexDirection": "column",
+                                          "position": "relative",
+                                          "width": "xs",
+                                          "zIndex": "inherit",
+                                        }
+                                      }
                                       animate="exit"
-                                      className="chakra-popover__content css-xjibc0"
+                                      className="chakra-popover__content"
                                       id="popover-content-3"
                                       initial={false}
                                       key="animation"
                                       onBlur={[Function]}
                                       onKeyDown={[Function]}
-                                      onUpdate={[Function]}
                                       role="dialog"
                                       style={
                                         Object {
-                                          "transformOrigin": "top center",
+                                          "transformOrigin": "var(--popper-transform-origin)",
                                         }
                                       }
                                       tabIndex={-1}
@@ -826,10 +914,10 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                                           "clearAllListeners": [Function],
                                           "clearState": [Function],
                                           "current": <section
-                                            class="chakra-popover__content css-xjibc0"
+                                            class="chakra-popover__content css-wdh6r4"
                                             id="popover-content-3"
                                             role="dialog"
-                                            style="transform-origin: top center; opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
+                                            style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
                                             tabindex="-1"
                                           />,
                                           "depth": 0,
@@ -938,7 +1026,7 @@ exports[`Component EditBundle snapshot(mount) 1`] = `
                                       }
                                     />
                                   </ForwardRef(MotionComponent)>
-                                </Styled(Component)>
+                                </ForwardRef>
                               </div>
                             </Styled(div)>
                           </PopoverContent>

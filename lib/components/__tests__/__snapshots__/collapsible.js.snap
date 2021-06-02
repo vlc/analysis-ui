@@ -61,7 +61,7 @@ exports[`Component Collapsible snapshot(mount) 1`] = `
           type="button"
         >
           <button
-            className="chakra-button css-naq3gw"
+            className="chakra-button css-8ptd5d"
             onClick={[Function]}
             type="button"
           >
@@ -69,11 +69,14 @@ exports[`Component Collapsible snapshot(mount) 1`] = `
               marginEnd="0.5rem"
             >
               <Styled(span)
+                alignSelf="center"
                 className="chakra-button__icon"
+                display="inline-flex"
+                flexShrink={0}
                 marginEnd="0.5rem"
               >
                 <span
-                  className="chakra-button__icon css-ktvjz1"
+                  className="chakra-button__icon css-1wh2kri"
                 >
                   <FaChevronRight
                     aria-hidden={true}
@@ -121,197 +124,418 @@ exports[`Component Collapsible snapshot(mount) 1`] = `
       <Collapse
         in={false}
       >
-        <ForwardRef(MotionComponent)
-          animate="exit"
-          className="chakra-collapse"
+        <AnimatePresence
           custom={
             Object {
               "animateOpacity": true,
               "endingHeight": "auto",
               "startingHeight": 0,
+              "transition": Object {
+                "enter": Object {
+                  "duration": 0,
+                },
+              },
+              "transitionEnd": Object {
+                "enter": Object {
+                  "overflow": "initial",
+                },
+                "exit": Object {
+                  "display": "none",
+                },
+              },
             }
           }
           initial={false}
-          onAnimationComplete={[Function]}
-          style={
-            Object {
-              "display": "none",
-              "overflow": "hidden",
-            }
-          }
-          variants={
-            Object {
-              "enter": [Function],
-              "exit": [Function],
-            }
-          }
         >
-          <div
-            className="chakra-collapse"
-            style={
-              Object {
-                "display": "none",
-                "height": "0px",
-                "opacity": 0,
-                "overflow": "hidden",
-              }
-            }
+          <PresenceChild
+            isPresent={true}
+            key=""
+            presenceAffectsLayout={true}
           >
-            Hello world
-          </div>
-          <Component
-            animate="exit"
-            className="chakra-collapse"
-            custom={
-              Object {
-                "animateOpacity": true,
-                "endingHeight": "auto",
-                "startingHeight": 0,
-              }
-            }
-            initial={false}
-            key="animation"
-            onAnimationComplete={[Function]}
-            style={
-              Object {
-                "display": "none",
-                "overflow": "hidden",
-              }
-            }
-            variants={
-              Object {
-                "enter": [Function],
-                "exit": [Function],
-              }
-            }
-            visualElement={
-              Object {
-                "addChild": [Function],
-                "addValue": [Function],
-                "addVariantChild": [Function],
-                "animationState": Object {
-                  "animateChanges": [Function],
-                  "getState": [Function],
-                  "isAnimated": [Function],
-                  "setActive": [Function],
-                  "setAnimateFunction": [Function],
-                },
-                "blockInitialAnimation": false,
-                "build": [Function],
-                "clearAllListeners": [Function],
-                "clearState": [Function],
-                "current": <div
-                  class="chakra-collapse"
-                  style="overflow: hidden; display: none; opacity: 0; height: 0px;"
-                >
-                  Hello world
-                </div>,
-                "depth": 0,
-                "enableLayoutProjection": [Function],
-                "forEachValue": [Function],
-                "getBaseTarget": [Function],
-                "getClosestVariantNode": [Function],
-                "getDefaultTransition": [Function],
-                "getInstance": [Function],
-                "getLatestValues": [Function],
-                "getLayoutId": [Function],
-                "getLayoutState": [Function],
-                "getProjectionAnimationProgress": [Function],
-                "getProps": [Function],
-                "getStaticValue": [Function],
-                "getValue": [Function],
-                "getVariant": [Function],
-                "getVariantContext": [Function],
-                "hasValue": [Function],
-                "isHoverEventsEnabled": true,
-                "isMounted": [Function],
-                "isPresenceRoot": true,
-                "isPresent": true,
-                "isStatic": false,
-                "isVisible": undefined,
-                "lockProjectionTarget": [Function],
-                "makeTargetAnimatable": [Function],
-                "manuallyAnimateOnMount": false,
-                "measureViewportBox": [Function],
-                "notifyAnimationComplete": [Function],
-                "notifyAnimationStart": [Function],
-                "notifyBeforeLayoutMeasure": [Function],
-                "notifyLayoutAnimationComplete": [Function],
-                "notifyLayoutMeasure": [Function],
-                "notifyLayoutReady": [Function],
-                "notifyLayoutUpdate": [Function],
-                "notifyRender": [Function],
-                "notifySetAxisTarget": [Function],
-                "notifyUpdate": [Function],
-                "notifyViewportBoxUpdate": [Function],
-                "onAnimationComplete": [Function],
-                "onAnimationStart": [Function],
-                "onBeforeLayoutMeasure": [Function],
-                "onLayoutAnimationComplete": [Function],
-                "onLayoutMeasure": [Function],
-                "onLayoutUpdate": [Function],
-                "onRender": [Function],
-                "onSetAxisTarget": [Function],
-                "onUpdate": [Function],
-                "onViewportBoxUpdate": [Function],
-                "path": Array [],
-                "pointTo": [Function],
-                "presence": 0,
-                "presenceId": undefined,
-                "projection": Object {
-                  "isEnabled": false,
-                  "isTargetLocked": false,
-                  "target": Object {
-                    "x": Object {
-                      "max": 1,
-                      "min": 0,
-                    },
-                    "y": Object {
-                      "max": 1,
-                      "min": 0,
+            <ForwardRef(MotionComponent)
+              animate="exit"
+              className="chakra-collapse"
+              custom={
+                Object {
+                  "animateOpacity": true,
+                  "endingHeight": "auto",
+                  "startingHeight": 0,
+                  "transition": Object {
+                    "enter": Object {
+                      "duration": 0,
                     },
                   },
-                  "targetFinal": Object {
-                    "x": Object {
-                      "max": 1,
-                      "min": 0,
+                  "transitionEnd": Object {
+                    "enter": Object {
+                      "overflow": "initial",
                     },
-                    "y": Object {
-                      "max": 1,
-                      "min": 0,
+                    "exit": Object {
+                      "display": "none",
                     },
                   },
-                },
-                "readValue": [Function],
-                "rebaseProjectionTarget": [Function],
-                "ref": [Function],
-                "removeValue": [Function],
-                "resetTransform": [Function],
-                "scheduleRender": [Function],
-                "scheduleUpdateLayoutProjection": [Function],
-                "setBaseTarget": [Function],
-                "setCrossfader": [Function],
-                "setProjectionTargetAxis": [Function],
-                "setProps": [Function],
-                "setStaticValue": [Function],
-                "setVisibility": [Function],
-                "snapshotViewportBox": [Function],
-                "sortNodePosition": [Function],
-                "startLayoutAnimation": [Function],
-                "stopLayoutAnimation": [Function],
-                "suspendHoverEvents": [Function],
-                "syncRender": [Function],
-                "treeType": "dom",
-                "unlockProjectionTarget": [Function],
-                "updateLayoutMeasurement": [Function],
-                "updateLayoutProjection": [Function],
-                "updatePropListeners": [Function],
-                "variantChildren": Set {},
-                "withoutTransform": [Function],
+                }
               }
-            }
-          />
-        </ForwardRef(MotionComponent)>
+              exit="exit"
+              initial={false}
+              style={
+                Object {
+                  "display": "block",
+                  "overflow": "hidden",
+                }
+              }
+              variants={
+                Object {
+                  "enter": [Function],
+                  "exit": [Function],
+                }
+              }
+            >
+              <div
+                className="chakra-collapse"
+                style={
+                  Object {
+                    "display": "none",
+                    "height": "0px",
+                    "opacity": 0,
+                    "overflow": "hidden",
+                  }
+                }
+              >
+                Hello world
+              </div>
+              <Component
+                animate="exit"
+                className="chakra-collapse"
+                custom={
+                  Object {
+                    "animateOpacity": true,
+                    "endingHeight": "auto",
+                    "startingHeight": 0,
+                    "transition": Object {
+                      "enter": Object {
+                        "duration": 0,
+                      },
+                    },
+                    "transitionEnd": Object {
+                      "enter": Object {
+                        "overflow": "initial",
+                      },
+                      "exit": Object {
+                        "display": "none",
+                      },
+                    },
+                  }
+                }
+                exit="exit"
+                initial={false}
+                key="animation"
+                style={
+                  Object {
+                    "display": "block",
+                    "overflow": "hidden",
+                  }
+                }
+                variants={
+                  Object {
+                    "enter": [Function],
+                    "exit": [Function],
+                  }
+                }
+                visualElement={
+                  Object {
+                    "addChild": [Function],
+                    "addValue": [Function],
+                    "addVariantChild": [Function],
+                    "animationState": Object {
+                      "animateChanges": [Function],
+                      "getState": [Function],
+                      "isAnimated": [Function],
+                      "setActive": [Function],
+                      "setAnimateFunction": [Function],
+                    },
+                    "blockInitialAnimation": true,
+                    "build": [Function],
+                    "clearAllListeners": [Function],
+                    "clearState": [Function],
+                    "current": <div
+                      class="chakra-collapse"
+                      style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+                    >
+                      Hello world
+                    </div>,
+                    "depth": 0,
+                    "enableLayoutProjection": [Function],
+                    "forEachValue": [Function],
+                    "getBaseTarget": [Function],
+                    "getClosestVariantNode": [Function],
+                    "getDefaultTransition": [Function],
+                    "getInstance": [Function],
+                    "getLatestValues": [Function],
+                    "getLayoutId": [Function],
+                    "getLayoutState": [Function],
+                    "getProjectionAnimationProgress": [Function],
+                    "getProps": [Function],
+                    "getStaticValue": [Function],
+                    "getValue": [Function],
+                    "getVariant": [Function],
+                    "getVariantContext": [Function],
+                    "hasValue": [Function],
+                    "isHoverEventsEnabled": true,
+                    "isMounted": [Function],
+                    "isPresenceRoot": true,
+                    "isPresent": true,
+                    "isStatic": false,
+                    "isVisible": undefined,
+                    "lockProjectionTarget": [Function],
+                    "makeTargetAnimatable": [Function],
+                    "manuallyAnimateOnMount": false,
+                    "measureViewportBox": [Function],
+                    "notifyAnimationComplete": [Function],
+                    "notifyAnimationStart": [Function],
+                    "notifyBeforeLayoutMeasure": [Function],
+                    "notifyLayoutAnimationComplete": [Function],
+                    "notifyLayoutMeasure": [Function],
+                    "notifyLayoutReady": [Function],
+                    "notifyLayoutUpdate": [Function],
+                    "notifyRender": [Function],
+                    "notifySetAxisTarget": [Function],
+                    "notifyUpdate": [Function],
+                    "notifyViewportBoxUpdate": [Function],
+                    "onAnimationComplete": [Function],
+                    "onAnimationStart": [Function],
+                    "onBeforeLayoutMeasure": [Function],
+                    "onLayoutAnimationComplete": [Function],
+                    "onLayoutMeasure": [Function],
+                    "onLayoutUpdate": [Function],
+                    "onRender": [Function],
+                    "onSetAxisTarget": [Function],
+                    "onUpdate": [Function],
+                    "onViewportBoxUpdate": [Function],
+                    "path": Array [],
+                    "pointTo": [Function],
+                    "presence": 0,
+                    "presenceId": 0,
+                    "projection": Object {
+                      "isEnabled": false,
+                      "isTargetLocked": false,
+                      "target": Object {
+                        "x": Object {
+                          "max": 1,
+                          "min": 0,
+                        },
+                        "y": Object {
+                          "max": 1,
+                          "min": 0,
+                        },
+                      },
+                      "targetFinal": Object {
+                        "x": Object {
+                          "max": 1,
+                          "min": 0,
+                        },
+                        "y": Object {
+                          "max": 1,
+                          "min": 0,
+                        },
+                      },
+                    },
+                    "readValue": [Function],
+                    "rebaseProjectionTarget": [Function],
+                    "ref": [Function],
+                    "removeValue": [Function],
+                    "resetTransform": [Function],
+                    "scheduleRender": [Function],
+                    "scheduleUpdateLayoutProjection": [Function],
+                    "setBaseTarget": [Function],
+                    "setCrossfader": [Function],
+                    "setProjectionTargetAxis": [Function],
+                    "setProps": [Function],
+                    "setStaticValue": [Function],
+                    "setVisibility": [Function],
+                    "snapshotViewportBox": [Function],
+                    "sortNodePosition": [Function],
+                    "startLayoutAnimation": [Function],
+                    "stopLayoutAnimation": [Function],
+                    "suspendHoverEvents": [Function],
+                    "syncRender": [Function],
+                    "treeType": "dom",
+                    "unlockProjectionTarget": [Function],
+                    "updateLayoutMeasurement": [Function],
+                    "updateLayoutProjection": [Function],
+                    "updatePropListeners": [Function],
+                    "variantChildren": Set {},
+                    "withoutTransform": [Function],
+                  }
+                }
+              />
+              <Component
+                animate="exit"
+                className="chakra-collapse"
+                custom={
+                  Object {
+                    "animateOpacity": true,
+                    "endingHeight": "auto",
+                    "startingHeight": 0,
+                    "transition": Object {
+                      "enter": Object {
+                        "duration": 0,
+                      },
+                    },
+                    "transitionEnd": Object {
+                      "enter": Object {
+                        "overflow": "initial",
+                      },
+                      "exit": Object {
+                        "display": "none",
+                      },
+                    },
+                  }
+                }
+                exit="exit"
+                initial={false}
+                key="exit"
+                style={
+                  Object {
+                    "display": "block",
+                    "overflow": "hidden",
+                  }
+                }
+                variants={
+                  Object {
+                    "enter": [Function],
+                    "exit": [Function],
+                  }
+                }
+                visualElement={
+                  Object {
+                    "addChild": [Function],
+                    "addValue": [Function],
+                    "addVariantChild": [Function],
+                    "animationState": Object {
+                      "animateChanges": [Function],
+                      "getState": [Function],
+                      "isAnimated": [Function],
+                      "setActive": [Function],
+                      "setAnimateFunction": [Function],
+                    },
+                    "blockInitialAnimation": true,
+                    "build": [Function],
+                    "clearAllListeners": [Function],
+                    "clearState": [Function],
+                    "current": <div
+                      class="chakra-collapse"
+                      style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+                    >
+                      Hello world
+                    </div>,
+                    "depth": 0,
+                    "enableLayoutProjection": [Function],
+                    "forEachValue": [Function],
+                    "getBaseTarget": [Function],
+                    "getClosestVariantNode": [Function],
+                    "getDefaultTransition": [Function],
+                    "getInstance": [Function],
+                    "getLatestValues": [Function],
+                    "getLayoutId": [Function],
+                    "getLayoutState": [Function],
+                    "getProjectionAnimationProgress": [Function],
+                    "getProps": [Function],
+                    "getStaticValue": [Function],
+                    "getValue": [Function],
+                    "getVariant": [Function],
+                    "getVariantContext": [Function],
+                    "hasValue": [Function],
+                    "isHoverEventsEnabled": true,
+                    "isMounted": [Function],
+                    "isPresenceRoot": true,
+                    "isPresent": true,
+                    "isStatic": false,
+                    "isVisible": undefined,
+                    "lockProjectionTarget": [Function],
+                    "makeTargetAnimatable": [Function],
+                    "manuallyAnimateOnMount": false,
+                    "measureViewportBox": [Function],
+                    "notifyAnimationComplete": [Function],
+                    "notifyAnimationStart": [Function],
+                    "notifyBeforeLayoutMeasure": [Function],
+                    "notifyLayoutAnimationComplete": [Function],
+                    "notifyLayoutMeasure": [Function],
+                    "notifyLayoutReady": [Function],
+                    "notifyLayoutUpdate": [Function],
+                    "notifyRender": [Function],
+                    "notifySetAxisTarget": [Function],
+                    "notifyUpdate": [Function],
+                    "notifyViewportBoxUpdate": [Function],
+                    "onAnimationComplete": [Function],
+                    "onAnimationStart": [Function],
+                    "onBeforeLayoutMeasure": [Function],
+                    "onLayoutAnimationComplete": [Function],
+                    "onLayoutMeasure": [Function],
+                    "onLayoutUpdate": [Function],
+                    "onRender": [Function],
+                    "onSetAxisTarget": [Function],
+                    "onUpdate": [Function],
+                    "onViewportBoxUpdate": [Function],
+                    "path": Array [],
+                    "pointTo": [Function],
+                    "presence": 0,
+                    "presenceId": 0,
+                    "projection": Object {
+                      "isEnabled": false,
+                      "isTargetLocked": false,
+                      "target": Object {
+                        "x": Object {
+                          "max": 1,
+                          "min": 0,
+                        },
+                        "y": Object {
+                          "max": 1,
+                          "min": 0,
+                        },
+                      },
+                      "targetFinal": Object {
+                        "x": Object {
+                          "max": 1,
+                          "min": 0,
+                        },
+                        "y": Object {
+                          "max": 1,
+                          "min": 0,
+                        },
+                      },
+                    },
+                    "readValue": [Function],
+                    "rebaseProjectionTarget": [Function],
+                    "ref": [Function],
+                    "removeValue": [Function],
+                    "resetTransform": [Function],
+                    "scheduleRender": [Function],
+                    "scheduleUpdateLayoutProjection": [Function],
+                    "setBaseTarget": [Function],
+                    "setCrossfader": [Function],
+                    "setProjectionTargetAxis": [Function],
+                    "setProps": [Function],
+                    "setStaticValue": [Function],
+                    "setVisibility": [Function],
+                    "snapshotViewportBox": [Function],
+                    "sortNodePosition": [Function],
+                    "startLayoutAnimation": [Function],
+                    "stopLayoutAnimation": [Function],
+                    "suspendHoverEvents": [Function],
+                    "syncRender": [Function],
+                    "treeType": "dom",
+                    "unlockProjectionTarget": [Function],
+                    "updateLayoutMeasurement": [Function],
+                    "updateLayoutProjection": [Function],
+                    "updatePropListeners": [Function],
+                    "variantChildren": Set {},
+                    "withoutTransform": [Function],
+                  }
+                }
+              />
+            </ForwardRef(MotionComponent)>
+          </PresenceChild>
+        </AnimatePresence>
       </Collapse>
     </div>
   </Box>

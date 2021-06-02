@@ -1,9 +1,7 @@
-import {Stack} from '@chakra-ui/react'
+import {Box, Stack} from '@chakra-ui/react'
 import get from 'lodash/get'
-import React from 'react'
 import {useSelector} from 'react-redux'
 
-import selectFeeds from 'lib/selectors/feeds-with-bundle-names'
 import selectModificationFeed from 'lib/selectors/modification-feed'
 import selectRoutePatterns from 'lib/selectors/route-patterns'
 
@@ -20,7 +18,6 @@ export default function SelectFeedRouteAndPatterns({
   trips,
   ...p
 }) {
-  const feeds = useSelector(selectFeeds)
   const routePatterns = useSelector(selectRoutePatterns)
   const selectedFeed = useSelector(selectModificationFeed)
 
@@ -38,13 +35,13 @@ export default function SelectFeedRouteAndPatterns({
 
   return (
     <Stack spacing={4} {...p}>
-      <SelectFeedAndRoutes
-        allowMultipleRoutes={allowMultipleRoutes}
-        feeds={feeds}
-        onChange={_selectFeedAndRoutes}
-        selectedFeed={selectedFeed}
-        selectedRouteIds={routes}
-      />
+      <Box>
+        <SelectFeedAndRoutes
+          allowMultipleRoutes={allowMultipleRoutes}
+          onChange={_selectFeedAndRoutes}
+          selectedRouteIds={routes}
+        />
+      </Box>
 
       {get(routes, 'length') < 2 && routePatterns.length > 0 && (
         <SelectPatterns onChange={_selectTrips} trips={trips} />

@@ -137,6 +137,8 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
@@ -162,7 +164,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
     >
       <div
         allStops={Array []}
-        className="chakra-stack css-4daikc"
+        className="chakra-stack css-egoftb"
         disabled={false}
         extendFromEnd={false}
         mapState={
@@ -193,7 +195,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             className="chakra-heading"
           >
             <h2
-              className="chakra-heading css-14g9y4z"
+              className="chakra-heading css-9f6g39"
             >
               Route Geometry
             </h2>
@@ -267,7 +269,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             type="button"
           >
             <button
-              className="chakra-button css-x5p3va"
+              className="chakra-button css-chimen"
               onClick={[Function]}
               type="button"
             >
@@ -275,11 +277,14 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                 marginEnd="0.5rem"
               >
                 <Styled(span)
+                  alignSelf="center"
                   className="chakra-button__icon"
+                  display="inline-flex"
+                  flexShrink={0}
                   marginEnd="0.5rem"
                 >
                   <span
-                    className="chakra-button__icon css-ktvjz1"
+                    className="chakra-button__icon css-1wh2kri"
                   >
                     <FaPencilAlt
                       aria-hidden={true}
@@ -334,9 +339,11 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             __css={Object {}}
             className="chakra-checkbox"
             fontWeight="normal"
+            onClick={[Function]}
           >
             <label
-              className="chakra-checkbox css-wun7cp"
+              className="chakra-checkbox css-fnpc6t"
+              onClick={[Function]}
             >
               <input
                 checked={true}
@@ -412,7 +419,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
               >
                 <span
                   aria-hidden={true}
-                  className="chakra-checkbox__control css-co2d90"
+                  className="chakra-checkbox__control css-joz5u0"
                   data-checked=""
                   onMouseDown={[Function]}
                   onMouseEnter={[Function]}
@@ -544,21 +551,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         "strokeWidth": 2,
                                       }
                                     }
-                                    variants={
-                                      Object {
-                                        "checked": Object {
-                                          "opacity": 1,
-                                          "strokeDashoffset": 0,
-                                          "transition": Object {
-                                            "duration": 0.2,
-                                          },
-                                        },
-                                        "unchecked": Object {
-                                          "opacity": 0,
-                                          "strokeDashoffset": 16,
-                                        },
-                                      }
-                                    }
                                     viewBox="0 0 12 10"
                                     width="1.2em"
                                   >
@@ -572,21 +564,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                           "strokeDasharray": 16,
                                           "strokeDashoffset": 0,
                                           "strokeWidth": 2,
-                                        }
-                                      }
-                                      variants={
-                                        Object {
-                                          "checked": Object {
-                                            "opacity": 1,
-                                            "strokeDashoffset": 0,
-                                            "transition": Object {
-                                              "duration": 0.2,
-                                            },
-                                          },
-                                          "unchecked": Object {
-                                            "opacity": 0,
-                                            "strokeDashoffset": 16,
-                                          },
                                         }
                                       }
                                       viewBox="0 0 12 10"
@@ -650,7 +627,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         "current": <svg
                                           class="css-da6t8b"
                                           style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                          variants="[object Object]"
                                           viewBox="0 0 12 10"
                                         >
                                           <polyline
@@ -727,7 +703,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                               <svg
                                                 class="css-da6t8b"
                                                 style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                variants="[object Object]"
                                                 viewBox="0 0 12 10"
                                               >
                                                 <polyline
@@ -946,7 +921,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                     <svg
                                       class="css-da6t8b"
                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                      variants="[object Object]"
                                       viewBox="0 0 12 10"
                                     >
                                       <polyline
@@ -1073,7 +1047,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "current": <svg
                                         class="css-da6t8b"
                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                        variants="[object Object]"
                                         viewBox="0 0 12 10"
                                       >
                                         <polyline
@@ -1235,7 +1208,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                     <svg
                                       class="css-da6t8b"
                                       style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                      variants="[object Object]"
                                       viewBox="0 0 12 10"
                                     >
                                       <polyline
@@ -1362,7 +1334,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "current": <svg
                                         class="css-da6t8b"
                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                        variants="[object Object]"
                                         viewBox="0 0 12 10"
                                       >
                                         <polyline
@@ -1503,7 +1474,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                 onTouchStart={[Function]}
               >
                 <span
-                  className="chakra-checkbox__label css-sklcna"
+                  className="chakra-checkbox__label css-1sgc0qu"
                   data-checked=""
                   onMouseDown={[Function]}
                   onTouchStart={[Function]}
@@ -1563,7 +1534,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                     id="field-1-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       htmlFor="00000000-0000-0000-0000-000000000000"
                       id="field-1-label"
                     >
@@ -1603,7 +1574,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}
-                          paddingRight={10}
+                          paddingEnd={10}
                           placeholder=""
                           type="text"
                           value={3000}
@@ -1652,7 +1623,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
-                            paddingRight={10}
+                            paddingEnd={10}
                             placeholder=""
                             readOnly={false}
                             required={false}
@@ -1660,7 +1631,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                             value={3000}
                           >
                             <input
-                              className="chakra-input css-1hmrg96"
+                              className="chakra-input css-1qkmlc7"
                               disabled={false}
                               id="00000000-0000-0000-0000-000000000000"
                               onBlur={[Function]}
@@ -1694,8 +1665,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                 Object {
                                   "fontSize": "md",
                                   "height": 10,
-                                  "paddingX": undefined,
-                                  "right": "0",
+                                  "insetEnd": "0",
                                   "width": 10,
                                 }
                               }
@@ -1706,7 +1676,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                               width="unset"
                             >
                               <div
-                                className="chakra-input__right-element css-15qe6bf"
+                                className="chakra-input__right-element css-13i7m2h"
                               >
                                 meters
                               </div>
@@ -1733,10 +1703,12 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             className="chakra-checkbox"
             data-disabled=""
             fontWeight="normal"
+            onClick={[Function]}
           >
             <label
-              className="chakra-checkbox css-wun7cp"
+              className="chakra-checkbox css-fnpc6t"
               data-disabled=""
+              onClick={[Function]}
             >
               <input
                 aria-disabled={true}
@@ -1814,7 +1786,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
               >
                 <span
                   aria-hidden={true}
-                  className="chakra-checkbox__control css-co2d90"
+                  className="chakra-checkbox__control css-joz5u0"
                   data-disabled=""
                   onMouseDown={[Function]}
                   onMouseEnter={[Function]}
@@ -1858,7 +1830,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                 onTouchStart={[Function]}
               >
                 <span
-                  className="chakra-checkbox__label css-sklcna"
+                  className="chakra-checkbox__label css-1sgc0qu"
                   data-disabled=""
                   onMouseDown={[Function]}
                   onTouchStart={[Function]}
@@ -1890,7 +1862,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             role="alert"
           >
             <div
-              className="chakra-alert css-1m76rph"
+              className="chakra-alert css-1adt752"
               role="alert"
             >
               Modification cannot be bidirectional because timetables in this modification have phasing information.

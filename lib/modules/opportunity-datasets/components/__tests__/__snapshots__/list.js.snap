@@ -11,6 +11,8 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 5,
           },
@@ -21,7 +23,7 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
       flexDirection="column"
     >
       <div
-        className="chakra-stack css-ynqzo5"
+        className="chakra-stack css-1au6mu0"
       >
         <Stack
           key=".2"
@@ -31,6 +33,8 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
             __css={
               Object {
                 "& > *:not(style) ~ *:not(style)": Object {
+                  "marginBottom": 0,
+                  "marginEnd": 0,
                   "marginStart": 0,
                   "marginTop": 2,
                 },
@@ -41,7 +45,7 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
             flexDirection="column"
           >
             <div
-              className="chakra-stack css-1pifhv5"
+              className="chakra-stack css-btweb"
             >
               <InternalLink
                 key=".0"
@@ -112,7 +116,7 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
                       type="button"
                     >
                       <button
-                        className="chakra-button css-ywjnlx"
+                        className="chakra-button css-r1h8jx"
                         href="/regions/12345/opportunities/upload"
                         onClick={[Function]}
                         onMouseEnter={[Function]}
@@ -122,11 +126,14 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
                           marginEnd="0.5rem"
                         >
                           <Styled(span)
+                            alignSelf="center"
                             className="chakra-button__icon"
+                            display="inline-flex"
+                            flexShrink={0}
                             marginEnd="0.5rem"
                           >
                             <span
-                              className="chakra-button__icon css-ktvjz1"
+                              className="chakra-button__icon css-1wh2kri"
                             >
                               <FaPlus
                                 aria-hidden={true}
@@ -225,7 +232,7 @@ exports[`Opportunity Datasets > Components > List should render without errors 1
                   type="button"
                 >
                   <button
-                    className="chakra-button css-huwc4k"
+                    className="chakra-button css-13ficp8"
                     onClick={[Function]}
                     type="button"
                   >

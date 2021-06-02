@@ -61,7 +61,7 @@ exports[`Component SelectR5Version snapshot(mount) 1`] = `
                   id="field-1-label"
                 >
                   <label
-                    className="chakra-form__label css-1qqx8g3"
+                    className="chakra-form__label css-10m1y3x"
                     htmlFor="select-r5-version"
                     id="field-1-label"
                   >

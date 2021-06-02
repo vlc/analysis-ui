@@ -12,7 +12,7 @@ exports[`Component > VariantEditor renders correctly 1`] = `
     p={2}
   >
     <div
-      className="css-olyig7"
+      className="css-1syq16t"
     >
       <Button
         colorScheme="green"
@@ -66,7 +66,7 @@ exports[`Component > VariantEditor renders correctly 1`] = `
           type="button"
         >
           <button
-            className="chakra-button css-1uiu0j2"
+            className="chakra-button css-3v23rq"
             onClick={[Function]}
             type="button"
           >
@@ -83,6 +83,8 @@ exports[`Component > VariantEditor renders correctly 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": "0.5rem",
           },
@@ -94,7 +96,7 @@ exports[`Component > VariantEditor renders correctly 1`] = `
       py={2}
     >
       <div
-        className="chakra-stack css-1hi6e84"
+        className="chakra-stack css-1rhn3u4"
       >
         <Text
           key=".0"
@@ -108,7 +110,7 @@ exports[`Component > VariantEditor renders correctly 1`] = `
             py={2}
           >
             <p
-              className="chakra-text css-8wgsd2"
+              className="chakra-text css-dap6kq"
             >
               A Scenario is a collection of modifications within a project.
             </p>
@@ -132,12 +134,10 @@ exports[`Component > VariantEditor renders correctly 1`] = `
             aria-orientation="horizontal"
             className="chakra-divider"
             mx={4}
-            role="separator"
           >
             <hr
               aria-orientation="horizontal"
-              className="chakra-divider css-p2zx7n"
-              role="separator"
+              className="chakra-divider css-nte7i2"
             />
           </Styled(hr)>
         </Divider>
@@ -207,6 +207,8 @@ exports[`Component > VariantEditor renders correctly 1`] = `
                             __css={
                               Object {
                                 "& > *:not(style) ~ *:not(style)": Object {
+                                  "marginBottom": 0,
+                                  "marginEnd": 0,
                                   "marginStart": 0,
                                   "marginTop": 3,
                                 },
@@ -221,7 +223,7 @@ exports[`Component > VariantEditor renders correctly 1`] = `
                             pt={2}
                           >
                             <div
-                              className="chakra-stack css-wvgnfh"
+                              className="chakra-stack css-1o2cie8"
                               id="scenarios"
                             >
                               <Flex
@@ -244,7 +246,7 @@ exports[`Component > VariantEditor renders correctly 1`] = `
                                   pr={2}
                                 >
                                   <div
-                                    className="css-1pjcatt"
+                                    className="css-1py2m6p"
                                   >
                                     <Text
                                       flex="1"
@@ -257,7 +259,7 @@ exports[`Component > VariantEditor renders correctly 1`] = `
                                         fontWeight="bold"
                                       >
                                         <p
-                                          className="chakra-text css-1w1y9ry"
+                                          className="chakra-text css-1gpwcvc"
                                         >
                                           Baseline
                                         </p>

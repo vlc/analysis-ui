@@ -44,7 +44,7 @@ exports[`Component > ProjectTitle 1`] = `
       width="320px"
     >
       <div
-        className="css-74jyoa"
+        className="css-1qxv7p1"
       >
         <ForwardRef
           label="All projects"
@@ -131,7 +131,7 @@ exports[`Component > ProjectTitle 1`] = `
                     >
                       <button
                         aria-label="All projects"
-                        className="chakra-button css-1o9h2ju"
+                        className="chakra-button css-rswj2l"
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
@@ -210,7 +210,7 @@ exports[`Component > ProjectTitle 1`] = `
             whiteSpace="nowrap"
           >
             <h2
-              className="chakra-heading css-1dhojwb"
+              className="chakra-heading css-1l2y43i"
               style={
                 Object {
                   "textOverflow": "ellipsis",
@@ -324,7 +324,7 @@ exports[`Component > ProjectTitle 1`] = `
                           >
                             <button
                               aria-label="Download or share this project"
-                              className="chakra-button css-1o9h2ju"
+                              className="chakra-button css-rswj2l"
                               onBlur={[Function]}
                               onClick={[Function]}
                               onFocus={[Function]}
@@ -455,7 +455,7 @@ exports[`Component > ProjectTitle 1`] = `
                           >
                             <button
                               aria-label="Edit project settings"
-                              className="chakra-button css-1o9h2ju"
+                              className="chakra-button css-rswj2l"
                               onBlur={[Function]}
                               onClick={[Function]}
                               onFocus={[Function]}
