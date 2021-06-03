@@ -9,8 +9,8 @@ const ErrorAlert = dynamic(
   () => import('lib/components/connection-error-alert')
 )
 
-interface IResults {
-  [key: string]: CL.IModel | CL.IModel[] | CL.Activity
+export interface IResults {
+  [key: string]: CL.IModel | CL.IModel[] | CL.Activity | CL.RegionalJob[]
 }
 
 type WithInitialDataProps<Props> = Partial<Props> & {

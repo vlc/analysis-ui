@@ -107,11 +107,14 @@ export default class AuthenticatedCollection {
     )
   }
 
-  findOne(_id: string) {
-    return this.collection.findOne({
-      accessGroup: this.accessGroup,
-      _id
-    })
+  findOne(_id: string, options?: FindOneOptions<any>) {
+    return this.collection.findOne(
+      {
+        accessGroup: this.accessGroup,
+        _id
+      },
+      options
+    )
   }
 
   /**

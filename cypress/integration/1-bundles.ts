@@ -120,9 +120,12 @@ describe('Network bundles', () => {
     // TODO need semantic selector for dropdown
     cy.findByText('Select...').click().type('Corrupt{enter}')
     cy.contains(names.corrupt)
-    cy.findByRole('alert').contains(
-      'Please upload valid OSM .pbf and GTFS .zip files.'
-    )
+
+    cy.get('#__next').within(() => {
+      cy.findByRole('alert').contains(
+        'Please upload valid OSM .pbf and GTFS .zip files.'
+      )
+    })
 
     deleteThisBundle(names.corrupt)
   })

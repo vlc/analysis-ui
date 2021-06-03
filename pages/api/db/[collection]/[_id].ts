@@ -2,14 +2,15 @@ import lowerCase from 'lodash/lowerCase'
 import startCase from 'lodash/startCase'
 
 import withCollection from 'lib/db/with-collection'
-import {errorToPOJO, getQueryAsString} from 'lib/utils/api'
+import {errorToPOJO, getQueryAsObject, getQueryAsString} from 'lib/utils/api'
 
 export default withCollection(async (req, res, collection) => {
   const _id = getQueryAsString(req.query._id)
   switch (req.method) {
     case 'GET': {
       try {
-        const document = await collection.findOne(_id)
+        const options = getQueryAsObject(req.query.options)
+        const document = await collection.findOne(_id, options)
         if (!document) {
           res.status(404).end()
         } else {

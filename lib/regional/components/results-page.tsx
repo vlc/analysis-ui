@@ -13,16 +13,12 @@ import {useCallback, useEffect} from 'react'
 import AggregationAreaChart from 'lib/aggregation-area/components/chart'
 import SelectAggregationArea from 'lib/aggregation-area/components/select'
 import Select from 'lib/components/select'
-import {
-  useAggregationAreas,
-  UseCollectionResponse
-} from 'lib/hooks/use-collection'
+import {useAggregationAreas} from 'lib/hooks/use-collection'
 import useControlledInput from 'lib/hooks/use-controlled-input'
 import {useShallowRouteTo} from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 
 import DownloadMenu from './download-menu'
-import RegionalHeading from './heading'
 import RequestDisplay from './request'
 import VariantSelectors from './variant-selectors'
 
@@ -32,6 +28,7 @@ import useRegionalAnalysisGrid from '../hooks/use-regional-grid'
 import useSpatialDatasetsInRegion from '../hooks/use-spatial-datasets'
 import useSpatialDatasetGrid from '../hooks/use-spatial-dataset-grid'
 import {getComparisonVariants, useVariant, variantIsCompatible} from '../utils'
+import useComparisonAnalyses from '../hooks/use-comparison-analyses'
 
 const AccessMap = dynamic(() => import('./access-map'), {ssr: false})
 const Legend = dynamic(() => import('./legend'), {ssr: false})
@@ -48,17 +45,18 @@ const getName = fpGet('name')
  */
 export default function ResultsPage({
   analysisVariant,
-  comparisonAnalyses,
-  query,
-  regionalAnalysisCollection
+  jobs,
+  query
 }: {
   analysisVariant: CL.RegionalAnalysisVariant
-  comparisonAnalyses: CL.RegionalAnalysis[]
+  jobs: CL.RegionalJob[]
   query: CL.Query
-  regionalAnalysisCollection: UseCollectionResponse<CL.RegionalAnalysis>
 }) {
   const {analysis} = analysisVariant
   const routeTo = useShallowRouteTo('regionalAnalysis')
+
+  // Get valid comparison analyses
+  const comparisonAnalyses = useComparisonAnalyses(analysis, jobs)
 
   const onChangeComparisonAnalysis = useCallback(
     (v?: CL.RegionalAnalysis) =>
@@ -77,9 +75,7 @@ export default function ResultsPage({
   )
   const comparisonAnalysisInput = useControlledInput({
     onChange: onChangeComparisonAnalysis,
-    value: regionalAnalysisCollection.data.find(
-      (a) => a._id === query.comparisonAnalysisId
-    )
+    value: comparisonAnalyses.find((a) => a._id === query.comparisonAnalysisId)
   })
   const comparisonAnalysis = comparisonAnalysisInput.value
 
@@ -119,7 +115,7 @@ export default function ResultsPage({
   const weightsGrid = useSpatialDatasetGrid(query.weightsGridId)
 
   /**
-   * Display results?
+   * Should we display results?
    * When an originPointSetKey is set, we cannot display the map in the application and can only offer the
    * ability to download the data that has been created for manual inspection.
    */
@@ -127,14 +123,6 @@ export default function ResultsPage({
 
   return (
     <>
-      <RegionalHeading
-        analysis={analysis}
-        remove={() => regionalAnalysisCollection.remove(analysis._id)}
-        update={(updates: Partial<CL.RegionalAnalysis>) =>
-          regionalAnalysisCollection.update(analysis._id, updates)
-        }
-      />
-
       <Stack p={4} shouldWrapChildren>
         <VariantSelectors
           analysisVariant={analysisVariant}
