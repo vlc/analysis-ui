@@ -37,7 +37,7 @@ Cypress.Commands.add('clickMapAtCoord', (coord: L.LatLngTuple, zoom = 18) => {
       message: `([${coord[0]}, ${coord[1]}], ${zoom})`
     })
     const point = map.latLngToContainerPoint(coord)
-    getMapDiv().click(point.x, point.y, {log: false})
+    getMapDiv().click(point.x, point.y, {force: true, log: false})
   })
 })
 
@@ -120,7 +120,7 @@ Cypress.Commands.add(
 Cypress.Commands.add('waitForMapToLoad', () => {
   Cypress.log({displayName: 'waitForMapToLoad'})
   getMap().waitUntil(
-    (map: L.Map) => new Promise((resolve) => map.whenReady(resolve)),
+    (map: L.Map) => new Promise<void>((resolve) => map.whenReady(resolve)),
     {log: false}
   )
   return getMap()

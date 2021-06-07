@@ -1,7 +1,10 @@
-import {withPageAuthRequired} from '@auth0/nextjs-auth0'
+import {
+  withPageAuthRequired,
+  WithPageAuthRequiredProps
+} from '@auth0/nextjs-auth0'
 import {Box} from '@chakra-ui/react'
 import Head from 'next/head'
-import {useEffect} from 'react'
+import {ComponentType, useEffect} from 'react'
 
 import LoadingScreen from 'lib/components/loading-screen'
 import {AUTH_DISABLED} from 'lib/constants'
@@ -35,7 +38,9 @@ const DevBar = () => (
  * Ensure that a Page component is authenticated before rendering.
  */
 export default function withAuth(PageComponent) {
-  function AuthenticatedComponent(p: IWithAuthProps): JSX.Element {
+  const AuthenticatedComponent: ComponentType<WithPageAuthRequiredProps> = (
+    p
+  ) => {
     const {isLoading, user} = useUser()
 
     useEffect(() => {

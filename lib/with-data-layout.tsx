@@ -60,7 +60,7 @@ export default function withDataLayout<Results extends IResults>(
   useData: UseDataFn<Results>,
   Layout = DefaultLayout
 ): CL.Page<WithInitialDataProps<Results>> {
-  function DataLoader(props: WithInitialDataProps<Results>) {
+  const DataLoader: CL.Page<WithInitialDataProps<Results>> = (props) => {
     const results = useData(props)
 
     // If any results are missing, show the spinner.

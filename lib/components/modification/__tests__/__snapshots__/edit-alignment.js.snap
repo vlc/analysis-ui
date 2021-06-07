@@ -2,15 +2,7 @@
 
 exports[`Component EditAlignment snapshot(mount) 1`] = `
 <EditAlignment
-  allStops={Array []}
   disabled={false}
-  extendFromEnd={false}
-  mapState={
-    Object {
-      "modificationId": "1234",
-      "state": null,
-    }
-  }
   modification={
     Object {
       "_id": "1234",
@@ -109,28 +101,10 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
     }
   }
   numberOfStops={16}
-  segmentDistances={
-    Array [
-      45.22,
-    ]
-  }
   update={[MockFunction]}
 >
   <Stack
-    allStops={Array []}
     disabled={false}
-    extendFromEnd={false}
-    mapState={
-      Object {
-        "modificationId": "1234",
-        "state": null,
-      }
-    }
-    segmentDistances={
-      Array [
-        45.22,
-      ]
-    }
     spacing={4}
   >
     <Styled(div)
@@ -144,40 +118,14 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
           },
         }
       }
-      allStops={Array []}
       className="chakra-stack"
       disabled={false}
       display="flex"
-      extendFromEnd={false}
       flexDirection="column"
-      mapState={
-        Object {
-          "modificationId": "1234",
-          "state": null,
-        }
-      }
-      segmentDistances={
-        Array [
-          45.22,
-        ]
-      }
     >
       <div
-        allStops={Array []}
         className="chakra-stack css-egoftb"
         disabled={false}
-        extendFromEnd={false}
-        mapState={
-          Object {
-            "modificationId": "1234",
-            "state": null,
-          }
-        }
-        segmentDistances={
-          Array [
-            45.22,
-          ]
-        }
       >
         <Heading
           key=".1"
