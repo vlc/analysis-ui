@@ -40,7 +40,7 @@ describe('Regional', () => {
       // TODO make these select elements easier to identify
       cy.findByText(/Compare to/)
         .parent()
-        .parent()
+        .next()
         .findByRole('option', {name: '45 minutes'})
         .parent()
         .select('60 minutes')
@@ -87,16 +87,16 @@ describe('Regional', () => {
     })
   })
 
-  it('test starting and deleting a running analysis')
+  // notit('test starting and deleting a running analysis')
   // cy.findByRole('button', {name: /Delete/}).click()
   // cy.findByRole('button', {name: /Confirm/}).click()
 
   // TODO this is partly tested above but should be refactored into its own
   // test here. This will require setting up an analysis first though
-  it('compares two regional analyses')
+  // notit('compares two regional analyses')
 
   // TODO this is partly tested above, but should be separated out into its
   // own test here. Aggregation is blocked by a dissociated label
   // (see note above)
-  it('uploads an aggregation area and aggregates results')
+  // notit('uploads an aggregation area and aggregates results')
 })
