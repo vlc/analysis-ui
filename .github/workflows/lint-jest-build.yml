@@ -50,6 +50,19 @@ jobs:
           key: ${{ github.sha }}
 
       - run: yarn lint
+
+  checkFormat:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - uses: actions/cache@v2
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+
       - run: yarn check-format
 
   jestUnitTests:
@@ -99,7 +112,7 @@ jobs:
           key: ${{ runner.os }}-${{ github.sha }}-nextjs
 
   cypressIntegration:
-    needs: [codeLinter, jestUnitTests, nextjsBuild, typeCheck] # only run if these all pass
+    needs: [nextjsBuild] # only run if these all pass
     services:
       mongo:
         image: mongo
