@@ -37,8 +37,7 @@ export default function EditAlignment({
   modification,
   numberOfStops = 0,
   setIsEditing,
-  update,
-  ...p
+  update
 }) {
   const allStops = useSelector(selectAllStops)
   const segmentDistances = useSelector(selectSegmentDistances)
@@ -113,7 +112,7 @@ export default function EditAlignment({
   )
 
   return (
-    <Stack spacing={4} {...p}>
+    <>
       {isEditing && (
         <>
           <GTFSStopGridLayer stops={allStops} />
@@ -133,175 +132,177 @@ export default function EditAlignment({
         </>
       )}
 
-      <Heading size='sm'>Route Geometry</Heading>
-      {distance === 0 && modification.type === ADD_TRIP_PATTERN && (
-        <Alert status='error'>
-          <AlertIcon /> A route geometry must have at least 2 stops
-        </Alert>
-      )}
-
-      {distance > 0 &&
-        modification.type === ADD_TRIP_PATTERN &&
-        numberOfStops > 0 && (
-          <Text>{`${numberOfStops} stops over ${
-            Math.round(distance * 100) / 100
-          } km`}</Text>
+      <Stack spacing={4}>
+        <Heading size='sm'>Route Geometry</Heading>
+        {distance === 0 && modification.type === ADD_TRIP_PATTERN && (
+          <Alert status='error'>
+            <AlertIcon /> A route geometry must have at least 2 stops
+          </Alert>
         )}
 
-      {!isEditing ? (
-        <Button
-          isFullWidth
-          leftIcon={<EditIcon />}
-          onClick={() => setIsEditing(true)}
-          colorScheme='yellow'
-        >
-          {message('transitEditor.startEdit')}
-        </Button>
-      ) : (
-        <Button
-          isFullWidth
-          leftIcon={<FaStopCircle />}
-          onClick={() => setIsEditing(false)}
-          colorScheme='yellow'
-        >
-          {message('transitEditor.stopEdit')}
-        </Button>
-      )}
+        {distance > 0 &&
+          modification.type === ADD_TRIP_PATTERN &&
+          numberOfStops > 0 && (
+            <Text>{`${numberOfStops} stops over ${
+              Math.round(distance * 100) / 100
+            } km`}</Text>
+          )}
 
-      {isEditing && distance > 0 && (
-        <Button
-          leftIcon={<FaCircle />}
-          isFullWidth
-          onClick={autoGen}
-          colorScheme='yellow'
-        >
-          {message('transitEditor.snap')}
-        </Button>
-      )}
+        {!isEditing ? (
+          <Button
+            isFullWidth
+            leftIcon={<EditIcon />}
+            onClick={() => setIsEditing(true)}
+            colorScheme='yellow'
+          >
+            {message('transitEditor.startEdit')}
+          </Button>
+        ) : (
+          <Button
+            isFullWidth
+            leftIcon={<FaStopCircle />}
+            onClick={() => setIsEditing(false)}
+            colorScheme='yellow'
+          >
+            {message('transitEditor.stopEdit')}
+          </Button>
+        )}
 
-      {distance > 0 && (
-        <Checkbox
-          fontWeight='normal'
-          isChecked={createStopsAutomatically}
-          onChange={onAutoCreateStopsChange}
-        >
-          {message('transitEditor.autoCreateStops')}
-        </Checkbox>
-      )}
+        {isEditing && distance > 0 && (
+          <Button
+            leftIcon={<FaCircle />}
+            isFullWidth
+            onClick={autoGen}
+            colorScheme='yellow'
+          >
+            {message('transitEditor.snap')}
+          </Button>
+        )}
 
-      {createStopsAutomatically && (
-        <NumberInput
-          label={message('transitEditor.stopSpacingMeters')}
-          onChange={onStopSpacingChange}
-          test={isValidStopSpacing}
-          units='meters'
-          value={spacing}
-        />
-      )}
+        {distance > 0 && (
+          <Checkbox
+            fontWeight='normal'
+            isChecked={createStopsAutomatically}
+            onChange={onAutoCreateStopsChange}
+          >
+            {message('transitEditor.autoCreateStops')}
+          </Checkbox>
+        )}
 
-      {modification.type !== REROUTE && distance > 0 && (
-        <Checkbox
-          fontWeight='normal'
-          isChecked={modification.bidirectional}
-          isDisabled={hasAnyPhasing}
-          onChange={onBidirectionalChange}
-        >
-          {message('transitEditor.bidirectional')}
-        </Checkbox>
-      )}
+        {createStopsAutomatically && (
+          <NumberInput
+            label={message('transitEditor.stopSpacingMeters')}
+            onChange={onStopSpacingChange}
+            test={isValidStopSpacing}
+            units='meters'
+            value={spacing}
+          />
+        )}
 
-      {hasAnyPhasing && (
-        <Alert status='info'>
-          {message('transitEditor.bidirectionalWarning')}
-        </Alert>
-      )}
+        {modification.type !== REROUTE && distance > 0 && (
+          <Checkbox
+            fontWeight='normal'
+            isChecked={modification.bidirectional}
+            isDisabled={hasAnyPhasing}
+            onChange={onBidirectionalChange}
+          >
+            {message('transitEditor.bidirectional')}
+          </Checkbox>
+        )}
 
-      {isEditing && (
-        <Checkbox
-          fontWeight='normal'
-          isChecked={followRoad}
-          onChange={(e) => setFollowRoad(e.target.checked)}
-        >
-          {message('transitEditor.followRoad')}
-        </Checkbox>
-      )}
+        {hasAnyPhasing && (
+          <Alert status='info'>
+            {message('transitEditor.bidirectionalWarning')}
+          </Alert>
+        )}
 
-      {modification.type !== REROUTE && isEditing && (
-        <Checkbox
-          fontWeight='normal'
-          isChecked={allowExtend}
-          onChange={(e) => setAllowExtend(e.target.checked)}
-        >
-          {message('transitEditor.extend')}
-        </Checkbox>
-      )}
+        {isEditing && (
+          <Checkbox
+            fontWeight='normal'
+            isChecked={followRoad}
+            onChange={(e) => setFollowRoad(e.target.checked)}
+          >
+            {message('transitEditor.followRoad')}
+          </Checkbox>
+        )}
 
-      {modification.type !== REROUTE && isEditing && allowExtend && (
-        <Checkbox
-          fontWeight='normal'
-          isChecked={extendFromEnd}
-          onChange={(e) => setExtendFromEnd(e.target.checked)}
-        >
-          {message('transitEditor.extendFromEnd')}
-        </Checkbox>
-      )}
+        {modification.type !== REROUTE && isEditing && (
+          <Checkbox
+            fontWeight='normal'
+            isChecked={allowExtend}
+            onChange={(e) => setAllowExtend(e.target.checked)}
+          >
+            {message('transitEditor.extend')}
+          </Checkbox>
+        )}
 
-      {isEditing && (
-        <Panel.Panel>
-          <Panel.Heading>
-            <strong>
-              {message(
-                'transitEditor.instructionsTitle',
-                'Editing Instructions'
-              )}
-            </strong>
-          </Panel.Heading>
-          <Panel.Body>
-            <Stack>
-              <Text>{message('transitEditor.instructions')}</Text>
-              <Text>
-                <strong>Symbology</strong>
-              </Text>
-              <Text>
-                <FaRegCircle
-                  style={{
-                    color: colors.NEUTRAL,
-                    display: 'inline',
-                    opacity: 0.5
-                  }}
-                />{' '}
-                {message('transitEditor.existingStops')}
-              </Text>
-              <Text>
-                <FaRegCircle
-                  style={{color: colors.ADDED, display: 'inline-block'}}
-                />{' '}
-                {message('transitEditor.newStopDescription')}
-              </Text>
-              <Text>
-                <FaRegCircle
-                  style={{
-                    color: colors.ADDED,
-                    display: 'inline-block',
-                    opacity: 0.5
-                  }}
-                />{' '}
-                {message('transitEditor.autocreatedStopDescription')}
-              </Text>
-              <Text>
-                <FaRegCircle style={{display: 'inline-block'}} />{' '}
-                {message('transitEditor.snappedStopDescription')}
-              </Text>
-              <Text>
-                <FaCircle
-                  style={{color: colors.ADDED, display: 'inline-block'}}
-                />{' '}
-                {message('transitEditor.controlPointDescription')}
-              </Text>
-            </Stack>
-          </Panel.Body>
-        </Panel.Panel>
-      )}
-    </Stack>
+        {modification.type !== REROUTE && isEditing && allowExtend && (
+          <Checkbox
+            fontWeight='normal'
+            isChecked={extendFromEnd}
+            onChange={(e) => setExtendFromEnd(e.target.checked)}
+          >
+            {message('transitEditor.extendFromEnd')}
+          </Checkbox>
+        )}
+
+        {isEditing && (
+          <Panel.Panel>
+            <Panel.Heading>
+              <strong>
+                {message(
+                  'transitEditor.instructionsTitle',
+                  'Editing Instructions'
+                )}
+              </strong>
+            </Panel.Heading>
+            <Panel.Body>
+              <Stack>
+                <Text>{message('transitEditor.instructions')}</Text>
+                <Text>
+                  <strong>Symbology</strong>
+                </Text>
+                <Text>
+                  <FaRegCircle
+                    style={{
+                      color: colors.NEUTRAL,
+                      display: 'inline',
+                      opacity: 0.5
+                    }}
+                  />{' '}
+                  {message('transitEditor.existingStops')}
+                </Text>
+                <Text>
+                  <FaRegCircle
+                    style={{color: colors.ADDED, display: 'inline-block'}}
+                  />{' '}
+                  {message('transitEditor.newStopDescription')}
+                </Text>
+                <Text>
+                  <FaRegCircle
+                    style={{
+                      color: colors.ADDED,
+                      display: 'inline-block',
+                      opacity: 0.5
+                    }}
+                  />{' '}
+                  {message('transitEditor.autocreatedStopDescription')}
+                </Text>
+                <Text>
+                  <FaRegCircle style={{display: 'inline-block'}} />{' '}
+                  {message('transitEditor.snappedStopDescription')}
+                </Text>
+                <Text>
+                  <FaCircle
+                    style={{color: colors.ADDED, display: 'inline-block'}}
+                  />{' '}
+                  {message('transitEditor.controlPointDescription')}
+                </Text>
+              </Stack>
+            </Panel.Body>
+          </Panel.Panel>
+        )}
+      </Stack>
+    </>
   )
 }

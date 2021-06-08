@@ -1,4 +1,5 @@
 import {
+  Box,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -34,7 +35,7 @@ export default function AddTripPattern({modification, update}) {
   const numberOfStops = useSelector(selectNumberOfStops)
 
   return (
-    <Stack spacing={4}>
+    <>
       {!isEditing && (
         <MapLayer
           bidirectional={modification.bidirectional}
@@ -42,36 +43,40 @@ export default function AddTripPattern({modification, update}) {
         />
       )}
 
-      <TransitModeSelector
-        onChange={(transitMode) => update({transitMode})}
-        value={modification.transitMode}
-      />
-
-      <FormControl className='DEV'>
-        <FormLabel htmlFor='routeColor'>Route Color</FormLabel>
-        <Input
-          id='routeColor'
-          onChange={(e) => update({color: e.currentTarget.value})}
-          value={modification.color || ''}
+      <Stack spacing={4}>
+        <TransitModeSelector
+          onChange={(transitMode) => update({transitMode})}
+          value={modification.transitMode}
         />
-        <FormHelperText dangerouslySetInnerHTML={{__html: colorHelpText}} />
-      </FormControl>
 
-      <EditAlignment
-        isEditing={isEditing}
-        modification={modification}
-        numberOfStops={numberOfStops}
-        setIsEditing={setIsEditing}
-        update={update}
-      />
+        <FormControl className='DEV'>
+          <FormLabel htmlFor='routeColor'>Route Color</FormLabel>
+          <Input
+            id='routeColor'
+            onChange={(e) => update({color: e.currentTarget.value})}
+            value={modification.color || ''}
+          />
+          <FormHelperText dangerouslySetInnerHTML={{__html: colorHelpText}} />
+        </FormControl>
 
-      <Timetables
-        modification={modification}
-        modificationStops={gtfsStops}
-        numberOfStops={numberOfStops}
-        timetables={modification.timetables}
-        update={update}
-      />
-    </Stack>
+        <Box>
+          <EditAlignment
+            isEditing={isEditing}
+            modification={modification}
+            numberOfStops={numberOfStops}
+            setIsEditing={setIsEditing}
+            update={update}
+          />
+        </Box>
+
+        <Timetables
+          modification={modification}
+          modificationStops={gtfsStops}
+          numberOfStops={numberOfStops}
+          timetables={modification.timetables}
+          update={update}
+        />
+      </Stack>
+    </>
   )
 }

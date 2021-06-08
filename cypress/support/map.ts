@@ -37,7 +37,7 @@ Cypress.Commands.add('clickMapAtCoord', (coord: L.LatLngTuple, zoom = 18) => {
       message: `([${coord[0]}, ${coord[1]}], ${zoom})`
     })
     const point = map.latLngToContainerPoint(coord)
-    getMapDiv().click(point.x, point.y, {force: true, log: false})
+    getMapDiv().click(point.x, point.y, {log: false})
   })
 })
 
