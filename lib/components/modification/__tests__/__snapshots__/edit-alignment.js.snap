@@ -104,7 +104,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
   update={[MockFunction]}
 >
   <Stack
-    disabled={false}
     spacing={4}
   >
     <Styled(div)
@@ -119,16 +118,14 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
         }
       }
       className="chakra-stack"
-      disabled={false}
       display="flex"
       flexDirection="column"
     >
       <div
         className="chakra-stack css-egoftb"
-        disabled={false}
       >
         <Heading
-          key=".1"
+          key=".0"
           size="sm"
         >
           <Styled(h2)
@@ -150,7 +147,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
           </Styled(h2)>
         </Heading>
         <Text
-          key=".3"
+          key=".2"
         >
           <Styled(p)
             __css={Object {}}
@@ -166,7 +163,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
         <Button
           colorScheme="yellow"
           isFullWidth={true}
-          key=".4"
+          key=".3"
           leftIcon={<FaPencilAlt />}
           onClick={[Function]}
         >
@@ -280,7 +277,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
         <Checkbox
           fontWeight="normal"
           isChecked={true}
-          key=".6"
+          key=".5"
           onChange={[Function]}
         >
           <Styled(label)
@@ -1902,7 +1899,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
           </Styled(label)>
         </Checkbox>
         <NumberInput
-          key=".7"
+          key=".6"
           label="Stop spacing"
           onChange={[Function]}
           test={[Function]}
@@ -2111,7 +2108,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
           fontWeight="normal"
           isChecked={false}
           isDisabled={true}
-          key=".8"
+          key=".7"
           onChange={[Function]}
         >
           <Styled(label)
@@ -2258,7 +2255,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
           </Styled(label)>
         </Checkbox>
         <ForwardRef
-          key=".9"
+          key=".8"
           status="info"
         >
           <Styled(div)
