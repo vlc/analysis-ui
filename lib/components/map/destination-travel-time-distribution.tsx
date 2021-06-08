@@ -113,8 +113,9 @@ export default memo(function DestinationTravelTimeDistribution() {
   const [lockedLatLng, setLockedLatLng] = useState<LatLng | false>(false)
   const [latlng, setLatLng] = useState<LatLng | null>(null)
   const [distribution, setDistribution] = useState<void | number[]>()
-  const [comparisonDistribution, setComparisonDistribution] =
-    useState<void | number[]>()
+  const [comparisonDistribution, setComparisonDistribution] = useState<
+    void | number[]
+  >()
   const surface: CL.AccessGrid = useSelector(selectSurface)
   const comparisonSurface: CL.AccessGrid = useSelector(selectComparisonSurface)
   const leaflet = useLeaflet()
