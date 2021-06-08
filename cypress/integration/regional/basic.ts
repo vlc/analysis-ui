@@ -45,39 +45,6 @@ describe('Regional', () => {
         .parent()
         .select('60 minutes')
       cy.get('@legend').should('not.contain', 'Loading grids')
-      // test aggreation area upload
-      cy.findByText(/upload new aggregation area/i).click()
-      cy.findByRole('button', {name: 'Upload'})
-        .as('upload')
-        .should('be.disabled')
-      cy.findByLabelText(/Aggregation area name/i).type('cities')
-      cy.findByLabelText(/Select aggregation area files/i).attachFile([
-        {
-          filePath: scratchRegion.aggregationAreas.files[0],
-          encoding: 'base64'
-        },
-        {
-          filePath: scratchRegion.aggregationAreas.files[1],
-          encoding: 'base64'
-        },
-        {
-          filePath: scratchRegion.aggregationAreas.files[2],
-          encoding: 'base64'
-        },
-        {
-          filePath: scratchRegion.aggregationAreas.files[3],
-          encoding: 'base64'
-        }
-      ])
-      cy.findByLabelText(/Union/).uncheck({force: true})
-      cy.findByLabelText(/Shapefile attribute to use as aggregation area name/i)
-        .clear()
-        .type(scratchRegion.aggregationAreas.nameField)
-      cy.get('@upload').scrollIntoView().click()
-      cy.contains(/Upload complete/, {timeout: 30000}).should('be.visible')
-      // TODO label dissociated from input
-      //cy.findByLabelText(/Aggregate results to/i)
-      //  .type(this.region.aggregationAreas.sampleName+'{enter}')
     })
 
     it('links to projects correctly', () => {
