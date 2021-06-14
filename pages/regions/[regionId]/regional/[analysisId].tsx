@@ -45,10 +45,7 @@ export default withDataLayout<{
         <Heading analysis={p.analysis} />
 
         {activeJob ? (
-          <ActiveAnalysisPage
-            activeJob={activeJob}
-            analysisVariant={analysisVariant}
-          />
+          <ActiveAnalysisPage activeJob={activeJob} analysis={p.analysis} />
         ) : (
           <ResultsPage
             analysisVariant={analysisVariant}
