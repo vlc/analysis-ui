@@ -74,8 +74,8 @@ declare global {
       accessGroup: string
       nonce: ObjectID
       name: string
-      createdAt: string
-      updatedAt: string
+      createdAt: Date
+      updatedAt: Date
     }
 
     /**
@@ -194,6 +194,16 @@ declare global {
       bundleId: string
       regionId: string
       variants: string[]
+    }
+
+    export interface Scenario extends IModel {
+      projectId: string
+      name: string
+    }
+
+    export interface ScenariosModifications extends IModel {
+      scenarioId: string
+      modificationId: string
     }
 
     export interface RegionalAnalysis extends GridHeader, IModel {

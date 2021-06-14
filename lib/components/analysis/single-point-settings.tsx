@@ -31,7 +31,6 @@ import {
   setRequestsSettings,
   updateRequestsSettings
 } from 'lib/actions/analysis/profile-request'
-import {LS_MOM} from 'lib/constants'
 import useOnMount from 'lib/hooks/use-on-mount'
 import message from 'lib/message'
 import {activeOpportunityDataset} from 'lib/modules/opportunity-datasets/selectors'
@@ -44,7 +43,6 @@ import selectProfileRequestHasChanged from 'lib/selectors/profile-request-has-ch
 import selectRegionBounds from 'lib/selectors/region-bounds'
 import {fromLatLngBounds} from 'lib/utils/bounds'
 import cleanProjectScenarioName from 'lib/utils/clean-project-scenario-name'
-import {getParsedItem} from 'lib/utils/local-storage'
 import {secondsToHhMmString} from 'lib/utils/time'
 
 import ControlledSelect from '../controlled-select'
@@ -57,6 +55,7 @@ import ProfileRequestEditor from './profile-request-editor'
 import AdvancedSettings from './advanced-settings'
 import ModeSelector from './mode-selector'
 import getFeedsRoutesAndStops from 'lib/actions/get-feeds-routes-and-stops'
+import useModificationsOnMap from 'lib/modification/hooks/use-modifications-on-map'
 
 const SPACING_XS = 2
 const SPACING = 5
@@ -67,29 +66,26 @@ const getId = fpGet('_id')
 
 async function loadAllProjectData(
   dispatch: (v: unknown) => Promise<any>,
-  projectId: string
+  projectId: string,
+  idsOnMap: string[]
 ) {
   const results = await Promise.all([
     dispatch(loadProject(projectId)),
     dispatch(loadModifications(projectId))
   ])
   const [project, modifications] = results
-  const _idsOnMap: string[] = get(
-    getParsedItem(LS_MOM),
-    projectId,
-    []
-  ) as string[]
   await dispatch(
     getFeedsRoutesAndStops({
       bundleId: project.bundleId,
       forceCompleteUpdate: true,
-      modifications: modifications.filter((m) => _idsOnMap.includes(m._id))
+      modifications: modifications.filter((m) => idsOnMap.includes(m._id))
     })
   )
 }
 
 export default function Settings({bundles, projects, region}) {
   const dispatch = useDispatch<any>()
+  const modificationsOnMap = useModificationsOnMap()
   const opportunityDataset = useSelector(activeOpportunityDataset)
   const profileRequest = useSelector(selectProfileRequest)
   const currentBundle = useSelector(selectCurrentBundle)
@@ -178,7 +174,11 @@ export default function Settings({bundles, projects, region}) {
       updatePrimaryPR({projectId})
 
       // Load project data for display
-      loadAllProjectData(dispatch, projectId)
+      loadAllProjectData(
+        dispatch,
+        projectId,
+        modificationsOnMap.state[projectId] ?? []
+      )
     }
   })
 
@@ -197,9 +197,13 @@ export default function Settings({bundles, projects, region}) {
       updatePrimaryPR({projectId, variantIndex: -1})
 
       // Load project data for display
-      loadAllProjectData(dispatch, projectId)
+      loadAllProjectData(
+        dispatch,
+        projectId,
+        modificationsOnMap.state[projectId] ?? []
+      )
     },
-    [dispatch, updatePrimaryPR]
+    [dispatch, updatePrimaryPR, modificationsOnMap]
   )
   const _setCurrentVariant = useCallback(
     (option) => updatePrimaryPR({variantIndex: parseInt(option.value)}),

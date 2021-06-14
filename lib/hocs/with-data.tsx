@@ -3,7 +3,6 @@ import {FunctionComponent} from 'react'
 
 import FullSpinner from 'lib/components/full-spinner'
 import {UseDataResponse} from 'lib/hooks/use-data'
-import DefaultLayout from 'lib/layouts/map'
 
 const ErrorAlert = dynamic(
   () => import('lib/components/connection-error-alert')
@@ -13,7 +12,7 @@ export interface IResults {
   [key: string]: CL.IModel | CL.IModel[] | CL.Activity | CL.RegionalJob[]
 }
 
-type WithInitialDataProps<Props> = Partial<Props> & {
+export type WithInitialDataProps<Props> = Partial<Props> & {
   query: Record<string, string>
 }
 
@@ -52,15 +51,12 @@ function dataFromResults<T extends IResults>(results: UseDataResults<T>): T {
  *
  * @param Component Next.js page component
  * @param useData React hook that returns an key/value object of
- * @param Layout Optional layout to be used by _app.
- * @returns A React componenet ready to be used as a Next.js page.
  */
 export default function withDataLayout<Results extends IResults>(
   PageComponent: FunctionComponent<Results & {query?: CL.Query}>,
-  useData: UseDataFn<Results>,
-  Layout = DefaultLayout
+  useData: UseDataFn<Results>
 ): CL.Page<WithInitialDataProps<Results>> {
-  const DataLoader: CL.Page<WithInitialDataProps<Results>> = (props) => {
+  return function DataLoader(props) {
     const results = useData(props)
 
     // If any results are missing, show the spinner.
@@ -73,9 +69,4 @@ export default function withDataLayout<Results extends IResults>(
     // Convert the reponse objects to the data themselves and pass as props to the component
     return <PageComponent {...props} {...dataFromResults(results)} />
   }
-
-  // Layout to be used by _app. Set this way so that the Layout doesn't need a full re-render on page change.
-  DataLoader.Layout = Layout
-
-  return DataLoader
 }

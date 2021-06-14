@@ -42,7 +42,7 @@ export function Report(p) {
       <Stack spacing={2}>
         <Heading>{p.project.name}</Heading>
         <Heading size='md'>
-          {message('report.variant', {variant: p.variant})}
+          {message('report.scenario', {scenario: p.scenario})}
         </Heading>
         <Heading size='sm'>
           {message('report.bundle', {name: p.bundle.name})}

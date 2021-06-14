@@ -11,6 +11,7 @@ import {
 } from 'lib/actions/modifications'
 import {loadProject} from 'lib/actions/project'
 import MapLayout from 'lib/layouts/map'
+import ModificationsOnMapProvider from 'lib/modification/components/modifications-on-map-provider'
 import selectModification from 'lib/selectors/active-modification'
 import withInitialFetch from 'lib/with-initial-fetch'
 
@@ -38,12 +39,14 @@ const EditorPage = withInitialFetch(
     )
 
     return (
-      <ModificationEditor
-        modification={modification}
-        query={query}
-        update={update}
-        updateLocally={updateLocally}
-      />
+      <ModificationsOnMapProvider>
+        <ModificationEditor
+          modification={modification}
+          query={query}
+          update={update}
+          updateLocally={updateLocally}
+        />
+      </ModificationsOnMapProvider>
     )
   },
   async (dispatch, query) => {

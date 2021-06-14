@@ -3,7 +3,7 @@ import useRegionalAnalyses from 'lib/hooks/use-regional-analyses'
 import SelectPage from 'lib/regional/components/select-page'
 import useRegionalJobs from 'lib/regional/hooks/use-regional-jobs'
 
-import withDataLayout, {IResults} from 'lib/with-data-layout'
+import withDataLayout, {IResults} from 'lib/hocs/with-data-layout'
 
 interface PageProps extends IResults {
   allAnalyses: CL.RegionalAnalysis[]

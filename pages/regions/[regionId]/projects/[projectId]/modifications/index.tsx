@@ -4,6 +4,7 @@ import {loadProject} from 'lib/actions/project'
 import List from 'lib/components/modification/list'
 import ProjectTitle from 'lib/components/project-title'
 import MapLayout from 'lib/layouts/map'
+import ModificationsOnMapProvider from 'lib/modification/components/modifications-on-map-provider'
 import withInitialFetch from 'lib/with-initial-fetch'
 
 /**
@@ -13,7 +14,9 @@ const ModificationsPage: any = withInitialFetch(
   ({bundle, project}) => (
     <>
       <ProjectTitle project={project} />
-      <List bundle={bundle} project={project} />
+      <ModificationsOnMapProvider>
+        <List bundle={bundle} project={project} />
+      </ModificationsOnMapProvider>
     </>
   ),
   async (dispatch, query) => {

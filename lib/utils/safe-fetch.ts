@@ -70,7 +70,7 @@ async function parseErrorMessageFromResponse(
 
 const toArrayBuffer = (res: Response) => res.arrayBuffer()
 const toText = (res: Response) => res.text()
-const toJSON = (res: Response) => res.json()
+export const toJSON = (res: Response) => res.json()
 
 export function fetchText(url: string, options?: RequestInit) {
   return safeFetch<string>(url, toText, options)

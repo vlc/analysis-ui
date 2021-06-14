@@ -37,7 +37,7 @@ export default function useCollection<T extends CL.IModel>(
   const {isLoading, user} = useUser()
   const url = useQueryURL(baseURL, query, options)
   const response = useSWR<T[], ResponseError>(
-    router.isReady && !isLoading ? [url, user] : null,
+    () => (router.isReady && !isLoading ? [url, user] : null),
     config
   )
   const emptyArray = useMemo<T[]>(() => [], [])
@@ -116,9 +116,14 @@ export function createUseCollection<T extends CL.IModel>(
 export const useAggregationAreas =
   createUseCollection<CL.AggregationArea>('aggregationAreas')
 export const useBundles = createUseCollection<CL.Bundle>('bundles')
+export const useModifications =
+  createUseCollection<CL.IModification>('modifications')
 export const useSpatialDatasets = createUseCollection<CL.SpatialDataset>(
   'opportunityDatasets'
 )
 export const useProjects = createUseCollection<CL.Project>('projects')
 export const usePresets = createUseCollection<CL.Preset>('presets')
 export const useRegions = createUseCollection<CL.Region>('regions')
+export const useScenarios = createUseCollection<CL.Scenario>('scenarios')
+export const useScenariosModifications =
+  createUseCollection<CL.ScenariosModifications>('scenariosModifications')
