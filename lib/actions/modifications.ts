@@ -2,33 +2,13 @@ import {createAction} from 'redux-actions'
 
 import {API} from 'lib/constants'
 import selectBundleId from '../selectors/bundle-id'
-import {
-  create as populateModificationType,
-  formatForServer,
-  isValid
-} from '../utils/modification'
+import {formatForServer, isValid} from '../utils/modification'
 
-import fetch, {fetchMultiple} from './fetch'
+import fetch from './fetch'
 import getFeedsRoutesAndStops from './get-feeds-routes-and-stops'
 
 const MODIFICATION_URL = API.Modification
 const PROJECT_URL = API.Project
-
-/**
- * POST the modification to `/api/modification/${_id}/copy`
- */
-export function copy(_id) {
-  return fetch({
-    url: `${MODIFICATION_URL}/${_id}/copy`,
-    options: {
-      method: 'post'
-    },
-    next: (response) => ({
-      type: 'create modification',
-      payload: response.value
-    })
-  })
-}
 
 /**
  * Load a single modification.
@@ -46,55 +26,6 @@ export const loadModification = (_id) => async (dispatch) => {
 
   return modification
 }
-
-/**
- * POST to `/api/project/${_id}/import/${importFromId}`
- */
-export const copyFromProject = ({fromProjectId, toProjectId}) =>
-  fetch({
-    url: `${PROJECT_URL}/${toProjectId}/import/${fromProjectId}`,
-    options: {
-      method: 'post'
-    },
-    next: (r) => ({type: 'create modifications', payload: r.value})
-  })
-
-/**
- * Populate the modification based on type and POST to the server. Send a
- * create action on completion and return the modification.
- *
- * @returns Promise
- */
-export const createModification = (body) =>
-  fetch({
-    url: MODIFICATION_URL,
-    options: {
-      body: populateModificationType(body),
-      method: 'post'
-    },
-    next: (response) => ({
-      type: 'create modification',
-      payload: response.value
-    })
-  })
-
-/**
- * Create multiple modifications.
- */
-export const createMultiple = (modifications) =>
-  fetchMultiple({
-    fetches: modifications.map((m) => ({
-      url: MODIFICATION_URL,
-      options: {
-        body: m,
-        method: 'post'
-      }
-    })),
-    next: (response) => ({
-      type: 'create modifications',
-      payload: response.value
-    })
-  })
 
 export const updateModification = (modification) => (dispatch, getState) => {
   const state = getState()

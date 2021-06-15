@@ -1,4 +1,3 @@
-import {loadBundle} from 'lib/actions'
 import {getForProject as loadModifications} from 'lib/actions/modifications'
 import {loadProject} from 'lib/actions/project'
 import List from 'lib/components/modification/list'
@@ -11,11 +10,11 @@ import withInitialFetch from 'lib/with-initial-fetch'
  * Show Select Project if a project has not been selected
  */
 const ModificationsPage: any = withInitialFetch(
-  ({bundle, project}) => (
+  ({project}) => (
     <>
       <ProjectTitle project={project} />
       <ModificationsOnMapProvider>
-        <List bundle={bundle} project={project} />
+        <List project={project} />
       </ModificationsOnMapProvider>
     </>
   ),
@@ -25,9 +24,7 @@ const ModificationsPage: any = withInitialFetch(
       dispatch(loadProject(query.projectId))
     ])
     const project = results[1]
-    const bundle = await dispatch(loadBundle(project.bundleId))
     return {
-      bundle,
       modifications: results[0],
       project
     }

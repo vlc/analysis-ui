@@ -9,16 +9,12 @@ export default withDataLayout<{
   project: CL.Project
   projects: CL.Project[]
 }>(
-  function ImportModificationsPage({project, projects, query}) {
+  function ImportModificationsPage({project, projects}) {
     return (
       <>
         <ProjectTitle project={project} />
         <Dock>
-          <ImportModifications
-            projects={projects}
-            projectId={query.projectId}
-            regionId={query.regionId}
-          />
+          <ImportModifications project={project} projects={projects} />
         </Dock>
       </>
     )

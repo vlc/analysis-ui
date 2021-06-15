@@ -27,7 +27,6 @@ import useRouteTo from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 import ScenariosEditor from 'lib/scenario/components/editor'
 import selectFeedsById from 'lib/selectors/feeds-by-id'
-import selectVariants from 'lib/selectors/variants'
 
 import IconButton from '../icon-button'
 import {HideIcon, SearchIcon, ShowIcon, UploadIcon} from '../icons'
@@ -64,14 +63,13 @@ function filterModifications(
 const selectModifications = fpGet('project.modifications')
 const EMPTY_ARRAY = []
 
-export default function ModificationsList({bundle, project}) {
+export default function ModificationsList({project}) {
   const modificationsOnMap = useModificationsOnMap()
   const dispatch = useDispatch()
   const {_id: projectId, bundleId, regionId} = project
   // Retrieve the modifications from the store. Filter out modifications that might be from another project
   const modifications: CL.IModification[] = useSelector(selectModifications)
   const feedsById = useSelector(selectFeedsById)
-  const variants = useSelector(selectVariants)
   const goToModificationImport = useRouteTo('modificationImport', {
     projectId,
     regionId
@@ -123,12 +121,7 @@ export default function ModificationsList({bundle, project}) {
         <TabPanels>
           <TabPanel pt={2} px={0}>
             <Box px={2}>
-              <CreateModification
-                feeds={bundle.feeds}
-                projectId={projectId}
-                regionId={regionId}
-                variants={variants}
-              />
+              <CreateModification />
             </Box>
             <Flex align='center' justify='space-between' p={2}>
               <InputGroup flex='1' pl={2}>

@@ -95,7 +95,11 @@ declare global {
     }
 
     export type Timetable = {
+      _id: string
       segmentSpeeds: SegmentSpeeds
+      phaseFromTimetable?: string
+      phaseAtStop?: string
+      phaseFromStop?: string
     }
 
     /**
@@ -104,6 +108,7 @@ declare global {
     export type ModificationTypes =
       | 'add-streets'
       | 'add-trip-pattern'
+      | 'convert-to-frequency'
       | 'modify-streets'
       | 'reroute'
 
@@ -138,6 +143,14 @@ declare global {
       type: 'add-trip-pattern'
       segments: ModificationSegment[]
       timetables: Timetable[]
+    }
+
+    /**
+     *
+     */
+    export interface ConvertToFrequency extends IModification {
+      type: 'convert-to-frequency'
+      entries: Timetable[]
     }
 
     /**

@@ -21,12 +21,12 @@ import {Component, useCallback, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 import {
-  copy as copyModification,
   deleteModification,
   updateModification as updateAndRetrieveFeedData
 } from 'lib/actions/modifications'
 import useRouteTo from 'lib/hooks/use-route-to'
 import message from 'lib/message'
+import copyModification from 'lib/modification/mutations/copy'
 import selectModificationFeed from 'lib/selectors/modification-feed'
 import selectFeedIsLoaded from 'lib/selectors/modification-feed-is-loaded'
 import selectSaveInProgress from 'lib/selectors/modification-save-in-progress'
@@ -97,10 +97,15 @@ export default class DebouncedUpdate extends Component<any> {
 /**
  * Show this toast when a modification has been copied.
  */
-function CopiedModificationToast({modification, onClose, regionId}) {
+function CopiedModificationToast({
+  modificationId,
+  onClose,
+  projectId,
+  regionId
+}) {
   const goToModificationEdit = useRouteTo('modificationEdit', {
-    modificationId: modification._id,
-    projectId: modification.projectId,
+    modificationId,
+    projectId,
     regionId
   })
 
@@ -213,18 +218,21 @@ function ModificationEditor({
 
   const _copyModification = useCallback(async () => {
     debouncedSaveToServer.flush()
-    const m = await dispatch(copyModification(modification._id))
-    toast({
-      position: 'top',
-      render: ({onClose}) => (
-        <CopiedModificationToast
-          modification={m}
-          onClose={onClose}
-          regionId={query.regionId}
-        />
-      )
-    })
-  }, [debouncedSaveToServer, dispatch, modification, query, toast])
+    const res = await copyModification(modification._id)
+    if (res.ok) {
+      toast({
+        position: 'top',
+        render: ({onClose}) => (
+          <CopiedModificationToast
+            modificationId={res.data._id}
+            onClose={onClose}
+            projectId={query.projectId}
+            regionId={query.regionId}
+          />
+        )
+      })
+    }
+  }, [debouncedSaveToServer, modification, query, toast])
 
   if (isDeleting) return null
 

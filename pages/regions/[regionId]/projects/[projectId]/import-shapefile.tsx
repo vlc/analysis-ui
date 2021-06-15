@@ -10,11 +10,7 @@ export default withDataLayout<{project: CL.Project}>(
       <>
         <ProjectTitle project={p.project} />
         <Dock>
-          <ImportShapefile
-            projectId={p.query.projectId}
-            regionId={p.query.regionId}
-            variants={p.project.variants}
-          />
+          <ImportShapefile />
         </Dock>
       </>
     )

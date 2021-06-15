@@ -12,7 +12,7 @@ export default withDataLayout<{
   scenarios: CL.Scenario[]
   scenariosModifications: CL.ScenariosModifications[]
 }>(
-  function ScenariosPage(p) {
+  function ScenariosPage() {
     return null
   },
   function useData(p) {
