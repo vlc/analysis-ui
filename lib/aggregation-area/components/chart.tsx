@@ -80,7 +80,7 @@ export default function AggregateAccessibilityChart(p: {
     : 0
 
   return (
-    <Stack spacing={4}>
+    <Stack p={4} spacing={4}>
       <Box>
         <svg width={WIDTH} height={HEIGHT}>
           <Bins
