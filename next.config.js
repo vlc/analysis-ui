@@ -31,5 +31,13 @@ module.exports = {
         permanent: false
       }
     ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/r5/:path*',
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`
+      }
+    ]
   }
 }

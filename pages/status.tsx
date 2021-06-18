@@ -10,11 +10,12 @@ import {
 import useSWR from 'swr'
 
 import {ALink, ExternalLink} from 'lib/components/link'
+import {R5_URL} from 'lib/constants'
 import {getJSON, ResponseError} from 'lib/utils/safe-fetch'
 
 type Version = Record<string, string>
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL + '/version'
+const API_URL = `${R5_URL}/version`
 async function fetcher(url: string) {
   const res = await getJSON<Version>(url)
   if (!res.ok) throw res

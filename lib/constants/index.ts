@@ -28,7 +28,8 @@ export const VERCEL_MAX_FILE_SIZE_BYTES = mbToBytes(5)
 /**
  * API URLs
  */
-export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api`
+export const R5_URL = '/api/r5'
+export const API_URL = `${R5_URL}/api`
 
 export const API = {
   Activity: `${API_URL}/activity`,
