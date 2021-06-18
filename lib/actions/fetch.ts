@@ -219,7 +219,6 @@ function runFetch(
     })
 
   return fetch(url, {
-    mode: 'cors',
     ...options,
     body: serialize(options.body),
     headers: filteredHeaders
