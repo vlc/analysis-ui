@@ -86,6 +86,7 @@ export function createUseModel<T extends CL.IModel>(
 }
 
 export const useBundle = createUseModel<CL.Bundle>('bundles')
+export const useModification = createUseModel<CL.Modification>('modifications')
 export const useProject = createUseModel<CL.Project>('projects')
 export const useRegion = createUseModel<CL.Region>('regions')
 export const usePreset = createUseModel<CL.Preset>('presets')

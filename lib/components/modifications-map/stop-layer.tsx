@@ -1,23 +1,45 @@
 import {useDisclosure} from '@chakra-ui/react'
-import React, {memo} from 'react'
+import get from 'lodash/get'
+import {memo} from 'react'
 import {CircleMarker, Tooltip} from 'react-leaflet'
+
+import useRouteStops from 'lib/gtfs/hooks/use-route-stops'
 
 import Pane from '../map/pane'
 
 const STOP_RADIUS = 4
 
-export default function StopLayer(p) {
-  const routeStops = React.useMemo(
+export default function StopLayer({
+  feedGroupId,
+  modification,
+  nullIsWildcard = false,
+  onSelect,
+  selectedColor,
+  unselectedColor
+}: {
+  feedGroupId: string
+  modification: CL.StopModification
+  nullIsWildcard?: boolean
+  onSelect?: (stop: GTFS.Stop) => void
+  selectedColor?: string
+  unselectedColor?: string
+}) {
+  const routeStops = useRouteStops(
+    feedGroupId,
+    modification.feed,
+    get(modification, 'routes[0]')
+  )
+  /* const routeStops = useMemo(
     () => getUniqueStops(p.feed, p.modification),
     [p.feed, p.modification]
-  )
+  ) */
 
-  const showUnselected = !!p.unselectedColor
+  const showUnselected = !!unselectedColor
 
   const isSelected = (s) =>
-    p.modification.stops == null
-      ? p.nullIsWildcard
-      : p.modification.stops.includes(s.stop_id)
+    modification.stops == null
+      ? nullIsWildcard
+      : modification.stops.includes(s.stop_id)
 
   return (
     <Pane zIndex={503}>
@@ -26,17 +48,17 @@ export default function StopLayer(p) {
           .filter((s) => !isSelected(s))
           .map((s) => (
             <StopMarker
-              color={p.unselectedColor}
+              color={unselectedColor}
               key={s.stop_id}
-              onSelect={p.onSelect}
+              onSelect={onSelect}
               stop={s}
             />
           ))}
       {routeStops.filter(isSelected).map((s) => (
         <StopMarker
-          color={p.selectedColor}
+          color={selectedColor}
           key={s.stop_id}
-          onSelect={p.onSelect}
+          onSelect={onSelect}
           stop={s}
         />
       ))}
@@ -44,9 +66,13 @@ export default function StopLayer(p) {
   )
 }
 
-const StopMarker = memo(({color, onSelect, stop}) => {
+const StopMarker = memo<{
+  color: string
+  onSelect: (stop: GTFS.Stop) => void
+  stop: GTFS.Stop
+}>(({color, onSelect, stop}) => {
   const tooltip = useDisclosure()
-  const center = [stop.stop_lat, stop.stop_lon]
+  const center: L.LatLngExpression = [stop.stop_lat, stop.stop_lon]
   return (
     <CircleMarker
       center={center}
@@ -88,7 +114,7 @@ function getUniqueStops(feed, modification) {
 }
 
 function getUniqueStopsForPatterns({patterns, stopsById}) {
-  const routeStopIds = new Set()
+  const routeStopIds = new Set<string>()
   patterns.forEach((p) => {
     p.stops.forEach((s) => routeStopIds.add(s.stop_id))
   })

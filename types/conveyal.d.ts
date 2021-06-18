@@ -108,59 +108,95 @@ declare global {
     export type ModificationTypes =
       | 'add-streets'
       | 'add-trip-pattern'
+      | 'adjust-dwell-time'
+      | 'adjust-speed'
       | 'convert-to-frequency'
+      | 'custom'
       | 'modify-streets'
+      | 'remove-stops'
+      | 'remove-trips'
       | 'reroute'
 
     /**
      * Base modification
      */
     export interface IModification extends IModel {
+      description: string
       projectId: string
-      type: ModificationTypes
     }
 
     /**
-     *
+     * Modification that uses a feed
      */
+    export interface FeedModification {
+      feed: string
+      routes: string[]
+    }
+
+    /**
+     * Modification that has selected stops
+     */
+    export interface StopModification extends FeedModification {
+      stops: string[]
+    }
+
     export interface AddStreets extends IModification {
       type: 'add-streets'
       lineStrings: GeoJSON.Position[][]
     }
 
-    /**
-     *
-     */
-    export interface ModifyStreets extends IModification {
-      type: 'modify-streets'
-      polygons: GeoJSON.Position[][]
-    }
-
-    /**
-     *
-     */
     export interface AddTripPattern extends IModification {
+      bidirectional: boolean
       type: 'add-trip-pattern'
       segments: ModificationSegment[]
       timetables: Timetable[]
     }
 
-    /**
-     *
-     */
-    export interface ConvertToFrequency extends IModification {
+    export interface AdjustDwellTime extends IModification, StopModification {
+      type: 'adjust-dwell-time'
+    }
+
+    export interface AdjustSpeed extends IModification, FeedModification {
+      type: 'adjust-speed'
+    }
+
+    export interface ConvertToFrequency
+      extends IModification,
+        FeedModification {
       type: 'convert-to-frequency'
       entries: Timetable[]
     }
 
-    /**
-     *
-     */
-    export interface Reroute extends IModification {
+    export interface ModifyStreets extends IModification {
+      type: 'modify-streets'
+      polygons: GeoJSON.Position[][]
+    }
+
+    export interface RemoveStops extends IModification, StopModification {
+      type: 'remove-stops'
+    }
+
+    export interface RemoveTrips extends IModification, FeedModification {
+      type: 'remove-trips'
+      trips: string[]
+    }
+
+    export interface Reroute extends FeedModification, IModification {
       type: 'reroute'
       segments: ModificationSegment[]
       segmentSpeeds: SegmentSpeeds
     }
+
+    export type Modification =
+      | AddStreets
+      | AddTripPattern
+      | AdjustDwellTime
+      | AdjustSpeed
+      | ConvertToFrequency
+      | ModifyStreets
+      | RemoveStops
+      | RemoveTrips
+      | Reroute
 
     /**
      * Spatial Datasets

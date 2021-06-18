@@ -21,7 +21,7 @@ const LINE_WEIGHT = 3
 export default function RerouteLayer({
   dim = false,
   feed,
-  isEditing,
+  isEditing = false,
   modification
 }) {
   // dim, feed, modification
@@ -30,16 +30,8 @@ export default function RerouteLayer({
   return (
     <>
       <Pane zIndex={500}>
-        <PatternGeometry
-          color={colors.NEUTRAL_LIGHT}
-          dim={dim}
-          patterns={patterns}
-        />
-        <DirectionalMarkers
-          color={colors.NEUTRAL_LIGHT}
-          dim={dim}
-          patterns={patterns}
-        />
+        <PatternGeometry color={colors.NEUTRAL_LIGHT} patterns={patterns} />
+        <DirectionalMarkers color={colors.NEUTRAL_LIGHT} patterns={patterns} />
       </Pane>
       {!isEditing &&
         get(modification, 'segments[0].geometry.type') === 'LineString' && (

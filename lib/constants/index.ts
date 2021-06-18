@@ -114,7 +114,7 @@ export const MODIFY_STREETS = 'modify-streets'
 export const REMOVE_STOPS = 'remove-stops'
 export const REMOVE_TRIPS = 'remove-trips'
 export const REROUTE = 'reroute'
-export const MODIFICATION_TYPES = [
+export const MODIFICATION_TYPES: CL.ModificationTypes[] = [
   ADD_STREETS,
   ADD_TRIP_PATTERN,
   ADJUST_DWELL_TIME,

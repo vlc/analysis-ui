@@ -11,19 +11,21 @@ const PatternLayer = dynamic(() => import('./pattern-layer'))
 const RerouteLayer = dynamic(() => import('./reroute-layer'))
 const StopLayer = dynamic(() => import('./stop-layer'))
 
-export default function Display(p) {
+export default function Display(p: {
+  dim?: boolean
+  feedGroupId: string
+  modification: CL.Modification
+}) {
   const m = p.modification
   switch (m.type) {
-    case C.ADD_STREETS:
+    case C.ADD_STREETS: {
+      const feature: GeoJSON.MultiLineString = {
+        type: 'MultiLineString',
+        coordinates: (m as CL.AddStreets).lineStrings
+      }
       return (
         <GeoJSON
-          data={{
-            type: 'Feature',
-            geometry: {
-              type: 'MultiLineString',
-              coordinates: m.lineStrings
-            }
-          }}
+          data={feature}
           style={{
             color: colors.ADDED,
             opacity: p.dim ? 0.5 : 1,
@@ -31,29 +33,32 @@ export default function Display(p) {
           }}
         />
       )
-    case C.MODIFY_STREETS:
+    }
+    case C.MODIFY_STREETS: {
+      const geometryCollection: GeoJSON.GeometryCollection = {
+        type: 'GeometryCollection',
+        geometries: (m as CL.ModifyStreets).polygons.map((p) => ({
+          type: 'Polygon',
+          coordinates: [p]
+        }))
+      }
       return (
         <GeoJSON
-          data={{
-            type: 'GeometryCollection',
-            geometries: m.polygons.map((p) => ({
-              type: 'Polygon',
-              coordinates: [p]
-            }))
-          }}
+          data={geometryCollection}
           style={{
             color: colors.MODIFIED,
             opacity: p.dim ? 0.5 : 1
           }}
         />
       )
+    }
     case C.REMOVE_TRIPS:
       return (
         <PatternLayer
           color={colors.REMOVED}
           dim={p.dim}
-          feed={p.feed}
-          modification={m}
+          feedGroupId={p.feedGroupId}
+          modification={m as CL.RemoveTrips}
         />
       )
     case C.CONVERT_TO_FREQUENCY:
@@ -61,8 +66,8 @@ export default function Display(p) {
         <PatternLayer
           color={colors.MODIFIED}
           dim={p.dim}
-          feed={p.feed}
-          modification={m}
+          feedGroupId={p.feedGroupId}
+          modification={m as CL.ConvertToFrequency}
         />
       )
     case C.REMOVE_STOPS:
@@ -71,12 +76,12 @@ export default function Display(p) {
           <PatternLayer
             color={colors.NEUTRAL_LIGHT}
             dim={p.dim}
-            feed={p.feed}
-            modification={m}
+            feedGroupId={p.feedGroupId}
+            modification={m as CL.RemoveStops}
           />
           <StopLayer
-            feed={p.feed}
-            modification={m}
+            feedGroupId={p.feedGroupId}
+            modification={m as CL.RemoveStops}
             selectedColor={colors.REMOVED}
             unselectedColor={colors.NEUTRAL_LIGHT}
           />
@@ -88,27 +93,39 @@ export default function Display(p) {
           <PatternLayer
             color={colors.NEUTRAL_LIGHT}
             dim={p.dim}
-            feed={p.feed}
-            modification={m}
+            feedGroupId={p.feedGroupId}
+            modification={m as CL.AdjustDwellTime}
           />
           <StopLayer
-            feed={p.feed}
-            modification={m}
+            feedGroupId={p.feedGroupId}
+            modification={m as CL.AdjustDwellTime}
             nullIsWildcard
             selectedColor={colors.MODIFIED}
           />
         </>
       )
     case C.ADJUST_SPEED:
-      return <AdjustSpeedLayer dim={p.dim} feed={p.feed} modification={m} />
+      return (
+        <AdjustSpeedLayer
+          dim={p.dim}
+          feedGroupId={p.feedGroupId}
+          modification={m}
+        />
+      )
     case C.REROUTE:
-      return <RerouteLayer dim={p.dim} feed={p.feed} modification={m} />
+      return (
+        <RerouteLayer
+          dim={p.dim}
+          feedGroupId={p.feedGroupId}
+          modification={m as CL.Reroute}
+        />
+      )
     case C.ADD_TRIP_PATTERN:
       return (
         <AddTripPatternLayer
           dim={p.dim}
-          bidirectional={m.bidirectional}
-          segments={m.segments}
+          bidirectional={(m as CL.AddTripPattern).bidirectional}
+          segments={(m as CL.AddTripPattern).segments}
         />
       )
     default:

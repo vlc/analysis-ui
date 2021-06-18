@@ -117,7 +117,7 @@ export const useAggregationAreas =
   createUseCollection<CL.AggregationArea>('aggregationAreas')
 export const useBundles = createUseCollection<CL.Bundle>('bundles')
 export const useModifications =
-  createUseCollection<CL.IModification>('modifications')
+  createUseCollection<CL.Modification>('modifications')
 export const useSpatialDatasets = createUseCollection<CL.SpatialDataset>(
   'opportunityDatasets'
 )

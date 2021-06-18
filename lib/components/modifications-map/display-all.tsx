@@ -1,40 +1,54 @@
 import dynamic from 'next/dynamic'
-import {useRouter} from 'next/router'
-import React from 'react'
-import {useSelector} from 'react-redux'
 
-import selectFeedsById from 'lib/selectors/feeds-by-id'
-import selectModifications from 'lib/selectors/modifications'
 import useModificationsOnMap from 'lib/modification/hooks/use-modifications-on-map'
+import {useModifications} from 'lib/hooks/use-collection'
 
 const Display = dynamic(() => import('./display'), {ssr: false})
 
-export function DisplayAll({feedsById, isEditing = false, modifications}) {
-  return modifications.map((m) => (
-    <Display
-      dim={isEditing}
-      feed={feedsById[m.feed]}
-      key={m._id}
-      modification={m}
-    />
-  ))
+export function DisplayAll({
+  bundle,
+  isEditing = false,
+  modifications
+}: {
+  bundle: CL.Bundle
+  isEditing?: boolean
+  modifications: CL.Modification[]
+}) {
+  return (
+    <>
+      {modifications.map((m) => (
+        <Display
+          dim={isEditing}
+          feedGroupId={bundle.feedGroupId}
+          key={m._id}
+          modification={m}
+        />
+      ))}
+    </>
+  )
 }
 
-export default function ConnectedDisplayAll(p) {
-  const router = useRouter()
-  const feedsById = useSelector(selectFeedsById)
-  const modifications = useSelector(selectModifications)
-  const modificationId = router.query.modificationId
-
+export default function ConnectedDisplayAll({
+  bundle,
+  project,
+  isEditingId
+}: {
+  bundle: CL.Bundle
+  project: CL.Project
+  isEditingId?: string
+}) {
+  const {data: modifications} = useModifications({
+    query: {projectId: project._id}
+  })
   const modificationsOnMap = useModificationsOnMap()
-  const ids = modificationsOnMap.state[router.query.projectId as string] ?? []
+  const ids = modificationsOnMap.state[project._id] ?? []
 
   return (
     <DisplayAll
-      feedsById={feedsById}
-      isEditing={p.isEditing}
+      bundle={bundle}
+      isEditing={!!isEditingId}
       modifications={modifications.filter(
-        (m) => m._id !== modificationId && ids.includes(m._id)
+        (m) => m._id !== isEditingId && ids.includes(m._id)
       )}
     />
   )

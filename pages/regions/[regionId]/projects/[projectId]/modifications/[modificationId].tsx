@@ -1,0 +1,35 @@
+import dynamic from 'next/dynamic'
+
+import ModificationsOnMapProvider from 'lib/modification/components/modifications-on-map-provider'
+import withDataLayout from 'lib/hocs/with-data-layout'
+import {useModification, useProject} from 'lib/hooks/use-model'
+
+// Lots of the ModificationEditor code depends on Leaflet. Load it all client side
+const ModificationEditor = dynamic(
+  () => import('lib/components/modification/editor'),
+  {ssr: false}
+)
+
+export default withDataLayout<{
+  project: CL.Project
+  modification: CL.Modification
+}>(
+  function Editor(p) {
+    return (
+      <ModificationsOnMapProvider>
+        <ModificationEditor
+          key={p.modification._id}
+          modification={p.modification}
+          project={p.project}
+          query={p.query}
+        />
+      </ModificationsOnMapProvider>
+    )
+  },
+  function useData({query}) {
+    return {
+      modification: useModification(query.modificationId),
+      project: useProject(query.projectId)
+    }
+  }
+)
