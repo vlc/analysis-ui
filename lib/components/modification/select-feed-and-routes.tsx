@@ -31,17 +31,19 @@ const getRouteValue = fpGet('route_id')
 export default function SelectFeedAndRoutes({
   allowMultipleRoutes = false,
   onChange,
-  selectedRouteIds,
-  ...p
+  selectedRouteIds
+}: {
+  allowMultipleRoutes?: boolean
+  onChange: (updates: any) => void
+  selectedRouteIds?: string[]
 }) {
   // Zoom to bounds on a route change
   const feeds = useSelector(selectFeeds)
   const bounds = useSelector(selectModificationBounds)
   const routePatterns = useSelector(selectRoutePatterns)
   const selectedFeed = useSelector(selectModificationFeed)
-  const [currentRoutePatterns, setCurrentRoutePatterns] = useState(
-    routePatterns
-  )
+  const [currentRoutePatterns, setCurrentRoutePatterns] =
+    useState(routePatterns)
   const leaflet = useLeaflet()
   useEffect(() => {
     if (routePatterns !== currentRoutePatterns) {
@@ -94,7 +96,7 @@ export default function SelectFeedAndRoutes({
     allowMultipleRoutes && selectedFeed && routeIds.length < availableRoutes
 
   return (
-    <Stack spacing={4} {...p}>
+    <Stack spacing={4}>
       <FormControl>
         <FormLabel htmlFor='Feed'>Select feed</FormLabel>
         <Select

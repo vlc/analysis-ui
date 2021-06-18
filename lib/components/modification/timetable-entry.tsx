@@ -59,9 +59,10 @@ export default function TimetableEntry({modificationStops, timetable, update}) {
     [startTime, update]
   )
 
-  const onFreqChange = useCallback((headwaySecs) => update({headwaySecs}), [
-    update
-  ])
+  const onFreqChange = useCallback(
+    (headwaySecs) => update({headwaySecs}),
+    [update]
+  )
 
   return (
     <Stack spacing={4}>

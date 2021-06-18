@@ -72,9 +72,9 @@ const toArrayBuffer = (res: Response) => res.arrayBuffer()
 const toText = (res: Response) => res.text()
 const toJSON = (res: Response) => res.json()
 
-export const fetchArrayBuffer = (url: string) =>
-  safeFetch<ArrayBuffer>(url, toArrayBuffer)
-export const fetchText = (url: string) => safeFetch<string>(url, toText)
+export function fetchText(url: string, options?: RequestInit) {
+  return safeFetch<string>(url, toText, options)
+}
 export function fetchData<T>(url: string, options?: RequestInit) {
   return safeFetch<T>(url, toJSON, {
     ...options,
@@ -83,6 +83,9 @@ export function fetchData<T>(url: string, options?: RequestInit) {
       ...options?.headers
     }
   })
+}
+export function fetchBuffer(url: string, options?: RequestInit) {
+  return safeFetch<ArrayBuffer>(url, toArrayBuffer, options)
 }
 
 /**

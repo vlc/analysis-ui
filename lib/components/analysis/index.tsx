@@ -63,12 +63,7 @@ const P = {
   lg: 6
 }
 
-export default function SinglePointAnalysis({
-  bundles,
-  projects,
-  region,
-  regionalAnalyses
-}) {
+export default function SinglePointAnalysis({bundles, projects, region}) {
   const dispatch = useDispatch()
   const currentProject = useSelector(selectCurrentProject)
   const isochroneFetchStatus = useSelector((s) =>
@@ -196,7 +191,6 @@ export default function SinglePointAnalysis({
           bundles={bundles}
           projects={projects}
           region={region}
-          regionalAnalyses={regionalAnalyses}
         />
       </InnerDock>
     </>

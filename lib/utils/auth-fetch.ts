@@ -1,26 +1,34 @@
-import {IUser} from '../user'
+import {safeFetch, SafeResponse} from './safe-fetch'
 
-import {fetchData, SafeResponse} from './safe-fetch'
+export function createAuthHeaders(user?: CL.User) {
+  const headers = {
+    Authorization: `bearer ${user?.idToken}`
+  }
+
+  // Add the admin access group for administrators if it exists.
+  if (user?.accessGroup === process.env.NEXT_PUBLIC_ADMIN_ACCESS_GROUP) {
+    const adminTempAccessGroup = window.__user?.adminTempAccessGroup
+    if (adminTempAccessGroup?.length > 0) {
+      headers['X-Conveyal-Access-Group'] = adminTempAccessGroup
+    }
+  }
+  return headers
+}
 
 /**
  * Fetch wrapper that includes authentication. Defaults headers to JSON.
  */
 export default function authFetch<T>(
   url: string,
-  user?: IUser,
+  user: CL.User,
+  parser: (res: Response) => Promise<T> = (res) => res.json(),
   options?: RequestInit
 ): Promise<SafeResponse<T>> {
-  const headers = {
-    Authorization: `bearer ${user?.idToken}`
-  }
-  if (user?.adminTempAccessGroup)
-    headers['X-Conveyal-Access-Group'] = user.adminTempAccessGroup
-
-  return fetchData(url, {
+  return safeFetch(url, parser, {
     mode: 'cors',
     ...options,
     headers: {
-      ...headers,
+      ...createAuthHeaders(user),
       ...options?.headers
     }
   })

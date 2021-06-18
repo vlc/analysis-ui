@@ -199,7 +199,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                       "flex": 1,
                       "fontSize": "1rem",
                       "justifyContent": "center",
-                      "mb": "-2px",
+                      "marginBottom": "-2px",
                       "outline": "0",
                       "px": "1rem",
                       "py": "0.5rem",
@@ -224,7 +224,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                   <button
                     aria-controls="tabs-19--tabpanel-0"
                     aria-selected={true}
-                    className="chakra-tabs__tab css-xokrno"
+                    className="chakra-tabs__tab css-1dwcm1g"
                     id="tabs-19--tab-0"
                     onClick={[Function]}
                     onFocus={[Function]}
@@ -256,7 +256,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                         ml={2}
                       >
                         <span
-                          className="chakra-badge css-fw1pf9"
+                          className="chakra-badge css-zuuiq8"
                         >
                           1
                         </span>
@@ -297,7 +297,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                       "flex": 1,
                       "fontSize": "1rem",
                       "justifyContent": "center",
-                      "mb": "-2px",
+                      "marginBottom": "-2px",
                       "outline": "0",
                       "px": "1rem",
                       "py": "0.5rem",
@@ -322,7 +322,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                   <button
                     aria-controls="tabs-19--tabpanel-1"
                     aria-selected={false}
-                    className="chakra-tabs__tab css-xokrno"
+                    className="chakra-tabs__tab css-1dwcm1g"
                     id="tabs-19--tab-1"
                     onClick={[Function]}
                     onFocus={[Function]}
@@ -339,6 +339,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
         </TabList>
         <TabPanels>
           <Styled(div)
+            __css={Object {}}
             className="chakra-tabs__tab-panels"
             width="100%"
           >
@@ -371,7 +372,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                 >
                   <div
                     aria-labelledby="tabs-19--tab-0"
-                    className="chakra-tabs__tab-panel css-1ckuqav"
+                    className="chakra-tabs__tab-panel css-7p3xww"
                     hidden={false}
                     id="tabs-19--tabpanel-0"
                     role="tabpanel"
@@ -381,7 +382,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                       px={2}
                     >
                       <div
-                        className="css-1ozu5o9"
+                        className="css-199gcrh"
                       >
                         <CreateModification
                           feeds={Array []}
@@ -446,7 +447,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                               type="button"
                             >
                               <button
-                                className="chakra-button css-1uiu0j2"
+                                className="chakra-button css-3v23rq"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -454,11 +455,14 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                   marginEnd="0.5rem"
                                 >
                                   <Styled(span)
+                                    alignSelf="center"
                                     className="chakra-button__icon"
+                                    display="inline-flex"
+                                    flexShrink={0}
                                     marginEnd="0.5rem"
                                   >
                                     <span
-                                      className="chakra-button__icon css-ktvjz1"
+                                      className="chakra-button__icon css-1wh2kri"
                                     >
                                       <FaPlus
                                         aria-hidden={true}
@@ -547,7 +551,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                         p={2}
                       >
                         <div
-                          className="css-1sdvidi"
+                          className="css-1uqb1ih"
                         >
                           <InputGroup
                             flex="1"
@@ -566,7 +570,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                               pl={2}
                             >
                               <div
-                                className="chakra-input__group css-18a38g2"
+                                className="chakra-input__group css-3wk2n9"
                               >
                                 <InputLeftElement
                                   key=".0"
@@ -584,8 +588,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                         Object {
                                           "fontSize": "md",
                                           "height": 10,
-                                          "left": "0",
-                                          "paddingX": undefined,
+                                          "insetStart": "0",
                                           "width": 10,
                                         }
                                       }
@@ -594,7 +597,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                       pr={2}
                                     >
                                       <div
-                                        className="chakra-input__left-element css-1wi35es"
+                                        className="chakra-input__left-element css-28fscy"
                                       >
                                         <FaSearch>
                                           <IconBase
@@ -632,7 +635,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                 <Input
                                   key=".1"
                                   onChange={[Function]}
-                                  paddingLeft={10}
+                                  paddingStart={10}
                                   placeholder="Search modifications"
                                   type="text"
                                   value=""
@@ -662,10 +665,8 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                         "h": 10,
                                         "minWidth": 0,
                                         "outline": 0,
-                                        "pl": 0,
                                         "position": "relative",
-                                        "pr": 0,
-                                        "px": 4,
+                                        "px": 0,
                                         "transition": "all 0.2s",
                                         "width": "100%",
                                       }
@@ -674,13 +675,13 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onFocus={[Function]}
-                                    paddingLeft={10}
+                                    paddingStart={10}
                                     placeholder="Search modifications"
                                     type="text"
                                     value=""
                                   >
                                     <input
-                                      className="chakra-input css-1dw5s5v"
+                                      className="chakra-input css-zoi36l"
                                       onBlur={[Function]}
                                       onChange={[Function]}
                                       onFocus={[Function]}
@@ -712,7 +713,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                               ml={2}
                             >
                               <div
-                                className="css-1az9m6y"
+                                className="css-n4s74q"
                               >
                                 <ForwardRef
                                   label="Import modifications from another project"
@@ -799,7 +800,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                             >
                                               <button
                                                 aria-label="Import modifications from another project"
-                                                className="chakra-button css-1o9h2ju"
+                                                className="chakra-button css-rswj2l"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onFocus={[Function]}
@@ -930,7 +931,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                             >
                                               <button
                                                 aria-label="Show all modifications"
-                                                className="chakra-button css-1o9h2ju"
+                                                className="chakra-button css-rswj2l"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onFocus={[Function]}
@@ -1061,7 +1062,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                             >
                                               <button
                                                 aria-label="Hide all modifications"
-                                                className="chakra-button css-1o9h2ju"
+                                                className="chakra-button css-rswj2l"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onFocus={[Function]}
@@ -1204,7 +1205,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                 className="chakra-accordion__item"
                                               >
                                                 <div
-                                                  className="chakra-accordion__item css-1qsvsm"
+                                                  className="chakra-accordion__item css-1t7rcca"
                                                 >
                                                   <h3>
                                                     <AccordionButton
@@ -1257,7 +1258,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                         <button
                                                           aria-controls="accordion-panel-9"
                                                           aria-expanded={true}
-                                                          className="chakra-accordion__button css-1ac0o6b"
+                                                          className="chakra-accordion__button css-8nz62h"
                                                           disabled={false}
                                                           id="accordion-button-9"
                                                           onClick={[Function]}
@@ -1271,7 +1272,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                             textAlign="left"
                                                           >
                                                             <div
-                                                              className="css-16g6m1i"
+                                                              className="css-y96va0"
                                                             >
                                                               Add Trip Pattern
                                                                
@@ -1294,7 +1295,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                   className="chakra-badge"
                                                                 >
                                                                   <span
-                                                                    className="chakra-badge css-2q4iwi"
+                                                                    className="chakra-badge css-1mliqn9"
                                                                   >
                                                                     1
                                                                   </span>
@@ -1314,6 +1315,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                 }
                                                               }
                                                               aria-hidden={true}
+                                                              className="chakra-accordion__icon"
                                                               viewBox="0 0 24 24"
                                                             >
                                                               <Styled(svg)
@@ -1333,14 +1335,14 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                   }
                                                                 }
                                                                 aria-hidden={true}
-                                                                className="chakra-icon"
+                                                                className="chakra-icon chakra-accordion__icon"
                                                                 focusable={false}
                                                                 verticalAlign="middle"
                                                                 viewBox="0 0 24 24"
                                                               >
                                                                 <svg
                                                                   aria-hidden={true}
-                                                                  className="chakra-icon css-32smu2"
+                                                                  className="chakra-icon chakra-accordion__icon css-j2ph2z"
                                                                   focusable={false}
                                                                   viewBox="0 0 24 24"
                                                                 >
@@ -1363,658 +1365,941 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                     <Collapse
                                                       in={true}
                                                     >
-                                                      <ForwardRef(MotionComponent)
-                                                        animate="enter"
-                                                        className="chakra-collapse"
+                                                      <AnimatePresence
                                                         custom={
                                                           Object {
                                                             "animateOpacity": true,
                                                             "endingHeight": "auto",
                                                             "startingHeight": 0,
+                                                            "transition": Object {
+                                                              "enter": Object {
+                                                                "duration": 0,
+                                                              },
+                                                            },
+                                                            "transitionEnd": Object {
+                                                              "enter": Object {
+                                                                "overflow": "initial",
+                                                              },
+                                                              "exit": Object {
+                                                                "display": "none",
+                                                              },
+                                                            },
                                                           }
                                                         }
                                                         initial={false}
-                                                        onAnimationComplete={[Function]}
-                                                        style={
-                                                          Object {
-                                                            "display": "block",
-                                                            "overflow": "hidden",
-                                                          }
-                                                        }
-                                                        variants={
-                                                          Object {
-                                                            "enter": [Function],
-                                                            "exit": [Function],
-                                                          }
-                                                        }
                                                       >
-                                                        <div
-                                                          className="chakra-collapse"
-                                                          style={
-                                                            Object {
-                                                              "display": "block",
-                                                              "height": "0px",
-                                                              "opacity": 0,
-                                                              "overflow": "hidden",
-                                                            }
-                                                          }
+                                                        <PresenceChild
+                                                          isPresent={true}
+                                                          key=""
+                                                          presenceAffectsLayout={true}
                                                         >
-                                                          <Styled(div)
-                                                            __css={
+                                                          <ForwardRef(MotionComponent)
+                                                            animate="enter"
+                                                            className="chakra-collapse"
+                                                            custom={
                                                               Object {
-                                                                "pb": 5,
-                                                                "pt": 2,
-                                                                "px": 4,
+                                                                "animateOpacity": true,
+                                                                "endingHeight": "auto",
+                                                                "startingHeight": 0,
+                                                                "transition": Object {
+                                                                  "enter": Object {
+                                                                    "duration": 0,
+                                                                  },
+                                                                },
+                                                                "transitionEnd": Object {
+                                                                  "enter": Object {
+                                                                    "overflow": "initial",
+                                                                  },
+                                                                  "exit": Object {
+                                                                    "display": "none",
+                                                                  },
+                                                                },
                                                               }
                                                             }
-                                                            aria-labelledby="accordion-button-9"
-                                                            className="chakra-accordion__panel"
-                                                            id="accordion-panel-9"
-                                                            px={1}
-                                                            py={0}
-                                                            role="region"
+                                                            exit="exit"
+                                                            initial={false}
+                                                            style={
+                                                              Object {
+                                                                "display": "block",
+                                                                "overflow": "hidden",
+                                                              }
+                                                            }
+                                                            variants={
+                                                              Object {
+                                                                "enter": [Function],
+                                                                "exit": [Function],
+                                                              }
+                                                            }
                                                           >
                                                             <div
-                                                              aria-labelledby="accordion-button-9"
-                                                              className="chakra-accordion__panel css-1tgm0dp"
-                                                              id="accordion-panel-9"
-                                                              role="region"
+                                                              className="chakra-collapse"
+                                                              style={
+                                                                Object {
+                                                                  "display": "none",
+                                                                  "height": "0px",
+                                                                  "opacity": 0,
+                                                                  "overflow": "hidden",
+                                                                }
+                                                              }
                                                             >
-                                                              <Flex
-                                                                direction="column"
-                                                              >
-                                                                <Styled(div)
-                                                                  __css={
-                                                                    Object {
-                                                                      "alignItems": undefined,
-                                                                      "display": "flex",
-                                                                      "flexBasis": undefined,
-                                                                      "flexDirection": "column",
-                                                                      "flexGrow": undefined,
-                                                                      "flexShrink": undefined,
-                                                                      "flexWrap": undefined,
-                                                                      "justifyContent": undefined,
-                                                                    }
+                                                              <Styled(div)
+                                                                __css={
+                                                                  Object {
+                                                                    "pb": 5,
+                                                                    "pt": 2,
+                                                                    "px": 4,
                                                                   }
+                                                                }
+                                                                aria-labelledby="accordion-button-9"
+                                                                className="chakra-accordion__panel"
+                                                                id="accordion-panel-9"
+                                                                px={1}
+                                                                py={0}
+                                                                role="region"
+                                                              >
+                                                                <div
+                                                                  aria-labelledby="accordion-button-9"
+                                                                  className="chakra-accordion__panel css-4s5j0j"
+                                                                  id="accordion-panel-9"
+                                                                  role="region"
                                                                 >
-                                                                  <div
-                                                                    className="css-j7qwjs"
+                                                                  <Flex
+                                                                    direction="column"
                                                                   >
-                                                                    <Memo()
-                                                                      isDisplayed={false}
-                                                                      key="1234"
-                                                                      modification={
+                                                                    <Styled(div)
+                                                                      __css={
                                                                         Object {
-                                                                          "_id": "1234",
-                                                                          "accessGroup": "accessGroupName",
-                                                                          "bidirectional": false,
-                                                                          "createdAt": "2017-11-08T12:30:50.133Z",
-                                                                          "createdBy": "person@gmail.com",
-                                                                          "description": "Mock description",
-                                                                          "entries": Array [],
-                                                                          "feed": "1",
-                                                                          "name": "Test Modification",
-                                                                          "nonce": "12345",
-                                                                          "projectId": "1",
-                                                                          "routes": Array [
-                                                                            "route1",
-                                                                          ],
-                                                                          "segments": Array [
-                                                                            Object {
-                                                                              "fromStopId": "1",
-                                                                              "geometry": Object {
-                                                                                "coordinates": Array [
-                                                                                  Array [
-                                                                                    -122.0246,
-                                                                                    36.9707,
-                                                                                  ],
-                                                                                  Array [
-                                                                                    -122.0279,
-                                                                                    37.049,
-                                                                                  ],
-                                                                                  Array [
-                                                                                    -121.9799,
-                                                                                    37.2299,
-                                                                                  ],
-                                                                                  Array [
-                                                                                    -121.9445,
-                                                                                    37.324,
-                                                                                  ],
-                                                                                  Array [
-                                                                                    -121.936,
-                                                                                    37.353,
-                                                                                  ],
-                                                                                  Array [
-                                                                                    -121.924,
-                                                                                    37.365,
-                                                                                  ],
-                                                                                ],
-                                                                                "type": "LineString",
-                                                                              },
-                                                                              "spacing": 3000,
-                                                                              "stopAtEnd": false,
-                                                                              "stopAtStart": false,
-                                                                              "toStopId": null,
-                                                                            },
-                                                                          ],
-                                                                          "timetables": Array [
-                                                                            Object {
-                                                                              "_id": "timetable-id",
-                                                                              "dwellTime": 10,
-                                                                              "dwellTimes": Array [
-                                                                                12,
-                                                                              ],
-                                                                              "endTime": 57600,
-                                                                              "exactTimes": false,
-                                                                              "friday": true,
-                                                                              "headwaySecs": 900,
-                                                                              "modificationId": "1234",
-                                                                              "modificationName": "Test Modification",
-                                                                              "monday": true,
-                                                                              "name": "Test timetable",
-                                                                              "patternTrips": Array [
-                                                                                "abcd",
-                                                                              ],
-                                                                              "phaseAtStop": "",
-                                                                              "phaseFromStop": "",
-                                                                              "phaseFromTimetable": "",
-                                                                              "phaseSeconds": 300,
-                                                                              "saturday": false,
-                                                                              "segmentSpeeds": Array [],
-                                                                              "sourceTrip": "abcd",
-                                                                              "startTime": 28800,
-                                                                              "sunday": false,
-                                                                              "thursday": true,
-                                                                              "tuesday": true,
-                                                                              "wednesday": true,
-                                                                            },
-                                                                          ],
-                                                                          "trips": Array [
-                                                                            "abcd",
-                                                                          ],
-                                                                          "type": "add-trip-pattern",
-                                                                          "updatedAt": "2017-11-08T12:31:19.602Z",
-                                                                          "updatedBy": "person@gmail.com",
-                                                                          "variants": Array [
-                                                                            true,
-                                                                          ],
+                                                                          "alignItems": undefined,
+                                                                          "display": "flex",
+                                                                          "flexBasis": undefined,
+                                                                          "flexDirection": "column",
+                                                                          "flexGrow": undefined,
+                                                                          "flexShrink": undefined,
+                                                                          "flexWrap": undefined,
+                                                                          "justifyContent": undefined,
                                                                         }
                                                                       }
-                                                                      regionId="1"
-                                                                      toggleMapDisplay={[Function]}
                                                                     >
-                                                                      <Flex
-                                                                        align="center"
-                                                                        px={1}
+                                                                      <div
+                                                                        className="css-j7qwjs"
                                                                       >
-                                                                        <Styled(div)
-                                                                          __css={
+                                                                        <Memo()
+                                                                          isDisplayed={false}
+                                                                          key="1234"
+                                                                          modification={
                                                                             Object {
-                                                                              "alignItems": "center",
-                                                                              "display": "flex",
-                                                                              "flexBasis": undefined,
-                                                                              "flexDirection": undefined,
-                                                                              "flexGrow": undefined,
-                                                                              "flexShrink": undefined,
-                                                                              "flexWrap": undefined,
-                                                                              "justifyContent": undefined,
+                                                                              "_id": "1234",
+                                                                              "accessGroup": "accessGroupName",
+                                                                              "bidirectional": false,
+                                                                              "createdAt": "2017-11-08T12:30:50.133Z",
+                                                                              "createdBy": "person@gmail.com",
+                                                                              "description": "Mock description",
+                                                                              "entries": Array [],
+                                                                              "feed": "1",
+                                                                              "name": "Test Modification",
+                                                                              "nonce": "12345",
+                                                                              "projectId": "1",
+                                                                              "routes": Array [
+                                                                                "route1",
+                                                                              ],
+                                                                              "segments": Array [
+                                                                                Object {
+                                                                                  "fromStopId": "1",
+                                                                                  "geometry": Object {
+                                                                                    "coordinates": Array [
+                                                                                      Array [
+                                                                                        -122.0246,
+                                                                                        36.9707,
+                                                                                      ],
+                                                                                      Array [
+                                                                                        -122.0279,
+                                                                                        37.049,
+                                                                                      ],
+                                                                                      Array [
+                                                                                        -121.9799,
+                                                                                        37.2299,
+                                                                                      ],
+                                                                                      Array [
+                                                                                        -121.9445,
+                                                                                        37.324,
+                                                                                      ],
+                                                                                      Array [
+                                                                                        -121.936,
+                                                                                        37.353,
+                                                                                      ],
+                                                                                      Array [
+                                                                                        -121.924,
+                                                                                        37.365,
+                                                                                      ],
+                                                                                    ],
+                                                                                    "type": "LineString",
+                                                                                  },
+                                                                                  "spacing": 3000,
+                                                                                  "stopAtEnd": false,
+                                                                                  "stopAtStart": false,
+                                                                                  "toStopId": null,
+                                                                                },
+                                                                              ],
+                                                                              "timetables": Array [
+                                                                                Object {
+                                                                                  "_id": "timetable-id",
+                                                                                  "dwellTime": 10,
+                                                                                  "dwellTimes": Array [
+                                                                                    12,
+                                                                                  ],
+                                                                                  "endTime": 57600,
+                                                                                  "exactTimes": false,
+                                                                                  "friday": true,
+                                                                                  "headwaySecs": 900,
+                                                                                  "modificationId": "1234",
+                                                                                  "modificationName": "Test Modification",
+                                                                                  "monday": true,
+                                                                                  "name": "Test timetable",
+                                                                                  "patternTrips": Array [
+                                                                                    "abcd",
+                                                                                  ],
+                                                                                  "phaseAtStop": "",
+                                                                                  "phaseFromStop": "",
+                                                                                  "phaseFromTimetable": "",
+                                                                                  "phaseSeconds": 300,
+                                                                                  "saturday": false,
+                                                                                  "segmentSpeeds": Array [],
+                                                                                  "sourceTrip": "abcd",
+                                                                                  "startTime": 28800,
+                                                                                  "sunday": false,
+                                                                                  "thursday": true,
+                                                                                  "tuesday": true,
+                                                                                  "wednesday": true,
+                                                                                },
+                                                                              ],
+                                                                              "trips": Array [
+                                                                                "abcd",
+                                                                              ],
+                                                                              "type": "add-trip-pattern",
+                                                                              "updatedAt": "2017-11-08T12:31:19.602Z",
+                                                                              "updatedBy": "person@gmail.com",
+                                                                              "variants": Array [
+                                                                                true,
+                                                                              ],
                                                                             }
                                                                           }
-                                                                          px={1}
+                                                                          regionId="1"
+                                                                          toggleMapDisplay={[Function]}
                                                                         >
-                                                                          <div
-                                                                            className="css-1nnba2j"
+                                                                          <Flex
+                                                                            align="center"
+                                                                            px={1}
                                                                           >
-                                                                            <InternalLink
-                                                                              query={
+                                                                            <Styled(div)
+                                                                              __css={
                                                                                 Object {
-                                                                                  "modificationId": "1234",
-                                                                                  "projectId": "1",
-                                                                                  "regionId": "1",
+                                                                                  "alignItems": "center",
+                                                                                  "display": "flex",
+                                                                                  "flexBasis": undefined,
+                                                                                  "flexDirection": undefined,
+                                                                                  "flexGrow": undefined,
+                                                                                  "flexShrink": undefined,
+                                                                                  "flexWrap": undefined,
+                                                                                  "justifyContent": undefined,
                                                                                 }
                                                                               }
-                                                                              to="modificationEdit"
+                                                                              px={1}
                                                                             >
-                                                                              <Link
-                                                                                href="/regions/1/projects/1/modifications/1234"
-                                                                                passHref={true}
+                                                                              <div
+                                                                                className="css-86ntbl"
                                                                               >
-                                                                                <Button
-                                                                                  aria-label="Edit modification Test Modification"
-                                                                                  colorScheme="blue"
-                                                                                  flex="1"
-                                                                                  href="/regions/1/projects/1/modifications/1234"
-                                                                                  justifyContent="start"
-                                                                                  onClick={[Function]}
-                                                                                  onMouseEnter={[Function]}
-                                                                                  overflow="hidden"
-                                                                                  px={4}
-                                                                                  style={
+                                                                                <InternalLink
+                                                                                  query={
                                                                                     Object {
-                                                                                      "textOverflow": "ellipsis",
+                                                                                      "modificationId": "1234",
+                                                                                      "projectId": "1",
+                                                                                      "regionId": "1",
                                                                                     }
                                                                                   }
-                                                                                  variant="ghost"
-                                                                                  whiteSpace="nowrap"
+                                                                                  to="modificationEdit"
                                                                                 >
-                                                                                  <Styled(button)
-                                                                                    __css={
-                                                                                      Object {
-                                                                                        "_active": Object {
-                                                                                          "bg": "blue.100",
-                                                                                        },
-                                                                                        "_disabled": Object {
-                                                                                          "boxShadow": "none",
-                                                                                          "cursor": "not-allowed",
-                                                                                          "opacity": 0.4,
-                                                                                        },
-                                                                                        "_focus": Object {
-                                                                                          "boxShadow": "outline",
-                                                                                        },
-                                                                                        "_hover": Object {
-                                                                                          "_disabled": Object {
-                                                                                            "bg": "initial",
-                                                                                          },
-                                                                                          "bg": "blue.50",
-                                                                                        },
-                                                                                        "alignItems": "center",
-                                                                                        "appearance": "none",
-                                                                                        "bg": "transparent",
-                                                                                        "borderRadius": "md",
-                                                                                        "color": "blue.600",
-                                                                                        "display": "inline-flex",
-                                                                                        "fontSize": "md",
-                                                                                        "fontWeight": "semibold",
-                                                                                        "h": 10,
-                                                                                        "justifyContent": "center",
-                                                                                        "lineHeight": "1.2",
-                                                                                        "minW": 10,
-                                                                                        "outline": "none",
-                                                                                        "position": "relative",
-                                                                                        "px": 4,
-                                                                                        "transition": "all 250ms",
-                                                                                        "userSelect": "none",
-                                                                                        "verticalAlign": "middle",
-                                                                                        "whiteSpace": "nowrap",
-                                                                                        "width": "auto",
-                                                                                      }
-                                                                                    }
-                                                                                    aria-label="Edit modification Test Modification"
-                                                                                    className="chakra-button"
-                                                                                    flex="1"
+                                                                                  <Link
                                                                                     href="/regions/1/projects/1/modifications/1234"
-                                                                                    justifyContent="start"
-                                                                                    onClick={[Function]}
-                                                                                    onMouseEnter={[Function]}
-                                                                                    overflow="hidden"
-                                                                                    px={4}
-                                                                                    style={
-                                                                                      Object {
-                                                                                        "textOverflow": "ellipsis",
-                                                                                      }
-                                                                                    }
-                                                                                    type="button"
-                                                                                    whiteSpace="nowrap"
+                                                                                    passHref={true}
                                                                                   >
-                                                                                    <button
+                                                                                    <Button
                                                                                       aria-label="Edit modification Test Modification"
-                                                                                      className="chakra-button css-1f8fvan"
+                                                                                      colorScheme="blue"
+                                                                                      flex="1"
                                                                                       href="/regions/1/projects/1/modifications/1234"
+                                                                                      justifyContent="start"
                                                                                       onClick={[Function]}
                                                                                       onMouseEnter={[Function]}
+                                                                                      overflow="hidden"
+                                                                                      px={4}
                                                                                       style={
                                                                                         Object {
                                                                                           "textOverflow": "ellipsis",
                                                                                         }
                                                                                       }
-                                                                                      type="button"
+                                                                                      variant="ghost"
+                                                                                      whiteSpace="nowrap"
                                                                                     >
-                                                                                      Test Modification
-                                                                                    </button>
-                                                                                  </Styled(button)>
-                                                                                </Button>
-                                                                              </Link>
-                                                                            </InternalLink>
-                                                                            <ForwardRef
-                                                                              label="Show on map"
-                                                                              onClick={[Function]}
-                                                                            >
-                                                                              <Box>
-                                                                                <div
-                                                                                  className="css-0"
-                                                                                >
-                                                                                  <ForwardRef
-                                                                                    label="Show on map"
-                                                                                    placement="auto"
-                                                                                  >
-                                                                                    <Tooltip
-                                                                                      aria-label="Tooltip: Show on map"
-                                                                                      fontSize="md"
-                                                                                      label="Show on map"
-                                                                                      placement="auto"
-                                                                                      zIndex={1500}
-                                                                                    >
-                                                                                      <Button
-                                                                                        aria-label="Show on map"
-                                                                                        colorScheme="blue"
-                                                                                        isActive={false}
-                                                                                        isDisabled={false}
-                                                                                        onBlur={[Function]}
-                                                                                        onClick={[Function]}
-                                                                                        onFocus={[Function]}
-                                                                                        onMouseDown={[Function]}
-                                                                                        onMouseEnter={[Function]}
-                                                                                        size="sm"
-                                                                                        variant="ghost"
-                                                                                      >
-                                                                                        <Styled(button)
-                                                                                          __css={
-                                                                                            Object {
-                                                                                              "_active": Object {
-                                                                                                "bg": "blue.100",
-                                                                                              },
+                                                                                      <Styled(button)
+                                                                                        __css={
+                                                                                          Object {
+                                                                                            "_active": Object {
+                                                                                              "bg": "blue.100",
+                                                                                            },
+                                                                                            "_disabled": Object {
+                                                                                              "boxShadow": "none",
+                                                                                              "cursor": "not-allowed",
+                                                                                              "opacity": 0.4,
+                                                                                            },
+                                                                                            "_focus": Object {
+                                                                                              "boxShadow": "outline",
+                                                                                            },
+                                                                                            "_hover": Object {
                                                                                               "_disabled": Object {
-                                                                                                "boxShadow": "none",
-                                                                                                "cursor": "not-allowed",
-                                                                                                "opacity": 0.4,
+                                                                                                "bg": "initial",
                                                                                               },
-                                                                                              "_focus": Object {
-                                                                                                "boxShadow": "outline",
-                                                                                              },
-                                                                                              "_hover": Object {
-                                                                                                "_disabled": Object {
-                                                                                                  "bg": "initial",
-                                                                                                },
-                                                                                                "bg": "blue.50",
-                                                                                              },
-                                                                                              "alignItems": "center",
-                                                                                              "appearance": "none",
-                                                                                              "bg": "transparent",
-                                                                                              "borderRadius": "md",
-                                                                                              "color": "blue.600",
-                                                                                              "display": "inline-flex",
-                                                                                              "fontSize": "sm",
-                                                                                              "fontWeight": "semibold",
-                                                                                              "h": 8,
-                                                                                              "justifyContent": "center",
-                                                                                              "lineHeight": "1.2",
-                                                                                              "minW": 8,
-                                                                                              "outline": "none",
-                                                                                              "position": "relative",
-                                                                                              "px": 3,
-                                                                                              "transition": "all 250ms",
-                                                                                              "userSelect": "none",
-                                                                                              "verticalAlign": "middle",
-                                                                                              "whiteSpace": "nowrap",
-                                                                                              "width": "auto",
+                                                                                              "bg": "blue.50",
+                                                                                            },
+                                                                                            "alignItems": "center",
+                                                                                            "appearance": "none",
+                                                                                            "bg": "transparent",
+                                                                                            "borderRadius": "md",
+                                                                                            "color": "blue.600",
+                                                                                            "display": "inline-flex",
+                                                                                            "fontSize": "md",
+                                                                                            "fontWeight": "semibold",
+                                                                                            "h": 10,
+                                                                                            "justifyContent": "center",
+                                                                                            "lineHeight": "1.2",
+                                                                                            "minW": 10,
+                                                                                            "outline": "none",
+                                                                                            "position": "relative",
+                                                                                            "px": 4,
+                                                                                            "transition": "all 250ms",
+                                                                                            "userSelect": "none",
+                                                                                            "verticalAlign": "middle",
+                                                                                            "whiteSpace": "nowrap",
+                                                                                            "width": "auto",
+                                                                                          }
+                                                                                        }
+                                                                                        aria-label="Edit modification Test Modification"
+                                                                                        className="chakra-button"
+                                                                                        flex="1"
+                                                                                        href="/regions/1/projects/1/modifications/1234"
+                                                                                        justifyContent="start"
+                                                                                        onClick={[Function]}
+                                                                                        onMouseEnter={[Function]}
+                                                                                        overflow="hidden"
+                                                                                        px={4}
+                                                                                        style={
+                                                                                          Object {
+                                                                                            "textOverflow": "ellipsis",
+                                                                                          }
+                                                                                        }
+                                                                                        type="button"
+                                                                                        whiteSpace="nowrap"
+                                                                                      >
+                                                                                        <button
+                                                                                          aria-label="Edit modification Test Modification"
+                                                                                          className="chakra-button css-3y1987"
+                                                                                          href="/regions/1/projects/1/modifications/1234"
+                                                                                          onClick={[Function]}
+                                                                                          onMouseEnter={[Function]}
+                                                                                          style={
+                                                                                            Object {
+                                                                                              "textOverflow": "ellipsis",
                                                                                             }
                                                                                           }
-                                                                                          aria-label="Show on map"
-                                                                                          className="chakra-button"
-                                                                                          onBlur={[Function]}
-                                                                                          onClick={[Function]}
-                                                                                          onFocus={[Function]}
-                                                                                          onMouseDown={[Function]}
-                                                                                          onMouseEnter={[Function]}
                                                                                           type="button"
                                                                                         >
-                                                                                          <button
+                                                                                          Test Modification
+                                                                                        </button>
+                                                                                      </Styled(button)>
+                                                                                    </Button>
+                                                                                  </Link>
+                                                                                </InternalLink>
+                                                                                <ForwardRef
+                                                                                  label="Show on map"
+                                                                                  onClick={[Function]}
+                                                                                >
+                                                                                  <Box>
+                                                                                    <div
+                                                                                      className="css-0"
+                                                                                    >
+                                                                                      <ForwardRef
+                                                                                        label="Show on map"
+                                                                                        placement="auto"
+                                                                                      >
+                                                                                        <Tooltip
+                                                                                          aria-label="Tooltip: Show on map"
+                                                                                          fontSize="md"
+                                                                                          label="Show on map"
+                                                                                          placement="auto"
+                                                                                          zIndex={1500}
+                                                                                        >
+                                                                                          <Button
                                                                                             aria-label="Show on map"
-                                                                                            className="chakra-button css-1o9h2ju"
+                                                                                            colorScheme="blue"
+                                                                                            isActive={false}
+                                                                                            isDisabled={false}
                                                                                             onBlur={[Function]}
                                                                                             onClick={[Function]}
                                                                                             onFocus={[Function]}
                                                                                             onMouseDown={[Function]}
                                                                                             onMouseEnter={[Function]}
-                                                                                            type="button"
+                                                                                            size="sm"
+                                                                                            variant="ghost"
                                                                                           >
-                                                                                            <FaEyeSlash>
-                                                                                              <IconBase
-                                                                                                attr={
-                                                                                                  Object {
-                                                                                                    "viewBox": "0 0 640 512",
-                                                                                                  }
+                                                                                            <Styled(button)
+                                                                                              __css={
+                                                                                                Object {
+                                                                                                  "_active": Object {
+                                                                                                    "bg": "blue.100",
+                                                                                                  },
+                                                                                                  "_disabled": Object {
+                                                                                                    "boxShadow": "none",
+                                                                                                    "cursor": "not-allowed",
+                                                                                                    "opacity": 0.4,
+                                                                                                  },
+                                                                                                  "_focus": Object {
+                                                                                                    "boxShadow": "outline",
+                                                                                                  },
+                                                                                                  "_hover": Object {
+                                                                                                    "_disabled": Object {
+                                                                                                      "bg": "initial",
+                                                                                                    },
+                                                                                                    "bg": "blue.50",
+                                                                                                  },
+                                                                                                  "alignItems": "center",
+                                                                                                  "appearance": "none",
+                                                                                                  "bg": "transparent",
+                                                                                                  "borderRadius": "md",
+                                                                                                  "color": "blue.600",
+                                                                                                  "display": "inline-flex",
+                                                                                                  "fontSize": "sm",
+                                                                                                  "fontWeight": "semibold",
+                                                                                                  "h": 8,
+                                                                                                  "justifyContent": "center",
+                                                                                                  "lineHeight": "1.2",
+                                                                                                  "minW": 8,
+                                                                                                  "outline": "none",
+                                                                                                  "position": "relative",
+                                                                                                  "px": 3,
+                                                                                                  "transition": "all 250ms",
+                                                                                                  "userSelect": "none",
+                                                                                                  "verticalAlign": "middle",
+                                                                                                  "whiteSpace": "nowrap",
+                                                                                                  "width": "auto",
                                                                                                 }
+                                                                                              }
+                                                                                              aria-label="Show on map"
+                                                                                              className="chakra-button"
+                                                                                              onBlur={[Function]}
+                                                                                              onClick={[Function]}
+                                                                                              onFocus={[Function]}
+                                                                                              onMouseDown={[Function]}
+                                                                                              onMouseEnter={[Function]}
+                                                                                              type="button"
+                                                                                            >
+                                                                                              <button
+                                                                                                aria-label="Show on map"
+                                                                                                className="chakra-button css-rswj2l"
+                                                                                                onBlur={[Function]}
+                                                                                                onClick={[Function]}
+                                                                                                onFocus={[Function]}
+                                                                                                onMouseDown={[Function]}
+                                                                                                onMouseEnter={[Function]}
+                                                                                                type="button"
                                                                                               >
-                                                                                                <svg
-                                                                                                  fill="currentColor"
-                                                                                                  height="1em"
-                                                                                                  stroke="currentColor"
-                                                                                                  strokeWidth="0"
-                                                                                                  style={
-                                                                                                    Object {
-                                                                                                      "color": undefined,
+                                                                                                <FaEyeSlash>
+                                                                                                  <IconBase
+                                                                                                    attr={
+                                                                                                      Object {
+                                                                                                        "viewBox": "0 0 640 512",
+                                                                                                      }
                                                                                                     }
-                                                                                                  }
-                                                                                                  viewBox="0 0 640 512"
-                                                                                                  width="1em"
-                                                                                                  xmlns="http://www.w3.org/2000/svg"
-                                                                                                >
-                                                                                                  <path
-                                                                                                    d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
-                                                                                                    key="0"
-                                                                                                  />
-                                                                                                </svg>
-                                                                                              </IconBase>
-                                                                                            </FaEyeSlash>
-                                                                                          </button>
-                                                                                        </Styled(button)>
-                                                                                      </Button>
-                                                                                      <AnimatePresence />
-                                                                                    </Tooltip>
-                                                                                  </ForwardRef>
-                                                                                </div>
-                                                                              </Box>
-                                                                            </ForwardRef>
-                                                                          </div>
-                                                                        </Styled(div)>
-                                                                      </Flex>
-                                                                    </Memo()>
-                                                                  </div>
-                                                                </Styled(div)>
-                                                              </Flex>
+                                                                                                  >
+                                                                                                    <svg
+                                                                                                      fill="currentColor"
+                                                                                                      height="1em"
+                                                                                                      stroke="currentColor"
+                                                                                                      strokeWidth="0"
+                                                                                                      style={
+                                                                                                        Object {
+                                                                                                          "color": undefined,
+                                                                                                        }
+                                                                                                      }
+                                                                                                      viewBox="0 0 640 512"
+                                                                                                      width="1em"
+                                                                                                      xmlns="http://www.w3.org/2000/svg"
+                                                                                                    >
+                                                                                                      <path
+                                                                                                        d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+                                                                                                        key="0"
+                                                                                                      />
+                                                                                                    </svg>
+                                                                                                  </IconBase>
+                                                                                                </FaEyeSlash>
+                                                                                              </button>
+                                                                                            </Styled(button)>
+                                                                                          </Button>
+                                                                                          <AnimatePresence />
+                                                                                        </Tooltip>
+                                                                                      </ForwardRef>
+                                                                                    </div>
+                                                                                  </Box>
+                                                                                </ForwardRef>
+                                                                              </div>
+                                                                            </Styled(div)>
+                                                                          </Flex>
+                                                                        </Memo()>
+                                                                      </div>
+                                                                    </Styled(div)>
+                                                                  </Flex>
+                                                                </div>
+                                                              </Styled(div)>
                                                             </div>
-                                                          </Styled(div)>
-                                                        </div>
-                                                        <Component
-                                                          animate="enter"
-                                                          className="chakra-collapse"
-                                                          custom={
-                                                            Object {
-                                                              "animateOpacity": true,
-                                                              "endingHeight": "auto",
-                                                              "startingHeight": 0,
-                                                            }
-                                                          }
-                                                          initial={false}
-                                                          key="animation"
-                                                          onAnimationComplete={[Function]}
-                                                          style={
-                                                            Object {
-                                                              "display": "block",
-                                                              "overflow": "hidden",
-                                                            }
-                                                          }
-                                                          variants={
-                                                            Object {
-                                                              "enter": [Function],
-                                                              "exit": [Function],
-                                                            }
-                                                          }
-                                                          visualElement={
-                                                            Object {
-                                                              "addChild": [Function],
-                                                              "addValue": [Function],
-                                                              "addVariantChild": [Function],
-                                                              "animationState": Object {
-                                                                "animateChanges": [Function],
-                                                                "getState": [Function],
-                                                                "isAnimated": [Function],
-                                                                "setActive": [Function],
-                                                                "setAnimateFunction": [Function],
-                                                              },
-                                                              "blockInitialAnimation": false,
-                                                              "build": [Function],
-                                                              "clearAllListeners": [Function],
-                                                              "clearState": [Function],
-                                                              "current": <div
-                                                                class="chakra-collapse"
-                                                                style="overflow: hidden; display: block; opacity: 0; height: 0px;"
-                                                              >
-                                                                <div
-                                                                  aria-labelledby="accordion-button-9"
-                                                                  class="chakra-accordion__panel css-1tgm0dp"
-                                                                  id="accordion-panel-9"
-                                                                  role="region"
-                                                                >
-                                                                  <div
-                                                                    class="css-j7qwjs"
+                                                            <Component
+                                                              animate="enter"
+                                                              className="chakra-collapse"
+                                                              custom={
+                                                                Object {
+                                                                  "animateOpacity": true,
+                                                                  "endingHeight": "auto",
+                                                                  "startingHeight": 0,
+                                                                  "transition": Object {
+                                                                    "enter": Object {
+                                                                      "duration": 0,
+                                                                    },
+                                                                  },
+                                                                  "transitionEnd": Object {
+                                                                    "enter": Object {
+                                                                      "overflow": "initial",
+                                                                    },
+                                                                    "exit": Object {
+                                                                      "display": "none",
+                                                                    },
+                                                                  },
+                                                                }
+                                                              }
+                                                              exit="exit"
+                                                              initial={false}
+                                                              key="animation"
+                                                              style={
+                                                                Object {
+                                                                  "display": "block",
+                                                                  "overflow": "hidden",
+                                                                }
+                                                              }
+                                                              variants={
+                                                                Object {
+                                                                  "enter": [Function],
+                                                                  "exit": [Function],
+                                                                }
+                                                              }
+                                                              visualElement={
+                                                                Object {
+                                                                  "addValue": [Function],
+                                                                  "addVariantChild": [Function],
+                                                                  "animationState": Object {
+                                                                    "animateChanges": [Function],
+                                                                    "getState": [Function],
+                                                                    "isAnimated": [Function],
+                                                                    "setActive": [Function],
+                                                                    "setAnimateFunction": [Function],
+                                                                  },
+                                                                  "blockInitialAnimation": true,
+                                                                  "build": [Function],
+                                                                  "children": Set {},
+                                                                  "clearAllListeners": [Function],
+                                                                  "current": <div
+                                                                    class="chakra-collapse"
+                                                                    style="overflow: hidden; display: block; opacity: 0; height: 0px;"
                                                                   >
                                                                     <div
-                                                                      class="css-1nnba2j"
+                                                                      aria-labelledby="accordion-button-9"
+                                                                      class="chakra-accordion__panel css-4s5j0j"
+                                                                      id="accordion-panel-9"
+                                                                      role="region"
                                                                     >
-                                                                      <button
-                                                                        aria-label="Edit modification Test Modification"
-                                                                        class="chakra-button css-1f8fvan"
-                                                                        href="/regions/1/projects/1/modifications/1234"
-                                                                        style="text-overflow: ellipsis;"
-                                                                        type="button"
-                                                                      >
-                                                                        Test Modification
-                                                                      </button>
                                                                       <div
-                                                                        class="css-0"
+                                                                        class="css-j7qwjs"
                                                                       >
-                                                                        <button
-                                                                          aria-label="Show on map"
-                                                                          class="chakra-button css-1o9h2ju"
-                                                                          type="button"
+                                                                        <div
+                                                                          class="css-86ntbl"
                                                                         >
-                                                                          <svg
-                                                                            fill="currentColor"
-                                                                            height="1em"
-                                                                            stroke="currentColor"
-                                                                            stroke-width="0"
-                                                                            viewBox="0 0 640 512"
-                                                                            width="1em"
-                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                          <button
+                                                                            aria-label="Edit modification Test Modification"
+                                                                            class="chakra-button css-3y1987"
+                                                                            href="/regions/1/projects/1/modifications/1234"
+                                                                            style="text-overflow: ellipsis;"
+                                                                            type="button"
                                                                           >
-                                                                            <path
-                                                                              d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
-                                                                            />
-                                                                          </svg>
-                                                                        </button>
+                                                                            Test Modification
+                                                                          </button>
+                                                                          <div
+                                                                            class="css-0"
+                                                                          >
+                                                                            <button
+                                                                              aria-label="Show on map"
+                                                                              class="chakra-button css-rswj2l"
+                                                                              type="button"
+                                                                            >
+                                                                              <svg
+                                                                                fill="currentColor"
+                                                                                height="1em"
+                                                                                stroke="currentColor"
+                                                                                stroke-width="0"
+                                                                                viewBox="0 0 640 512"
+                                                                                width="1em"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                              >
+                                                                                <path
+                                                                                  d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+                                                                                />
+                                                                              </svg>
+                                                                            </button>
+                                                                          </div>
+                                                                        </div>
                                                                       </div>
                                                                     </div>
-                                                                  </div>
-                                                                </div>
-                                                              </div>,
-                                                              "depth": 0,
-                                                              "enableLayoutProjection": [Function],
-                                                              "forEachValue": [Function],
-                                                              "getBaseTarget": [Function],
-                                                              "getClosestVariantNode": [Function],
-                                                              "getDefaultTransition": [Function],
-                                                              "getInstance": [Function],
-                                                              "getLatestValues": [Function],
-                                                              "getLayoutId": [Function],
-                                                              "getLayoutState": [Function],
-                                                              "getProjectionAnimationProgress": [Function],
-                                                              "getProps": [Function],
-                                                              "getStaticValue": [Function],
-                                                              "getValue": [Function],
-                                                              "getVariant": [Function],
-                                                              "getVariantContext": [Function],
-                                                              "hasValue": [Function],
-                                                              "isHoverEventsEnabled": true,
-                                                              "isMounted": [Function],
-                                                              "isPresenceRoot": true,
-                                                              "isPresent": true,
-                                                              "isStatic": false,
-                                                              "isVisible": undefined,
-                                                              "lockProjectionTarget": [Function],
-                                                              "makeTargetAnimatable": [Function],
-                                                              "manuallyAnimateOnMount": false,
-                                                              "measureViewportBox": [Function],
-                                                              "notifyAnimationComplete": [Function],
-                                                              "notifyAnimationStart": [Function],
-                                                              "notifyBeforeLayoutMeasure": [Function],
-                                                              "notifyLayoutAnimationComplete": [Function],
-                                                              "notifyLayoutMeasure": [Function],
-                                                              "notifyLayoutReady": [Function],
-                                                              "notifyLayoutUpdate": [Function],
-                                                              "notifyRender": [Function],
-                                                              "notifySetAxisTarget": [Function],
-                                                              "notifyUpdate": [Function],
-                                                              "notifyViewportBoxUpdate": [Function],
-                                                              "onAnimationComplete": [Function],
-                                                              "onAnimationStart": [Function],
-                                                              "onBeforeLayoutMeasure": [Function],
-                                                              "onLayoutAnimationComplete": [Function],
-                                                              "onLayoutMeasure": [Function],
-                                                              "onLayoutUpdate": [Function],
-                                                              "onRender": [Function],
-                                                              "onSetAxisTarget": [Function],
-                                                              "onUpdate": [Function],
-                                                              "onViewportBoxUpdate": [Function],
-                                                              "path": Array [],
-                                                              "pointTo": [Function],
-                                                              "presence": 0,
-                                                              "presenceId": undefined,
-                                                              "projection": Object {
-                                                                "isEnabled": false,
-                                                                "isTargetLocked": false,
-                                                                "target": Object {
-                                                                  "x": Object {
-                                                                    "max": 1,
-                                                                    "min": 0,
+                                                                  </div>,
+                                                                  "depth": 0,
+                                                                  "enableLayoutProjection": [Function],
+                                                                  "forEachValue": [Function],
+                                                                  "getBaseTarget": [Function],
+                                                                  "getClosestVariantNode": [Function],
+                                                                  "getDefaultTransition": [Function],
+                                                                  "getInstance": [Function],
+                                                                  "getLatestValues": [Function],
+                                                                  "getLayoutId": [Function],
+                                                                  "getLayoutState": [Function],
+                                                                  "getProjectionAnimationProgress": [Function],
+                                                                  "getProjectionParent": [Function],
+                                                                  "getProps": [Function],
+                                                                  "getStaticValue": [Function],
+                                                                  "getValue": [Function],
+                                                                  "getVariant": [Function],
+                                                                  "getVariantContext": [Function],
+                                                                  "hasValue": [Function],
+                                                                  "isMounted": [Function],
+                                                                  "isPresenceRoot": true,
+                                                                  "isPresent": true,
+                                                                  "isProjectionReady": [Function],
+                                                                  "isVisible": undefined,
+                                                                  "layoutTree": FlatTree {
+                                                                    "children": Array [],
+                                                                    "isDirty": false,
                                                                   },
-                                                                  "y": Object {
-                                                                    "max": 1,
-                                                                    "min": 0,
+                                                                  "lockProjectionTarget": [Function],
+                                                                  "makeTargetAnimatable": [Function],
+                                                                  "manuallyAnimateOnMount": false,
+                                                                  "measureViewportBox": [Function],
+                                                                  "mount": [Function],
+                                                                  "notifyAnimationComplete": [Function],
+                                                                  "notifyAnimationStart": [Function],
+                                                                  "notifyBeforeLayoutMeasure": [Function],
+                                                                  "notifyLayoutAnimationComplete": [Function],
+                                                                  "notifyLayoutMeasure": [Function],
+                                                                  "notifyLayoutReady": [Function],
+                                                                  "notifyLayoutUpdate": [Function],
+                                                                  "notifyRender": [Function],
+                                                                  "notifySetAxisTarget": [Function],
+                                                                  "notifyUnmount": [Function],
+                                                                  "notifyUpdate": [Function],
+                                                                  "notifyViewportBoxUpdate": [Function],
+                                                                  "onAnimationComplete": [Function],
+                                                                  "onAnimationStart": [Function],
+                                                                  "onBeforeLayoutMeasure": [Function],
+                                                                  "onLayoutAnimationComplete": [Function],
+                                                                  "onLayoutMeasure": [Function],
+                                                                  "onLayoutUpdate": [Function],
+                                                                  "onRender": [Function],
+                                                                  "onSetAxisTarget": [Function],
+                                                                  "onUnmount": [Function],
+                                                                  "onUpdate": [Function],
+                                                                  "onViewportBoxUpdate": [Function],
+                                                                  "parent": undefined,
+                                                                  "path": Array [],
+                                                                  "pointTo": [Function],
+                                                                  "presence": 0,
+                                                                  "presenceId": 0,
+                                                                  "projection": Object {
+                                                                    "isEnabled": false,
+                                                                    "isHydrated": false,
+                                                                    "isTargetLocked": false,
+                                                                    "target": Object {
+                                                                      "x": Object {
+                                                                        "max": 1,
+                                                                        "min": 0,
+                                                                      },
+                                                                      "y": Object {
+                                                                        "max": 1,
+                                                                        "min": 0,
+                                                                      },
+                                                                    },
+                                                                    "targetFinal": Object {
+                                                                      "x": Object {
+                                                                        "max": 1,
+                                                                        "min": 0,
+                                                                      },
+                                                                      "y": Object {
+                                                                        "max": 1,
+                                                                        "min": 0,
+                                                                      },
+                                                                    },
                                                                   },
-                                                                },
-                                                                "targetFinal": Object {
-                                                                  "x": Object {
-                                                                    "max": 1,
-                                                                    "min": 0,
+                                                                  "readValue": [Function],
+                                                                  "rebaseProjectionTarget": [Function],
+                                                                  "removeValue": [Function],
+                                                                  "resetTransform": [Function],
+                                                                  "resolveRelativeTargetBox": [Function],
+                                                                  "restoreTransform": [Function],
+                                                                  "scheduleRender": [Function],
+                                                                  "scheduleUpdateLayoutProjection": [Function],
+                                                                  "setBaseTarget": [Function],
+                                                                  "setCrossfader": [Function],
+                                                                  "setProjectionTargetAxis": [Function],
+                                                                  "setProps": [Function],
+                                                                  "setStaticValue": [Function],
+                                                                  "setVisibility": [Function],
+                                                                  "shouldResetTransform": [Function],
+                                                                  "sortNodePosition": [Function],
+                                                                  "startLayoutAnimation": [Function],
+                                                                  "stopLayoutAnimation": [Function],
+                                                                  "syncRender": [Function],
+                                                                  "treeType": "dom",
+                                                                  "unlockProjectionTarget": [Function],
+                                                                  "unmount": [Function],
+                                                                  "updateLayoutProjection": [Function],
+                                                                  "updatePropListeners": [Function],
+                                                                  "updateTreeLayoutProjection": [Function],
+                                                                  "variantChildren": Set {},
+                                                                }
+                                                              }
+                                                            />
+                                                            <Component
+                                                              animate="enter"
+                                                              className="chakra-collapse"
+                                                              custom={
+                                                                Object {
+                                                                  "animateOpacity": true,
+                                                                  "endingHeight": "auto",
+                                                                  "startingHeight": 0,
+                                                                  "transition": Object {
+                                                                    "enter": Object {
+                                                                      "duration": 0,
+                                                                    },
                                                                   },
-                                                                  "y": Object {
-                                                                    "max": 1,
-                                                                    "min": 0,
+                                                                  "transitionEnd": Object {
+                                                                    "enter": Object {
+                                                                      "overflow": "initial",
+                                                                    },
+                                                                    "exit": Object {
+                                                                      "display": "none",
+                                                                    },
                                                                   },
-                                                                },
-                                                              },
-                                                              "readValue": [Function],
-                                                              "rebaseProjectionTarget": [Function],
-                                                              "ref": [Function],
-                                                              "removeValue": [Function],
-                                                              "resetTransform": [Function],
-                                                              "scheduleRender": [Function],
-                                                              "scheduleUpdateLayoutProjection": [Function],
-                                                              "setBaseTarget": [Function],
-                                                              "setCrossfader": [Function],
-                                                              "setProjectionTargetAxis": [Function],
-                                                              "setProps": [Function],
-                                                              "setStaticValue": [Function],
-                                                              "setVisibility": [Function],
-                                                              "snapshotViewportBox": [Function],
-                                                              "sortNodePosition": [Function],
-                                                              "startLayoutAnimation": [Function],
-                                                              "stopLayoutAnimation": [Function],
-                                                              "suspendHoverEvents": [Function],
-                                                              "syncRender": [Function],
-                                                              "treeType": "dom",
-                                                              "unlockProjectionTarget": [Function],
-                                                              "updateLayoutMeasurement": [Function],
-                                                              "updateLayoutProjection": [Function],
-                                                              "updatePropListeners": [Function],
-                                                              "variantChildren": Set {},
-                                                              "withoutTransform": [Function],
-                                                            }
-                                                          }
-                                                        />
-                                                      </ForwardRef(MotionComponent)>
+                                                                }
+                                                              }
+                                                              exit="exit"
+                                                              initial={false}
+                                                              key="exit"
+                                                              style={
+                                                                Object {
+                                                                  "display": "block",
+                                                                  "overflow": "hidden",
+                                                                }
+                                                              }
+                                                              variants={
+                                                                Object {
+                                                                  "enter": [Function],
+                                                                  "exit": [Function],
+                                                                }
+                                                              }
+                                                              visualElement={
+                                                                Object {
+                                                                  "addValue": [Function],
+                                                                  "addVariantChild": [Function],
+                                                                  "animationState": Object {
+                                                                    "animateChanges": [Function],
+                                                                    "getState": [Function],
+                                                                    "isAnimated": [Function],
+                                                                    "setActive": [Function],
+                                                                    "setAnimateFunction": [Function],
+                                                                  },
+                                                                  "blockInitialAnimation": true,
+                                                                  "build": [Function],
+                                                                  "children": Set {},
+                                                                  "clearAllListeners": [Function],
+                                                                  "current": <div
+                                                                    class="chakra-collapse"
+                                                                    style="overflow: hidden; display: block; opacity: 0; height: 0px;"
+                                                                  >
+                                                                    <div
+                                                                      aria-labelledby="accordion-button-9"
+                                                                      class="chakra-accordion__panel css-4s5j0j"
+                                                                      id="accordion-panel-9"
+                                                                      role="region"
+                                                                    >
+                                                                      <div
+                                                                        class="css-j7qwjs"
+                                                                      >
+                                                                        <div
+                                                                          class="css-86ntbl"
+                                                                        >
+                                                                          <button
+                                                                            aria-label="Edit modification Test Modification"
+                                                                            class="chakra-button css-3y1987"
+                                                                            href="/regions/1/projects/1/modifications/1234"
+                                                                            style="text-overflow: ellipsis;"
+                                                                            type="button"
+                                                                          >
+                                                                            Test Modification
+                                                                          </button>
+                                                                          <div
+                                                                            class="css-0"
+                                                                          >
+                                                                            <button
+                                                                              aria-label="Show on map"
+                                                                              class="chakra-button css-rswj2l"
+                                                                              type="button"
+                                                                            >
+                                                                              <svg
+                                                                                fill="currentColor"
+                                                                                height="1em"
+                                                                                stroke="currentColor"
+                                                                                stroke-width="0"
+                                                                                viewBox="0 0 640 512"
+                                                                                width="1em"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                              >
+                                                                                <path
+                                                                                  d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+                                                                                />
+                                                                              </svg>
+                                                                            </button>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>,
+                                                                  "depth": 0,
+                                                                  "enableLayoutProjection": [Function],
+                                                                  "forEachValue": [Function],
+                                                                  "getBaseTarget": [Function],
+                                                                  "getClosestVariantNode": [Function],
+                                                                  "getDefaultTransition": [Function],
+                                                                  "getInstance": [Function],
+                                                                  "getLatestValues": [Function],
+                                                                  "getLayoutId": [Function],
+                                                                  "getLayoutState": [Function],
+                                                                  "getProjectionAnimationProgress": [Function],
+                                                                  "getProjectionParent": [Function],
+                                                                  "getProps": [Function],
+                                                                  "getStaticValue": [Function],
+                                                                  "getValue": [Function],
+                                                                  "getVariant": [Function],
+                                                                  "getVariantContext": [Function],
+                                                                  "hasValue": [Function],
+                                                                  "isMounted": [Function],
+                                                                  "isPresenceRoot": true,
+                                                                  "isPresent": true,
+                                                                  "isProjectionReady": [Function],
+                                                                  "isVisible": undefined,
+                                                                  "layoutTree": FlatTree {
+                                                                    "children": Array [],
+                                                                    "isDirty": false,
+                                                                  },
+                                                                  "lockProjectionTarget": [Function],
+                                                                  "makeTargetAnimatable": [Function],
+                                                                  "manuallyAnimateOnMount": false,
+                                                                  "measureViewportBox": [Function],
+                                                                  "mount": [Function],
+                                                                  "notifyAnimationComplete": [Function],
+                                                                  "notifyAnimationStart": [Function],
+                                                                  "notifyBeforeLayoutMeasure": [Function],
+                                                                  "notifyLayoutAnimationComplete": [Function],
+                                                                  "notifyLayoutMeasure": [Function],
+                                                                  "notifyLayoutReady": [Function],
+                                                                  "notifyLayoutUpdate": [Function],
+                                                                  "notifyRender": [Function],
+                                                                  "notifySetAxisTarget": [Function],
+                                                                  "notifyUnmount": [Function],
+                                                                  "notifyUpdate": [Function],
+                                                                  "notifyViewportBoxUpdate": [Function],
+                                                                  "onAnimationComplete": [Function],
+                                                                  "onAnimationStart": [Function],
+                                                                  "onBeforeLayoutMeasure": [Function],
+                                                                  "onLayoutAnimationComplete": [Function],
+                                                                  "onLayoutMeasure": [Function],
+                                                                  "onLayoutUpdate": [Function],
+                                                                  "onRender": [Function],
+                                                                  "onSetAxisTarget": [Function],
+                                                                  "onUnmount": [Function],
+                                                                  "onUpdate": [Function],
+                                                                  "onViewportBoxUpdate": [Function],
+                                                                  "parent": undefined,
+                                                                  "path": Array [],
+                                                                  "pointTo": [Function],
+                                                                  "presence": 0,
+                                                                  "presenceId": 0,
+                                                                  "projection": Object {
+                                                                    "isEnabled": false,
+                                                                    "isHydrated": false,
+                                                                    "isTargetLocked": false,
+                                                                    "target": Object {
+                                                                      "x": Object {
+                                                                        "max": 1,
+                                                                        "min": 0,
+                                                                      },
+                                                                      "y": Object {
+                                                                        "max": 1,
+                                                                        "min": 0,
+                                                                      },
+                                                                    },
+                                                                    "targetFinal": Object {
+                                                                      "x": Object {
+                                                                        "max": 1,
+                                                                        "min": 0,
+                                                                      },
+                                                                      "y": Object {
+                                                                        "max": 1,
+                                                                        "min": 0,
+                                                                      },
+                                                                    },
+                                                                  },
+                                                                  "readValue": [Function],
+                                                                  "rebaseProjectionTarget": [Function],
+                                                                  "removeValue": [Function],
+                                                                  "resetTransform": [Function],
+                                                                  "resolveRelativeTargetBox": [Function],
+                                                                  "restoreTransform": [Function],
+                                                                  "scheduleRender": [Function],
+                                                                  "scheduleUpdateLayoutProjection": [Function],
+                                                                  "setBaseTarget": [Function],
+                                                                  "setCrossfader": [Function],
+                                                                  "setProjectionTargetAxis": [Function],
+                                                                  "setProps": [Function],
+                                                                  "setStaticValue": [Function],
+                                                                  "setVisibility": [Function],
+                                                                  "shouldResetTransform": [Function],
+                                                                  "sortNodePosition": [Function],
+                                                                  "startLayoutAnimation": [Function],
+                                                                  "stopLayoutAnimation": [Function],
+                                                                  "syncRender": [Function],
+                                                                  "treeType": "dom",
+                                                                  "unlockProjectionTarget": [Function],
+                                                                  "unmount": [Function],
+                                                                  "updateLayoutProjection": [Function],
+                                                                  "updatePropListeners": [Function],
+                                                                  "updateTreeLayoutProjection": [Function],
+                                                                  "variantChildren": Set {},
+                                                                }
+                                                              }
+                                                            />
+                                                          </ForwardRef(MotionComponent)>
+                                                        </PresenceChild>
+                                                      </AnimatePresence>
                                                     </Collapse>
                                                   </AccordionPanel>
                                                 </div>
@@ -2076,7 +2361,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                 >
                   <div
                     aria-labelledby="tabs-19--tab-1"
-                    className="chakra-tabs__tab-panel css-tiy5mv"
+                    className="chakra-tabs__tab-panel css-1qbr3jw"
                     hidden={true}
                     id="tabs-19--tabpanel-1"
                     role="tabpanel"
@@ -2094,7 +2379,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                         p={2}
                       >
                         <div
-                          className="css-olyig7"
+                          className="css-1syq16t"
                         >
                           <Button
                             colorScheme="green"
@@ -2148,7 +2433,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                               type="button"
                             >
                               <button
-                                className="chakra-button css-1uiu0j2"
+                                className="chakra-button css-3v23rq"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -2165,6 +2450,8 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                           __css={
                             Object {
                               "& > *:not(style) ~ *:not(style)": Object {
+                                "marginBottom": 0,
+                                "marginEnd": 0,
                                 "marginStart": 0,
                                 "marginTop": "0.5rem",
                               },
@@ -2176,7 +2463,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                           py={2}
                         >
                           <div
-                            className="chakra-stack css-1hi6e84"
+                            className="chakra-stack css-1rhn3u4"
                           >
                             <Text
                               key=".0"
@@ -2190,7 +2477,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                 py={2}
                               >
                                 <p
-                                  className="chakra-text css-8wgsd2"
+                                  className="chakra-text css-dap6kq"
                                 >
                                   A Scenario is a collection of modifications within a project.
                                 </p>
@@ -2214,12 +2501,10 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                 aria-orientation="horizontal"
                                 className="chakra-divider"
                                 mx={4}
-                                role="separator"
                               >
                                 <hr
                                   aria-orientation="horizontal"
-                                  className="chakra-divider css-p2zx7n"
-                                  role="separator"
+                                  className="chakra-divider css-nte7i2"
                                 />
                               </Styled(hr)>
                             </Divider>
@@ -2289,6 +2574,8 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                 __css={
                                                   Object {
                                                     "& > *:not(style) ~ *:not(style)": Object {
+                                                      "marginBottom": 0,
+                                                      "marginEnd": 0,
                                                       "marginStart": 0,
                                                       "marginTop": 3,
                                                     },
@@ -2303,7 +2590,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                 pt={2}
                                               >
                                                 <div
-                                                  className="chakra-stack css-wvgnfh"
+                                                  className="chakra-stack css-1o2cie8"
                                                   id="scenarios"
                                                 >
                                                   <Flex
@@ -2326,7 +2613,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                       pr={2}
                                                     >
                                                       <div
-                                                        className="css-1pjcatt"
+                                                        className="css-1py2m6p"
                                                       >
                                                         <Text
                                                           flex="1"
@@ -2339,7 +2626,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                             fontWeight="bold"
                                                           >
                                                             <p
-                                                              className="chakra-text css-1w1y9ry"
+                                                              className="chakra-text css-1gpwcvc"
                                                             >
                                                               Baseline
                                                             </p>
@@ -2440,7 +2727,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                   mr={2}
                                                                 >
                                                                   <p
-                                                                    className="chakra-text css-9u48bm"
+                                                                    className="chakra-text css-11l8nwy"
                                                                   >
                                                                     1
                                                                     .
@@ -2452,7 +2739,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                 fontWeight="bold"
                                                               >
                                                                 <div
-                                                                  className="css-1w1y9ry"
+                                                                  className="css-1gpwcvc"
                                                                 >
                                                                   <Editable
                                                                     isValid={[Function]}
@@ -2579,7 +2866,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                                         >
                                                                                           <button
                                                                                             aria-label="Click to edit"
-                                                                                            className="chakra-button css-1o9h2ju"
+                                                                                            className="chakra-button css-rswj2l"
                                                                                             onBlur={[Function]}
                                                                                             onClick={[Function]}
                                                                                             onFocus={[Function]}
@@ -2640,6 +2927,8 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                   __css={
                                                                     Object {
                                                                       "& > *:not(style) ~ *:not(style)": Object {
+                                                                        "marginBottom": 0,
+                                                                        "marginEnd": 0,
                                                                         "marginStart": 0,
                                                                         "marginTop": 0,
                                                                       },
@@ -2650,7 +2939,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                   flexDirection="row"
                                                                 >
                                                                   <div
-                                                                    className="chakra-stack css-15nnlkb"
+                                                                    className="chakra-stack css-11x43j"
                                                                   >
                                                                     <ForwardRef
                                                                       key=".1"
@@ -2738,7 +3027,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                                 >
                                                                                   <button
                                                                                     aria-label="Copy scenario"
-                                                                                    className="chakra-button css-1o9h2ju"
+                                                                                    className="chakra-button css-rswj2l"
                                                                                     onBlur={[Function]}
                                                                                     onClick={[Function]}
                                                                                     onFocus={[Function]}
@@ -2870,7 +3159,7 @@ exports[`Component ModificationsList snapshot(mount) 1`] = `
                                                                                 >
                                                                                   <button
                                                                                     aria-label="Show modifications for this scenario on the map"
-                                                                                    className="chakra-button css-1o9h2ju"
+                                                                                    className="chakra-button css-rswj2l"
                                                                                     onBlur={[Function]}
                                                                                     onClick={[Function]}
                                                                                     onFocus={[Function]}

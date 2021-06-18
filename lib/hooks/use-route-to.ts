@@ -1,4 +1,4 @@
-import Router from 'next/router'
+import Router, {useRouter} from 'next/router'
 import {useCallback} from 'react'
 
 import {PageKey} from 'lib/constants'
@@ -12,20 +12,30 @@ import {pageToHref} from '../router'
  */
 export default function useRouteTo(
   key: PageKey,
-  props: Record<string, string> = {}
+  props: Record<string, string> = {},
+  options = {}
 ) {
   const link = useLink(key, props)
 
   const onClick = useCallback(
     (newProps?: any) => {
       if (newProps && !newProps.nativeEvent) {
-        Router.push(pageToHref(key, {...props, ...newProps}))
+        Router.push(pageToHref(key, {...props, ...newProps}), null, options)
       } else {
-        Router.push(link)
+        Router.push(link, null, options)
       }
     },
-    [link, props, key]
+    [link, options, props, key]
   )
 
   return onClick
+}
+
+const shallowOptions = {scroll: false, shallow: true}
+export function useShallowRouteTo(
+  key: PageKey,
+  props: Record<string, string> = {}
+) {
+  const {query} = useRouter()
+  return useRouteTo(key, {...(query as CL.Query), ...props}, shallowOptions)
 }

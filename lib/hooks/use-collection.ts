@@ -3,7 +3,6 @@ import {useRouter} from 'next/router'
 import useSWR, {SWRConfiguration, SWRResponse} from 'swr'
 import {useCallback, useMemo} from 'react'
 
-import LogRocket from 'lib/logrocket'
 import {
   postJSON,
   putJSON,
@@ -13,6 +12,7 @@ import {
 } from 'lib/utils/safe-fetch'
 
 import {UseDataResponse} from './use-data'
+import useQueryURL from './use-query-url'
 import useUser from './use-user'
 
 export interface UseCollectionResponse<T> extends UseDataResponse<T[]> {
@@ -20,40 +20,6 @@ export interface UseCollectionResponse<T> extends UseDataResponse<T[]> {
   remove: (_id: string) => Promise<SafeResponse<T>>
   response: SWRResponse<T[], ResponseError>
   update: (_id: string, newProperties: Partial<T>) => Promise<SafeResponse<T[]>>
-}
-
-const encode = (o: unknown) => {
-  if (o) {
-    try {
-      return encodeURIComponent(JSON.stringify(o) || '')
-    } catch (e) {
-      LogRocket.captureException(e)
-      return ''
-    }
-  }
-}
-
-function configToQueryParams<T>(
-  query?: FilterQuery<T>,
-  options?: FindOneOptions<T>
-): string {
-  const params = []
-  if (query) params.push(`query=${encode(query)}`)
-  if (options) params.push(`options=${encode(options)}`)
-  return params.join('&')
-}
-
-function useURL<T>(
-  baseURL: string,
-  query?: FilterQuery<T>,
-  options?: FindOneOptions<T>
-): string {
-  return useMemo(() => {
-    const parts = [baseURL]
-    const queryParams = configToQueryParams(query, options)
-    if (queryParams) parts.push(queryParams)
-    return parts.join('?')
-  }, [baseURL, query, options])
 }
 
 type UseCollection<T> = {
@@ -69,11 +35,12 @@ export default function useCollection<T extends CL.IModel>(
   const router = useRouter()
   const baseURL = `/api/db/${collectionName}`
   const {isLoading, user} = useUser()
-  const url = useURL(baseURL, query, options)
+  const url = useQueryURL(baseURL, query, options)
   const response = useSWR<T[], ResponseError>(
     router.isReady && !isLoading ? [url, user] : null,
     config
   )
+  const emptyArray = useMemo<T[]>(() => [], [])
   const {mutate, revalidate} = response
   // Helper function for updating values when using a collection
   const update = useCallback(
@@ -125,7 +92,7 @@ export default function useCollection<T extends CL.IModel>(
 
   return {
     create,
-    data: response.data,
+    data: response.data ?? emptyArray,
     error: response.error?.error,
     remove,
     response,
@@ -146,7 +113,12 @@ export function createUseCollection<T extends CL.IModel>(
 }
 
 // Create an instance of each collection type
+export const useAggregationAreas =
+  createUseCollection<CL.AggregationArea>('aggregationAreas')
 export const useBundles = createUseCollection<CL.Bundle>('bundles')
+export const useSpatialDatasets = createUseCollection<CL.SpatialDataset>(
+  'opportunityDatasets'
+)
 export const useProjects = createUseCollection<CL.Project>('projects')
 export const usePresets = createUseCollection<CL.Preset>('presets')
 export const useRegions = createUseCollection<CL.Region>('regions')

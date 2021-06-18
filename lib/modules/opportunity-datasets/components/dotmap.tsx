@@ -1,11 +1,15 @@
 import get from 'lodash/get'
+import dynamic from 'next/dynamic'
 import {memo} from 'react'
 import {useSelector} from 'react-redux'
 
-import Gridualizer from 'lib/components/map/gridualizer'
 import {activeOpportunityDatasetGrid} from '../selectors'
 
 import createDrawTile from '../create-draw-tile'
+
+const Gridualizer = dynamic(() => import('lib/components/map/gridualizer'), {
+  ssr: false
+})
 
 /**
  * Container for drawing opportunity data on the map.

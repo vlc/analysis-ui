@@ -1,15 +1,13 @@
 import {Collection, ObjectID, FindOneOptions, FilterQuery} from 'mongodb'
 import fpOmit from 'lodash/fp/omit'
 
-import {IUser} from 'lib/user'
-
 import {connectToDatabase} from './connect'
 import {serializeCollectionResults} from './utils'
 
 /**
  * When the `adminTempAccessGroup` is set, use that instead.
  */
-function getAccessGroup(session: IUser) {
+function getAccessGroup(session: CL.User) {
   if (session.adminTempAccessGroup && session.adminTempAccessGroup.length > 0) {
     return session.adminTempAccessGroup
   }
@@ -21,6 +19,9 @@ const omitImmutable = fpOmit(['_id', 'accessGroup', 'createdAt', 'createdBy'])
 
 // Enabled collections
 const collections = {
+  aggregationAreas: {
+    singular: 'aggregationArea'
+  },
   bundles: {
     singular: 'bundle'
   },
@@ -31,11 +32,17 @@ const collections = {
   modifications: {
     singular: 'modification'
   },
+  opportunityDatasets: {
+    singular: 'opportunityDataset'
+  },
   projects: {
     singular: 'project'
   },
   regions: {
     singular: 'region'
+  },
+  'regional-analyses': {
+    singular: 'regionalAnalysis'
   }
 }
 
@@ -50,9 +57,9 @@ export default class AuthenticatedCollection {
   collection: Collection
   name: string
   singularName: string
-  user: IUser
+  user: CL.User
 
-  static async with(collectionName: CollectionName, user: IUser) {
+  static async with(collectionName: CollectionName, user: CL.User) {
     const {db} = await connectToDatabase()
     return new AuthenticatedCollection(
       collectionName,
@@ -61,7 +68,7 @@ export default class AuthenticatedCollection {
     )
   }
 
-  constructor(name: string, collection: Collection, user: IUser) {
+  constructor(name: string, collection: Collection, user: CL.User) {
     if (collections[name] === undefined) {
       throw new Error(`Collection '${name}' is not enabled.`)
     }
@@ -100,11 +107,14 @@ export default class AuthenticatedCollection {
     )
   }
 
-  findOne(_id: string) {
-    return this.collection.findOne({
-      accessGroup: this.accessGroup,
-      _id
-    })
+  findOne(_id: string, options?: FindOneOptions<any>) {
+    return this.collection.findOne(
+      {
+        accessGroup: this.accessGroup,
+        _id
+      },
+      options
+    )
   }
 
   /**

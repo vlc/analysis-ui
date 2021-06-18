@@ -24,13 +24,8 @@ export function versionToNumber(version?: string): number {
   } else {
     const versionMatch = versionString.match(OLD_VERSION_PARSE_REGEX)
     if (versionMatch) {
-      const [
-        ,
-        major = '0',
-        minor = '0',
-        patch = '0',
-        commit = '0'
-      ] = versionMatch
+      const [, major = '0', minor = '0', patch = '0', commit = '0'] =
+        versionMatch
 
       return (
         parseInt(major) * 10000 +

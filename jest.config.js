@@ -14,5 +14,6 @@ module.exports = {
     './jest/geojson-snapshot-serializer',
     'enzyme-to-json/serializer'
   ],
+  testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/']
 }

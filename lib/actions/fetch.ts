@@ -115,10 +115,12 @@ export const fetchIsActive = (sig: FetchSig) => {
 }
 
 // Simple action creator
-const createAction = (type: string) => (payload: any): Action => ({
-  type,
-  payload
-})
+const createAction =
+  (type: string) =>
+  (payload: any): Action => ({
+    type,
+    payload
+  })
 
 // Internally dispatched actions
 const abortedFetch = createAction(ABORTED_FETCH)

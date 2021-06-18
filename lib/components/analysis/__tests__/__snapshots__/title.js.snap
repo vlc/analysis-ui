@@ -29,7 +29,7 @@ exports[`Component AnalysisTitle snapshot(mount) 1`] = `
       width="640px"
     >
       <div
-        className="css-w3zf6w"
+        className="css-1xc77jr"
       >
         <Heading
           alignItems="center"
@@ -50,7 +50,7 @@ exports[`Component AnalysisTitle snapshot(mount) 1`] = `
             display="flex"
           >
             <h2
-              className="chakra-heading css-114dsy5"
+              className="chakra-heading css-1iicr31"
             >
               <TitleMessage
                 fetchStatus={false}
@@ -145,7 +145,7 @@ exports[`Component AnalysisTitle snapshot(mount) 1`] = `
             type="button"
           >
             <button
-              className="chakra-button css-huwc4k"
+              className="chakra-button css-13ficp8"
               onClick={[Function]}
               title="Fetch results"
               type="button"
@@ -155,11 +155,14 @@ exports[`Component AnalysisTitle snapshot(mount) 1`] = `
                 marginStart="0.5rem"
               >
                 <Styled(span)
+                  alignSelf="center"
                   className="chakra-button__icon"
+                  display="inline-flex"
+                  flexShrink={0}
                   marginStart="0.5rem"
                 >
                   <span
-                    className="chakra-button__icon css-1oeb2oe"
+                    className="chakra-button__icon css-1hzyiq5"
                   >
                     <FaSyncAlt
                       aria-hidden={true}

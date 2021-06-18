@@ -120,7 +120,7 @@ Cypress.Commands.add(
 Cypress.Commands.add('waitForMapToLoad', () => {
   Cypress.log({displayName: 'waitForMapToLoad'})
   getMap().waitUntil(
-    (map: L.Map) => new Promise((resolve) => map.whenReady(resolve)),
+    (map: L.Map) => new Promise<void>((resolve) => map.whenReady(resolve)),
     {log: false}
   )
   return getMap()

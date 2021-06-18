@@ -2,15 +2,7 @@
 
 exports[`Component EditAlignment snapshot(mount) 1`] = `
 <EditAlignment
-  allStops={Array []}
   disabled={false}
-  extendFromEnd={false}
-  mapState={
-    Object {
-      "modificationId": "1234",
-      "state": null,
-    }
-  }
   modification={
     Object {
       "_id": "1234",
@@ -109,76 +101,31 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
     }
   }
   numberOfStops={16}
-  segmentDistances={
-    Array [
-      45.22,
-    ]
-  }
   update={[MockFunction]}
 >
   <Stack
-    allStops={Array []}
-    disabled={false}
-    extendFromEnd={false}
-    mapState={
-      Object {
-        "modificationId": "1234",
-        "state": null,
-      }
-    }
-    segmentDistances={
-      Array [
-        45.22,
-      ]
-    }
     spacing={4}
   >
     <Styled(div)
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
         }
       }
-      allStops={Array []}
       className="chakra-stack"
-      disabled={false}
       display="flex"
-      extendFromEnd={false}
       flexDirection="column"
-      mapState={
-        Object {
-          "modificationId": "1234",
-          "state": null,
-        }
-      }
-      segmentDistances={
-        Array [
-          45.22,
-        ]
-      }
     >
       <div
-        allStops={Array []}
-        className="chakra-stack css-4daikc"
-        disabled={false}
-        extendFromEnd={false}
-        mapState={
-          Object {
-            "modificationId": "1234",
-            "state": null,
-          }
-        }
-        segmentDistances={
-          Array [
-            45.22,
-          ]
-        }
+        className="chakra-stack css-egoftb"
       >
         <Heading
-          key=".1"
+          key=".0"
           size="sm"
         >
           <Styled(h2)
@@ -193,14 +140,14 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             className="chakra-heading"
           >
             <h2
-              className="chakra-heading css-14g9y4z"
+              className="chakra-heading css-9f6g39"
             >
               Route Geometry
             </h2>
           </Styled(h2)>
         </Heading>
         <Text
-          key=".3"
+          key=".2"
         >
           <Styled(p)
             __css={Object {}}
@@ -216,7 +163,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
         <Button
           colorScheme="yellow"
           isFullWidth={true}
-          key=".4"
+          key=".3"
           leftIcon={<FaPencilAlt />}
           onClick={[Function]}
         >
@@ -267,7 +214,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             type="button"
           >
             <button
-              className="chakra-button css-x5p3va"
+              className="chakra-button css-chimen"
               onClick={[Function]}
               type="button"
             >
@@ -275,11 +222,14 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                 marginEnd="0.5rem"
               >
                 <Styled(span)
+                  alignSelf="center"
                   className="chakra-button__icon"
+                  display="inline-flex"
+                  flexShrink={0}
                   marginEnd="0.5rem"
                 >
                   <span
-                    className="chakra-button__icon css-ktvjz1"
+                    className="chakra-button__icon css-1wh2kri"
                   >
                     <FaPencilAlt
                       aria-hidden={true}
@@ -327,16 +277,18 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
         <Checkbox
           fontWeight="normal"
           isChecked={true}
-          key=".6"
+          key=".5"
           onChange={[Function]}
         >
           <Styled(label)
             __css={Object {}}
             className="chakra-checkbox"
             fontWeight="normal"
+            onClick={[Function]}
           >
             <label
-              className="chakra-checkbox css-wun7cp"
+              className="chakra-checkbox css-fnpc6t"
+              onClick={[Function]}
             >
               <input
                 checked={true}
@@ -412,7 +364,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
               >
                 <span
                   aria-hidden={true}
-                  className="chakra-checkbox__control css-co2d90"
+                  className="chakra-checkbox__control css-joz5u0"
                   data-checked=""
                   onMouseDown={[Function]}
                   onMouseEnter={[Function]}
@@ -544,21 +496,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         "strokeWidth": 2,
                                       }
                                     }
-                                    variants={
-                                      Object {
-                                        "checked": Object {
-                                          "opacity": 1,
-                                          "strokeDashoffset": 0,
-                                          "transition": Object {
-                                            "duration": 0.2,
-                                          },
-                                        },
-                                        "unchecked": Object {
-                                          "opacity": 0,
-                                          "strokeDashoffset": 16,
-                                        },
-                                      }
-                                    }
                                     viewBox="0 0 12 10"
                                     width="1.2em"
                                   >
@@ -572,21 +509,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                           "strokeDasharray": 16,
                                           "strokeDashoffset": 0,
                                           "strokeWidth": 2,
-                                        }
-                                      }
-                                      variants={
-                                        Object {
-                                          "checked": Object {
-                                            "opacity": 1,
-                                            "strokeDashoffset": 0,
-                                            "transition": Object {
-                                              "duration": 0.2,
-                                            },
-                                          },
-                                          "unchecked": Object {
-                                            "opacity": 0,
-                                            "strokeDashoffset": 16,
-                                          },
                                         }
                                       }
                                       viewBox="0 0 12 10"
@@ -633,7 +555,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                     viewBox="0 0 12 10"
                                     visualElement={
                                       Object {
-                                        "addChild": [Function],
                                         "addValue": [Function],
                                         "addVariantChild": [Function],
                                         "animationState": Object {
@@ -645,12 +566,11 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         },
                                         "blockInitialAnimation": true,
                                         "build": [Function],
+                                        "children": Set {},
                                         "clearAllListeners": [Function],
-                                        "clearState": [Function],
                                         "current": <svg
                                           class="css-da6t8b"
                                           style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                          variants="[object Object]"
                                           viewBox="0 0 12 10"
                                         >
                                           <polyline
@@ -668,22 +588,27 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         "getLayoutId": [Function],
                                         "getLayoutState": [Function],
                                         "getProjectionAnimationProgress": [Function],
+                                        "getProjectionParent": [Function],
                                         "getProps": [Function],
                                         "getStaticValue": [Function],
                                         "getValue": [Function],
                                         "getVariant": [Function],
                                         "getVariantContext": [Function],
                                         "hasValue": [Function],
-                                        "isHoverEventsEnabled": true,
                                         "isMounted": [Function],
                                         "isPresenceRoot": false,
                                         "isPresent": true,
-                                        "isStatic": false,
+                                        "isProjectionReady": [Function],
                                         "isVisible": undefined,
+                                        "layoutTree": FlatTree {
+                                          "children": Array [],
+                                          "isDirty": false,
+                                        },
                                         "lockProjectionTarget": [Function],
                                         "makeTargetAnimatable": [Function],
                                         "manuallyAnimateOnMount": false,
                                         "measureViewportBox": [Function],
+                                        "mount": [Function],
                                         "notifyAnimationComplete": [Function],
                                         "notifyAnimationStart": [Function],
                                         "notifyBeforeLayoutMeasure": [Function],
@@ -693,6 +618,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         "notifyLayoutUpdate": [Function],
                                         "notifyRender": [Function],
                                         "notifySetAxisTarget": [Function],
+                                        "notifyUnmount": [Function],
                                         "notifyUpdate": [Function],
                                         "notifyViewportBoxUpdate": [Function],
                                         "onAnimationComplete": [Function],
@@ -703,11 +629,154 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         "onLayoutUpdate": [Function],
                                         "onRender": [Function],
                                         "onSetAxisTarget": [Function],
+                                        "onUnmount": [Function],
                                         "onUpdate": [Function],
                                         "onViewportBoxUpdate": [Function],
+                                        "parent": Object {
+                                          "addValue": [Function],
+                                          "addVariantChild": [Function],
+                                          "animationState": Object {
+                                            "animateChanges": [Function],
+                                            "getState": [Function],
+                                            "isAnimated": [Function],
+                                            "setActive": [Function],
+                                            "setAnimateFunction": [Function],
+                                          },
+                                          "blockInitialAnimation": true,
+                                          "build": [Function],
+                                          "children": Set {
+                                            [Circular],
+                                          },
+                                          "clearAllListeners": [Function],
+                                          "current": <div
+                                            style="display: flex; align-items: center; justify-content: center; height: 100%; transform: none;"
+                                          >
+                                            <svg
+                                              class="css-da6t8b"
+                                              style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
+                                              viewBox="0 0 12 10"
+                                            >
+                                              <polyline
+                                                points="1.5 6 4.5 9 10.5 1"
+                                              />
+                                            </svg>
+                                          </div>,
+                                          "depth": 0,
+                                          "enableLayoutProjection": [Function],
+                                          "forEachValue": [Function],
+                                          "getBaseTarget": [Function],
+                                          "getClosestVariantNode": [Function],
+                                          "getDefaultTransition": [Function],
+                                          "getInstance": [Function],
+                                          "getLatestValues": [Function],
+                                          "getLayoutId": [Function],
+                                          "getLayoutState": [Function],
+                                          "getProjectionAnimationProgress": [Function],
+                                          "getProjectionParent": [Function],
+                                          "getProps": [Function],
+                                          "getStaticValue": [Function],
+                                          "getValue": [Function],
+                                          "getVariant": [Function],
+                                          "getVariantContext": [Function],
+                                          "hasValue": [Function],
+                                          "isMounted": [Function],
+                                          "isPresenceRoot": true,
+                                          "isPresent": true,
+                                          "isProjectionReady": [Function],
+                                          "isVisible": undefined,
+                                          "layoutTree": FlatTree {
+                                            "children": Array [],
+                                            "isDirty": false,
+                                          },
+                                          "lockProjectionTarget": [Function],
+                                          "makeTargetAnimatable": [Function],
+                                          "manuallyAnimateOnMount": false,
+                                          "measureViewportBox": [Function],
+                                          "mount": [Function],
+                                          "notifyAnimationComplete": [Function],
+                                          "notifyAnimationStart": [Function],
+                                          "notifyBeforeLayoutMeasure": [Function],
+                                          "notifyLayoutAnimationComplete": [Function],
+                                          "notifyLayoutMeasure": [Function],
+                                          "notifyLayoutReady": [Function],
+                                          "notifyLayoutUpdate": [Function],
+                                          "notifyRender": [Function],
+                                          "notifySetAxisTarget": [Function],
+                                          "notifyUnmount": [Function],
+                                          "notifyUpdate": [Function],
+                                          "notifyViewportBoxUpdate": [Function],
+                                          "onAnimationComplete": [Function],
+                                          "onAnimationStart": [Function],
+                                          "onBeforeLayoutMeasure": [Function],
+                                          "onLayoutAnimationComplete": [Function],
+                                          "onLayoutMeasure": [Function],
+                                          "onLayoutUpdate": [Function],
+                                          "onRender": [Function],
+                                          "onSetAxisTarget": [Function],
+                                          "onUnmount": [Function],
+                                          "onUpdate": [Function],
+                                          "onViewportBoxUpdate": [Function],
+                                          "parent": undefined,
+                                          "path": Array [],
+                                          "pointTo": [Function],
+                                          "presence": 0,
+                                          "presenceId": 0,
+                                          "projection": Object {
+                                            "isEnabled": false,
+                                            "isHydrated": false,
+                                            "isTargetLocked": false,
+                                            "target": Object {
+                                              "x": Object {
+                                                "max": 1,
+                                                "min": 0,
+                                              },
+                                              "y": Object {
+                                                "max": 1,
+                                                "min": 0,
+                                              },
+                                            },
+                                            "targetFinal": Object {
+                                              "x": Object {
+                                                "max": 1,
+                                                "min": 0,
+                                              },
+                                              "y": Object {
+                                                "max": 1,
+                                                "min": 0,
+                                              },
+                                            },
+                                          },
+                                          "readValue": [Function],
+                                          "rebaseProjectionTarget": [Function],
+                                          "removeValue": [Function],
+                                          "resetTransform": [Function],
+                                          "resolveRelativeTargetBox": [Function],
+                                          "restoreTransform": [Function],
+                                          "scheduleRender": [Function],
+                                          "scheduleUpdateLayoutProjection": [Function],
+                                          "setBaseTarget": [Function],
+                                          "setCrossfader": [Function],
+                                          "setProjectionTargetAxis": [Function],
+                                          "setProps": [Function],
+                                          "setStaticValue": [Function],
+                                          "setVisibility": [Function],
+                                          "shouldResetTransform": [Function],
+                                          "sortNodePosition": [Function],
+                                          "startLayoutAnimation": [Function],
+                                          "stopLayoutAnimation": [Function],
+                                          "syncRender": [Function],
+                                          "treeType": "dom",
+                                          "unlockProjectionTarget": [Function],
+                                          "unmount": [Function],
+                                          "updateLayoutProjection": [Function],
+                                          "updatePropListeners": [Function],
+                                          "updateTreeLayoutProjection": [Function],
+                                          "variantChildren": Set {
+                                            [Circular],
+                                          },
+                                        },
                                         "path": Array [
                                           Object {
-                                            "addChild": [Function],
                                             "addValue": [Function],
                                             "addVariantChild": [Function],
                                             "animationState": Object {
@@ -719,15 +788,16 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                             },
                                             "blockInitialAnimation": true,
                                             "build": [Function],
+                                            "children": Set {
+                                              [Circular],
+                                            },
                                             "clearAllListeners": [Function],
-                                            "clearState": [Function],
                                             "current": <div
                                               style="display: flex; align-items: center; justify-content: center; height: 100%; transform: none;"
                                             >
                                               <svg
                                                 class="css-da6t8b"
                                                 style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                                variants="[object Object]"
                                                 viewBox="0 0 12 10"
                                               >
                                                 <polyline
@@ -746,22 +816,27 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                             "getLayoutId": [Function],
                                             "getLayoutState": [Function],
                                             "getProjectionAnimationProgress": [Function],
+                                            "getProjectionParent": [Function],
                                             "getProps": [Function],
                                             "getStaticValue": [Function],
                                             "getValue": [Function],
                                             "getVariant": [Function],
                                             "getVariantContext": [Function],
                                             "hasValue": [Function],
-                                            "isHoverEventsEnabled": true,
                                             "isMounted": [Function],
                                             "isPresenceRoot": true,
                                             "isPresent": true,
-                                            "isStatic": false,
+                                            "isProjectionReady": [Function],
                                             "isVisible": undefined,
+                                            "layoutTree": FlatTree {
+                                              "children": Array [],
+                                              "isDirty": false,
+                                            },
                                             "lockProjectionTarget": [Function],
                                             "makeTargetAnimatable": [Function],
                                             "manuallyAnimateOnMount": false,
                                             "measureViewportBox": [Function],
+                                            "mount": [Function],
                                             "notifyAnimationComplete": [Function],
                                             "notifyAnimationStart": [Function],
                                             "notifyBeforeLayoutMeasure": [Function],
@@ -771,6 +846,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                             "notifyLayoutUpdate": [Function],
                                             "notifyRender": [Function],
                                             "notifySetAxisTarget": [Function],
+                                            "notifyUnmount": [Function],
                                             "notifyUpdate": [Function],
                                             "notifyViewportBoxUpdate": [Function],
                                             "onAnimationComplete": [Function],
@@ -781,14 +857,17 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                             "onLayoutUpdate": [Function],
                                             "onRender": [Function],
                                             "onSetAxisTarget": [Function],
+                                            "onUnmount": [Function],
                                             "onUpdate": [Function],
                                             "onViewportBoxUpdate": [Function],
+                                            "parent": undefined,
                                             "path": Array [],
                                             "pointTo": [Function],
                                             "presence": 0,
                                             "presenceId": 0,
                                             "projection": Object {
                                               "isEnabled": false,
+                                              "isHydrated": false,
                                               "isTargetLocked": false,
                                               "target": Object {
                                                 "x": Object {
@@ -813,9 +892,10 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                             },
                                             "readValue": [Function],
                                             "rebaseProjectionTarget": [Function],
-                                            "ref": [Function],
                                             "removeValue": [Function],
                                             "resetTransform": [Function],
+                                            "resolveRelativeTargetBox": [Function],
+                                            "restoreTransform": [Function],
                                             "scheduleRender": [Function],
                                             "scheduleUpdateLayoutProjection": [Function],
                                             "setBaseTarget": [Function],
@@ -824,21 +904,20 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                             "setProps": [Function],
                                             "setStaticValue": [Function],
                                             "setVisibility": [Function],
-                                            "snapshotViewportBox": [Function],
+                                            "shouldResetTransform": [Function],
                                             "sortNodePosition": [Function],
                                             "startLayoutAnimation": [Function],
                                             "stopLayoutAnimation": [Function],
-                                            "suspendHoverEvents": [Function],
                                             "syncRender": [Function],
                                             "treeType": "dom",
                                             "unlockProjectionTarget": [Function],
-                                            "updateLayoutMeasurement": [Function],
+                                            "unmount": [Function],
                                             "updateLayoutProjection": [Function],
                                             "updatePropListeners": [Function],
+                                            "updateTreeLayoutProjection": [Function],
                                             "variantChildren": Set {
                                               [Circular],
                                             },
-                                            "withoutTransform": [Function],
                                           },
                                         ],
                                         "pointTo": [Function],
@@ -846,6 +925,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         "presenceId": 0,
                                         "projection": Object {
                                           "isEnabled": false,
+                                          "isHydrated": false,
                                           "isTargetLocked": false,
                                           "target": Object {
                                             "x": Object {
@@ -870,9 +950,10 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         },
                                         "readValue": [Function],
                                         "rebaseProjectionTarget": [Function],
-                                        "ref": [Function],
                                         "removeValue": [Function],
                                         "resetTransform": [Function],
+                                        "resolveRelativeTargetBox": [Function],
+                                        "restoreTransform": [Function],
                                         "scheduleRender": [Function],
                                         "scheduleUpdateLayoutProjection": [Function],
                                         "setBaseTarget": [Function],
@@ -881,19 +962,18 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                         "setProps": [Function],
                                         "setStaticValue": [Function],
                                         "setVisibility": [Function],
-                                        "snapshotViewportBox": [Function],
+                                        "shouldResetTransform": [Function],
                                         "sortNodePosition": [Function],
                                         "startLayoutAnimation": [Function],
                                         "stopLayoutAnimation": [Function],
-                                        "suspendHoverEvents": [Function],
                                         "syncRender": [Function],
                                         "treeType": "dom",
                                         "unlockProjectionTarget": [Function],
-                                        "updateLayoutMeasurement": [Function],
+                                        "unmount": [Function],
                                         "updateLayoutProjection": [Function],
                                         "updatePropListeners": [Function],
+                                        "updateTreeLayoutProjection": [Function],
                                         "variantChildren": Set {},
-                                        "withoutTransform": [Function],
                                       }
                                     }
                                     width="1.2em"
@@ -926,7 +1006,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                               }
                               visualElement={
                                 Object {
-                                  "addChild": [Function],
                                   "addValue": [Function],
                                   "addVariantChild": [Function],
                                   "animationState": Object {
@@ -938,125 +1017,8 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                   },
                                   "blockInitialAnimation": true,
                                   "build": [Function],
-                                  "clearAllListeners": [Function],
-                                  "clearState": [Function],
-                                  "current": <div
-                                    style="display: flex; align-items: center; justify-content: center; height: 100%; transform: none;"
-                                  >
-                                    <svg
-                                      class="css-da6t8b"
-                                      style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                      variants="[object Object]"
-                                      viewBox="0 0 12 10"
-                                    >
-                                      <polyline
-                                        points="1.5 6 4.5 9 10.5 1"
-                                      />
-                                    </svg>
-                                  </div>,
-                                  "depth": 0,
-                                  "enableLayoutProjection": [Function],
-                                  "forEachValue": [Function],
-                                  "getBaseTarget": [Function],
-                                  "getClosestVariantNode": [Function],
-                                  "getDefaultTransition": [Function],
-                                  "getInstance": [Function],
-                                  "getLatestValues": [Function],
-                                  "getLayoutId": [Function],
-                                  "getLayoutState": [Function],
-                                  "getProjectionAnimationProgress": [Function],
-                                  "getProps": [Function],
-                                  "getStaticValue": [Function],
-                                  "getValue": [Function],
-                                  "getVariant": [Function],
-                                  "getVariantContext": [Function],
-                                  "hasValue": [Function],
-                                  "isHoverEventsEnabled": true,
-                                  "isMounted": [Function],
-                                  "isPresenceRoot": true,
-                                  "isPresent": true,
-                                  "isStatic": false,
-                                  "isVisible": undefined,
-                                  "lockProjectionTarget": [Function],
-                                  "makeTargetAnimatable": [Function],
-                                  "manuallyAnimateOnMount": false,
-                                  "measureViewportBox": [Function],
-                                  "notifyAnimationComplete": [Function],
-                                  "notifyAnimationStart": [Function],
-                                  "notifyBeforeLayoutMeasure": [Function],
-                                  "notifyLayoutAnimationComplete": [Function],
-                                  "notifyLayoutMeasure": [Function],
-                                  "notifyLayoutReady": [Function],
-                                  "notifyLayoutUpdate": [Function],
-                                  "notifyRender": [Function],
-                                  "notifySetAxisTarget": [Function],
-                                  "notifyUpdate": [Function],
-                                  "notifyViewportBoxUpdate": [Function],
-                                  "onAnimationComplete": [Function],
-                                  "onAnimationStart": [Function],
-                                  "onBeforeLayoutMeasure": [Function],
-                                  "onLayoutAnimationComplete": [Function],
-                                  "onLayoutMeasure": [Function],
-                                  "onLayoutUpdate": [Function],
-                                  "onRender": [Function],
-                                  "onSetAxisTarget": [Function],
-                                  "onUpdate": [Function],
-                                  "onViewportBoxUpdate": [Function],
-                                  "path": Array [],
-                                  "pointTo": [Function],
-                                  "presence": 0,
-                                  "presenceId": 0,
-                                  "projection": Object {
-                                    "isEnabled": false,
-                                    "isTargetLocked": false,
-                                    "target": Object {
-                                      "x": Object {
-                                        "max": 1,
-                                        "min": 0,
-                                      },
-                                      "y": Object {
-                                        "max": 1,
-                                        "min": 0,
-                                      },
-                                    },
-                                    "targetFinal": Object {
-                                      "x": Object {
-                                        "max": 1,
-                                        "min": 0,
-                                      },
-                                      "y": Object {
-                                        "max": 1,
-                                        "min": 0,
-                                      },
-                                    },
-                                  },
-                                  "readValue": [Function],
-                                  "rebaseProjectionTarget": [Function],
-                                  "ref": [Function],
-                                  "removeValue": [Function],
-                                  "resetTransform": [Function],
-                                  "scheduleRender": [Function],
-                                  "scheduleUpdateLayoutProjection": [Function],
-                                  "setBaseTarget": [Function],
-                                  "setCrossfader": [Function],
-                                  "setProjectionTargetAxis": [Function],
-                                  "setProps": [Function],
-                                  "setStaticValue": [Function],
-                                  "setVisibility": [Function],
-                                  "snapshotViewportBox": [Function],
-                                  "sortNodePosition": [Function],
-                                  "startLayoutAnimation": [Function],
-                                  "stopLayoutAnimation": [Function],
-                                  "suspendHoverEvents": [Function],
-                                  "syncRender": [Function],
-                                  "treeType": "dom",
-                                  "unlockProjectionTarget": [Function],
-                                  "updateLayoutMeasurement": [Function],
-                                  "updateLayoutProjection": [Function],
-                                  "updatePropListeners": [Function],
-                                  "variantChildren": Set {
+                                  "children": Set {
                                     Object {
-                                      "addChild": [Function],
                                       "addValue": [Function],
                                       "addVariantChild": [Function],
                                       "animationState": Object {
@@ -1068,12 +1030,11 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       },
                                       "blockInitialAnimation": true,
                                       "build": [Function],
+                                      "children": Set {},
                                       "clearAllListeners": [Function],
-                                      "clearState": [Function],
                                       "current": <svg
                                         class="css-da6t8b"
                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                        variants="[object Object]"
                                         viewBox="0 0 12 10"
                                       >
                                         <polyline
@@ -1091,22 +1052,27 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "getLayoutId": [Function],
                                       "getLayoutState": [Function],
                                       "getProjectionAnimationProgress": [Function],
+                                      "getProjectionParent": [Function],
                                       "getProps": [Function],
                                       "getStaticValue": [Function],
                                       "getValue": [Function],
                                       "getVariant": [Function],
                                       "getVariantContext": [Function],
                                       "hasValue": [Function],
-                                      "isHoverEventsEnabled": true,
                                       "isMounted": [Function],
                                       "isPresenceRoot": false,
                                       "isPresent": true,
-                                      "isStatic": false,
+                                      "isProjectionReady": [Function],
                                       "isVisible": undefined,
+                                      "layoutTree": FlatTree {
+                                        "children": Array [],
+                                        "isDirty": false,
+                                      },
                                       "lockProjectionTarget": [Function],
                                       "makeTargetAnimatable": [Function],
                                       "manuallyAnimateOnMount": false,
                                       "measureViewportBox": [Function],
+                                      "mount": [Function],
                                       "notifyAnimationComplete": [Function],
                                       "notifyAnimationStart": [Function],
                                       "notifyBeforeLayoutMeasure": [Function],
@@ -1116,6 +1082,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "notifyLayoutUpdate": [Function],
                                       "notifyRender": [Function],
                                       "notifySetAxisTarget": [Function],
+                                      "notifyUnmount": [Function],
                                       "notifyUpdate": [Function],
                                       "notifyViewportBoxUpdate": [Function],
                                       "onAnimationComplete": [Function],
@@ -1126,8 +1093,10 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "onLayoutUpdate": [Function],
                                       "onRender": [Function],
                                       "onSetAxisTarget": [Function],
+                                      "onUnmount": [Function],
                                       "onUpdate": [Function],
                                       "onViewportBoxUpdate": [Function],
+                                      "parent": [Circular],
                                       "path": Array [
                                         [Circular],
                                       ],
@@ -1136,6 +1105,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "presenceId": 0,
                                       "projection": Object {
                                         "isEnabled": false,
+                                        "isHydrated": false,
                                         "isTargetLocked": false,
                                         "target": Object {
                                           "x": Object {
@@ -1160,9 +1130,10 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       },
                                       "readValue": [Function],
                                       "rebaseProjectionTarget": [Function],
-                                      "ref": [Function],
                                       "removeValue": [Function],
                                       "resetTransform": [Function],
+                                      "resolveRelativeTargetBox": [Function],
+                                      "restoreTransform": [Function],
                                       "scheduleRender": [Function],
                                       "scheduleUpdateLayoutProjection": [Function],
                                       "setBaseTarget": [Function],
@@ -1171,22 +1142,283 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "setProps": [Function],
                                       "setStaticValue": [Function],
                                       "setVisibility": [Function],
-                                      "snapshotViewportBox": [Function],
+                                      "shouldResetTransform": [Function],
                                       "sortNodePosition": [Function],
                                       "startLayoutAnimation": [Function],
                                       "stopLayoutAnimation": [Function],
-                                      "suspendHoverEvents": [Function],
                                       "syncRender": [Function],
                                       "treeType": "dom",
                                       "unlockProjectionTarget": [Function],
-                                      "updateLayoutMeasurement": [Function],
+                                      "unmount": [Function],
                                       "updateLayoutProjection": [Function],
                                       "updatePropListeners": [Function],
+                                      "updateTreeLayoutProjection": [Function],
                                       "variantChildren": Set {},
-                                      "withoutTransform": [Function],
                                     },
                                   },
-                                  "withoutTransform": [Function],
+                                  "clearAllListeners": [Function],
+                                  "current": <div
+                                    style="display: flex; align-items: center; justify-content: center; height: 100%; transform: none;"
+                                  >
+                                    <svg
+                                      class="css-da6t8b"
+                                      style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
+                                      viewBox="0 0 12 10"
+                                    >
+                                      <polyline
+                                        points="1.5 6 4.5 9 10.5 1"
+                                      />
+                                    </svg>
+                                  </div>,
+                                  "depth": 0,
+                                  "enableLayoutProjection": [Function],
+                                  "forEachValue": [Function],
+                                  "getBaseTarget": [Function],
+                                  "getClosestVariantNode": [Function],
+                                  "getDefaultTransition": [Function],
+                                  "getInstance": [Function],
+                                  "getLatestValues": [Function],
+                                  "getLayoutId": [Function],
+                                  "getLayoutState": [Function],
+                                  "getProjectionAnimationProgress": [Function],
+                                  "getProjectionParent": [Function],
+                                  "getProps": [Function],
+                                  "getStaticValue": [Function],
+                                  "getValue": [Function],
+                                  "getVariant": [Function],
+                                  "getVariantContext": [Function],
+                                  "hasValue": [Function],
+                                  "isMounted": [Function],
+                                  "isPresenceRoot": true,
+                                  "isPresent": true,
+                                  "isProjectionReady": [Function],
+                                  "isVisible": undefined,
+                                  "layoutTree": FlatTree {
+                                    "children": Array [],
+                                    "isDirty": false,
+                                  },
+                                  "lockProjectionTarget": [Function],
+                                  "makeTargetAnimatable": [Function],
+                                  "manuallyAnimateOnMount": false,
+                                  "measureViewportBox": [Function],
+                                  "mount": [Function],
+                                  "notifyAnimationComplete": [Function],
+                                  "notifyAnimationStart": [Function],
+                                  "notifyBeforeLayoutMeasure": [Function],
+                                  "notifyLayoutAnimationComplete": [Function],
+                                  "notifyLayoutMeasure": [Function],
+                                  "notifyLayoutReady": [Function],
+                                  "notifyLayoutUpdate": [Function],
+                                  "notifyRender": [Function],
+                                  "notifySetAxisTarget": [Function],
+                                  "notifyUnmount": [Function],
+                                  "notifyUpdate": [Function],
+                                  "notifyViewportBoxUpdate": [Function],
+                                  "onAnimationComplete": [Function],
+                                  "onAnimationStart": [Function],
+                                  "onBeforeLayoutMeasure": [Function],
+                                  "onLayoutAnimationComplete": [Function],
+                                  "onLayoutMeasure": [Function],
+                                  "onLayoutUpdate": [Function],
+                                  "onRender": [Function],
+                                  "onSetAxisTarget": [Function],
+                                  "onUnmount": [Function],
+                                  "onUpdate": [Function],
+                                  "onViewportBoxUpdate": [Function],
+                                  "parent": undefined,
+                                  "path": Array [],
+                                  "pointTo": [Function],
+                                  "presence": 0,
+                                  "presenceId": 0,
+                                  "projection": Object {
+                                    "isEnabled": false,
+                                    "isHydrated": false,
+                                    "isTargetLocked": false,
+                                    "target": Object {
+                                      "x": Object {
+                                        "max": 1,
+                                        "min": 0,
+                                      },
+                                      "y": Object {
+                                        "max": 1,
+                                        "min": 0,
+                                      },
+                                    },
+                                    "targetFinal": Object {
+                                      "x": Object {
+                                        "max": 1,
+                                        "min": 0,
+                                      },
+                                      "y": Object {
+                                        "max": 1,
+                                        "min": 0,
+                                      },
+                                    },
+                                  },
+                                  "readValue": [Function],
+                                  "rebaseProjectionTarget": [Function],
+                                  "removeValue": [Function],
+                                  "resetTransform": [Function],
+                                  "resolveRelativeTargetBox": [Function],
+                                  "restoreTransform": [Function],
+                                  "scheduleRender": [Function],
+                                  "scheduleUpdateLayoutProjection": [Function],
+                                  "setBaseTarget": [Function],
+                                  "setCrossfader": [Function],
+                                  "setProjectionTargetAxis": [Function],
+                                  "setProps": [Function],
+                                  "setStaticValue": [Function],
+                                  "setVisibility": [Function],
+                                  "shouldResetTransform": [Function],
+                                  "sortNodePosition": [Function],
+                                  "startLayoutAnimation": [Function],
+                                  "stopLayoutAnimation": [Function],
+                                  "syncRender": [Function],
+                                  "treeType": "dom",
+                                  "unlockProjectionTarget": [Function],
+                                  "unmount": [Function],
+                                  "updateLayoutProjection": [Function],
+                                  "updatePropListeners": [Function],
+                                  "updateTreeLayoutProjection": [Function],
+                                  "variantChildren": Set {
+                                    Object {
+                                      "addValue": [Function],
+                                      "addVariantChild": [Function],
+                                      "animationState": Object {
+                                        "animateChanges": [Function],
+                                        "getState": [Function],
+                                        "isAnimated": [Function],
+                                        "setActive": [Function],
+                                        "setAnimateFunction": [Function],
+                                      },
+                                      "blockInitialAnimation": true,
+                                      "build": [Function],
+                                      "children": Set {},
+                                      "clearAllListeners": [Function],
+                                      "current": <svg
+                                        class="css-da6t8b"
+                                        style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
+                                        viewBox="0 0 12 10"
+                                      >
+                                        <polyline
+                                          points="1.5 6 4.5 9 10.5 1"
+                                        />
+                                      </svg>,
+                                      "depth": 1,
+                                      "enableLayoutProjection": [Function],
+                                      "forEachValue": [Function],
+                                      "getBaseTarget": [Function],
+                                      "getClosestVariantNode": [Function],
+                                      "getDefaultTransition": [Function],
+                                      "getInstance": [Function],
+                                      "getLatestValues": [Function],
+                                      "getLayoutId": [Function],
+                                      "getLayoutState": [Function],
+                                      "getProjectionAnimationProgress": [Function],
+                                      "getProjectionParent": [Function],
+                                      "getProps": [Function],
+                                      "getStaticValue": [Function],
+                                      "getValue": [Function],
+                                      "getVariant": [Function],
+                                      "getVariantContext": [Function],
+                                      "hasValue": [Function],
+                                      "isMounted": [Function],
+                                      "isPresenceRoot": false,
+                                      "isPresent": true,
+                                      "isProjectionReady": [Function],
+                                      "isVisible": undefined,
+                                      "layoutTree": FlatTree {
+                                        "children": Array [],
+                                        "isDirty": false,
+                                      },
+                                      "lockProjectionTarget": [Function],
+                                      "makeTargetAnimatable": [Function],
+                                      "manuallyAnimateOnMount": false,
+                                      "measureViewportBox": [Function],
+                                      "mount": [Function],
+                                      "notifyAnimationComplete": [Function],
+                                      "notifyAnimationStart": [Function],
+                                      "notifyBeforeLayoutMeasure": [Function],
+                                      "notifyLayoutAnimationComplete": [Function],
+                                      "notifyLayoutMeasure": [Function],
+                                      "notifyLayoutReady": [Function],
+                                      "notifyLayoutUpdate": [Function],
+                                      "notifyRender": [Function],
+                                      "notifySetAxisTarget": [Function],
+                                      "notifyUnmount": [Function],
+                                      "notifyUpdate": [Function],
+                                      "notifyViewportBoxUpdate": [Function],
+                                      "onAnimationComplete": [Function],
+                                      "onAnimationStart": [Function],
+                                      "onBeforeLayoutMeasure": [Function],
+                                      "onLayoutAnimationComplete": [Function],
+                                      "onLayoutMeasure": [Function],
+                                      "onLayoutUpdate": [Function],
+                                      "onRender": [Function],
+                                      "onSetAxisTarget": [Function],
+                                      "onUnmount": [Function],
+                                      "onUpdate": [Function],
+                                      "onViewportBoxUpdate": [Function],
+                                      "parent": [Circular],
+                                      "path": Array [
+                                        [Circular],
+                                      ],
+                                      "pointTo": [Function],
+                                      "presence": 0,
+                                      "presenceId": 0,
+                                      "projection": Object {
+                                        "isEnabled": false,
+                                        "isHydrated": false,
+                                        "isTargetLocked": false,
+                                        "target": Object {
+                                          "x": Object {
+                                            "max": 1,
+                                            "min": 0,
+                                          },
+                                          "y": Object {
+                                            "max": 1,
+                                            "min": 0,
+                                          },
+                                        },
+                                        "targetFinal": Object {
+                                          "x": Object {
+                                            "max": 1,
+                                            "min": 0,
+                                          },
+                                          "y": Object {
+                                            "max": 1,
+                                            "min": 0,
+                                          },
+                                        },
+                                      },
+                                      "readValue": [Function],
+                                      "rebaseProjectionTarget": [Function],
+                                      "removeValue": [Function],
+                                      "resetTransform": [Function],
+                                      "resolveRelativeTargetBox": [Function],
+                                      "restoreTransform": [Function],
+                                      "scheduleRender": [Function],
+                                      "scheduleUpdateLayoutProjection": [Function],
+                                      "setBaseTarget": [Function],
+                                      "setCrossfader": [Function],
+                                      "setProjectionTargetAxis": [Function],
+                                      "setProps": [Function],
+                                      "setStaticValue": [Function],
+                                      "setVisibility": [Function],
+                                      "shouldResetTransform": [Function],
+                                      "sortNodePosition": [Function],
+                                      "startLayoutAnimation": [Function],
+                                      "stopLayoutAnimation": [Function],
+                                      "syncRender": [Function],
+                                      "treeType": "dom",
+                                      "unlockProjectionTarget": [Function],
+                                      "unmount": [Function],
+                                      "updateLayoutProjection": [Function],
+                                      "updatePropListeners": [Function],
+                                      "updateTreeLayoutProjection": [Function],
+                                      "variantChildren": Set {},
+                                    },
+                                  },
                                 }
                               }
                             />
@@ -1215,7 +1447,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                               }
                               visualElement={
                                 Object {
-                                  "addChild": [Function],
                                   "addValue": [Function],
                                   "addVariantChild": [Function],
                                   "animationState": Object {
@@ -1227,125 +1458,8 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                   },
                                   "blockInitialAnimation": true,
                                   "build": [Function],
-                                  "clearAllListeners": [Function],
-                                  "clearState": [Function],
-                                  "current": <div
-                                    style="display: flex; align-items: center; justify-content: center; height: 100%; transform: none;"
-                                  >
-                                    <svg
-                                      class="css-da6t8b"
-                                      style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                      variants="[object Object]"
-                                      viewBox="0 0 12 10"
-                                    >
-                                      <polyline
-                                        points="1.5 6 4.5 9 10.5 1"
-                                      />
-                                    </svg>
-                                  </div>,
-                                  "depth": 0,
-                                  "enableLayoutProjection": [Function],
-                                  "forEachValue": [Function],
-                                  "getBaseTarget": [Function],
-                                  "getClosestVariantNode": [Function],
-                                  "getDefaultTransition": [Function],
-                                  "getInstance": [Function],
-                                  "getLatestValues": [Function],
-                                  "getLayoutId": [Function],
-                                  "getLayoutState": [Function],
-                                  "getProjectionAnimationProgress": [Function],
-                                  "getProps": [Function],
-                                  "getStaticValue": [Function],
-                                  "getValue": [Function],
-                                  "getVariant": [Function],
-                                  "getVariantContext": [Function],
-                                  "hasValue": [Function],
-                                  "isHoverEventsEnabled": true,
-                                  "isMounted": [Function],
-                                  "isPresenceRoot": true,
-                                  "isPresent": true,
-                                  "isStatic": false,
-                                  "isVisible": undefined,
-                                  "lockProjectionTarget": [Function],
-                                  "makeTargetAnimatable": [Function],
-                                  "manuallyAnimateOnMount": false,
-                                  "measureViewportBox": [Function],
-                                  "notifyAnimationComplete": [Function],
-                                  "notifyAnimationStart": [Function],
-                                  "notifyBeforeLayoutMeasure": [Function],
-                                  "notifyLayoutAnimationComplete": [Function],
-                                  "notifyLayoutMeasure": [Function],
-                                  "notifyLayoutReady": [Function],
-                                  "notifyLayoutUpdate": [Function],
-                                  "notifyRender": [Function],
-                                  "notifySetAxisTarget": [Function],
-                                  "notifyUpdate": [Function],
-                                  "notifyViewportBoxUpdate": [Function],
-                                  "onAnimationComplete": [Function],
-                                  "onAnimationStart": [Function],
-                                  "onBeforeLayoutMeasure": [Function],
-                                  "onLayoutAnimationComplete": [Function],
-                                  "onLayoutMeasure": [Function],
-                                  "onLayoutUpdate": [Function],
-                                  "onRender": [Function],
-                                  "onSetAxisTarget": [Function],
-                                  "onUpdate": [Function],
-                                  "onViewportBoxUpdate": [Function],
-                                  "path": Array [],
-                                  "pointTo": [Function],
-                                  "presence": 0,
-                                  "presenceId": 0,
-                                  "projection": Object {
-                                    "isEnabled": false,
-                                    "isTargetLocked": false,
-                                    "target": Object {
-                                      "x": Object {
-                                        "max": 1,
-                                        "min": 0,
-                                      },
-                                      "y": Object {
-                                        "max": 1,
-                                        "min": 0,
-                                      },
-                                    },
-                                    "targetFinal": Object {
-                                      "x": Object {
-                                        "max": 1,
-                                        "min": 0,
-                                      },
-                                      "y": Object {
-                                        "max": 1,
-                                        "min": 0,
-                                      },
-                                    },
-                                  },
-                                  "readValue": [Function],
-                                  "rebaseProjectionTarget": [Function],
-                                  "ref": [Function],
-                                  "removeValue": [Function],
-                                  "resetTransform": [Function],
-                                  "scheduleRender": [Function],
-                                  "scheduleUpdateLayoutProjection": [Function],
-                                  "setBaseTarget": [Function],
-                                  "setCrossfader": [Function],
-                                  "setProjectionTargetAxis": [Function],
-                                  "setProps": [Function],
-                                  "setStaticValue": [Function],
-                                  "setVisibility": [Function],
-                                  "snapshotViewportBox": [Function],
-                                  "sortNodePosition": [Function],
-                                  "startLayoutAnimation": [Function],
-                                  "stopLayoutAnimation": [Function],
-                                  "suspendHoverEvents": [Function],
-                                  "syncRender": [Function],
-                                  "treeType": "dom",
-                                  "unlockProjectionTarget": [Function],
-                                  "updateLayoutMeasurement": [Function],
-                                  "updateLayoutProjection": [Function],
-                                  "updatePropListeners": [Function],
-                                  "variantChildren": Set {
+                                  "children": Set {
                                     Object {
-                                      "addChild": [Function],
                                       "addValue": [Function],
                                       "addVariantChild": [Function],
                                       "animationState": Object {
@@ -1357,12 +1471,11 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       },
                                       "blockInitialAnimation": true,
                                       "build": [Function],
+                                      "children": Set {},
                                       "clearAllListeners": [Function],
-                                      "clearState": [Function],
                                       "current": <svg
                                         class="css-da6t8b"
                                         style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
-                                        variants="[object Object]"
                                         viewBox="0 0 12 10"
                                       >
                                         <polyline
@@ -1380,22 +1493,27 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "getLayoutId": [Function],
                                       "getLayoutState": [Function],
                                       "getProjectionAnimationProgress": [Function],
+                                      "getProjectionParent": [Function],
                                       "getProps": [Function],
                                       "getStaticValue": [Function],
                                       "getValue": [Function],
                                       "getVariant": [Function],
                                       "getVariantContext": [Function],
                                       "hasValue": [Function],
-                                      "isHoverEventsEnabled": true,
                                       "isMounted": [Function],
                                       "isPresenceRoot": false,
                                       "isPresent": true,
-                                      "isStatic": false,
+                                      "isProjectionReady": [Function],
                                       "isVisible": undefined,
+                                      "layoutTree": FlatTree {
+                                        "children": Array [],
+                                        "isDirty": false,
+                                      },
                                       "lockProjectionTarget": [Function],
                                       "makeTargetAnimatable": [Function],
                                       "manuallyAnimateOnMount": false,
                                       "measureViewportBox": [Function],
+                                      "mount": [Function],
                                       "notifyAnimationComplete": [Function],
                                       "notifyAnimationStart": [Function],
                                       "notifyBeforeLayoutMeasure": [Function],
@@ -1405,6 +1523,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "notifyLayoutUpdate": [Function],
                                       "notifyRender": [Function],
                                       "notifySetAxisTarget": [Function],
+                                      "notifyUnmount": [Function],
                                       "notifyUpdate": [Function],
                                       "notifyViewportBoxUpdate": [Function],
                                       "onAnimationComplete": [Function],
@@ -1415,8 +1534,10 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "onLayoutUpdate": [Function],
                                       "onRender": [Function],
                                       "onSetAxisTarget": [Function],
+                                      "onUnmount": [Function],
                                       "onUpdate": [Function],
                                       "onViewportBoxUpdate": [Function],
+                                      "parent": [Circular],
                                       "path": Array [
                                         [Circular],
                                       ],
@@ -1425,6 +1546,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "presenceId": 0,
                                       "projection": Object {
                                         "isEnabled": false,
+                                        "isHydrated": false,
                                         "isTargetLocked": false,
                                         "target": Object {
                                           "x": Object {
@@ -1449,9 +1571,10 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       },
                                       "readValue": [Function],
                                       "rebaseProjectionTarget": [Function],
-                                      "ref": [Function],
                                       "removeValue": [Function],
                                       "resetTransform": [Function],
+                                      "resolveRelativeTargetBox": [Function],
+                                      "restoreTransform": [Function],
                                       "scheduleRender": [Function],
                                       "scheduleUpdateLayoutProjection": [Function],
                                       "setBaseTarget": [Function],
@@ -1460,22 +1583,283 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                       "setProps": [Function],
                                       "setStaticValue": [Function],
                                       "setVisibility": [Function],
-                                      "snapshotViewportBox": [Function],
+                                      "shouldResetTransform": [Function],
                                       "sortNodePosition": [Function],
                                       "startLayoutAnimation": [Function],
                                       "stopLayoutAnimation": [Function],
-                                      "suspendHoverEvents": [Function],
                                       "syncRender": [Function],
                                       "treeType": "dom",
                                       "unlockProjectionTarget": [Function],
-                                      "updateLayoutMeasurement": [Function],
+                                      "unmount": [Function],
                                       "updateLayoutProjection": [Function],
                                       "updatePropListeners": [Function],
+                                      "updateTreeLayoutProjection": [Function],
                                       "variantChildren": Set {},
-                                      "withoutTransform": [Function],
                                     },
                                   },
-                                  "withoutTransform": [Function],
+                                  "clearAllListeners": [Function],
+                                  "current": <div
+                                    style="display: flex; align-items: center; justify-content: center; height: 100%; transform: none;"
+                                  >
+                                    <svg
+                                      class="css-da6t8b"
+                                      style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
+                                      viewBox="0 0 12 10"
+                                    >
+                                      <polyline
+                                        points="1.5 6 4.5 9 10.5 1"
+                                      />
+                                    </svg>
+                                  </div>,
+                                  "depth": 0,
+                                  "enableLayoutProjection": [Function],
+                                  "forEachValue": [Function],
+                                  "getBaseTarget": [Function],
+                                  "getClosestVariantNode": [Function],
+                                  "getDefaultTransition": [Function],
+                                  "getInstance": [Function],
+                                  "getLatestValues": [Function],
+                                  "getLayoutId": [Function],
+                                  "getLayoutState": [Function],
+                                  "getProjectionAnimationProgress": [Function],
+                                  "getProjectionParent": [Function],
+                                  "getProps": [Function],
+                                  "getStaticValue": [Function],
+                                  "getValue": [Function],
+                                  "getVariant": [Function],
+                                  "getVariantContext": [Function],
+                                  "hasValue": [Function],
+                                  "isMounted": [Function],
+                                  "isPresenceRoot": true,
+                                  "isPresent": true,
+                                  "isProjectionReady": [Function],
+                                  "isVisible": undefined,
+                                  "layoutTree": FlatTree {
+                                    "children": Array [],
+                                    "isDirty": false,
+                                  },
+                                  "lockProjectionTarget": [Function],
+                                  "makeTargetAnimatable": [Function],
+                                  "manuallyAnimateOnMount": false,
+                                  "measureViewportBox": [Function],
+                                  "mount": [Function],
+                                  "notifyAnimationComplete": [Function],
+                                  "notifyAnimationStart": [Function],
+                                  "notifyBeforeLayoutMeasure": [Function],
+                                  "notifyLayoutAnimationComplete": [Function],
+                                  "notifyLayoutMeasure": [Function],
+                                  "notifyLayoutReady": [Function],
+                                  "notifyLayoutUpdate": [Function],
+                                  "notifyRender": [Function],
+                                  "notifySetAxisTarget": [Function],
+                                  "notifyUnmount": [Function],
+                                  "notifyUpdate": [Function],
+                                  "notifyViewportBoxUpdate": [Function],
+                                  "onAnimationComplete": [Function],
+                                  "onAnimationStart": [Function],
+                                  "onBeforeLayoutMeasure": [Function],
+                                  "onLayoutAnimationComplete": [Function],
+                                  "onLayoutMeasure": [Function],
+                                  "onLayoutUpdate": [Function],
+                                  "onRender": [Function],
+                                  "onSetAxisTarget": [Function],
+                                  "onUnmount": [Function],
+                                  "onUpdate": [Function],
+                                  "onViewportBoxUpdate": [Function],
+                                  "parent": undefined,
+                                  "path": Array [],
+                                  "pointTo": [Function],
+                                  "presence": 0,
+                                  "presenceId": 0,
+                                  "projection": Object {
+                                    "isEnabled": false,
+                                    "isHydrated": false,
+                                    "isTargetLocked": false,
+                                    "target": Object {
+                                      "x": Object {
+                                        "max": 1,
+                                        "min": 0,
+                                      },
+                                      "y": Object {
+                                        "max": 1,
+                                        "min": 0,
+                                      },
+                                    },
+                                    "targetFinal": Object {
+                                      "x": Object {
+                                        "max": 1,
+                                        "min": 0,
+                                      },
+                                      "y": Object {
+                                        "max": 1,
+                                        "min": 0,
+                                      },
+                                    },
+                                  },
+                                  "readValue": [Function],
+                                  "rebaseProjectionTarget": [Function],
+                                  "removeValue": [Function],
+                                  "resetTransform": [Function],
+                                  "resolveRelativeTargetBox": [Function],
+                                  "restoreTransform": [Function],
+                                  "scheduleRender": [Function],
+                                  "scheduleUpdateLayoutProjection": [Function],
+                                  "setBaseTarget": [Function],
+                                  "setCrossfader": [Function],
+                                  "setProjectionTargetAxis": [Function],
+                                  "setProps": [Function],
+                                  "setStaticValue": [Function],
+                                  "setVisibility": [Function],
+                                  "shouldResetTransform": [Function],
+                                  "sortNodePosition": [Function],
+                                  "startLayoutAnimation": [Function],
+                                  "stopLayoutAnimation": [Function],
+                                  "syncRender": [Function],
+                                  "treeType": "dom",
+                                  "unlockProjectionTarget": [Function],
+                                  "unmount": [Function],
+                                  "updateLayoutProjection": [Function],
+                                  "updatePropListeners": [Function],
+                                  "updateTreeLayoutProjection": [Function],
+                                  "variantChildren": Set {
+                                    Object {
+                                      "addValue": [Function],
+                                      "addVariantChild": [Function],
+                                      "animationState": Object {
+                                        "animateChanges": [Function],
+                                        "getState": [Function],
+                                        "isAnimated": [Function],
+                                        "setActive": [Function],
+                                        "setAnimateFunction": [Function],
+                                      },
+                                      "blockInitialAnimation": true,
+                                      "build": [Function],
+                                      "children": Set {},
+                                      "clearAllListeners": [Function],
+                                      "current": <svg
+                                        class="css-da6t8b"
+                                        style="fill: none; stroke-width: 2; stroke: currentColor; stroke-dasharray: 16; opacity: 1; stroke-dashoffset: 0;"
+                                        viewBox="0 0 12 10"
+                                      >
+                                        <polyline
+                                          points="1.5 6 4.5 9 10.5 1"
+                                        />
+                                      </svg>,
+                                      "depth": 1,
+                                      "enableLayoutProjection": [Function],
+                                      "forEachValue": [Function],
+                                      "getBaseTarget": [Function],
+                                      "getClosestVariantNode": [Function],
+                                      "getDefaultTransition": [Function],
+                                      "getInstance": [Function],
+                                      "getLatestValues": [Function],
+                                      "getLayoutId": [Function],
+                                      "getLayoutState": [Function],
+                                      "getProjectionAnimationProgress": [Function],
+                                      "getProjectionParent": [Function],
+                                      "getProps": [Function],
+                                      "getStaticValue": [Function],
+                                      "getValue": [Function],
+                                      "getVariant": [Function],
+                                      "getVariantContext": [Function],
+                                      "hasValue": [Function],
+                                      "isMounted": [Function],
+                                      "isPresenceRoot": false,
+                                      "isPresent": true,
+                                      "isProjectionReady": [Function],
+                                      "isVisible": undefined,
+                                      "layoutTree": FlatTree {
+                                        "children": Array [],
+                                        "isDirty": false,
+                                      },
+                                      "lockProjectionTarget": [Function],
+                                      "makeTargetAnimatable": [Function],
+                                      "manuallyAnimateOnMount": false,
+                                      "measureViewportBox": [Function],
+                                      "mount": [Function],
+                                      "notifyAnimationComplete": [Function],
+                                      "notifyAnimationStart": [Function],
+                                      "notifyBeforeLayoutMeasure": [Function],
+                                      "notifyLayoutAnimationComplete": [Function],
+                                      "notifyLayoutMeasure": [Function],
+                                      "notifyLayoutReady": [Function],
+                                      "notifyLayoutUpdate": [Function],
+                                      "notifyRender": [Function],
+                                      "notifySetAxisTarget": [Function],
+                                      "notifyUnmount": [Function],
+                                      "notifyUpdate": [Function],
+                                      "notifyViewportBoxUpdate": [Function],
+                                      "onAnimationComplete": [Function],
+                                      "onAnimationStart": [Function],
+                                      "onBeforeLayoutMeasure": [Function],
+                                      "onLayoutAnimationComplete": [Function],
+                                      "onLayoutMeasure": [Function],
+                                      "onLayoutUpdate": [Function],
+                                      "onRender": [Function],
+                                      "onSetAxisTarget": [Function],
+                                      "onUnmount": [Function],
+                                      "onUpdate": [Function],
+                                      "onViewportBoxUpdate": [Function],
+                                      "parent": [Circular],
+                                      "path": Array [
+                                        [Circular],
+                                      ],
+                                      "pointTo": [Function],
+                                      "presence": 0,
+                                      "presenceId": 0,
+                                      "projection": Object {
+                                        "isEnabled": false,
+                                        "isHydrated": false,
+                                        "isTargetLocked": false,
+                                        "target": Object {
+                                          "x": Object {
+                                            "max": 1,
+                                            "min": 0,
+                                          },
+                                          "y": Object {
+                                            "max": 1,
+                                            "min": 0,
+                                          },
+                                        },
+                                        "targetFinal": Object {
+                                          "x": Object {
+                                            "max": 1,
+                                            "min": 0,
+                                          },
+                                          "y": Object {
+                                            "max": 1,
+                                            "min": 0,
+                                          },
+                                        },
+                                      },
+                                      "readValue": [Function],
+                                      "rebaseProjectionTarget": [Function],
+                                      "removeValue": [Function],
+                                      "resetTransform": [Function],
+                                      "resolveRelativeTargetBox": [Function],
+                                      "restoreTransform": [Function],
+                                      "scheduleRender": [Function],
+                                      "scheduleUpdateLayoutProjection": [Function],
+                                      "setBaseTarget": [Function],
+                                      "setCrossfader": [Function],
+                                      "setProjectionTargetAxis": [Function],
+                                      "setProps": [Function],
+                                      "setStaticValue": [Function],
+                                      "setVisibility": [Function],
+                                      "shouldResetTransform": [Function],
+                                      "sortNodePosition": [Function],
+                                      "startLayoutAnimation": [Function],
+                                      "stopLayoutAnimation": [Function],
+                                      "syncRender": [Function],
+                                      "treeType": "dom",
+                                      "unlockProjectionTarget": [Function],
+                                      "unmount": [Function],
+                                      "updateLayoutProjection": [Function],
+                                      "updatePropListeners": [Function],
+                                      "updateTreeLayoutProjection": [Function],
+                                      "variantChildren": Set {},
+                                    },
+                                  },
                                 }
                               }
                             />
@@ -1503,7 +1887,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                 onTouchStart={[Function]}
               >
                 <span
-                  className="chakra-checkbox__label css-sklcna"
+                  className="chakra-checkbox__label css-1sgc0qu"
                   data-checked=""
                   onMouseDown={[Function]}
                   onTouchStart={[Function]}
@@ -1515,7 +1899,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
           </Styled(label)>
         </Checkbox>
         <NumberInput
-          key=".7"
+          key=".6"
           label="Stop spacing"
           onChange={[Function]}
           test={[Function]}
@@ -1563,7 +1947,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                     id="field-1-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       htmlFor="00000000-0000-0000-0000-000000000000"
                       id="field-1-label"
                     >
@@ -1574,7 +1958,6 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                 <ForwardRef
                   id="00000000-0000-0000-0000-000000000000"
                   isInvalid={false}
-                  isValid={true}
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -1600,12 +1983,11 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                         <Input
                           id="00000000-0000-0000-0000-000000000000"
                           isInvalid={false}
-                          isValid={true}
                           key=".0"
                           onBlur={[Function]}
                           onChange={[Function]}
                           onFocus={[Function]}
-                          paddingRight={10}
+                          paddingEnd={10}
                           placeholder=""
                           type="text"
                           value={3000}
@@ -1651,11 +2033,10 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                             className="chakra-input"
                             disabled={false}
                             id="00000000-0000-0000-0000-000000000000"
-                            isValid={true}
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
-                            paddingRight={10}
+                            paddingEnd={10}
                             placeholder=""
                             readOnly={false}
                             required={false}
@@ -1663,10 +2044,9 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                             value={3000}
                           >
                             <input
-                              className="chakra-input css-1hmrg96"
+                              className="chakra-input css-1qkmlc7"
                               disabled={false}
                               id="00000000-0000-0000-0000-000000000000"
-                              isValid={true}
                               onBlur={[Function]}
                               onChange={[Function]}
                               onFocus={[Function]}
@@ -1698,8 +2078,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                                 Object {
                                   "fontSize": "md",
                                   "height": 10,
-                                  "paddingX": undefined,
-                                  "right": "0",
+                                  "insetEnd": "0",
                                   "width": 10,
                                 }
                               }
@@ -1710,7 +2089,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                               width="unset"
                             >
                               <div
-                                className="chakra-input__right-element css-15qe6bf"
+                                className="chakra-input__right-element css-13i7m2h"
                               >
                                 meters
                               </div>
@@ -1729,7 +2108,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
           fontWeight="normal"
           isChecked={false}
           isDisabled={true}
-          key=".8"
+          key=".7"
           onChange={[Function]}
         >
           <Styled(label)
@@ -1737,10 +2116,12 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             className="chakra-checkbox"
             data-disabled=""
             fontWeight="normal"
+            onClick={[Function]}
           >
             <label
-              className="chakra-checkbox css-wun7cp"
+              className="chakra-checkbox css-fnpc6t"
               data-disabled=""
+              onClick={[Function]}
             >
               <input
                 aria-disabled={true}
@@ -1818,7 +2199,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
               >
                 <span
                   aria-hidden={true}
-                  className="chakra-checkbox__control css-co2d90"
+                  className="chakra-checkbox__control css-joz5u0"
                   data-disabled=""
                   onMouseDown={[Function]}
                   onMouseEnter={[Function]}
@@ -1862,7 +2243,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
                 onTouchStart={[Function]}
               >
                 <span
-                  className="chakra-checkbox__label css-sklcna"
+                  className="chakra-checkbox__label css-1sgc0qu"
                   data-disabled=""
                   onMouseDown={[Function]}
                   onTouchStart={[Function]}
@@ -1874,7 +2255,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
           </Styled(label)>
         </Checkbox>
         <ForwardRef
-          key=".9"
+          key=".8"
           status="info"
         >
           <Styled(div)
@@ -1894,7 +2275,7 @@ exports[`Component EditAlignment snapshot(mount) 1`] = `
             role="alert"
           >
             <div
-              className="chakra-alert css-1m76rph"
+              className="chakra-alert css-1adt752"
               role="alert"
             >
               Modification cannot be bidirectional because timetables in this modification have phasing information.

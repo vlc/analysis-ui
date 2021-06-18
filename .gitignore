@@ -64,3 +64,6 @@ cypress.env.json
 
 # IDE settings
 .idea
+
+# TypeScript Incremental Build Info
+tsconfig.tsbuildinfo

@@ -26,11 +26,11 @@ import {memo, useCallback, useEffect, useState} from 'react'
 import {usePresets} from 'lib/hooks/use-collection'
 import useInput from 'lib/hooks/use-controlled-input'
 
-import {ObjectToTable} from './analysis/profile-request-display'
 import {ConfirmDialog} from './confirm-button'
-import Select from './select'
 import IconButton from './icon-button'
 import {AddIcon, DeleteIcon, EditIcon} from './icons'
+import ObjectToTable from './object-to-table'
+import Select from './select'
 
 // Number precision
 const isWithinTolerance = (n1: number, n2: number) => Math.abs(n1 - n2) < 1e-6

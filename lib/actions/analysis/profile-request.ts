@@ -20,24 +20,22 @@ const getStoredSettings = () => {
   return getParsedItem(requestsSettingsKey) || {}
 }
 
-export const storeRequestsSettings = (requestsSettings) => (
-  dispatch,
-  getState
-) => {
-  const state = getState()
-  const regionId = selectCurrentRegionId(state, {})
+export const storeRequestsSettings =
+  (requestsSettings) => (dispatch, getState) => {
+    const state = getState()
+    const regionId = selectCurrentRegionId(state, {})
 
-  try {
-    const storedSettings = getStoredSettings()
-    storedSettings[regionId] = requestsSettings
-    stringifyAndSet(requestsSettingsKey, storedSettings)
-  } catch (e) {
-    console.error('Failed to store profile request settings locally.')
-    console.error(e)
+    try {
+      const storedSettings = getStoredSettings()
+      storedSettings[regionId] = requestsSettings
+      stringifyAndSet(requestsSettingsKey, storedSettings)
+    } catch (e) {
+      console.error('Failed to store profile request settings locally.')
+      console.error(e)
+    }
+
+    dispatch(setRequestsSettings(requestsSettings))
   }
-
-  dispatch(setRequestsSettings(requestsSettings))
-}
 
 /**
  * Ovverides with default settings in case of missing parameters.

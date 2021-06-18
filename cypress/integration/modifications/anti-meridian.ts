@@ -108,7 +108,9 @@ describe('Modification drawing over anti-meridian', () => {
 
       cy.findByTitle(/Draw a polyline/i).click()
       coordsOverAntiMeridian.forEach((coord) => cy.clickMapAtCoord(coord))
-      cy.findByRole('alert')
+      cy.get('#__next').within(() => {
+        cy.findByRole('alert')
+      })
       cy.findByTitle(/Finish drawing/i).click()
 
       // Save and re-open
@@ -143,7 +145,9 @@ describe('Modification drawing over anti-meridian', () => {
 
       cy.findByTitle(/Draw a polygon/i).click()
       withEndCoord.forEach((coord) => cy.clickMapAtCoord(coord))
-      cy.findByRole('alert')
+      cy.get('#__next').within(() => {
+        cy.findByRole('alert')
+      })
       cy.findByTitle(/Finish drawing/i).click()
 
       // Save and re-open

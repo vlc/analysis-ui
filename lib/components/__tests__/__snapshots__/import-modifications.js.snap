@@ -32,6 +32,8 @@ exports[`Component > ImportModifications renders correctly 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
@@ -43,7 +45,7 @@ exports[`Component > ImportModifications renders correctly 1`] = `
       p={4}
     >
       <div
-        className="chakra-stack css-zcuazw"
+        className="chakra-stack css-1ego2c0"
       >
         <Heading
           key=".0"
@@ -61,7 +63,7 @@ exports[`Component > ImportModifications renders correctly 1`] = `
             className="chakra-heading"
           >
             <h2
-              className="chakra-heading css-1hm1kf2"
+              className="chakra-heading css-18j379d"
             >
               Route alignments from shapefile
             </h2>
@@ -136,7 +138,7 @@ exports[`Component > ImportModifications renders correctly 1`] = `
                 type="button"
               >
                 <button
-                  className="chakra-button css-ywjnlx"
+                  className="chakra-button css-r1h8jx"
                   href="/regions/1/projects/1/import-shapefile"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -164,7 +166,7 @@ exports[`Component > ImportModifications renders correctly 1`] = `
             className="chakra-heading"
           >
             <h2
-              className="chakra-heading css-1hm1kf2"
+              className="chakra-heading css-18j379d"
             >
               Import modifications from another project
             </h2>
@@ -304,7 +306,7 @@ exports[`Component > ImportModifications renders correctly 1`] = `
             type="button"
           >
             <button
-              className="chakra-button css-ywjnlx"
+              className="chakra-button css-r1h8jx"
               disabled={true}
               onClick={[Function]}
               type="button"

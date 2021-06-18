@@ -25,7 +25,6 @@ type ControlledInput = {
   onChange: (input: any) => Promise<void>
   id: string
   isInvalid: boolean
-  isValid: boolean
   ref: any
   value: any
 }
@@ -87,8 +86,7 @@ export default function useControlledInput({
   return {
     onChange: inputOnChange,
     id: autoId,
-    isInvalid: !isValid,
-    isValid,
+    isInvalid: !isValid, // Chakra uses `isInvalid` across it's inputs
     ref,
     value: inputValue
   }

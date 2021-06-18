@@ -81,13 +81,13 @@ export default function EditBoundsForm(p: {
     )
   }
 
-  const onChange = (d: Direction): ChangeEventHandler<HTMLInputElement> => (
-    e
-  ) => {
-    const value = e.target.value
-    setBounds((b) => ({...b, [d.name]: value}))
-    if (!boundIsInvalid(d, value)) p.onChange(d.name, parseFloat(value))
-  }
+  const onChange =
+    (d: Direction): ChangeEventHandler<HTMLInputElement> =>
+    (e) => {
+      const value = e.target.value
+      setBounds((b) => ({...b, [d.name]: value}))
+      if (!boundIsInvalid(d, value)) p.onChange(d.name, parseFloat(value))
+    }
 
   return (
     <Stack spacing={SPACING_FORM}>

@@ -5,7 +5,6 @@ import {
   setScenarioApplicationErrors,
   setScenarioApplicationWarnings
 } from 'lib/actions/analysis'
-import {load as loadAllRegionalAnalyses} from 'lib/actions/analysis/regional'
 import MapLayout from 'lib/layouts/map'
 import {setActiveOpportunityDataset} from 'lib/modules/opportunity-datasets/actions'
 import withInitialFetch from 'lib/with-initial-fetch'
@@ -23,15 +22,7 @@ const AnalysisPage: any = withInitialFetch(
     dispatch(setScenarioApplicationWarnings(null))
     dispatch(setScenarioApplicationErrors(null))
 
-    const results = await Promise.all([
-      dispatch(load(query.regionId)),
-      dispatch(loadAllRegionalAnalyses(query.regionId))
-    ])
-
-    return {
-      regionalAnalyses: results[1],
-      ...results[0]
-    }
+    return await dispatch(load(query.regionId))
   }
 )
 

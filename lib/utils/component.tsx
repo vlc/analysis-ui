@@ -34,7 +34,7 @@ export function testComponent(
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <RouterContext.Provider value={router}>
-            {props.children}
+            <Map>{props.children}</Map>
           </RouterContext.Provider>
         </ThemeProvider>
       </Provider>
@@ -70,6 +70,17 @@ export function testAndSnapshot(C, p, id?: any) {
     const c = testComponent(C, p, id)
     const t = c.mount()
     expect(t).toMatchSnapshot()
+    t.unmount()
+  })
+}
+
+/**
+ * Helper function to mount and unmount a component.
+ */
+export function testComponentMount(Component, props) {
+  test(`Component mount(${getName(Component)})`, () => {
+    const c = testComponent(Component, props)
+    const t = c.mount()
     t.unmount()
   })
 }

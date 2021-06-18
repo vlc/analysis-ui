@@ -73,42 +73,42 @@ function createRetry(dispatch) {
     })
 }
 
-export const fetchGeoTIFF = (projectName, requestSettings) => (
-  dispatch,
-  getState
-) => {
-  dispatch(
-    setIsochroneFetchStatus(message('analysis.fetchStatus.PERFORMING_ANALYSIS'))
-  )
-  const state = getState()
-  const fromLonLat = selectProfileRequestLonLat(state)
-  return dispatch(
-    fetch({
-      next: () => setIsochroneFetchStatus(false),
-      options: {
-        body: {
-          ...requestSettings,
-          fromLat: fromLonLat.lat,
-          fromLon: fromLonLat.lon
+export const fetchGeoTIFF =
+  (projectName, requestSettings) => (dispatch, getState) => {
+    dispatch(
+      setIsochroneFetchStatus(
+        message('analysis.fetchStatus.PERFORMING_ANALYSIS')
+      )
+    )
+    const state = getState()
+    const fromLonLat = selectProfileRequestLonLat(state)
+    return dispatch(
+      fetch({
+        next: () => setIsochroneFetchStatus(false),
+        options: {
+          body: {
+            ...requestSettings,
+            fromLat: fromLonLat.lat,
+            fromLon: fromLonLat.lon
+          },
+          headers: {
+            Accept: 'image/tiff'
+          },
+          method: 'post'
         },
-        headers: {
-          Accept: 'image/tiff'
-        },
-        method: 'post'
-      },
-      retry: createRetry(dispatch),
-      type: FETCH_TRAVEL_TIME_SURFACE,
-      url: ANALYSIS_URL
-    })
-  )
-    .then((r) => r.arrayBuffer())
-    .then((data) => {
-      downloadGeoTIFF({
-        data,
-        filename: snakeCase(`conveyal geotiff ${projectName}`) + '.geotiff'
+        retry: createRetry(dispatch),
+        type: FETCH_TRAVEL_TIME_SURFACE,
+        url: ANALYSIS_URL
       })
-    })
-}
+    )
+      .then((r) => r.arrayBuffer())
+      .then((data) => {
+        downloadGeoTIFF({
+          data,
+          filename: snakeCase(`conveyal geotiff ${projectName}`) + '.geotiff'
+        })
+      })
+  }
 
 // Check if the settings contain a decay function type other than step
 const isNotStep = (s) => get(s, 'decayFunction.type', 'step') !== 'step'

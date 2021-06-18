@@ -1,27 +1,435 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component > Modification > CopyTimetable renders correctly 1`] = `
-<Fragment>
+<CopyTimetableButton
+  create={[MockFunction]}
+  intoModification={
+    Object {
+      "_id": "1234",
+      "accessGroup": "accessGroupName",
+      "bidirectional": false,
+      "createdAt": "2017-11-08T12:30:50.133Z",
+      "createdBy": "person@gmail.com",
+      "description": "Mock description",
+      "entries": Array [],
+      "feed": "1",
+      "name": "Test Modification",
+      "nonce": "12345",
+      "projectId": "1",
+      "routes": Array [
+        "route1",
+      ],
+      "segments": Array [
+        Object {
+          "fromStopId": "1",
+          "geometry": Object {
+            "coordinates": Array [
+              Array [
+                -122.0246,
+                36.9707,
+              ],
+              Array [
+                -122.0279,
+                37.049,
+              ],
+              Array [
+                -121.9799,
+                37.2299,
+              ],
+              Array [
+                -121.9445,
+                37.324,
+              ],
+              Array [
+                -121.936,
+                37.353,
+              ],
+              Array [
+                -121.924,
+                37.365,
+              ],
+            ],
+            "type": "LineString",
+          },
+          "spacing": 3000,
+          "stopAtEnd": false,
+          "stopAtStart": false,
+          "toStopId": null,
+        },
+      ],
+      "timetables": Array [
+        Object {
+          "_id": "timetable-id",
+          "dwellTime": 10,
+          "dwellTimes": Array [
+            12,
+          ],
+          "endTime": 57600,
+          "exactTimes": false,
+          "friday": true,
+          "headwaySecs": 900,
+          "modificationId": "1234",
+          "modificationName": "Test Modification",
+          "monday": true,
+          "name": "Test timetable",
+          "patternTrips": Array [
+            "abcd",
+          ],
+          "phaseAtStop": "",
+          "phaseFromStop": "",
+          "phaseFromTimetable": "",
+          "phaseSeconds": 300,
+          "saturday": false,
+          "segmentSpeeds": Array [],
+          "sourceTrip": "abcd",
+          "startTime": 28800,
+          "sunday": false,
+          "thursday": true,
+          "tuesday": true,
+          "wednesday": true,
+        },
+      ],
+      "trips": Array [
+        "abcd",
+      ],
+      "type": "add-trip-pattern",
+      "updatedAt": "2017-11-08T12:31:19.602Z",
+      "updatedBy": "person@gmail.com",
+      "variants": Array [
+        true,
+      ],
+    }
+  }
+>
   <Button
     colorScheme="green"
     isFullWidth={true}
     leftIcon={<FaCopy />}
     onClick={[Function]}
   >
-    Copy existing timetable
+    <Styled(button)
+      __css={
+        Object {
+          "_active": Object {
+            "bg": "green.700",
+          },
+          "_disabled": Object {
+            "boxShadow": "none",
+            "cursor": "not-allowed",
+            "opacity": 0.4,
+          },
+          "_focus": Object {
+            "boxShadow": "outline",
+          },
+          "_hover": Object {
+            "_disabled": Object {
+              "bg": "green.500",
+            },
+            "bg": "green.600",
+          },
+          "alignItems": "center",
+          "appearance": "none",
+          "bg": "green.500",
+          "borderRadius": "md",
+          "color": "white",
+          "display": "inline-flex",
+          "fontSize": "md",
+          "fontWeight": "semibold",
+          "h": 10,
+          "justifyContent": "center",
+          "lineHeight": "1.2",
+          "minW": 10,
+          "outline": "none",
+          "position": "relative",
+          "px": 4,
+          "transition": "all 250ms",
+          "userSelect": "none",
+          "verticalAlign": "middle",
+          "whiteSpace": "nowrap",
+          "width": "100%",
+        }
+      }
+      className="chakra-button"
+      onClick={[Function]}
+      type="button"
+    >
+      <button
+        className="chakra-button css-3v23rq"
+        onClick={[Function]}
+        type="button"
+      >
+        <ButtonIcon
+          marginEnd="0.5rem"
+        >
+          <Styled(span)
+            alignSelf="center"
+            className="chakra-button__icon"
+            display="inline-flex"
+            flexShrink={0}
+            marginEnd="0.5rem"
+          >
+            <span
+              className="chakra-button__icon css-1wh2kri"
+            >
+              <FaCopy
+                aria-hidden={true}
+                focusable={false}
+              >
+                <IconBase
+                  aria-hidden={true}
+                  attr={
+                    Object {
+                      "viewBox": "0 0 448 512",
+                    }
+                  }
+                  focusable={false}
+                >
+                  <svg
+                    aria-hidden={true}
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 448 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"
+                      key="0"
+                    />
+                  </svg>
+                </IconBase>
+              </FaCopy>
+            </span>
+          </Styled(span)>
+        </ButtonIcon>
+        Copy existing timetable
+      </button>
+    </Styled(button)>
   </Button>
-</Fragment>
+</CopyTimetableButton>
 `;
 
 exports[`Component > Modification > CopyTimetable renders correctly 2`] = `
-<Fragment>
+<CopyTimetableButton
+  create={[MockFunction]}
+  intoModification={
+    Object {
+      "_id": "1234",
+      "accessGroup": "accessGroupName",
+      "bidirectional": false,
+      "createdAt": "2017-11-08T12:30:50.133Z",
+      "createdBy": "person@gmail.com",
+      "description": "Mock description",
+      "entries": Array [],
+      "feed": "1",
+      "name": "Test Modification",
+      "nonce": "12345",
+      "projectId": "1",
+      "routes": Array [
+        "route1",
+      ],
+      "segments": Array [
+        Object {
+          "fromStopId": "1",
+          "geometry": Object {
+            "coordinates": Array [
+              Array [
+                -122.0246,
+                36.9707,
+              ],
+              Array [
+                -122.0279,
+                37.049,
+              ],
+              Array [
+                -121.9799,
+                37.2299,
+              ],
+              Array [
+                -121.9445,
+                37.324,
+              ],
+              Array [
+                -121.936,
+                37.353,
+              ],
+              Array [
+                -121.924,
+                37.365,
+              ],
+            ],
+            "type": "LineString",
+          },
+          "spacing": 3000,
+          "stopAtEnd": false,
+          "stopAtStart": false,
+          "toStopId": null,
+        },
+      ],
+      "timetables": Array [
+        Object {
+          "_id": "timetable-id",
+          "dwellTime": 10,
+          "dwellTimes": Array [
+            12,
+          ],
+          "endTime": 57600,
+          "exactTimes": false,
+          "friday": true,
+          "headwaySecs": 900,
+          "modificationId": "1234",
+          "modificationName": "Test Modification",
+          "monday": true,
+          "name": "Test timetable",
+          "patternTrips": Array [
+            "abcd",
+          ],
+          "phaseAtStop": "",
+          "phaseFromStop": "",
+          "phaseFromTimetable": "",
+          "phaseSeconds": 300,
+          "saturday": false,
+          "segmentSpeeds": Array [],
+          "sourceTrip": "abcd",
+          "startTime": 28800,
+          "sunday": false,
+          "thursday": true,
+          "tuesday": true,
+          "wednesday": true,
+        },
+      ],
+      "trips": Array [
+        "abcd",
+      ],
+      "type": "add-trip-pattern",
+      "updatedAt": "2017-11-08T12:31:19.602Z",
+      "updatedBy": "person@gmail.com",
+      "variants": Array [
+        true,
+      ],
+    }
+  }
+>
   <Button
     colorScheme="green"
     isFullWidth={true}
     leftIcon={<FaCopy />}
     onClick={[Function]}
   >
-    Copy existing timetable
+    <Styled(button)
+      __css={
+        Object {
+          "_active": Object {
+            "bg": "green.700",
+          },
+          "_disabled": Object {
+            "boxShadow": "none",
+            "cursor": "not-allowed",
+            "opacity": 0.4,
+          },
+          "_focus": Object {
+            "boxShadow": "outline",
+          },
+          "_hover": Object {
+            "_disabled": Object {
+              "bg": "green.500",
+            },
+            "bg": "green.600",
+          },
+          "alignItems": "center",
+          "appearance": "none",
+          "bg": "green.500",
+          "borderRadius": "md",
+          "color": "white",
+          "display": "inline-flex",
+          "fontSize": "md",
+          "fontWeight": "semibold",
+          "h": 10,
+          "justifyContent": "center",
+          "lineHeight": "1.2",
+          "minW": 10,
+          "outline": "none",
+          "position": "relative",
+          "px": 4,
+          "transition": "all 250ms",
+          "userSelect": "none",
+          "verticalAlign": "middle",
+          "whiteSpace": "nowrap",
+          "width": "100%",
+        }
+      }
+      className="chakra-button"
+      onClick={[Function]}
+      type="button"
+    >
+      <button
+        className="chakra-button css-3v23rq"
+        onClick={[Function]}
+        type="button"
+      >
+        <ButtonIcon
+          marginEnd="0.5rem"
+        >
+          <Styled(span)
+            alignSelf="center"
+            className="chakra-button__icon"
+            display="inline-flex"
+            flexShrink={0}
+            marginEnd="0.5rem"
+          >
+            <span
+              className="chakra-button__icon css-1wh2kri"
+            >
+              <FaCopy
+                aria-hidden={true}
+                focusable={false}
+              >
+                <IconBase
+                  aria-hidden={true}
+                  attr={
+                    Object {
+                      "viewBox": "0 0 448 512",
+                    }
+                  }
+                  focusable={false}
+                >
+                  <svg
+                    aria-hidden={true}
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 448 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"
+                      key="0"
+                    />
+                  </svg>
+                </IconBase>
+              </FaCopy>
+            </span>
+          </Styled(span)>
+        </ButtonIcon>
+        Copy existing timetable
+      </button>
+    </Styled(button)>
   </Button>
   <Modal
     allowPinchZoom={false}
@@ -36,192 +444,1681 @@ exports[`Component > Modification > CopyTimetable renders correctly 2`] = `
     scrollBehavior="outside"
     trapFocus={true}
   >
-    <ModalOverlay />
-    <ModalContent>
-      <ModalHeader>
-        Copy timetable
-      </ModalHeader>
-      <ModalCloseButton />
-      <CopyTimetableContent
-        create={[MockFunction]}
-        intoModification={
-          Object {
-            "_id": "1234",
-            "accessGroup": "accessGroupName",
-            "bidirectional": false,
-            "createdAt": "2017-11-08T12:30:50.133Z",
-            "createdBy": "person@gmail.com",
-            "description": "Mock description",
-            "entries": Array [],
-            "feed": "1",
-            "name": "Test Modification",
-            "nonce": "12345",
-            "projectId": "1",
-            "routes": Array [
-              "route1",
-            ],
-            "segments": Array [
-              Object {
-                "fromStopId": "1",
-                "geometry": Object {
-                  "coordinates": Array [
-                    Array [
-                      -122.0246,
-                      36.9707,
-                    ],
-                    Array [
-                      -122.0279,
-                      37.049,
-                    ],
-                    Array [
-                      -121.9799,
-                      37.2299,
-                    ],
-                    Array [
-                      -121.9445,
-                      37.324,
-                    ],
-                    Array [
-                      -121.936,
-                      37.353,
-                    ],
-                    Array [
-                      -121.924,
-                      37.365,
-                    ],
-                  ],
-                  "type": "LineString",
-                },
-                "spacing": 3000,
-                "stopAtEnd": false,
-                "stopAtStart": false,
-                "toStopId": null,
-              },
-            ],
-            "timetables": Array [
-              Object {
-                "_id": "timetable-id",
-                "dwellTime": 10,
-                "dwellTimes": Array [
-                  12,
-                ],
-                "endTime": 57600,
-                "exactTimes": false,
-                "friday": true,
-                "headwaySecs": 900,
-                "modificationId": "1234",
-                "modificationName": "Test Modification",
-                "monday": true,
-                "name": "Test timetable",
-                "patternTrips": Array [
-                  "abcd",
-                ],
-                "phaseAtStop": "",
-                "phaseFromStop": "",
-                "phaseFromTimetable": "",
-                "phaseSeconds": 300,
-                "saturday": false,
-                "segmentSpeeds": Array [],
-                "sourceTrip": "abcd",
-                "startTime": 28800,
-                "sunday": false,
-                "thursday": true,
-                "tuesday": true,
-                "wednesday": true,
-              },
-            ],
-            "trips": Array [
-              "abcd",
-            ],
-            "type": "add-trip-pattern",
-            "updatedAt": "2017-11-08T12:31:19.602Z",
-            "updatedBy": "person@gmail.com",
-            "variants": Array [
-              true,
-            ],
-          }
-        }
-        onClose={[Function]}
-      />
-    </ModalContent>
+    <AnimatePresence>
+      <PresenceChild
+        isPresent={true}
+        key=""
+        presenceAffectsLayout={true}
+      >
+        <Portal
+          appendToParentPortal={true}
+        >
+          <DefaultPortal
+            appendToParentPortal={true}
+          >
+            <Portal
+              containerInfo={
+                <div
+                  class="chakra-portal"
+                >
+                  <div
+                    class="chakra-modal__overlay css-hdd9l7"
+                    style="opacity: 0;"
+                  />
+                  <div
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                    tabindex="0"
+                  />
+                  <div
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                    tabindex="1"
+                  />
+                  <div
+                    data-focus-lock-disabled="false"
+                  >
+                    <div
+                      class="chakra-modal__content-container css-v9b9hc"
+                    >
+                      <section
+                        aria-describedby="chakra-modal--body-4"
+                        aria-labelledby="chakra-modal--header-4"
+                        aria-modal="true"
+                        class="chakra-modal__content css-hxtskf"
+                        id="chakra-modal-4"
+                        role="dialog"
+                        style="opacity: 0; transform: scale(0.95) translateZ(0);"
+                        tabindex="-1"
+                      >
+                        <header
+                          class="chakra-modal__header css-9fgtzh"
+                          id="chakra-modal--header-4"
+                        >
+                          Copy timetable
+                        </header>
+                        <button
+                          aria-label="Close"
+                          class="chakra-modal__close-btn css-17sthuj"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="chakra-icon css-onkibi"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </button>
+                        <div
+                          class="chakra-modal__body css-qlig70"
+                          id="chakra-modal--body-4"
+                        >
+                          Loading...
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                  <div
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+                    tabindex="0"
+                  />
+                </div>
+              }
+            >
+              <ModalOverlay>
+                <Styled(Component)
+                  __css={
+                    Object {
+                      "bg": "blackAlpha.600",
+                      "h": "100vh",
+                      "left": "0",
+                      "pos": "fixed",
+                      "top": "0",
+                      "w": "100vw",
+                      "zIndex": "modal",
+                    }
+                  }
+                  animate="enter"
+                  className="chakra-modal__overlay"
+                  exit="exit"
+                  initial="exit"
+                  variants={
+                    Object {
+                      "enter": [Function],
+                      "exit": [Function],
+                    }
+                  }
+                >
+                  <ForwardRef(MotionComponent)
+                    animate="enter"
+                    className="chakra-modal__overlay css-hdd9l7"
+                    exit="exit"
+                    initial="exit"
+                    variants={
+                      Object {
+                        "enter": [Function],
+                        "exit": [Function],
+                      }
+                    }
+                  >
+                    <div
+                      className="chakra-modal__overlay css-hdd9l7"
+                      style={
+                        Object {
+                          "opacity": 0,
+                        }
+                      }
+                    />
+                    <Component
+                      animate="enter"
+                      className="chakra-modal__overlay css-hdd9l7"
+                      exit="exit"
+                      initial="exit"
+                      key="animation"
+                      variants={
+                        Object {
+                          "enter": [Function],
+                          "exit": [Function],
+                        }
+                      }
+                      visualElement={
+                        Object {
+                          "addValue": [Function],
+                          "addVariantChild": [Function],
+                          "animationState": Object {
+                            "animateChanges": [Function],
+                            "getState": [Function],
+                            "isAnimated": [Function],
+                            "setActive": [Function],
+                            "setAnimateFunction": [Function],
+                          },
+                          "blockInitialAnimation": false,
+                          "build": [Function],
+                          "children": Set {},
+                          "clearAllListeners": [Function],
+                          "current": <div
+                            class="chakra-modal__overlay css-hdd9l7"
+                            style="opacity: 0;"
+                          />,
+                          "depth": 0,
+                          "enableLayoutProjection": [Function],
+                          "forEachValue": [Function],
+                          "getBaseTarget": [Function],
+                          "getClosestVariantNode": [Function],
+                          "getDefaultTransition": [Function],
+                          "getInstance": [Function],
+                          "getLatestValues": [Function],
+                          "getLayoutId": [Function],
+                          "getLayoutState": [Function],
+                          "getProjectionAnimationProgress": [Function],
+                          "getProjectionParent": [Function],
+                          "getProps": [Function],
+                          "getStaticValue": [Function],
+                          "getValue": [Function],
+                          "getVariant": [Function],
+                          "getVariantContext": [Function],
+                          "hasValue": [Function],
+                          "isMounted": [Function],
+                          "isPresenceRoot": true,
+                          "isPresent": true,
+                          "isProjectionReady": [Function],
+                          "isVisible": undefined,
+                          "layoutTree": FlatTree {
+                            "children": Array [],
+                            "isDirty": false,
+                          },
+                          "lockProjectionTarget": [Function],
+                          "makeTargetAnimatable": [Function],
+                          "manuallyAnimateOnMount": false,
+                          "measureViewportBox": [Function],
+                          "mount": [Function],
+                          "notifyAnimationComplete": [Function],
+                          "notifyAnimationStart": [Function],
+                          "notifyBeforeLayoutMeasure": [Function],
+                          "notifyLayoutAnimationComplete": [Function],
+                          "notifyLayoutMeasure": [Function],
+                          "notifyLayoutReady": [Function],
+                          "notifyLayoutUpdate": [Function],
+                          "notifyRender": [Function],
+                          "notifySetAxisTarget": [Function],
+                          "notifyUnmount": [Function],
+                          "notifyUpdate": [Function],
+                          "notifyViewportBoxUpdate": [Function],
+                          "onAnimationComplete": [Function],
+                          "onAnimationStart": [Function],
+                          "onBeforeLayoutMeasure": [Function],
+                          "onLayoutAnimationComplete": [Function],
+                          "onLayoutMeasure": [Function],
+                          "onLayoutUpdate": [Function],
+                          "onRender": [Function],
+                          "onSetAxisTarget": [Function],
+                          "onUnmount": [Function],
+                          "onUpdate": [Function],
+                          "onViewportBoxUpdate": [Function],
+                          "parent": undefined,
+                          "path": Array [],
+                          "pointTo": [Function],
+                          "presence": 0,
+                          "presenceId": 0,
+                          "projection": Object {
+                            "isEnabled": false,
+                            "isHydrated": false,
+                            "isTargetLocked": false,
+                            "target": Object {
+                              "x": Object {
+                                "max": 1,
+                                "min": 0,
+                              },
+                              "y": Object {
+                                "max": 1,
+                                "min": 0,
+                              },
+                            },
+                            "targetFinal": Object {
+                              "x": Object {
+                                "max": 1,
+                                "min": 0,
+                              },
+                              "y": Object {
+                                "max": 1,
+                                "min": 0,
+                              },
+                            },
+                          },
+                          "readValue": [Function],
+                          "rebaseProjectionTarget": [Function],
+                          "removeValue": [Function],
+                          "resetTransform": [Function],
+                          "resolveRelativeTargetBox": [Function],
+                          "restoreTransform": [Function],
+                          "scheduleRender": [Function],
+                          "scheduleUpdateLayoutProjection": [Function],
+                          "setBaseTarget": [Function],
+                          "setCrossfader": [Function],
+                          "setProjectionTargetAxis": [Function],
+                          "setProps": [Function],
+                          "setStaticValue": [Function],
+                          "setVisibility": [Function],
+                          "shouldResetTransform": [Function],
+                          "sortNodePosition": [Function],
+                          "startLayoutAnimation": [Function],
+                          "stopLayoutAnimation": [Function],
+                          "syncRender": [Function],
+                          "treeType": "dom",
+                          "unlockProjectionTarget": [Function],
+                          "unmount": [Function],
+                          "updateLayoutProjection": [Function],
+                          "updatePropListeners": [Function],
+                          "updateTreeLayoutProjection": [Function],
+                          "variantChildren": Set {},
+                        }
+                      }
+                    />
+                    <Component
+                      animate="enter"
+                      className="chakra-modal__overlay css-hdd9l7"
+                      exit="exit"
+                      initial="exit"
+                      key="exit"
+                      variants={
+                        Object {
+                          "enter": [Function],
+                          "exit": [Function],
+                        }
+                      }
+                      visualElement={
+                        Object {
+                          "addValue": [Function],
+                          "addVariantChild": [Function],
+                          "animationState": Object {
+                            "animateChanges": [Function],
+                            "getState": [Function],
+                            "isAnimated": [Function],
+                            "setActive": [Function],
+                            "setAnimateFunction": [Function],
+                          },
+                          "blockInitialAnimation": false,
+                          "build": [Function],
+                          "children": Set {},
+                          "clearAllListeners": [Function],
+                          "current": <div
+                            class="chakra-modal__overlay css-hdd9l7"
+                            style="opacity: 0;"
+                          />,
+                          "depth": 0,
+                          "enableLayoutProjection": [Function],
+                          "forEachValue": [Function],
+                          "getBaseTarget": [Function],
+                          "getClosestVariantNode": [Function],
+                          "getDefaultTransition": [Function],
+                          "getInstance": [Function],
+                          "getLatestValues": [Function],
+                          "getLayoutId": [Function],
+                          "getLayoutState": [Function],
+                          "getProjectionAnimationProgress": [Function],
+                          "getProjectionParent": [Function],
+                          "getProps": [Function],
+                          "getStaticValue": [Function],
+                          "getValue": [Function],
+                          "getVariant": [Function],
+                          "getVariantContext": [Function],
+                          "hasValue": [Function],
+                          "isMounted": [Function],
+                          "isPresenceRoot": true,
+                          "isPresent": true,
+                          "isProjectionReady": [Function],
+                          "isVisible": undefined,
+                          "layoutTree": FlatTree {
+                            "children": Array [],
+                            "isDirty": false,
+                          },
+                          "lockProjectionTarget": [Function],
+                          "makeTargetAnimatable": [Function],
+                          "manuallyAnimateOnMount": false,
+                          "measureViewportBox": [Function],
+                          "mount": [Function],
+                          "notifyAnimationComplete": [Function],
+                          "notifyAnimationStart": [Function],
+                          "notifyBeforeLayoutMeasure": [Function],
+                          "notifyLayoutAnimationComplete": [Function],
+                          "notifyLayoutMeasure": [Function],
+                          "notifyLayoutReady": [Function],
+                          "notifyLayoutUpdate": [Function],
+                          "notifyRender": [Function],
+                          "notifySetAxisTarget": [Function],
+                          "notifyUnmount": [Function],
+                          "notifyUpdate": [Function],
+                          "notifyViewportBoxUpdate": [Function],
+                          "onAnimationComplete": [Function],
+                          "onAnimationStart": [Function],
+                          "onBeforeLayoutMeasure": [Function],
+                          "onLayoutAnimationComplete": [Function],
+                          "onLayoutMeasure": [Function],
+                          "onLayoutUpdate": [Function],
+                          "onRender": [Function],
+                          "onSetAxisTarget": [Function],
+                          "onUnmount": [Function],
+                          "onUpdate": [Function],
+                          "onViewportBoxUpdate": [Function],
+                          "parent": undefined,
+                          "path": Array [],
+                          "pointTo": [Function],
+                          "presence": 0,
+                          "presenceId": 0,
+                          "projection": Object {
+                            "isEnabled": false,
+                            "isHydrated": false,
+                            "isTargetLocked": false,
+                            "target": Object {
+                              "x": Object {
+                                "max": 1,
+                                "min": 0,
+                              },
+                              "y": Object {
+                                "max": 1,
+                                "min": 0,
+                              },
+                            },
+                            "targetFinal": Object {
+                              "x": Object {
+                                "max": 1,
+                                "min": 0,
+                              },
+                              "y": Object {
+                                "max": 1,
+                                "min": 0,
+                              },
+                            },
+                          },
+                          "readValue": [Function],
+                          "rebaseProjectionTarget": [Function],
+                          "removeValue": [Function],
+                          "resetTransform": [Function],
+                          "resolveRelativeTargetBox": [Function],
+                          "restoreTransform": [Function],
+                          "scheduleRender": [Function],
+                          "scheduleUpdateLayoutProjection": [Function],
+                          "setBaseTarget": [Function],
+                          "setCrossfader": [Function],
+                          "setProjectionTargetAxis": [Function],
+                          "setProps": [Function],
+                          "setStaticValue": [Function],
+                          "setVisibility": [Function],
+                          "shouldResetTransform": [Function],
+                          "sortNodePosition": [Function],
+                          "startLayoutAnimation": [Function],
+                          "stopLayoutAnimation": [Function],
+                          "syncRender": [Function],
+                          "treeType": "dom",
+                          "unlockProjectionTarget": [Function],
+                          "unmount": [Function],
+                          "updateLayoutProjection": [Function],
+                          "updatePropListeners": [Function],
+                          "updateTreeLayoutProjection": [Function],
+                          "variantChildren": Set {},
+                        }
+                      }
+                    />
+                  </ForwardRef(MotionComponent)>
+                </Styled(Component)>
+              </ModalOverlay>
+              <ModalContent>
+                <ModalFocusScope>
+                  <FocusLock
+                    autoFocus={true}
+                    contentRef={
+                      Object {
+                        "current": <section
+                          aria-describedby="chakra-modal--body-4"
+                          aria-labelledby="chakra-modal--header-4"
+                          aria-modal="true"
+                          class="chakra-modal__content css-hxtskf"
+                          id="chakra-modal-4"
+                          role="dialog"
+                          style="opacity: 0; transform: scale(0.95) translateZ(0);"
+                          tabindex="-1"
+                        >
+                          <header
+                            class="chakra-modal__header css-9fgtzh"
+                            id="chakra-modal--header-4"
+                          >
+                            Copy timetable
+                          </header>
+                          <button
+                            aria-label="Close"
+                            class="chakra-modal__close-btn css-17sthuj"
+                            type="button"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="chakra-icon css-onkibi"
+                              focusable="false"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </button>
+                          <div
+                            class="chakra-modal__body css-qlig70"
+                            id="chakra-modal--body-4"
+                          >
+                            Loading...
+                          </div>
+                        </section>,
+                      }
+                    }
+                    isDisabled={false}
+                    lockFocusAcrossFrames={true}
+                    restoreFocus={true}
+                  >
+                    <ForwardRef(FocusLockUICombination)
+                      autoFocus={true}
+                      crossFrame={true}
+                      disabled={false}
+                      onActivation={[Function]}
+                      onDeactivation={[Function]}
+                      returnFocus={true}
+                    >
+                      <ForwardRef(FocusLockUI)
+                        as="div"
+                        autoFocus={true}
+                        crossFrame={true}
+                        disabled={false}
+                        lockProps={Object {}}
+                        noFocusGuards={false}
+                        onActivation={[Function]}
+                        onDeactivation={[Function]}
+                        persistentFocus={false}
+                        returnFocus={true}
+                        sideCar={[Function]}
+                      >
+                        <div
+                          data-focus-guard={true}
+                          key="guard-first"
+                          style={
+                            Object {
+                              "height": "0px",
+                              "left": "1px",
+                              "overflow": "hidden",
+                              "padding": 0,
+                              "position": "fixed",
+                              "top": "1px",
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex={0}
+                        />
+                        <div
+                          data-focus-guard={true}
+                          key="guard-nearest"
+                          style={
+                            Object {
+                              "height": "0px",
+                              "left": "1px",
+                              "overflow": "hidden",
+                              "padding": 0,
+                              "position": "fixed",
+                              "top": "1px",
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex={1}
+                        />
+                        <SideEffect(FocusWatcher)
+                          autoFocus={true}
+                          crossFrame={true}
+                          disabled={false}
+                          id={Object {}}
+                          observed={
+                            <div
+                              data-focus-lock-disabled="false"
+                            >
+                              <div
+                                class="chakra-modal__content-container css-v9b9hc"
+                              >
+                                <section
+                                  aria-describedby="chakra-modal--body-4"
+                                  aria-labelledby="chakra-modal--header-4"
+                                  aria-modal="true"
+                                  class="chakra-modal__content css-hxtskf"
+                                  id="chakra-modal-4"
+                                  role="dialog"
+                                  style="opacity: 0; transform: scale(0.95) translateZ(0);"
+                                  tabindex="-1"
+                                >
+                                  <header
+                                    class="chakra-modal__header css-9fgtzh"
+                                    id="chakra-modal--header-4"
+                                  >
+                                    Copy timetable
+                                  </header>
+                                  <button
+                                    aria-label="Close"
+                                    class="chakra-modal__close-btn css-17sthuj"
+                                    type="button"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      class="chakra-icon css-onkibi"
+                                      focusable="false"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path
+                                        d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                                        fill="currentColor"
+                                      />
+                                    </svg>
+                                  </button>
+                                  <div
+                                    class="chakra-modal__body css-qlig70"
+                                    id="chakra-modal--body-4"
+                                  >
+                                    Loading...
+                                  </div>
+                                </section>
+                              </div>
+                            </div>
+                          }
+                          onActivation={[Function]}
+                          onDeactivation={[Function]}
+                          persistentFocus={false}
+                          returnFocus={[Function]}
+                          shards={Array []}
+                          sideCar={
+                            Object {
+                              "assignMedium": [Function],
+                              "assignSyncMedium": [Function],
+                              "options": Object {
+                                "async": true,
+                                "ssr": false,
+                              },
+                              "read": [Function],
+                              "useMedium": [Function],
+                            }
+                          }
+                        >
+                          <FocusWatcher
+                            autoFocus={true}
+                            crossFrame={true}
+                            disabled={false}
+                            id={Object {}}
+                            observed={
+                              <div
+                                data-focus-lock-disabled="false"
+                              >
+                                <div
+                                  class="chakra-modal__content-container css-v9b9hc"
+                                >
+                                  <section
+                                    aria-describedby="chakra-modal--body-4"
+                                    aria-labelledby="chakra-modal--header-4"
+                                    aria-modal="true"
+                                    class="chakra-modal__content css-hxtskf"
+                                    id="chakra-modal-4"
+                                    role="dialog"
+                                    style="opacity: 0; transform: scale(0.95) translateZ(0);"
+                                    tabindex="-1"
+                                  >
+                                    <header
+                                      class="chakra-modal__header css-9fgtzh"
+                                      id="chakra-modal--header-4"
+                                    >
+                                      Copy timetable
+                                    </header>
+                                    <button
+                                      aria-label="Close"
+                                      class="chakra-modal__close-btn css-17sthuj"
+                                      type="button"
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        class="chakra-icon css-onkibi"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                                          fill="currentColor"
+                                        />
+                                      </svg>
+                                    </button>
+                                    <div
+                                      class="chakra-modal__body css-qlig70"
+                                      id="chakra-modal--body-4"
+                                    >
+                                      Loading...
+                                    </div>
+                                  </section>
+                                </div>
+                              </div>
+                            }
+                            onActivation={[Function]}
+                            onDeactivation={[Function]}
+                            persistentFocus={false}
+                            returnFocus={[Function]}
+                            shards={Array []}
+                            sideCar={
+                              Object {
+                                "assignMedium": [Function],
+                                "assignSyncMedium": [Function],
+                                "options": Object {
+                                  "async": true,
+                                  "ssr": false,
+                                },
+                                "read": [Function],
+                                "useMedium": [Function],
+                              }
+                            }
+                          />
+                        </SideEffect(FocusWatcher)>
+                        <div
+                          data-focus-lock-disabled={false}
+                          onBlur={[Function]}
+                          onFocus={[Function]}
+                        >
+                          <ForwardRef
+                            allowPinchZoom={false}
+                            enabled={true}
+                            forwardProps={true}
+                            removeScrollBar={true}
+                          >
+                            <ForwardRef
+                              allowPinchZoom={false}
+                              enabled={true}
+                              forwardProps={true}
+                              inert={false}
+                              removeScrollBar={true}
+                              sideCar={[Function]}
+                            >
+                              <SideCar
+                                allowPinchZoom={false}
+                                inert={false}
+                                lockRef={
+                                  Object {
+                                    "current": <div
+                                      class="chakra-modal__content-container css-v9b9hc"
+                                    >
+                                      <section
+                                        aria-describedby="chakra-modal--body-4"
+                                        aria-labelledby="chakra-modal--header-4"
+                                        aria-modal="true"
+                                        class="chakra-modal__content css-hxtskf"
+                                        id="chakra-modal-4"
+                                        role="dialog"
+                                        style="opacity: 0; transform: scale(0.95) translateZ(0);"
+                                        tabindex="-1"
+                                      >
+                                        <header
+                                          class="chakra-modal__header css-9fgtzh"
+                                          id="chakra-modal--header-4"
+                                        >
+                                          Copy timetable
+                                        </header>
+                                        <button
+                                          aria-label="Close"
+                                          class="chakra-modal__close-btn css-17sthuj"
+                                          type="button"
+                                        >
+                                          <svg
+                                            aria-hidden="true"
+                                            class="chakra-icon css-onkibi"
+                                            focusable="false"
+                                            viewBox="0 0 24 24"
+                                          >
+                                            <path
+                                              d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                                              fill="currentColor"
+                                            />
+                                          </svg>
+                                        </button>
+                                        <div
+                                          class="chakra-modal__body css-qlig70"
+                                          id="chakra-modal--body-4"
+                                        >
+                                          Loading...
+                                        </div>
+                                      </section>
+                                    </div>,
+                                  }
+                                }
+                                removeScrollBar={true}
+                                setCallbacks={[Function]}
+                                sideCar={
+                                  Object {
+                                    "assignMedium": [Function],
+                                    "assignSyncMedium": [Function],
+                                    "options": Object {
+                                      "async": true,
+                                      "ssr": false,
+                                    },
+                                    "read": [Function],
+                                    "useMedium": [Function],
+                                  }
+                                }
+                              >
+                                <RemoveScrollSideCar
+                                  allowPinchZoom={false}
+                                  inert={false}
+                                  lockRef={
+                                    Object {
+                                      "current": <div
+                                        class="chakra-modal__content-container css-v9b9hc"
+                                      >
+                                        <section
+                                          aria-describedby="chakra-modal--body-4"
+                                          aria-labelledby="chakra-modal--header-4"
+                                          aria-modal="true"
+                                          class="chakra-modal__content css-hxtskf"
+                                          id="chakra-modal-4"
+                                          role="dialog"
+                                          style="opacity: 0; transform: scale(0.95) translateZ(0);"
+                                          tabindex="-1"
+                                        >
+                                          <header
+                                            class="chakra-modal__header css-9fgtzh"
+                                            id="chakra-modal--header-4"
+                                          >
+                                            Copy timetable
+                                          </header>
+                                          <button
+                                            aria-label="Close"
+                                            class="chakra-modal__close-btn css-17sthuj"
+                                            type="button"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              class="chakra-icon css-onkibi"
+                                              focusable="false"
+                                              viewBox="0 0 24 24"
+                                            >
+                                              <path
+                                                d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                                                fill="currentColor"
+                                              />
+                                            </svg>
+                                          </button>
+                                          <div
+                                            class="chakra-modal__body css-qlig70"
+                                            id="chakra-modal--body-4"
+                                          >
+                                            Loading...
+                                          </div>
+                                        </section>
+                                      </div>,
+                                    }
+                                  }
+                                  removeScrollBar={true}
+                                  setCallbacks={[Function]}
+                                >
+                                  <Component
+                                    gapMode="margin"
+                                  >
+                                    <Sheet
+                                      styles="
+  .with-scroll-bars-hidden {
+   overflow: hidden !important;
+   padding-right: 2048px !important;
+  }
+  body {
+    overflow: hidden !important;
+    position: relative !important;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-right: 1024px;
+    margin-left:0;
+    margin-top:0;
+    margin-right: 2048px !important;
+    
+  }
+  
+  .right-scroll-bar-position {
+    right: 2048px !important;
+  }
+  
+  .width-before-scroll-bar {
+    margin-right: 2048px !important;
+  }
+  
+  .right-scroll-bar-position .right-scroll-bar-position {
+    right: 0 !important;
+  }
+  
+  .width-before-scroll-bar .width-before-scroll-bar {
+    margin-right: 0 !important;
+  }
+  
+  body {
+    --removed-body-scroll-bar-size: 2048px;
+  }
+"
+                                    />
+                                  </Component>
+                                </RemoveScrollSideCar>
+                              </SideCar>
+                              <Styled(div)
+                                __css={
+                                  Object {
+                                    "@supports(height: -webkit-fill-available)": Object {
+                                      "height": "-webkit-fill-available",
+                                    },
+                                    "alignItems": "flex-start",
+                                    "display": "flex",
+                                    "height": "100vh",
+                                    "justifyContent": "center",
+                                    "left": 0,
+                                    "overflow": "auto",
+                                    "position": "fixed",
+                                    "top": 0,
+                                    "width": "100vw",
+                                    "zIndex": "modal",
+                                  }
+                                }
+                                className="chakra-modal__content-container"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                                onMouseDown={[Function]}
+                                onScrollCapture={[Function]}
+                                onTouchMoveCapture={[Function]}
+                                onWheelCapture={[Function]}
+                              >
+                                <div
+                                  className="chakra-modal__content-container css-v9b9hc"
+                                  onClick={[Function]}
+                                  onKeyDown={[Function]}
+                                  onMouseDown={[Function]}
+                                  onScrollCapture={[Function]}
+                                  onTouchMoveCapture={[Function]}
+                                  onWheelCapture={[Function]}
+                                >
+                                  <ForwardRef
+                                    __css={
+                                      Object {
+                                        "bg": "white",
+                                        "borderRadius": "md",
+                                        "boxShadow": "lg",
+                                        "color": "inherit",
+                                        "display": "flex",
+                                        "flexDirection": "column",
+                                        "maxH": undefined,
+                                        "maxW": "md",
+                                        "my": "3.75rem",
+                                        "outline": 0,
+                                        "position": "relative",
+                                        "width": "100%",
+                                        "zIndex": "modal",
+                                      }
+                                    }
+                                    aria-describedby="chakra-modal--body-4"
+                                    aria-labelledby="chakra-modal--header-4"
+                                    aria-modal={true}
+                                    className="chakra-modal__content"
+                                    id="chakra-modal-4"
+                                    onClick={[Function]}
+                                    preset="scale"
+                                    role="dialog"
+                                    tabIndex={-1}
+                                  >
+                                    <Styled(Component)
+                                      __css={
+                                        Object {
+                                          "bg": "white",
+                                          "borderRadius": "md",
+                                          "boxShadow": "lg",
+                                          "color": "inherit",
+                                          "display": "flex",
+                                          "flexDirection": "column",
+                                          "maxH": undefined,
+                                          "maxW": "md",
+                                          "my": "3.75rem",
+                                          "outline": 0,
+                                          "position": "relative",
+                                          "width": "100%",
+                                          "zIndex": "modal",
+                                        }
+                                      }
+                                      animate="enter"
+                                      aria-describedby="chakra-modal--body-4"
+                                      aria-labelledby="chakra-modal--header-4"
+                                      aria-modal={true}
+                                      className="chakra-modal__content"
+                                      custom={
+                                        Object {
+                                          "initialScale": 0.95,
+                                          "reverse": true,
+                                        }
+                                      }
+                                      exit="exit"
+                                      id="chakra-modal-4"
+                                      initial="exit"
+                                      onClick={[Function]}
+                                      role="dialog"
+                                      tabIndex={-1}
+                                      variants={
+                                        Object {
+                                          "enter": [Function],
+                                          "exit": [Function],
+                                        }
+                                      }
+                                    >
+                                      <ForwardRef(MotionComponent)
+                                        animate="enter"
+                                        aria-describedby="chakra-modal--body-4"
+                                        aria-labelledby="chakra-modal--header-4"
+                                        aria-modal={true}
+                                        className="chakra-modal__content css-hxtskf"
+                                        custom={
+                                          Object {
+                                            "initialScale": 0.95,
+                                            "reverse": true,
+                                          }
+                                        }
+                                        exit="exit"
+                                        id="chakra-modal-4"
+                                        initial="exit"
+                                        onClick={[Function]}
+                                        role="dialog"
+                                        tabIndex={-1}
+                                        variants={
+                                          Object {
+                                            "enter": [Function],
+                                            "exit": [Function],
+                                          }
+                                        }
+                                      >
+                                        <section
+                                          aria-describedby="chakra-modal--body-4"
+                                          aria-labelledby="chakra-modal--header-4"
+                                          aria-modal={true}
+                                          className="chakra-modal__content css-hxtskf"
+                                          id="chakra-modal-4"
+                                          onClick={[Function]}
+                                          role="dialog"
+                                          style={
+                                            Object {
+                                              "opacity": 0,
+                                              "transform": "scale(0.95) translateZ(0)",
+                                            }
+                                          }
+                                          tabIndex={-1}
+                                        >
+                                          <ModalHeader>
+                                            <Styled(header)
+                                              __css={
+                                                Object {
+                                                  "flex": 0,
+                                                  "fontSize": "xl",
+                                                  "fontWeight": "semibold",
+                                                  "px": 6,
+                                                  "py": 4,
+                                                }
+                                              }
+                                              className="chakra-modal__header"
+                                              id="chakra-modal--header-4"
+                                            >
+                                              <header
+                                                className="chakra-modal__header css-9fgtzh"
+                                                id="chakra-modal--header-4"
+                                              >
+                                                Copy timetable
+                                              </header>
+                                            </Styled(header)>
+                                          </ModalHeader>
+                                          <ModalCloseButton>
+                                            <CloseButton
+                                              __css={
+                                                Object {
+                                                  "insetEnd": 3,
+                                                  "position": "absolute",
+                                                  "top": 2,
+                                                }
+                                              }
+                                              className="chakra-modal__close-btn"
+                                              onClick={[Function]}
+                                            >
+                                              <Styled(button)
+                                                __css={
+                                                  Object {
+                                                    "_active": Object {
+                                                      "bg": "blackAlpha.200",
+                                                    },
+                                                    "_disabled": Object {
+                                                      "boxShadow": "none",
+                                                      "cursor": "not-allowed",
+                                                      "opacity": 0.4,
+                                                    },
+                                                    "_focus": Object {
+                                                      "boxShadow": "outline",
+                                                    },
+                                                    "_hover": Object {
+                                                      "bg": "blackAlpha.100",
+                                                    },
+                                                    "alignItems": "center",
+                                                    "borderRadius": "md",
+                                                    "display": "flex",
+                                                    "flexShrink": 0,
+                                                    "fontSize": "12px",
+                                                    "h": "32px",
+                                                    "insetEnd": 3,
+                                                    "justifyContent": "center",
+                                                    "outline": 0,
+                                                    "position": "absolute",
+                                                    "top": 2,
+                                                    "transition": "all 0.2s",
+                                                    "w": "32px",
+                                                  }
+                                                }
+                                                aria-label="Close"
+                                                className="chakra-modal__close-btn"
+                                                onClick={[Function]}
+                                                type="button"
+                                              >
+                                                <button
+                                                  aria-label="Close"
+                                                  className="chakra-modal__close-btn css-17sthuj"
+                                                  onClick={[Function]}
+                                                  type="button"
+                                                >
+                                                  <CloseIcon
+                                                    height="1em"
+                                                    width="1em"
+                                                  >
+                                                    <Icon
+                                                      aria-hidden={true}
+                                                      focusable="false"
+                                                      height="1em"
+                                                      width="1em"
+                                                    >
+                                                      <Styled(svg)
+                                                        __css={
+                                                          Object {
+                                                            "color": "currentColor",
+                                                            "display": "inline-block",
+                                                            "flexShrink": 0,
+                                                            "h": "1em",
+                                                            "lineHeight": "1em",
+                                                            "w": "1em",
+                                                          }
+                                                        }
+                                                        aria-hidden={true}
+                                                        className="chakra-icon"
+                                                        focusable="false"
+                                                        height="1em"
+                                                        verticalAlign="middle"
+                                                        viewBox="0 0 24 24"
+                                                        width="1em"
+                                                      >
+                                                        <svg
+                                                          aria-hidden={true}
+                                                          className="chakra-icon css-onkibi"
+                                                          focusable="false"
+                                                          viewBox="0 0 24 24"
+                                                        >
+                                                          <path
+                                                            d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                                                            fill="currentColor"
+                                                          />
+                                                        </svg>
+                                                      </Styled(svg)>
+                                                    </Icon>
+                                                  </CloseIcon>
+                                                </button>
+                                              </Styled(button)>
+                                            </CloseButton>
+                                          </ModalCloseButton>
+                                          <CopyTimetableContent
+                                            create={[MockFunction]}
+                                            intoModification={
+                                              Object {
+                                                "_id": "1234",
+                                                "accessGroup": "accessGroupName",
+                                                "bidirectional": false,
+                                                "createdAt": "2017-11-08T12:30:50.133Z",
+                                                "createdBy": "person@gmail.com",
+                                                "description": "Mock description",
+                                                "entries": Array [],
+                                                "feed": "1",
+                                                "name": "Test Modification",
+                                                "nonce": "12345",
+                                                "projectId": "1",
+                                                "routes": Array [
+                                                  "route1",
+                                                ],
+                                                "segments": Array [
+                                                  Object {
+                                                    "fromStopId": "1",
+                                                    "geometry": Object {
+                                                      "coordinates": Array [
+                                                        Array [
+                                                          -122.0246,
+                                                          36.9707,
+                                                        ],
+                                                        Array [
+                                                          -122.0279,
+                                                          37.049,
+                                                        ],
+                                                        Array [
+                                                          -121.9799,
+                                                          37.2299,
+                                                        ],
+                                                        Array [
+                                                          -121.9445,
+                                                          37.324,
+                                                        ],
+                                                        Array [
+                                                          -121.936,
+                                                          37.353,
+                                                        ],
+                                                        Array [
+                                                          -121.924,
+                                                          37.365,
+                                                        ],
+                                                      ],
+                                                      "type": "LineString",
+                                                    },
+                                                    "spacing": 3000,
+                                                    "stopAtEnd": false,
+                                                    "stopAtStart": false,
+                                                    "toStopId": null,
+                                                  },
+                                                ],
+                                                "timetables": Array [
+                                                  Object {
+                                                    "_id": "timetable-id",
+                                                    "dwellTime": 10,
+                                                    "dwellTimes": Array [
+                                                      12,
+                                                    ],
+                                                    "endTime": 57600,
+                                                    "exactTimes": false,
+                                                    "friday": true,
+                                                    "headwaySecs": 900,
+                                                    "modificationId": "1234",
+                                                    "modificationName": "Test Modification",
+                                                    "monday": true,
+                                                    "name": "Test timetable",
+                                                    "patternTrips": Array [
+                                                      "abcd",
+                                                    ],
+                                                    "phaseAtStop": "",
+                                                    "phaseFromStop": "",
+                                                    "phaseFromTimetable": "",
+                                                    "phaseSeconds": 300,
+                                                    "saturday": false,
+                                                    "segmentSpeeds": Array [],
+                                                    "sourceTrip": "abcd",
+                                                    "startTime": 28800,
+                                                    "sunday": false,
+                                                    "thursday": true,
+                                                    "tuesday": true,
+                                                    "wednesday": true,
+                                                  },
+                                                ],
+                                                "trips": Array [
+                                                  "abcd",
+                                                ],
+                                                "type": "add-trip-pattern",
+                                                "updatedAt": "2017-11-08T12:31:19.602Z",
+                                                "updatedBy": "person@gmail.com",
+                                                "variants": Array [
+                                                  true,
+                                                ],
+                                              }
+                                            }
+                                            onClose={[Function]}
+                                          >
+                                            <ModalBody>
+                                              <Styled(div)
+                                                __css={
+                                                  Object {
+                                                    "flex": 1,
+                                                    "overflow": undefined,
+                                                    "px": 6,
+                                                    "py": 2,
+                                                  }
+                                                }
+                                                className="chakra-modal__body"
+                                                id="chakra-modal--body-4"
+                                              >
+                                                <div
+                                                  className="chakra-modal__body css-qlig70"
+                                                  id="chakra-modal--body-4"
+                                                >
+                                                  Loading...
+                                                </div>
+                                              </Styled(div)>
+                                            </ModalBody>
+                                          </CopyTimetableContent>
+                                        </section>
+                                        <Component
+                                          animate="enter"
+                                          aria-describedby="chakra-modal--body-4"
+                                          aria-labelledby="chakra-modal--header-4"
+                                          aria-modal={true}
+                                          className="chakra-modal__content css-hxtskf"
+                                          custom={
+                                            Object {
+                                              "initialScale": 0.95,
+                                              "reverse": true,
+                                            }
+                                          }
+                                          exit="exit"
+                                          id="chakra-modal-4"
+                                          initial="exit"
+                                          key="animation"
+                                          onClick={[Function]}
+                                          role="dialog"
+                                          tabIndex={-1}
+                                          variants={
+                                            Object {
+                                              "enter": [Function],
+                                              "exit": [Function],
+                                            }
+                                          }
+                                          visualElement={
+                                            Object {
+                                              "addValue": [Function],
+                                              "addVariantChild": [Function],
+                                              "animationState": Object {
+                                                "animateChanges": [Function],
+                                                "getState": [Function],
+                                                "isAnimated": [Function],
+                                                "setActive": [Function],
+                                                "setAnimateFunction": [Function],
+                                              },
+                                              "blockInitialAnimation": false,
+                                              "build": [Function],
+                                              "children": Set {},
+                                              "clearAllListeners": [Function],
+                                              "current": <section
+                                                aria-describedby="chakra-modal--body-4"
+                                                aria-labelledby="chakra-modal--header-4"
+                                                aria-modal="true"
+                                                class="chakra-modal__content css-hxtskf"
+                                                id="chakra-modal-4"
+                                                role="dialog"
+                                                style="opacity: 0; transform: scale(0.95) translateZ(0);"
+                                                tabindex="-1"
+                                              >
+                                                <header
+                                                  class="chakra-modal__header css-9fgtzh"
+                                                  id="chakra-modal--header-4"
+                                                >
+                                                  Copy timetable
+                                                </header>
+                                                <button
+                                                  aria-label="Close"
+                                                  class="chakra-modal__close-btn css-17sthuj"
+                                                  type="button"
+                                                >
+                                                  <svg
+                                                    aria-hidden="true"
+                                                    class="chakra-icon css-onkibi"
+                                                    focusable="false"
+                                                    viewBox="0 0 24 24"
+                                                  >
+                                                    <path
+                                                      d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                                                      fill="currentColor"
+                                                    />
+                                                  </svg>
+                                                </button>
+                                                <div
+                                                  class="chakra-modal__body css-qlig70"
+                                                  id="chakra-modal--body-4"
+                                                >
+                                                  Loading...
+                                                </div>
+                                              </section>,
+                                              "depth": 0,
+                                              "enableLayoutProjection": [Function],
+                                              "forEachValue": [Function],
+                                              "getBaseTarget": [Function],
+                                              "getClosestVariantNode": [Function],
+                                              "getDefaultTransition": [Function],
+                                              "getInstance": [Function],
+                                              "getLatestValues": [Function],
+                                              "getLayoutId": [Function],
+                                              "getLayoutState": [Function],
+                                              "getProjectionAnimationProgress": [Function],
+                                              "getProjectionParent": [Function],
+                                              "getProps": [Function],
+                                              "getStaticValue": [Function],
+                                              "getValue": [Function],
+                                              "getVariant": [Function],
+                                              "getVariantContext": [Function],
+                                              "hasValue": [Function],
+                                              "isMounted": [Function],
+                                              "isPresenceRoot": true,
+                                              "isPresent": true,
+                                              "isProjectionReady": [Function],
+                                              "isVisible": undefined,
+                                              "layoutTree": FlatTree {
+                                                "children": Array [],
+                                                "isDirty": false,
+                                              },
+                                              "lockProjectionTarget": [Function],
+                                              "makeTargetAnimatable": [Function],
+                                              "manuallyAnimateOnMount": false,
+                                              "measureViewportBox": [Function],
+                                              "mount": [Function],
+                                              "notifyAnimationComplete": [Function],
+                                              "notifyAnimationStart": [Function],
+                                              "notifyBeforeLayoutMeasure": [Function],
+                                              "notifyLayoutAnimationComplete": [Function],
+                                              "notifyLayoutMeasure": [Function],
+                                              "notifyLayoutReady": [Function],
+                                              "notifyLayoutUpdate": [Function],
+                                              "notifyRender": [Function],
+                                              "notifySetAxisTarget": [Function],
+                                              "notifyUnmount": [Function],
+                                              "notifyUpdate": [Function],
+                                              "notifyViewportBoxUpdate": [Function],
+                                              "onAnimationComplete": [Function],
+                                              "onAnimationStart": [Function],
+                                              "onBeforeLayoutMeasure": [Function],
+                                              "onLayoutAnimationComplete": [Function],
+                                              "onLayoutMeasure": [Function],
+                                              "onLayoutUpdate": [Function],
+                                              "onRender": [Function],
+                                              "onSetAxisTarget": [Function],
+                                              "onUnmount": [Function],
+                                              "onUpdate": [Function],
+                                              "onViewportBoxUpdate": [Function],
+                                              "parent": undefined,
+                                              "path": Array [],
+                                              "pointTo": [Function],
+                                              "presence": 0,
+                                              "presenceId": 0,
+                                              "projection": Object {
+                                                "isEnabled": false,
+                                                "isHydrated": false,
+                                                "isTargetLocked": false,
+                                                "target": Object {
+                                                  "x": Object {
+                                                    "max": 1,
+                                                    "min": 0,
+                                                  },
+                                                  "y": Object {
+                                                    "max": 1,
+                                                    "min": 0,
+                                                  },
+                                                },
+                                                "targetFinal": Object {
+                                                  "x": Object {
+                                                    "max": 1,
+                                                    "min": 0,
+                                                  },
+                                                  "y": Object {
+                                                    "max": 1,
+                                                    "min": 0,
+                                                  },
+                                                },
+                                              },
+                                              "readValue": [Function],
+                                              "rebaseProjectionTarget": [Function],
+                                              "removeValue": [Function],
+                                              "resetTransform": [Function],
+                                              "resolveRelativeTargetBox": [Function],
+                                              "restoreTransform": [Function],
+                                              "scheduleRender": [Function],
+                                              "scheduleUpdateLayoutProjection": [Function],
+                                              "setBaseTarget": [Function],
+                                              "setCrossfader": [Function],
+                                              "setProjectionTargetAxis": [Function],
+                                              "setProps": [Function],
+                                              "setStaticValue": [Function],
+                                              "setVisibility": [Function],
+                                              "shouldResetTransform": [Function],
+                                              "sortNodePosition": [Function],
+                                              "startLayoutAnimation": [Function],
+                                              "stopLayoutAnimation": [Function],
+                                              "syncRender": [Function],
+                                              "treeType": "dom",
+                                              "unlockProjectionTarget": [Function],
+                                              "unmount": [Function],
+                                              "updateLayoutProjection": [Function],
+                                              "updatePropListeners": [Function],
+                                              "updateTreeLayoutProjection": [Function],
+                                              "variantChildren": Set {},
+                                            }
+                                          }
+                                        />
+                                        <Component
+                                          animate="enter"
+                                          aria-describedby="chakra-modal--body-4"
+                                          aria-labelledby="chakra-modal--header-4"
+                                          aria-modal={true}
+                                          className="chakra-modal__content css-hxtskf"
+                                          custom={
+                                            Object {
+                                              "initialScale": 0.95,
+                                              "reverse": true,
+                                            }
+                                          }
+                                          exit="exit"
+                                          id="chakra-modal-4"
+                                          initial="exit"
+                                          key="exit"
+                                          onClick={[Function]}
+                                          role="dialog"
+                                          tabIndex={-1}
+                                          variants={
+                                            Object {
+                                              "enter": [Function],
+                                              "exit": [Function],
+                                            }
+                                          }
+                                          visualElement={
+                                            Object {
+                                              "addValue": [Function],
+                                              "addVariantChild": [Function],
+                                              "animationState": Object {
+                                                "animateChanges": [Function],
+                                                "getState": [Function],
+                                                "isAnimated": [Function],
+                                                "setActive": [Function],
+                                                "setAnimateFunction": [Function],
+                                              },
+                                              "blockInitialAnimation": false,
+                                              "build": [Function],
+                                              "children": Set {},
+                                              "clearAllListeners": [Function],
+                                              "current": <section
+                                                aria-describedby="chakra-modal--body-4"
+                                                aria-labelledby="chakra-modal--header-4"
+                                                aria-modal="true"
+                                                class="chakra-modal__content css-hxtskf"
+                                                id="chakra-modal-4"
+                                                role="dialog"
+                                                style="opacity: 0; transform: scale(0.95) translateZ(0);"
+                                                tabindex="-1"
+                                              >
+                                                <header
+                                                  class="chakra-modal__header css-9fgtzh"
+                                                  id="chakra-modal--header-4"
+                                                >
+                                                  Copy timetable
+                                                </header>
+                                                <button
+                                                  aria-label="Close"
+                                                  class="chakra-modal__close-btn css-17sthuj"
+                                                  type="button"
+                                                >
+                                                  <svg
+                                                    aria-hidden="true"
+                                                    class="chakra-icon css-onkibi"
+                                                    focusable="false"
+                                                    viewBox="0 0 24 24"
+                                                  >
+                                                    <path
+                                                      d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                                                      fill="currentColor"
+                                                    />
+                                                  </svg>
+                                                </button>
+                                                <div
+                                                  class="chakra-modal__body css-qlig70"
+                                                  id="chakra-modal--body-4"
+                                                >
+                                                  Loading...
+                                                </div>
+                                              </section>,
+                                              "depth": 0,
+                                              "enableLayoutProjection": [Function],
+                                              "forEachValue": [Function],
+                                              "getBaseTarget": [Function],
+                                              "getClosestVariantNode": [Function],
+                                              "getDefaultTransition": [Function],
+                                              "getInstance": [Function],
+                                              "getLatestValues": [Function],
+                                              "getLayoutId": [Function],
+                                              "getLayoutState": [Function],
+                                              "getProjectionAnimationProgress": [Function],
+                                              "getProjectionParent": [Function],
+                                              "getProps": [Function],
+                                              "getStaticValue": [Function],
+                                              "getValue": [Function],
+                                              "getVariant": [Function],
+                                              "getVariantContext": [Function],
+                                              "hasValue": [Function],
+                                              "isMounted": [Function],
+                                              "isPresenceRoot": true,
+                                              "isPresent": true,
+                                              "isProjectionReady": [Function],
+                                              "isVisible": undefined,
+                                              "layoutTree": FlatTree {
+                                                "children": Array [],
+                                                "isDirty": false,
+                                              },
+                                              "lockProjectionTarget": [Function],
+                                              "makeTargetAnimatable": [Function],
+                                              "manuallyAnimateOnMount": false,
+                                              "measureViewportBox": [Function],
+                                              "mount": [Function],
+                                              "notifyAnimationComplete": [Function],
+                                              "notifyAnimationStart": [Function],
+                                              "notifyBeforeLayoutMeasure": [Function],
+                                              "notifyLayoutAnimationComplete": [Function],
+                                              "notifyLayoutMeasure": [Function],
+                                              "notifyLayoutReady": [Function],
+                                              "notifyLayoutUpdate": [Function],
+                                              "notifyRender": [Function],
+                                              "notifySetAxisTarget": [Function],
+                                              "notifyUnmount": [Function],
+                                              "notifyUpdate": [Function],
+                                              "notifyViewportBoxUpdate": [Function],
+                                              "onAnimationComplete": [Function],
+                                              "onAnimationStart": [Function],
+                                              "onBeforeLayoutMeasure": [Function],
+                                              "onLayoutAnimationComplete": [Function],
+                                              "onLayoutMeasure": [Function],
+                                              "onLayoutUpdate": [Function],
+                                              "onRender": [Function],
+                                              "onSetAxisTarget": [Function],
+                                              "onUnmount": [Function],
+                                              "onUpdate": [Function],
+                                              "onViewportBoxUpdate": [Function],
+                                              "parent": undefined,
+                                              "path": Array [],
+                                              "pointTo": [Function],
+                                              "presence": 0,
+                                              "presenceId": 0,
+                                              "projection": Object {
+                                                "isEnabled": false,
+                                                "isHydrated": false,
+                                                "isTargetLocked": false,
+                                                "target": Object {
+                                                  "x": Object {
+                                                    "max": 1,
+                                                    "min": 0,
+                                                  },
+                                                  "y": Object {
+                                                    "max": 1,
+                                                    "min": 0,
+                                                  },
+                                                },
+                                                "targetFinal": Object {
+                                                  "x": Object {
+                                                    "max": 1,
+                                                    "min": 0,
+                                                  },
+                                                  "y": Object {
+                                                    "max": 1,
+                                                    "min": 0,
+                                                  },
+                                                },
+                                              },
+                                              "readValue": [Function],
+                                              "rebaseProjectionTarget": [Function],
+                                              "removeValue": [Function],
+                                              "resetTransform": [Function],
+                                              "resolveRelativeTargetBox": [Function],
+                                              "restoreTransform": [Function],
+                                              "scheduleRender": [Function],
+                                              "scheduleUpdateLayoutProjection": [Function],
+                                              "setBaseTarget": [Function],
+                                              "setCrossfader": [Function],
+                                              "setProjectionTargetAxis": [Function],
+                                              "setProps": [Function],
+                                              "setStaticValue": [Function],
+                                              "setVisibility": [Function],
+                                              "shouldResetTransform": [Function],
+                                              "sortNodePosition": [Function],
+                                              "startLayoutAnimation": [Function],
+                                              "stopLayoutAnimation": [Function],
+                                              "syncRender": [Function],
+                                              "treeType": "dom",
+                                              "unlockProjectionTarget": [Function],
+                                              "unmount": [Function],
+                                              "updateLayoutProjection": [Function],
+                                              "updatePropListeners": [Function],
+                                              "updateTreeLayoutProjection": [Function],
+                                              "variantChildren": Set {},
+                                            }
+                                          }
+                                        />
+                                      </ForwardRef(MotionComponent)>
+                                    </Styled(Component)>
+                                  </ForwardRef>
+                                </div>
+                              </Styled(div)>
+                            </ForwardRef>
+                          </ForwardRef>
+                        </div>
+                        <div
+                          data-focus-guard={true}
+                          style={
+                            Object {
+                              "height": "0px",
+                              "left": "1px",
+                              "overflow": "hidden",
+                              "padding": 0,
+                              "position": "fixed",
+                              "top": "1px",
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex={0}
+                        />
+                      </ForwardRef(FocusLockUI)>
+                    </ForwardRef(FocusLockUICombination)>
+                  </FocusLock>
+                </ModalFocusScope>
+              </ModalContent>
+            </Portal>
+          </DefaultPortal>
+        </Portal>
+      </PresenceChild>
+    </AnimatePresence>
   </Modal>
-</Fragment>
-`;
-
-exports[`Component > Modification > CopyTimetable renders when no timetables exist in database 1`] = `
-<Fragment>
-  <Button
-    colorScheme="green"
-    isFullWidth={true}
-    leftIcon={<FaCopy />}
-    onClick={[Function]}
-  >
-    Copy existing timetable
-  </Button>
-</Fragment>
-`;
-
-exports[`Component > Modification > CopyTimetable renders with a region without timetables 1`] = `
-<Fragment>
-  <Button
-    colorScheme="green"
-    isFullWidth={true}
-    leftIcon={<FaCopy />}
-    onClick={[Function]}
-  >
-    Copy existing timetable
-  </Button>
-</Fragment>
-`;
-
-exports[`Component > Modification > CopyTimetable segment warnings shows a warning when current modification has no segments 1`] = `
-<Fragment>
-  <Button
-    colorScheme="green"
-    isFullWidth={true}
-    leftIcon={<FaCopy />}
-    onClick={[Function]}
-  >
-    Copy existing timetable
-  </Button>
-</Fragment>
-`;
-
-exports[`Component > Modification > CopyTimetable segment warnings shows a warning when modification of timetable being copied has less segments 1`] = `
-<Fragment>
-  <Button
-    colorScheme="green"
-    isFullWidth={true}
-    leftIcon={<FaCopy />}
-    onClick={[Function]}
-  >
-    Copy existing timetable
-  </Button>
-</Fragment>
-`;
-
-exports[`Component > Modification > CopyTimetable segment warnings shows a warning when modification of timetable being copied has more segments 1`] = `
-<Fragment>
-  <Button
-    colorScheme="green"
-    isFullWidth={true}
-    leftIcon={<FaCopy />}
-    onClick={[Function]}
-  >
-    Copy existing timetable
-  </Button>
-</Fragment>
-`;
-
-exports[`Component > Modification > CopyTimetable segment warnings shows a warning when modification of timetable being copied has no segments 1`] = `
-<Fragment>
-  <Button
-    colorScheme="green"
-    isFullWidth={true}
-    leftIcon={<FaCopy />}
-    onClick={[Function]}
-  >
-    Copy existing timetable
-  </Button>
-</Fragment>
+</CopyTimetableButton>
 `;

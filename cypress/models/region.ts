@@ -58,14 +58,12 @@ export default class Region extends Model {
     return cy
       .findByLabelText('Opportunities within isochrone')
       .itsNumericText()
-      .then(
-        (o): Cypress.Chainable<[number, number]> => {
-          return cy
-            .findByLabelText('Opportunities within comparison isochrone')
-            .itsNumericText()
-            .then((c): [number, number] => [o, c])
-        }
-      )
+      .then((o): Cypress.Chainable<[number, number]> => {
+        return cy
+          .findByLabelText('Opportunities within comparison isochrone')
+          .itsNumericText()
+          .then((c): [number, number] => [o, c])
+      })
   }
 
   findOrCreate() {

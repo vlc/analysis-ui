@@ -33,7 +33,6 @@ exports[`Component > FrequencyEntry renders correctly 1`] = `
         <Input
           id="00000000-0000-0000-0000-000000000000"
           isInvalid={false}
-          isValid={true}
           onChange={[Function]}
           value="Test timetable"
         />

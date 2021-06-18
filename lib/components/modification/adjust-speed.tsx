@@ -1,4 +1,4 @@
-import {Alert, AlertIcon, Stack, Flex, Button} from '@chakra-ui/react'
+import {Alert, AlertIcon, Stack, Flex, Button, Box} from '@chakra-ui/react'
 import get from 'lodash/get'
 import dynamic from 'next/dynamic'
 import {useCallback, useState} from 'react'
@@ -101,13 +101,15 @@ export default function AdjustSpeedComponent({
         />
       )}
 
-      <SelectFeedAndRoutes
-        allowMultipleRoutes
-        onChange={({feed, routes, trips}) =>
-          updateAndRetrieveFeedData({feed, routes, trips, hops: null})
-        }
-        selectedRouteIds={modification.routes}
-      />
+      <Box>
+        <SelectFeedAndRoutes
+          allowMultipleRoutes
+          onChange={({feed, routes, trips}) =>
+            updateAndRetrieveFeedData({feed, routes, trips, hops: null})
+          }
+          selectedRouteIds={modification.routes}
+        />
+      </Box>
 
       {get(modification, 'routes.length') === 1 && (
         <Stack spacing={4}>

@@ -4,13 +4,11 @@ import memoize from 'lodash/memoize'
 import Leaflet from 'lib/leaflet'
 import getStopRadius from 'lib/utils/get-stop-radius'
 
-export const getControlPointIconForZoom = createGetCircleIconForZoom(
-  'controlPoint'
-)
+export const getControlPointIconForZoom =
+  createGetCircleIconForZoom('controlPoint')
 export const getNewStopIconForZoom = createGetCircleIconForZoom('newStop')
-export const getSnappedStopIconForZoom = createGetCircleIconForZoom(
-  'newSnappedStop'
-)
+export const getSnappedStopIconForZoom =
+  createGetCircleIconForZoom('newSnappedStop')
 
 /**
  * Take an HTML string for a DivIcon and return a memoized function to generate

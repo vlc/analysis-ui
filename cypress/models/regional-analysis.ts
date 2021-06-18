@@ -42,7 +42,7 @@ export default class RegionalAnalysis extends Model {
       .type(`${this.name}{enter}`)
 
     cy.location('href').then((href) => {
-      if (!href.match(/analysisId=\w{24}/)) {
+      if (!href.match(/regional\/\w{24}\?/)) {
         this.region.setupAnalysis(this.options)
 
         cy.fetchResults()
@@ -55,7 +55,7 @@ export default class RegionalAnalysis extends Model {
       }
 
       cy.location('href')
-        .should('match', /.*analysisId=\w{24}$/)
+        .should('match', /regional\/\w{24}\?/)
         .then((href) => {
           this.path = href
         })

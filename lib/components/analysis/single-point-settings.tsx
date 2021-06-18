@@ -35,6 +35,7 @@ import {LS_MOM} from 'lib/constants'
 import useOnMount from 'lib/hooks/use-on-mount'
 import message from 'lib/message'
 import {activeOpportunityDataset} from 'lib/modules/opportunity-datasets/selectors'
+import CreateRegional from 'lib/regional/components/create'
 import selectCurrentBundle from 'lib/selectors/current-bundle'
 import selectCurrentProject from 'lib/selectors/current-project'
 import selectProfileRequest from 'lib/selectors/profile-request'
@@ -48,15 +49,14 @@ import {secondsToHhMmString} from 'lib/utils/time'
 
 import ControlledSelect from '../controlled-select'
 import {ChevronDown, ChevronUp, CodeIcon, MouseIcon} from '../icons'
+import ModeSummary from '../mode-summary'
 import Presets from '../presets'
 
 import DownloadMenu from './download-menu'
 import ProfileRequestEditor from './profile-request-editor'
 import AdvancedSettings from './advanced-settings'
 import ModeSelector from './mode-selector'
-import CreateRegional from './create-regional'
 import getFeedsRoutesAndStops from 'lib/actions/get-feeds-routes-and-stops'
-import ModeSummary from './mode-summary'
 
 const SPACING_XS = 2
 const SPACING = 5
@@ -88,12 +88,7 @@ async function loadAllProjectData(
   )
 }
 
-export default function Settings({
-  bundles,
-  projects,
-  region,
-  regionalAnalyses
-}) {
+export default function Settings({bundles, projects, region}) {
   const dispatch = useDispatch<any>()
   const opportunityDataset = useSelector(activeOpportunityDataset)
   const profileRequest = useSelector(selectProfileRequest)
@@ -175,6 +170,7 @@ export default function Settings({
   )
 
   // On initial load, the query string may be out of sync with the requestsSettings.projectId
+  // TODO move this into the top level page.
   useOnMount(() => {
     const projectId = currentProject?._id
     if (projectId != null && projectId !== 'undefined') {
@@ -255,7 +251,6 @@ export default function Settings({
           opportunityDataset={opportunityDataset}
           profileRequest={requestsSettings[0]}
           project={currentProject}
-          regionalAnalyses={regionalAnalyses}
           scenario={variantIndex}
         />
         <RequestSettings
@@ -269,7 +264,6 @@ export default function Settings({
           projects={projects}
           regionId={region._id}
           regionBounds={region.bounds}
-          regionalAnalyses={regionalAnalyses}
           replaceSettings={(s) => replaceSettings(0, s)}
           scenario={variantIndex}
           scenarioOptions={scenarioOptions}
@@ -291,7 +285,6 @@ export default function Settings({
           opportunityDataset={opportunityDataset}
           profileRequest={requestsSettings[1]}
           project={comparisonProject}
-          regionalAnalyses={regionalAnalyses}
           scenario={comparisonVariant}
         />
         <RequestSettings
@@ -307,11 +300,9 @@ export default function Settings({
           projects={projects}
           regionId={region._id}
           regionBounds={region.bounds}
-          regionalAnalyses={regionalAnalyses}
           replaceSettings={(s) => replaceSettings(1, s)}
           scenario={comparisonVariant}
           scenarioOptions={comparisonScenarioOptions}
-          setProfileRequest
           setProject={_setComparisonProject}
           setScenario={_setComparisonVariant}
           updateProfileRequest={updateComparisonPR}
@@ -436,7 +427,6 @@ function RequestSettings({
   project,
   projects,
   regionId,
-  regionalAnalyses,
   regionBounds,
   replaceSettings,
   scenario,
@@ -547,7 +537,7 @@ function RequestSettings({
                       <AdvancedSettings
                         disabled={isDisabled}
                         profileRequest={profileRequest}
-                        regionalAnalyses={regionalAnalyses}
+                        regionId={regionId}
                         regionBounds={regionBounds}
                         updateProfileRequest={updateProfileRequest}
                       />

@@ -107,6 +107,8 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
@@ -117,7 +119,7 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
       flexDirection="column"
     >
       <div
-        className="chakra-stack css-4daikc"
+        className="chakra-stack css-egoftb"
       >
         <Stack
           key=".0"
@@ -127,6 +129,8 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
             __css={
               Object {
                 "& > *:not(style) ~ *:not(style)": Object {
+                  "marginBottom": 0,
+                  "marginEnd": 0,
                   "marginStart": 0,
                   "marginTop": 4,
                 },
@@ -137,7 +141,7 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
             flexDirection="column"
           >
             <div
-              className="chakra-stack css-4daikc"
+              className="chakra-stack css-egoftb"
             >
               <ForwardRef
                 key=".0"
@@ -160,7 +164,7 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
                   role="alert"
                 >
                   <div
-                    className="chakra-alert css-1m76rph"
+                    className="chakra-alert css-1adt752"
                     role="alert"
                   >
                     <AlertIcon>
@@ -170,7 +174,7 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
                             "color": "blue.500",
                             "flexShrink": 0,
                             "h": 6,
-                            "mr": 3,
+                            "marginEnd": 3,
                             "w": 5,
                           }
                         }
@@ -178,7 +182,7 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
                         display="inherit"
                       >
                         <span
-                          className="chakra-alert__icon css-8flyh"
+                          className="chakra-alert__icon css-n0gcl4"
                         >
                           <InfoIcon
                             h="100%"
@@ -282,7 +286,7 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
                   type="button"
                 >
                   <button
-                    className="chakra-button css-1cu1u8l"
+                    className="chakra-button css-1k7w19f"
                     onClick={[Function]}
                     type="button"
                   >
@@ -290,11 +294,14 @@ exports[`Component SelectStops snapshot(mount) 1`] = `
                       marginEnd="0.5rem"
                     >
                       <Styled(span)
+                        alignSelf="center"
                         className="chakra-button__icon"
+                        display="inline-flex"
+                        flexShrink={0}
                         marginEnd="0.5rem"
                       >
                         <span
-                          className="chakra-button__icon css-ktvjz1"
+                          className="chakra-button__icon css-1wh2kri"
                         >
                           <FaPencilAlt
                             aria-hidden={true}

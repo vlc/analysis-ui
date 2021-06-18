@@ -57,10 +57,8 @@ function getCoordinatesFromFeature(
  */
 export default function ImportShapefile({projectId, regionId, variants}) {
   const dispatch = useDispatch()
-  const [
-    shapefile,
-    setShapefile
-  ] = useState<void | shp.FeatureCollectionWithFilename>()
+  const [shapefile, setShapefile] =
+    useState<void | shp.FeatureCollectionWithFilename>()
   const [stopSpacingMeters, setStopSpacingMeters] = useState(400)
   const [bidirectional, setBidirectional] = useState(true)
   const [autoCreateStops, setAutoCreateStops] = useState(true)

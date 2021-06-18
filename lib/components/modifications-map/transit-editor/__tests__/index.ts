@@ -1,4 +1,4 @@
-import {shallowSnapshot, wrapMapComponent} from 'lib/utils/component'
+import {testComponentMount} from 'lib/utils/component'
 import {
   mockFeed,
   mockModification,
@@ -22,4 +22,4 @@ const props: Parameters<typeof TransitEditor>[0] = {
   updateModification: jest.fn()
 }
 
-shallowSnapshot(wrapMapComponent(TransitEditor, props))
+testComponentMount(TransitEditor, props)

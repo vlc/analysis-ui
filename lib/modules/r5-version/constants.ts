@@ -9,4 +9,5 @@ export const MINIMUM_R5_VERSION = 'v4.0.0'
 
 // Parse a version into its constituent pieces (major, minor, patch, distance from last release, commit)
 export const VERSION_PARSE_REGEX = /^v([0-9]+)\.([0-9]+)-?([0-9]+)?-?.*?$/
-export const OLD_VERSION_PARSE_REGEX = /^v([0-9]+)\.([0-9]+)\.([0-9]+)-?([0-9]+)?-?.*?$/
+export const OLD_VERSION_PARSE_REGEX =
+  /^v([0-9]+)\.([0-9]+)\.([0-9]+)-?([0-9]+)?-?.*?$/

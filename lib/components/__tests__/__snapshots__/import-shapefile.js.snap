@@ -14,6 +14,8 @@ exports[`Component > ImportShapefile 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
@@ -25,7 +27,7 @@ exports[`Component > ImportShapefile 1`] = `
       p={4}
     >
       <div
-        className="chakra-stack css-zcuazw"
+        className="chakra-stack css-1ego2c0"
       >
         <Heading
           key=".0"
@@ -43,7 +45,7 @@ exports[`Component > ImportShapefile 1`] = `
             className="chakra-heading"
           >
             <h2
-              className="chakra-heading css-1hm1kf2"
+              className="chakra-heading css-18j379d"
             >
               Route alignments from shapefile
             </h2>
@@ -90,7 +92,7 @@ exports[`Component > ImportShapefile 1`] = `
                   id="field-1-label"
                 >
                   <label
-                    className="chakra-form__label css-1qqx8g3"
+                    className="chakra-form__label css-10m1y3x"
                     htmlFor="fileInput"
                     id="field-1-label"
                   >
@@ -156,7 +158,7 @@ exports[`Component > ImportShapefile 1`] = `
                 >
                   <input
                     aria-describedby="field-1-helptext"
-                    className="chakra-input css-18q2db8"
+                    className="chakra-input css-ujci2j"
                     disabled={false}
                     id="fileInput"
                     onBlur={[Function]}
@@ -184,7 +186,7 @@ exports[`Component > ImportShapefile 1`] = `
                     id="field-1-helptext"
                   >
                     <div
-                      className="chakra-form__helper-text css-1qoocny"
+                      className="chakra-form__helper-text css-1y1zyf5"
                       id="field-1-helptext"
                     >
                       Max file size is 
@@ -255,7 +257,7 @@ exports[`Component > ImportShapefile 1`] = `
             type="button"
           >
             <button
-              className="chakra-button css-ywjnlx"
+              className="chakra-button css-r1h8jx"
               disabled={true}
               onClick={[Function]}
               type="button"

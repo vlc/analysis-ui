@@ -67,7 +67,7 @@ export default function EditProject(p: EditProjectProps) {
               to='bundle'
               query={{
                 bundleId: project?.bundleId,
-                regionId: project?.regionId
+                regionId
               }}
             >
               View bundle info here.

@@ -238,9 +238,8 @@ function AverageSpeed({
     setAverageSpeed(getAverageSpeed(segmentDistances, segmentSpeeds))
   }, [segmentDistances, segmentSpeeds])
 
-  const [confirmedSetAllSpeedsOnce, setConfirmedSetAllSpeedsOnce] = useState(
-    false
-  )
+  const [confirmedSetAllSpeedsOnce, setConfirmedSetAllSpeedsOnce] =
+    useState(false)
   function _confirmedSetAllSpeedsOnce() {
     if (!confirmedSetAllSpeedsOnce) {
       const confirmed = window.confirm(

@@ -1,11 +1,10 @@
-import {Button, Checkbox, Stack} from '@chakra-ui/react'
+import {Box, Button, Checkbox, Stack} from '@chakra-ui/react'
 import {color as parseColor} from 'd3-color'
 import get from 'lodash/get'
 import {useSelector} from 'react-redux'
 
 import {AddIcon} from 'lib/components/icons'
 import colors from 'lib/constants/colors'
-import selectFeedsWithBundleNames from 'lib/selectors/feeds-with-bundle-names'
 import selectFeedScopedModificationStops from 'lib/selectors/feed-scoped-modification-stops'
 import selectFrequencyEntryPatterns from 'lib/selectors/frequency-entry-patterns'
 import selectModificationFeed from 'lib/selectors/modification-feed'
@@ -31,7 +30,6 @@ export default function ConvertToFrequency({
   update,
   updateAndRetrieveFeedData
 }) {
-  const feeds = useSelector(selectFeedsWithBundleNames)
   const feedScopedModificationStops = useSelector(
     selectFeedScopedModificationStops
   )
@@ -83,12 +81,12 @@ export default function ConvertToFrequency({
       <PatternGeometry color={MAP_COLOR} patterns={selectedPatterns} />
       <DirectionalMarkers color={MAP_COLOR} patterns={selectedPatterns} />
 
-      <SelectFeedAndRoutes
-        feeds={feeds}
-        onChange={_onRouteChange}
-        selectedFeed={selectedFeed}
-        selectedRouteIds={modification.routes}
-      />
+      <Box>
+        <SelectFeedAndRoutes
+          onChange={_onRouteChange}
+          selectedRouteIds={modification.routes}
+        />
+      </Box>
 
       <Checkbox
         fontWeight='normal'

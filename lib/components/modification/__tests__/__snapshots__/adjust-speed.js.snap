@@ -212,6 +212,8 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
       __css={
         Object {
           "& > *:not(style) ~ *:not(style)": Object {
+            "marginBottom": 0,
+            "marginEnd": 0,
             "marginStart": 0,
             "marginTop": 4,
           },
@@ -223,7 +225,7 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
       mb={4}
     >
       <div
-        className="chakra-stack css-1pjbls6"
+        className="chakra-stack css-1u5a18p"
       >
         <DynamicMockedComponent
           key=".0"
@@ -259,309 +261,1254 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
               zIndex={500}
             >
               <Pane
-                leaflet={Object {}}
+                leaflet={
+                  Object {
+                    "layerContainer": MapMock {
+                      "_addLayers": [MockFunction],
+                      "_addZoomLimit": [MockFunction],
+                      "_animMoveEnd": [MockFunction],
+                      "_animateZoom": [MockFunction],
+                      "_catchTransitionEnd": [MockFunction],
+                      "_checkIfLoaded": [MockFunction],
+                      "_clearControlPos": [MockFunction],
+                      "_clearHandlers": [MockFunction],
+                      "_container": <div>
+                        <div
+                          class="chakra-stack css-1u5a18p"
+                        >
+                          <div
+                            style="position: relative;"
+                          >
+                            <div
+                              style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;"
+                            />
+                          </div>
+                          <div
+                            class="css-0"
+                          >
+                            <div
+                              class="chakra-stack css-egoftb"
+                            >
+                              <div
+                                class="chakra-form-control css-1kxonj9"
+                                role="group"
+                              >
+                                <label
+                                  class="chakra-form__label css-10m1y3x"
+                                  for="Feed"
+                                  id="field-1-label"
+                                >
+                                  Select feed
+                                </label>
+                                <div
+                                  class="ReactSelectMock"
+                                />
+                              </div>
+                              <div
+                                class="chakra-form-control css-1kxonj9"
+                                role="group"
+                              >
+                                <label
+                                  class="chakra-form__label css-10m1y3x"
+                                  for="Route"
+                                  id="field-2-label"
+                                >
+                                  Select route
+                                </label>
+                                <div
+                                  class="ReactSelectMock"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="chakra-stack css-egoftb"
+                          >
+                            <div
+                              class="chakra-form-control css-1kxonj9"
+                              role="group"
+                            >
+                              <label
+                                class="chakra-form__label css-10m1y3x"
+                                for="Patterns"
+                                id="field-3-label"
+                              >
+                                Select patterns
+                              </label>
+                              <div
+                                class="ReactSelectMock"
+                              />
+                            </div>
+                            <div
+                              class="chakra-alert css-1adt752"
+                              role="alert"
+                            >
+                              <span
+                                class="chakra-alert__icon css-n0gcl4"
+                              >
+                                <svg
+                                  class="chakra-icon css-fi0ww0"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,1,1,0,2Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </span>
+                              Speed adjustment will apply to entire pattern(s). Use button below to limit the adjustment to certain segments.
+                            </div>
+                            <button
+                              class="chakra-button css-1k7w19f"
+                              type="button"
+                            >
+                              <span
+                                class="chakra-button__icon css-1wh2kri"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-width="0"
+                                  viewBox="0 0 512 512"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                                  />
+                                </svg>
+                              </span>
+                              Select
+                               segments
+                            </button>
+                          </div>
+                          <div
+                            class="chakra-form-control css-1kxonj9"
+                            role="group"
+                          >
+                            <label
+                              class="chakra-form__label css-10m1y3x"
+                              data-invalid=""
+                              for="00000000-0000-0000-0000-000000000000"
+                              id="field-4-label"
+                            >
+                              Scale speed by
+                            </label>
+                            <div
+                              class="chakra-input__group css-4302v8"
+                            >
+                              <input
+                                aria-invalid="true"
+                                class="chakra-input css-ujci2j"
+                                id="00000000-0000-0000-0000-000000000000"
+                                placeholder=""
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>,
+                      "_createAnimProxy": [MockFunction],
+                      "_createRenderer": [MockFunction],
+                      "_destroyAnimProxy": [MockFunction],
+                      "_draggableMoved": [MockFunction],
+                      "_events": Object {
+                        "move": Array [
+                          Object {
+                            "ctx": undefined,
+                            "fn": [Function],
+                          },
+                        ],
+                        "moveend": Array [
+                          Object {
+                            "ctx": undefined,
+                            "fn": [Function],
+                          },
+                        ],
+                      },
+                      "_findEventTargets": [MockFunction],
+                      "_fireDOMEvent": [MockFunction],
+                      "_getBoundsCenterZoom": [MockFunction],
+                      "_getBoundsOffset": [MockFunction],
+                      "_getCenterLayerPoint": [MockFunction],
+                      "_getCenterOffset": [MockFunction],
+                      "_getMapPanePos": [MockFunction],
+                      "_getNewPixelOrigin": [MockFunction],
+                      "_getPaneRenderer": [MockFunction],
+                      "_getTopLeftPoint": [MockFunction],
+                      "_getZoomSpan": [MockFunction],
+                      "_handleDOMEvent": [MockFunction],
+                      "_handleGeolocationError": [MockFunction],
+                      "_handleGeolocationResponse": [MockFunction],
+                      "_initContainer": [MockFunction],
+                      "_initControlPos": [MockFunction],
+                      "_initEvents": [MockFunction],
+                      "_initLayout": [MockFunction],
+                      "_initPanes": [MockFunction],
+                      "_latLngBoundsToNewLayerBounds": [MockFunction],
+                      "_latLngToNewLayerPoint": [MockFunction],
+                      "_limitCenter": [MockFunction],
+                      "_limitOffset": [MockFunction],
+                      "_limitZoom": [MockFunction],
+                      "_move": [MockFunction],
+                      "_moveEnd": [MockFunction],
+                      "_moveStart": [MockFunction],
+                      "_moved": [MockFunction],
+                      "_nothingToAnimate": [MockFunction],
+                      "_off": [Function],
+                      "_on": [Function],
+                      "_onMoveEnd": [MockFunction],
+                      "_onPanTransitionEnd": [MockFunction],
+                      "_onPanTransitionStep": [MockFunction],
+                      "_onResize": [MockFunction],
+                      "_onScroll": [MockFunction],
+                      "_onZoomTransitionEnd": [MockFunction],
+                      "_panInsideMaxBounds": [MockFunction],
+                      "_propagateEvent": [Function],
+                      "_rawPanBy": [MockFunction],
+                      "_rebound": [MockFunction],
+                      "_removeZoomLimit": [MockFunction],
+                      "_resetView": [MockFunction],
+                      "_stop": [MockFunction],
+                      "_tryAnimatedPan": [MockFunction],
+                      "_tryAnimatedZoom": [MockFunction],
+                      "_updateZoomLevels": [MockFunction],
+                      "addControl": [MockFunction],
+                      "addEventListener": [Function],
+                      "addEventParent": [Function],
+                      "addHandler": [MockFunction],
+                      "addLayer": [MockFunction],
+                      "addOneTimeEventListener": [Function],
+                      "callInitHooks": [MockFunction],
+                      "clearAllEventListeners": [Function],
+                      "closePopup": [MockFunction],
+                      "closeTooltip": [MockFunction],
+                      "containerPointToLatLng": [MockFunction],
+                      "containerPointToLayerPoint": [MockFunction],
+                      "createPane": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "pane-1",
+                            undefined,
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "distance": [MockFunction],
+                      "eachLayer": [MockFunction],
+                      "fire": [Function],
+                      "fireEvent": [Function],
+                      "fitBounds": [MockFunction],
+                      "fitWorld": [MockFunction],
+                      "flyTo": [MockFunction],
+                      "flyToBounds": [MockFunction],
+                      "getBounds": [MockFunction],
+                      "getBoundsZoom": [MockFunction],
+                      "getCenter": [MockFunction],
+                      "getContainer": [MockFunction],
+                      "getMaxZoom": [MockFunction],
+                      "getMinZoom": [MockFunction],
+                      "getPane": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "pane-1",
+                          ],
+                          Array [
+                            "pane-1",
+                          ],
+                          Array [
+                            "pane-1",
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "getPanes": [MockFunction],
+                      "getPixelBounds": [MockFunction],
+                      "getPixelOrigin": [MockFunction],
+                      "getPixelWorldBounds": [MockFunction],
+                      "getRenderer": [MockFunction],
+                      "getScaleZoom": [MockFunction],
+                      "getSize": [MockFunction],
+                      "getZoom": [MockFunction],
+                      "getZoomScale": [MockFunction],
+                      "hasEventListeners": [Function],
+                      "hasLayer": [MockFunction],
+                      "initialize": [MockFunction],
+                      "invalidateSize": [MockFunction],
+                      "latLngToContainerPoint": [MockFunction],
+                      "latLngToLayerPoint": [MockFunction],
+                      "layerPointToContainerPoint": [MockFunction],
+                      "layerPointToLatLng": [MockFunction],
+                      "listens": [Function],
+                      "locate": [MockFunction],
+                      "mouseEventToContainerPoint": [MockFunction],
+                      "mouseEventToLatLng": [MockFunction],
+                      "mouseEventToLayerPoint": [MockFunction],
+                      "off": [Function],
+                      "on": [Function],
+                      "once": [Function],
+                      "openPopup": [MockFunction],
+                      "openTooltip": [MockFunction],
+                      "options": Object {
+                        "attributionControl": true,
+                        "bounceAtZoomLimits": true,
+                        "boxZoom": true,
+                        "center": undefined,
+                        "closePopupOnClick": true,
+                        "crs": Object {
+                          "R": 6371000,
+                          "code": "EPSG:3857",
+                          "distance": [Function],
+                          "getProjectedBounds": [Function],
+                          "infinite": false,
+                          "latLngToPoint": [Function],
+                          "pointToLatLng": [Function],
+                          "project": [Function],
+                          "projection": Object {
+                            "MAX_LATITUDE": 85.0511287798,
+                            "R": 6378137,
+                            "bounds": Object {
+                              "max": Object {
+                                "x": 20037508.342789244,
+                                "y": 20037508.342789244,
+                              },
+                              "min": Object {
+                                "x": -20037508.342789244,
+                                "y": -20037508.342789244,
+                              },
+                            },
+                            "project": [Function],
+                            "unproject": [Function],
+                          },
+                          "scale": [Function],
+                          "transformation": Object {
+                            "_a": 2.495320233665337e-8,
+                            "_b": 0.5,
+                            "_c": -2.495320233665337e-8,
+                            "_d": 0.5,
+                          },
+                          "unproject": [Function],
+                          "wrapLatLng": [Function],
+                          "wrapLatLngBounds": [Function],
+                          "wrapLng": Array [
+                            -180,
+                            180,
+                          ],
+                          "zoom": [Function],
+                        },
+                        "doubleClickZoom": true,
+                        "dragging": true,
+                        "easeLinearity": 0.2,
+                        "fadeAnimation": true,
+                        "inertia": true,
+                        "inertiaDeceleration": 3400,
+                        "inertiaMaxSpeed": Infinity,
+                        "keyboard": true,
+                        "keyboardPanDelta": 80,
+                        "layers": Array [],
+                        "markerZoomAnimation": true,
+                        "maxBounds": undefined,
+                        "maxBoundsViscosity": 0,
+                        "maxZoom": undefined,
+                        "minZoom": undefined,
+                        "renderer": undefined,
+                        "scrollWheelZoom": true,
+                        "tap": true,
+                        "tapTolerance": 15,
+                        "touchZoom": undefined,
+                        "trackResize": true,
+                        "transform3DLimit": 8388608,
+                        "wheelDebounceTime": 40,
+                        "wheelPxPerZoomLevel": 60,
+                        "worldCopyJump": false,
+                        "zoom": undefined,
+                        "zoomAnimation": true,
+                        "zoomAnimationThreshold": 4,
+                        "zoomControl": true,
+                        "zoomDelta": 1,
+                        "zoomSnap": 1,
+                      },
+                      "panBy": [MockFunction],
+                      "panInside": [MockFunction],
+                      "panInsideBounds": [MockFunction],
+                      "panTo": [MockFunction],
+                      "project": [MockFunction],
+                      "remove": [MockFunction],
+                      "removeControl": [MockFunction],
+                      "removeEventListener": [Function],
+                      "removeEventParent": [Function],
+                      "removeLayer": [MockFunction],
+                      "setMaxBounds": [MockFunction],
+                      "setMaxZoom": [MockFunction],
+                      "setMinZoom": [MockFunction],
+                      "setView": [MockFunction],
+                      "setZoom": [MockFunction],
+                      "setZoomAround": [MockFunction],
+                      "stop": [MockFunction],
+                      "stopLocate": [MockFunction],
+                      "unproject": [MockFunction],
+                      "whenReady": [MockFunction],
+                      "wrapLatLng": [MockFunction],
+                      "wrapLatLngBounds": [MockFunction],
+                      "zoomIn": [MockFunction],
+                      "zoomOut": [MockFunction],
+                    },
+                    "map": MapMock {
+                      "_addLayers": [MockFunction],
+                      "_addZoomLimit": [MockFunction],
+                      "_animMoveEnd": [MockFunction],
+                      "_animateZoom": [MockFunction],
+                      "_catchTransitionEnd": [MockFunction],
+                      "_checkIfLoaded": [MockFunction],
+                      "_clearControlPos": [MockFunction],
+                      "_clearHandlers": [MockFunction],
+                      "_container": <div>
+                        <div
+                          class="chakra-stack css-1u5a18p"
+                        >
+                          <div
+                            style="position: relative;"
+                          >
+                            <div
+                              style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;"
+                            />
+                          </div>
+                          <div
+                            class="css-0"
+                          >
+                            <div
+                              class="chakra-stack css-egoftb"
+                            >
+                              <div
+                                class="chakra-form-control css-1kxonj9"
+                                role="group"
+                              >
+                                <label
+                                  class="chakra-form__label css-10m1y3x"
+                                  for="Feed"
+                                  id="field-1-label"
+                                >
+                                  Select feed
+                                </label>
+                                <div
+                                  class="ReactSelectMock"
+                                />
+                              </div>
+                              <div
+                                class="chakra-form-control css-1kxonj9"
+                                role="group"
+                              >
+                                <label
+                                  class="chakra-form__label css-10m1y3x"
+                                  for="Route"
+                                  id="field-2-label"
+                                >
+                                  Select route
+                                </label>
+                                <div
+                                  class="ReactSelectMock"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="chakra-stack css-egoftb"
+                          >
+                            <div
+                              class="chakra-form-control css-1kxonj9"
+                              role="group"
+                            >
+                              <label
+                                class="chakra-form__label css-10m1y3x"
+                                for="Patterns"
+                                id="field-3-label"
+                              >
+                                Select patterns
+                              </label>
+                              <div
+                                class="ReactSelectMock"
+                              />
+                            </div>
+                            <div
+                              class="chakra-alert css-1adt752"
+                              role="alert"
+                            >
+                              <span
+                                class="chakra-alert__icon css-n0gcl4"
+                              >
+                                <svg
+                                  class="chakra-icon css-fi0ww0"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,1,1,0,2Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </span>
+                              Speed adjustment will apply to entire pattern(s). Use button below to limit the adjustment to certain segments.
+                            </div>
+                            <button
+                              class="chakra-button css-1k7w19f"
+                              type="button"
+                            >
+                              <span
+                                class="chakra-button__icon css-1wh2kri"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-width="0"
+                                  viewBox="0 0 512 512"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                                  />
+                                </svg>
+                              </span>
+                              Select
+                               segments
+                            </button>
+                          </div>
+                          <div
+                            class="chakra-form-control css-1kxonj9"
+                            role="group"
+                          >
+                            <label
+                              class="chakra-form__label css-10m1y3x"
+                              data-invalid=""
+                              for="00000000-0000-0000-0000-000000000000"
+                              id="field-4-label"
+                            >
+                              Scale speed by
+                            </label>
+                            <div
+                              class="chakra-input__group css-4302v8"
+                            >
+                              <input
+                                aria-invalid="true"
+                                class="chakra-input css-ujci2j"
+                                id="00000000-0000-0000-0000-000000000000"
+                                placeholder=""
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>,
+                      "_createAnimProxy": [MockFunction],
+                      "_createRenderer": [MockFunction],
+                      "_destroyAnimProxy": [MockFunction],
+                      "_draggableMoved": [MockFunction],
+                      "_events": Object {
+                        "move": Array [
+                          Object {
+                            "ctx": undefined,
+                            "fn": [Function],
+                          },
+                        ],
+                        "moveend": Array [
+                          Object {
+                            "ctx": undefined,
+                            "fn": [Function],
+                          },
+                        ],
+                      },
+                      "_findEventTargets": [MockFunction],
+                      "_fireDOMEvent": [MockFunction],
+                      "_getBoundsCenterZoom": [MockFunction],
+                      "_getBoundsOffset": [MockFunction],
+                      "_getCenterLayerPoint": [MockFunction],
+                      "_getCenterOffset": [MockFunction],
+                      "_getMapPanePos": [MockFunction],
+                      "_getNewPixelOrigin": [MockFunction],
+                      "_getPaneRenderer": [MockFunction],
+                      "_getTopLeftPoint": [MockFunction],
+                      "_getZoomSpan": [MockFunction],
+                      "_handleDOMEvent": [MockFunction],
+                      "_handleGeolocationError": [MockFunction],
+                      "_handleGeolocationResponse": [MockFunction],
+                      "_initContainer": [MockFunction],
+                      "_initControlPos": [MockFunction],
+                      "_initEvents": [MockFunction],
+                      "_initLayout": [MockFunction],
+                      "_initPanes": [MockFunction],
+                      "_latLngBoundsToNewLayerBounds": [MockFunction],
+                      "_latLngToNewLayerPoint": [MockFunction],
+                      "_limitCenter": [MockFunction],
+                      "_limitOffset": [MockFunction],
+                      "_limitZoom": [MockFunction],
+                      "_move": [MockFunction],
+                      "_moveEnd": [MockFunction],
+                      "_moveStart": [MockFunction],
+                      "_moved": [MockFunction],
+                      "_nothingToAnimate": [MockFunction],
+                      "_off": [Function],
+                      "_on": [Function],
+                      "_onMoveEnd": [MockFunction],
+                      "_onPanTransitionEnd": [MockFunction],
+                      "_onPanTransitionStep": [MockFunction],
+                      "_onResize": [MockFunction],
+                      "_onScroll": [MockFunction],
+                      "_onZoomTransitionEnd": [MockFunction],
+                      "_panInsideMaxBounds": [MockFunction],
+                      "_propagateEvent": [Function],
+                      "_rawPanBy": [MockFunction],
+                      "_rebound": [MockFunction],
+                      "_removeZoomLimit": [MockFunction],
+                      "_resetView": [MockFunction],
+                      "_stop": [MockFunction],
+                      "_tryAnimatedPan": [MockFunction],
+                      "_tryAnimatedZoom": [MockFunction],
+                      "_updateZoomLevels": [MockFunction],
+                      "addControl": [MockFunction],
+                      "addEventListener": [Function],
+                      "addEventParent": [Function],
+                      "addHandler": [MockFunction],
+                      "addLayer": [MockFunction],
+                      "addOneTimeEventListener": [Function],
+                      "callInitHooks": [MockFunction],
+                      "clearAllEventListeners": [Function],
+                      "closePopup": [MockFunction],
+                      "closeTooltip": [MockFunction],
+                      "containerPointToLatLng": [MockFunction],
+                      "containerPointToLayerPoint": [MockFunction],
+                      "createPane": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "pane-1",
+                            undefined,
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "distance": [MockFunction],
+                      "eachLayer": [MockFunction],
+                      "fire": [Function],
+                      "fireEvent": [Function],
+                      "fitBounds": [MockFunction],
+                      "fitWorld": [MockFunction],
+                      "flyTo": [MockFunction],
+                      "flyToBounds": [MockFunction],
+                      "getBounds": [MockFunction],
+                      "getBoundsZoom": [MockFunction],
+                      "getCenter": [MockFunction],
+                      "getContainer": [MockFunction],
+                      "getMaxZoom": [MockFunction],
+                      "getMinZoom": [MockFunction],
+                      "getPane": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "pane-1",
+                          ],
+                          Array [
+                            "pane-1",
+                          ],
+                          Array [
+                            "pane-1",
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "getPanes": [MockFunction],
+                      "getPixelBounds": [MockFunction],
+                      "getPixelOrigin": [MockFunction],
+                      "getPixelWorldBounds": [MockFunction],
+                      "getRenderer": [MockFunction],
+                      "getScaleZoom": [MockFunction],
+                      "getSize": [MockFunction],
+                      "getZoom": [MockFunction],
+                      "getZoomScale": [MockFunction],
+                      "hasEventListeners": [Function],
+                      "hasLayer": [MockFunction],
+                      "initialize": [MockFunction],
+                      "invalidateSize": [MockFunction],
+                      "latLngToContainerPoint": [MockFunction],
+                      "latLngToLayerPoint": [MockFunction],
+                      "layerPointToContainerPoint": [MockFunction],
+                      "layerPointToLatLng": [MockFunction],
+                      "listens": [Function],
+                      "locate": [MockFunction],
+                      "mouseEventToContainerPoint": [MockFunction],
+                      "mouseEventToLatLng": [MockFunction],
+                      "mouseEventToLayerPoint": [MockFunction],
+                      "off": [Function],
+                      "on": [Function],
+                      "once": [Function],
+                      "openPopup": [MockFunction],
+                      "openTooltip": [MockFunction],
+                      "options": Object {
+                        "attributionControl": true,
+                        "bounceAtZoomLimits": true,
+                        "boxZoom": true,
+                        "center": undefined,
+                        "closePopupOnClick": true,
+                        "crs": Object {
+                          "R": 6371000,
+                          "code": "EPSG:3857",
+                          "distance": [Function],
+                          "getProjectedBounds": [Function],
+                          "infinite": false,
+                          "latLngToPoint": [Function],
+                          "pointToLatLng": [Function],
+                          "project": [Function],
+                          "projection": Object {
+                            "MAX_LATITUDE": 85.0511287798,
+                            "R": 6378137,
+                            "bounds": Object {
+                              "max": Object {
+                                "x": 20037508.342789244,
+                                "y": 20037508.342789244,
+                              },
+                              "min": Object {
+                                "x": -20037508.342789244,
+                                "y": -20037508.342789244,
+                              },
+                            },
+                            "project": [Function],
+                            "unproject": [Function],
+                          },
+                          "scale": [Function],
+                          "transformation": Object {
+                            "_a": 2.495320233665337e-8,
+                            "_b": 0.5,
+                            "_c": -2.495320233665337e-8,
+                            "_d": 0.5,
+                          },
+                          "unproject": [Function],
+                          "wrapLatLng": [Function],
+                          "wrapLatLngBounds": [Function],
+                          "wrapLng": Array [
+                            -180,
+                            180,
+                          ],
+                          "zoom": [Function],
+                        },
+                        "doubleClickZoom": true,
+                        "dragging": true,
+                        "easeLinearity": 0.2,
+                        "fadeAnimation": true,
+                        "inertia": true,
+                        "inertiaDeceleration": 3400,
+                        "inertiaMaxSpeed": Infinity,
+                        "keyboard": true,
+                        "keyboardPanDelta": 80,
+                        "layers": Array [],
+                        "markerZoomAnimation": true,
+                        "maxBounds": undefined,
+                        "maxBoundsViscosity": 0,
+                        "maxZoom": undefined,
+                        "minZoom": undefined,
+                        "renderer": undefined,
+                        "scrollWheelZoom": true,
+                        "tap": true,
+                        "tapTolerance": 15,
+                        "touchZoom": undefined,
+                        "trackResize": true,
+                        "transform3DLimit": 8388608,
+                        "wheelDebounceTime": 40,
+                        "wheelPxPerZoomLevel": 60,
+                        "worldCopyJump": false,
+                        "zoom": undefined,
+                        "zoomAnimation": true,
+                        "zoomAnimationThreshold": 4,
+                        "zoomControl": true,
+                        "zoomDelta": 1,
+                        "zoomSnap": 1,
+                      },
+                      "panBy": [MockFunction],
+                      "panInside": [MockFunction],
+                      "panInsideBounds": [MockFunction],
+                      "panTo": [MockFunction],
+                      "project": [MockFunction],
+                      "remove": [MockFunction],
+                      "removeControl": [MockFunction],
+                      "removeEventListener": [Function],
+                      "removeEventParent": [Function],
+                      "removeLayer": [MockFunction],
+                      "setMaxBounds": [MockFunction],
+                      "setMaxZoom": [MockFunction],
+                      "setMinZoom": [MockFunction],
+                      "setView": [MockFunction],
+                      "setZoom": [MockFunction],
+                      "setZoomAround": [MockFunction],
+                      "stop": [MockFunction],
+                      "stopLocate": [MockFunction],
+                      "unproject": [MockFunction],
+                      "whenReady": [MockFunction],
+                      "wrapLatLng": [MockFunction],
+                      "wrapLatLngBounds": [MockFunction],
+                      "zoomIn": [MockFunction],
+                      "zoomOut": [MockFunction],
+                    },
+                  }
+                }
                 zIndex={500}
-              />
+              >
+                <div
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                >
+                  <DynamicMockedComponent
+                    activeTrips={
+                      Array [
+                        "abcd",
+                      ]
+                    }
+                    color="#b623c9"
+                    feed={
+                      Object {
+                        "checksum": "MOCK",
+                        "id": "1",
+                        "name": "1",
+                        "routes": Array [
+                          Object {
+                            "label": "mock-route-label",
+                            "patterns": Array [
+                              Object {
+                                "geometry": Object {
+                                  "coordinates": Array [
+                                    Array [
+                                      -122.0246,
+                                      36.9707,
+                                    ],
+                                    Array [
+                                      -122.0279,
+                                      37.049,
+                                    ],
+                                    Array [
+                                      -121.9799,
+                                      37.2299,
+                                    ],
+                                    Array [
+                                      -121.9445,
+                                      37.324,
+                                    ],
+                                    Array [
+                                      -121.936,
+                                      37.353,
+                                    ],
+                                    Array [
+                                      -121.924,
+                                      37.365,
+                                    ],
+                                  ],
+                                  "type": "LineString",
+                                },
+                                "name": "Mock Pattern",
+                                "pattern_id": "mock-pattern-id",
+                                "stops": Array [
+                                  Object {
+                                    "stop_id": "1",
+                                    "stop_lat": 36.9707,
+                                    "stop_lon": -122.0246,
+                                    "stop_name": "Santa Cruz",
+                                  },
+                                  Object {
+                                    "stop_id": "2",
+                                    "stop_lat": 37.049,
+                                    "stop_lon": -122.0279,
+                                    "stop_name": "Scotts Valley",
+                                  },
+                                ],
+                                "trips": Array [
+                                  Object {
+                                    "duration": 1234,
+                                    "end_time": 13579,
+                                    "start_time": 12345,
+                                    "trip_headsign": "To Downtown",
+                                    "trip_id": "abcd",
+                                    "trip_short_name": "The Express",
+                                  },
+                                ],
+                              },
+                            ],
+                            "route_id": "route1",
+                          },
+                        ],
+                        "stops": Array [
+                          Object {
+                            "stop_id": "1",
+                            "stop_lat": 36.9707,
+                            "stop_lon": -122.0246,
+                            "stop_name": "Santa Cruz",
+                          },
+                          Object {
+                            "stop_id": "2",
+                            "stop_lat": 37.049,
+                            "stop_lon": -122.0279,
+                            "stop_name": "Scotts Valley",
+                          },
+                        ],
+                        "stopsById": Object {
+                          "1": Object {
+                            "stop_id": "1",
+                            "stop_lat": 36.9707,
+                            "stop_lon": -122.0246,
+                            "stop_name": "Santa Cruz",
+                          },
+                          "2": Object {
+                            "stop_id": "2",
+                            "stop_lat": 37.049,
+                            "stop_lon": -122.0279,
+                            "stop_name": "Scotts Valley",
+                          },
+                        },
+                      }
+                    }
+                    modification={
+                      Object {
+                        "_id": "1234",
+                        "accessGroup": "accessGroupName",
+                        "bidirectional": false,
+                        "createdAt": "2017-11-08T12:30:50.133Z",
+                        "createdBy": "person@gmail.com",
+                        "description": "Mock description",
+                        "entries": Array [],
+                        "feed": "1",
+                        "name": "Test Modification",
+                        "nonce": "12345",
+                        "projectId": "1",
+                        "routes": Array [
+                          "route1",
+                        ],
+                        "segments": Array [
+                          Object {
+                            "fromStopId": "1",
+                            "geometry": Object {
+                              "coordinates": Array [
+                                Array [
+                                  -122.0246,
+                                  36.9707,
+                                ],
+                                Array [
+                                  -122.0279,
+                                  37.049,
+                                ],
+                                Array [
+                                  -121.9799,
+                                  37.2299,
+                                ],
+                                Array [
+                                  -121.9445,
+                                  37.324,
+                                ],
+                                Array [
+                                  -121.936,
+                                  37.353,
+                                ],
+                                Array [
+                                  -121.924,
+                                  37.365,
+                                ],
+                              ],
+                              "type": "LineString",
+                            },
+                            "spacing": 3000,
+                            "stopAtEnd": false,
+                            "stopAtStart": false,
+                            "toStopId": null,
+                          },
+                        ],
+                        "timetables": Array [
+                          Object {
+                            "_id": "timetable-id",
+                            "dwellTime": 10,
+                            "dwellTimes": Array [
+                              12,
+                            ],
+                            "endTime": 57600,
+                            "exactTimes": false,
+                            "friday": true,
+                            "headwaySecs": 900,
+                            "modificationId": "1234",
+                            "modificationName": "Test Modification",
+                            "monday": true,
+                            "name": "Test timetable",
+                            "patternTrips": Array [
+                              "abcd",
+                            ],
+                            "phaseAtStop": "",
+                            "phaseFromStop": "",
+                            "phaseFromTimetable": "",
+                            "phaseSeconds": 300,
+                            "saturday": false,
+                            "segmentSpeeds": Array [],
+                            "sourceTrip": "abcd",
+                            "startTime": 28800,
+                            "sunday": false,
+                            "thursday": true,
+                            "tuesday": true,
+                            "wednesday": true,
+                          },
+                        ],
+                        "trips": Array [
+                          "abcd",
+                        ],
+                        "type": "add-trip-pattern",
+                        "updatedAt": "2017-11-08T12:31:19.602Z",
+                        "updatedBy": "person@gmail.com",
+                        "variants": Array [
+                          true,
+                        ],
+                      }
+                    }
+                  />
+                </div>
+              </Pane>
             </ForwardRef(Leaflet(Pane))>
           </div>
         </InternalPane>
-        <SelectFeedAndRoutes
-          allowMultipleRoutes={true}
+        <Box
           key=".4"
-          onChange={[Function]}
-          selectedRouteIds={
-            Array [
-              "route1",
-            ]
-          }
         >
-          <Stack
-            spacing={4}
+          <div
+            className="css-0"
           >
-            <Styled(div)
-              __css={
-                Object {
-                  "& > *:not(style) ~ *:not(style)": Object {
-                    "marginStart": 0,
-                    "marginTop": 4,
-                  },
-                }
+            <SelectFeedAndRoutes
+              allowMultipleRoutes={true}
+              onChange={[Function]}
+              selectedRouteIds={
+                Array [
+                  "route1",
+                ]
               }
-              className="chakra-stack"
-              display="flex"
-              flexDirection="column"
             >
-              <div
-                className="chakra-stack css-4daikc"
+              <Stack
+                spacing={4}
               >
-                <FormControl
-                  key=".0"
-                >
-                  <Styled(div)
-                    __css={
-                      Object {
-                        "position": "relative",
-                        "width": "100%",
-                      }
+                <Styled(div)
+                  __css={
+                    Object {
+                      "& > *:not(style) ~ *:not(style)": Object {
+                        "marginBottom": 0,
+                        "marginEnd": 0,
+                        "marginStart": 0,
+                        "marginTop": 4,
+                      },
                     }
-                    className="chakra-form-control"
-                    role="group"
+                  }
+                  className="chakra-stack"
+                  display="flex"
+                  flexDirection="column"
+                >
+                  <div
+                    className="chakra-stack css-egoftb"
                   >
-                    <div
-                      className="chakra-form-control css-1kxonj9"
-                      role="group"
+                    <FormControl
+                      key=".0"
                     >
-                      <FormLabel
-                        htmlFor="Feed"
-                      >
-                        <Styled(label)
-                          __css={
-                            Object {
-                              "_disabled": Object {
-                                "opacity": 0.4,
-                              },
-                              "display": "block",
-                              "fontSize": "md",
-                              "fontWeight": "medium",
-                              "marginEnd": 3,
-                              "mb": 2,
-                              "opacity": 1,
-                              "textAlign": "start",
-                              "transition": "all 0.2s",
-                            }
+                      <Styled(div)
+                        __css={
+                          Object {
+                            "position": "relative",
+                            "width": "100%",
                           }
-                          className="chakra-form__label"
-                          htmlFor="Feed"
-                          id="field-1-label"
+                        }
+                        className="chakra-form-control"
+                        role="group"
+                      >
+                        <div
+                          className="chakra-form-control css-1kxonj9"
+                          role="group"
                         >
-                          <label
-                            className="chakra-form__label css-1qqx8g3"
+                          <FormLabel
                             htmlFor="Feed"
-                            id="field-1-label"
                           >
-                            Select feed
-                          </label>
-                        </Styled(label)>
-                      </FormLabel>
-                      <ForwardRef
-                        getOptionLabel={[Function]}
-                        getOptionValue={[Function]}
-                        inputId="Feed"
-                        name="Feed"
-                        onChange={[Function]}
-                        options={
-                          Array [
-                            Object {
-                              "checksum": "MOCK",
-                              "id": "1",
-                              "name": "1",
-                              "routes": Array [
+                            <Styled(label)
+                              __css={
                                 Object {
-                                  "label": "mock-route-label",
-                                  "patterns": Array [
+                                  "_disabled": Object {
+                                    "opacity": 0.4,
+                                  },
+                                  "display": "block",
+                                  "fontSize": "md",
+                                  "fontWeight": "medium",
+                                  "marginEnd": 3,
+                                  "mb": 2,
+                                  "opacity": 1,
+                                  "textAlign": "start",
+                                  "transition": "all 0.2s",
+                                }
+                              }
+                              className="chakra-form__label"
+                              htmlFor="Feed"
+                              id="field-1-label"
+                            >
+                              <label
+                                className="chakra-form__label css-10m1y3x"
+                                htmlFor="Feed"
+                                id="field-1-label"
+                              >
+                                Select feed
+                              </label>
+                            </Styled(label)>
+                          </FormLabel>
+                          <ForwardRef
+                            getOptionLabel={[Function]}
+                            getOptionValue={[Function]}
+                            inputId="Feed"
+                            name="Feed"
+                            onChange={[Function]}
+                            options={
+                              Array [
+                                Object {
+                                  "checksum": "MOCK",
+                                  "id": "1",
+                                  "name": "1",
+                                  "routes": Array [
                                     Object {
-                                      "geometry": Object {
-                                        "coordinates": Array [
-                                          Array [
-                                            -122.0246,
-                                            36.9707,
-                                          ],
-                                          Array [
-                                            -122.0279,
-                                            37.049,
-                                          ],
-                                          Array [
-                                            -121.9799,
-                                            37.2299,
-                                          ],
-                                          Array [
-                                            -121.9445,
-                                            37.324,
-                                          ],
-                                          Array [
-                                            -121.936,
-                                            37.353,
-                                          ],
-                                          Array [
-                                            -121.924,
-                                            37.365,
-                                          ],
-                                        ],
-                                        "type": "LineString",
-                                      },
-                                      "name": "Mock Pattern",
-                                      "pattern_id": "mock-pattern-id",
-                                      "stops": Array [
+                                      "label": "mock-route-label",
+                                      "patterns": Array [
                                         Object {
-                                          "stop_id": "1",
-                                          "stop_lat": 36.9707,
-                                          "stop_lon": -122.0246,
-                                          "stop_name": "Santa Cruz",
-                                        },
-                                        Object {
-                                          "stop_id": "2",
-                                          "stop_lat": 37.049,
-                                          "stop_lon": -122.0279,
-                                          "stop_name": "Scotts Valley",
+                                          "geometry": Object {
+                                            "coordinates": Array [
+                                              Array [
+                                                -122.0246,
+                                                36.9707,
+                                              ],
+                                              Array [
+                                                -122.0279,
+                                                37.049,
+                                              ],
+                                              Array [
+                                                -121.9799,
+                                                37.2299,
+                                              ],
+                                              Array [
+                                                -121.9445,
+                                                37.324,
+                                              ],
+                                              Array [
+                                                -121.936,
+                                                37.353,
+                                              ],
+                                              Array [
+                                                -121.924,
+                                                37.365,
+                                              ],
+                                            ],
+                                            "type": "LineString",
+                                          },
+                                          "name": "Mock Pattern",
+                                          "pattern_id": "mock-pattern-id",
+                                          "stops": Array [
+                                            Object {
+                                              "stop_id": "1",
+                                              "stop_lat": 36.9707,
+                                              "stop_lon": -122.0246,
+                                              "stop_name": "Santa Cruz",
+                                            },
+                                            Object {
+                                              "stop_id": "2",
+                                              "stop_lat": 37.049,
+                                              "stop_lon": -122.0279,
+                                              "stop_name": "Scotts Valley",
+                                            },
+                                          ],
+                                          "trips": Array [
+                                            Object {
+                                              "duration": 1234,
+                                              "end_time": 13579,
+                                              "start_time": 12345,
+                                              "trip_headsign": "To Downtown",
+                                              "trip_id": "abcd",
+                                              "trip_short_name": "The Express",
+                                            },
+                                          ],
                                         },
                                       ],
-                                      "trips": Array [
-                                        Object {
-                                          "duration": 1234,
-                                          "end_time": 13579,
-                                          "start_time": 12345,
-                                          "trip_headsign": "To Downtown",
-                                          "trip_id": "abcd",
-                                          "trip_short_name": "The Express",
-                                        },
-                                      ],
+                                      "route_id": "route1",
                                     },
                                   ],
-                                  "route_id": "route1",
-                                },
-                              ],
-                              "stops": Array [
-                                Object {
-                                  "stop_id": "1",
-                                  "stop_lat": 36.9707,
-                                  "stop_lon": -122.0246,
-                                  "stop_name": "Santa Cruz",
-                                },
-                                Object {
-                                  "stop_id": "2",
-                                  "stop_lat": 37.049,
-                                  "stop_lon": -122.0279,
-                                  "stop_name": "Scotts Valley",
-                                },
-                              ],
-                              "stopsById": Object {
-                                "1": Object {
-                                  "stop_id": "1",
-                                  "stop_lat": 36.9707,
-                                  "stop_lon": -122.0246,
-                                  "stop_name": "Santa Cruz",
-                                },
-                                "2": Object {
-                                  "stop_id": "2",
-                                  "stop_lat": 37.049,
-                                  "stop_lon": -122.0279,
-                                  "stop_name": "Scotts Valley",
-                                },
-                              },
-                            },
-                          ]
-                        }
-                        placeholder="Select feed"
-                        value={
-                          Object {
-                            "checksum": "MOCK",
-                            "id": "1",
-                            "name": "1",
-                            "routes": Array [
-                              Object {
-                                "label": "mock-route-label",
-                                "patterns": Array [
-                                  Object {
-                                    "geometry": Object {
-                                      "coordinates": Array [
-                                        Array [
-                                          -122.0246,
-                                          36.9707,
-                                        ],
-                                        Array [
-                                          -122.0279,
-                                          37.049,
-                                        ],
-                                        Array [
-                                          -121.9799,
-                                          37.2299,
-                                        ],
-                                        Array [
-                                          -121.9445,
-                                          37.324,
-                                        ],
-                                        Array [
-                                          -121.936,
-                                          37.353,
-                                        ],
-                                        Array [
-                                          -121.924,
-                                          37.365,
-                                        ],
-                                      ],
-                                      "type": "LineString",
+                                  "stops": Array [
+                                    Object {
+                                      "stop_id": "1",
+                                      "stop_lat": 36.9707,
+                                      "stop_lon": -122.0246,
+                                      "stop_name": "Santa Cruz",
                                     },
-                                    "name": "Mock Pattern",
-                                    "pattern_id": "mock-pattern-id",
-                                    "stops": Array [
-                                      Object {
-                                        "stop_id": "1",
-                                        "stop_lat": 36.9707,
-                                        "stop_lon": -122.0246,
-                                        "stop_name": "Santa Cruz",
-                                      },
-                                      Object {
-                                        "stop_id": "2",
-                                        "stop_lat": 37.049,
-                                        "stop_lon": -122.0279,
-                                        "stop_name": "Scotts Valley",
-                                      },
-                                    ],
-                                    "trips": Array [
-                                      Object {
-                                        "duration": 1234,
-                                        "end_time": 13579,
-                                        "start_time": 12345,
-                                        "trip_headsign": "To Downtown",
-                                        "trip_id": "abcd",
-                                        "trip_short_name": "The Express",
-                                      },
-                                    ],
+                                    Object {
+                                      "stop_id": "2",
+                                      "stop_lat": 37.049,
+                                      "stop_lon": -122.0279,
+                                      "stop_name": "Scotts Valley",
+                                    },
+                                  ],
+                                  "stopsById": Object {
+                                    "1": Object {
+                                      "stop_id": "1",
+                                      "stop_lat": 36.9707,
+                                      "stop_lon": -122.0246,
+                                      "stop_name": "Santa Cruz",
+                                    },
+                                    "2": Object {
+                                      "stop_id": "2",
+                                      "stop_lat": 37.049,
+                                      "stop_lon": -122.0279,
+                                      "stop_name": "Scotts Valley",
+                                    },
                                   },
-                                ],
-                                "route_id": "route1",
-                              },
-                            ],
-                            "stops": Array [
-                              Object {
-                                "stop_id": "1",
-                                "stop_lat": 36.9707,
-                                "stop_lon": -122.0246,
-                                "stop_name": "Santa Cruz",
-                              },
-                              Object {
-                                "stop_id": "2",
-                                "stop_lat": 37.049,
-                                "stop_lon": -122.0279,
-                                "stop_name": "Scotts Valley",
-                              },
-                            ],
-                            "stopsById": Object {
-                              "1": Object {
-                                "stop_id": "1",
-                                "stop_lat": 36.9707,
-                                "stop_lon": -122.0246,
-                                "stop_name": "Santa Cruz",
-                              },
-                              "2": Object {
-                                "stop_id": "2",
-                                "stop_lat": 37.049,
-                                "stop_lon": -122.0279,
-                                "stop_name": "Scotts Valley",
-                              },
-                            },
-                          }
-                        }
-                      >
-                        <ReactSelect
-                          getOptionLabel={[Function]}
-                          getOptionValue={[Function]}
-                          innerRef={null}
-                          inputId="Feed"
-                          name="Feed"
-                          onChange={[Function]}
-                          options={
-                            Array [
+                                },
+                              ]
+                            }
+                            placeholder="Select feed"
+                            value={
                               Object {
                                 "checksum": "MOCK",
                                 "id": "1",
@@ -659,23 +1606,293 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                                     "stop_name": "Scotts Valley",
                                   },
                                 },
-                              },
-                            ]
-                          }
-                          placeholder="Select feed"
-                          styles={
-                            Object {
-                              "control": [Function],
-                              "menu": [Function],
-                              "option": [Function],
+                              }
                             }
+                          >
+                            <ReactSelect
+                              getOptionLabel={[Function]}
+                              getOptionValue={[Function]}
+                              innerRef={null}
+                              inputId="Feed"
+                              name="Feed"
+                              onChange={[Function]}
+                              options={
+                                Array [
+                                  Object {
+                                    "checksum": "MOCK",
+                                    "id": "1",
+                                    "name": "1",
+                                    "routes": Array [
+                                      Object {
+                                        "label": "mock-route-label",
+                                        "patterns": Array [
+                                          Object {
+                                            "geometry": Object {
+                                              "coordinates": Array [
+                                                Array [
+                                                  -122.0246,
+                                                  36.9707,
+                                                ],
+                                                Array [
+                                                  -122.0279,
+                                                  37.049,
+                                                ],
+                                                Array [
+                                                  -121.9799,
+                                                  37.2299,
+                                                ],
+                                                Array [
+                                                  -121.9445,
+                                                  37.324,
+                                                ],
+                                                Array [
+                                                  -121.936,
+                                                  37.353,
+                                                ],
+                                                Array [
+                                                  -121.924,
+                                                  37.365,
+                                                ],
+                                              ],
+                                              "type": "LineString",
+                                            },
+                                            "name": "Mock Pattern",
+                                            "pattern_id": "mock-pattern-id",
+                                            "stops": Array [
+                                              Object {
+                                                "stop_id": "1",
+                                                "stop_lat": 36.9707,
+                                                "stop_lon": -122.0246,
+                                                "stop_name": "Santa Cruz",
+                                              },
+                                              Object {
+                                                "stop_id": "2",
+                                                "stop_lat": 37.049,
+                                                "stop_lon": -122.0279,
+                                                "stop_name": "Scotts Valley",
+                                              },
+                                            ],
+                                            "trips": Array [
+                                              Object {
+                                                "duration": 1234,
+                                                "end_time": 13579,
+                                                "start_time": 12345,
+                                                "trip_headsign": "To Downtown",
+                                                "trip_id": "abcd",
+                                                "trip_short_name": "The Express",
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                        "route_id": "route1",
+                                      },
+                                    ],
+                                    "stops": Array [
+                                      Object {
+                                        "stop_id": "1",
+                                        "stop_lat": 36.9707,
+                                        "stop_lon": -122.0246,
+                                        "stop_name": "Santa Cruz",
+                                      },
+                                      Object {
+                                        "stop_id": "2",
+                                        "stop_lat": 37.049,
+                                        "stop_lon": -122.0279,
+                                        "stop_name": "Scotts Valley",
+                                      },
+                                    ],
+                                    "stopsById": Object {
+                                      "1": Object {
+                                        "stop_id": "1",
+                                        "stop_lat": 36.9707,
+                                        "stop_lon": -122.0246,
+                                        "stop_name": "Santa Cruz",
+                                      },
+                                      "2": Object {
+                                        "stop_id": "2",
+                                        "stop_lat": 37.049,
+                                        "stop_lon": -122.0279,
+                                        "stop_name": "Scotts Valley",
+                                      },
+                                    },
+                                  },
+                                ]
+                              }
+                              placeholder="Select feed"
+                              styles={
+                                Object {
+                                  "control": [Function],
+                                  "menu": [Function],
+                                  "option": [Function],
+                                }
+                              }
+                              value={
+                                Object {
+                                  "checksum": "MOCK",
+                                  "id": "1",
+                                  "name": "1",
+                                  "routes": Array [
+                                    Object {
+                                      "label": "mock-route-label",
+                                      "patterns": Array [
+                                        Object {
+                                          "geometry": Object {
+                                            "coordinates": Array [
+                                              Array [
+                                                -122.0246,
+                                                36.9707,
+                                              ],
+                                              Array [
+                                                -122.0279,
+                                                37.049,
+                                              ],
+                                              Array [
+                                                -121.9799,
+                                                37.2299,
+                                              ],
+                                              Array [
+                                                -121.9445,
+                                                37.324,
+                                              ],
+                                              Array [
+                                                -121.936,
+                                                37.353,
+                                              ],
+                                              Array [
+                                                -121.924,
+                                                37.365,
+                                              ],
+                                            ],
+                                            "type": "LineString",
+                                          },
+                                          "name": "Mock Pattern",
+                                          "pattern_id": "mock-pattern-id",
+                                          "stops": Array [
+                                            Object {
+                                              "stop_id": "1",
+                                              "stop_lat": 36.9707,
+                                              "stop_lon": -122.0246,
+                                              "stop_name": "Santa Cruz",
+                                            },
+                                            Object {
+                                              "stop_id": "2",
+                                              "stop_lat": 37.049,
+                                              "stop_lon": -122.0279,
+                                              "stop_name": "Scotts Valley",
+                                            },
+                                          ],
+                                          "trips": Array [
+                                            Object {
+                                              "duration": 1234,
+                                              "end_time": 13579,
+                                              "start_time": 12345,
+                                              "trip_headsign": "To Downtown",
+                                              "trip_id": "abcd",
+                                              "trip_short_name": "The Express",
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                      "route_id": "route1",
+                                    },
+                                  ],
+                                  "stops": Array [
+                                    Object {
+                                      "stop_id": "1",
+                                      "stop_lat": 36.9707,
+                                      "stop_lon": -122.0246,
+                                      "stop_name": "Santa Cruz",
+                                    },
+                                    Object {
+                                      "stop_id": "2",
+                                      "stop_lat": 37.049,
+                                      "stop_lon": -122.0279,
+                                      "stop_name": "Scotts Valley",
+                                    },
+                                  ],
+                                  "stopsById": Object {
+                                    "1": Object {
+                                      "stop_id": "1",
+                                      "stop_lat": 36.9707,
+                                      "stop_lon": -122.0246,
+                                      "stop_name": "Santa Cruz",
+                                    },
+                                    "2": Object {
+                                      "stop_id": "2",
+                                      "stop_lat": 37.049,
+                                      "stop_lon": -122.0279,
+                                      "stop_name": "Scotts Valley",
+                                    },
+                                  },
+                                }
+                              }
+                            >
+                              <div
+                                className="ReactSelectMock"
+                              />
+                            </ReactSelect>
+                          </ForwardRef>
+                        </div>
+                      </Styled(div)>
+                    </FormControl>
+                    <FormControl
+                      key=".1"
+                    >
+                      <Styled(div)
+                        __css={
+                          Object {
+                            "position": "relative",
+                            "width": "100%",
                           }
-                          value={
-                            Object {
-                              "checksum": "MOCK",
-                              "id": "1",
-                              "name": "1",
-                              "routes": Array [
+                        }
+                        className="chakra-form-control"
+                        role="group"
+                      >
+                        <div
+                          className="chakra-form-control css-1kxonj9"
+                          role="group"
+                        >
+                          <FormLabel
+                            htmlFor="Route"
+                          >
+                            <Styled(label)
+                              __css={
+                                Object {
+                                  "_disabled": Object {
+                                    "opacity": 0.4,
+                                  },
+                                  "display": "block",
+                                  "fontSize": "md",
+                                  "fontWeight": "medium",
+                                  "marginEnd": 3,
+                                  "mb": 2,
+                                  "opacity": 1,
+                                  "textAlign": "start",
+                                  "transition": "all 0.2s",
+                                }
+                              }
+                              className="chakra-form__label"
+                              htmlFor="Route"
+                              id="field-2-label"
+                            >
+                              <label
+                                className="chakra-form__label css-10m1y3x"
+                                htmlFor="Route"
+                                id="field-2-label"
+                              >
+                                Select route
+                              </label>
+                            </Styled(label)>
+                          </FormLabel>
+                          <ForwardRef
+                            getOptionLabel={[Function]}
+                            getOptionValue={[Function]}
+                            inputId="Route"
+                            isMulti={true}
+                            name="Route"
+                            onChange={[Function]}
+                            options={
+                              Array [
                                 Object {
                                   "label": "mock-route-label",
                                   "patterns": Array [
@@ -739,401 +1956,242 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                                   ],
                                   "route_id": "route1",
                                 },
-                              ],
-                              "stops": Array [
-                                Object {
-                                  "stop_id": "1",
-                                  "stop_lat": 36.9707,
-                                  "stop_lon": -122.0246,
-                                  "stop_name": "Santa Cruz",
-                                },
-                                Object {
-                                  "stop_id": "2",
-                                  "stop_lat": 37.049,
-                                  "stop_lon": -122.0279,
-                                  "stop_name": "Scotts Valley",
-                                },
-                              ],
-                              "stopsById": Object {
-                                "1": Object {
-                                  "stop_id": "1",
-                                  "stop_lat": 36.9707,
-                                  "stop_lon": -122.0246,
-                                  "stop_name": "Santa Cruz",
-                                },
-                                "2": Object {
-                                  "stop_id": "2",
-                                  "stop_lat": 37.049,
-                                  "stop_lon": -122.0279,
-                                  "stop_name": "Scotts Valley",
-                                },
-                              },
+                              ]
                             }
-                          }
-                        >
-                          <div
-                            className="ReactSelectMock"
-                          />
-                        </ReactSelect>
-                      </ForwardRef>
-                    </div>
-                  </Styled(div)>
-                </FormControl>
-                <FormControl
-                  key=".1"
-                >
-                  <Styled(div)
-                    __css={
-                      Object {
-                        "position": "relative",
-                        "width": "100%",
-                      }
-                    }
-                    className="chakra-form-control"
-                    role="group"
-                  >
-                    <div
-                      className="chakra-form-control css-1kxonj9"
-                      role="group"
-                    >
-                      <FormLabel
-                        htmlFor="Route"
-                      >
-                        <Styled(label)
-                          __css={
-                            Object {
-                              "_disabled": Object {
-                                "opacity": 0.4,
-                              },
-                              "display": "block",
-                              "fontSize": "md",
-                              "fontWeight": "medium",
-                              "marginEnd": 3,
-                              "mb": 2,
-                              "opacity": 1,
-                              "textAlign": "start",
-                              "transition": "all 0.2s",
+                            placeholder="Select route"
+                            value={
+                              Array [
+                                Object {
+                                  "label": "mock-route-label",
+                                  "patterns": Array [
+                                    Object {
+                                      "geometry": Object {
+                                        "coordinates": Array [
+                                          Array [
+                                            -122.0246,
+                                            36.9707,
+                                          ],
+                                          Array [
+                                            -122.0279,
+                                            37.049,
+                                          ],
+                                          Array [
+                                            -121.9799,
+                                            37.2299,
+                                          ],
+                                          Array [
+                                            -121.9445,
+                                            37.324,
+                                          ],
+                                          Array [
+                                            -121.936,
+                                            37.353,
+                                          ],
+                                          Array [
+                                            -121.924,
+                                            37.365,
+                                          ],
+                                        ],
+                                        "type": "LineString",
+                                      },
+                                      "name": "Mock Pattern",
+                                      "pattern_id": "mock-pattern-id",
+                                      "stops": Array [
+                                        Object {
+                                          "stop_id": "1",
+                                          "stop_lat": 36.9707,
+                                          "stop_lon": -122.0246,
+                                          "stop_name": "Santa Cruz",
+                                        },
+                                        Object {
+                                          "stop_id": "2",
+                                          "stop_lat": 37.049,
+                                          "stop_lon": -122.0279,
+                                          "stop_name": "Scotts Valley",
+                                        },
+                                      ],
+                                      "trips": Array [
+                                        Object {
+                                          "duration": 1234,
+                                          "end_time": 13579,
+                                          "start_time": 12345,
+                                          "trip_headsign": "To Downtown",
+                                          "trip_id": "abcd",
+                                          "trip_short_name": "The Express",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  "route_id": "route1",
+                                },
+                              ]
                             }
-                          }
-                          className="chakra-form__label"
-                          htmlFor="Route"
-                          id="field-2-label"
-                        >
-                          <label
-                            className="chakra-form__label css-1qqx8g3"
-                            htmlFor="Route"
-                            id="field-2-label"
                           >
-                            Select route
-                          </label>
-                        </Styled(label)>
-                      </FormLabel>
-                      <ForwardRef
-                        getOptionLabel={[Function]}
-                        getOptionValue={[Function]}
-                        inputId="Route"
-                        isMulti={true}
-                        name="Route"
-                        onChange={[Function]}
-                        options={
-                          Array [
-                            Object {
-                              "label": "mock-route-label",
-                              "patterns": Array [
-                                Object {
-                                  "geometry": Object {
-                                    "coordinates": Array [
-                                      Array [
-                                        -122.0246,
-                                        36.9707,
-                                      ],
-                                      Array [
-                                        -122.0279,
-                                        37.049,
-                                      ],
-                                      Array [
-                                        -121.9799,
-                                        37.2299,
-                                      ],
-                                      Array [
-                                        -121.9445,
-                                        37.324,
-                                      ],
-                                      Array [
-                                        -121.936,
-                                        37.353,
-                                      ],
-                                      Array [
-                                        -121.924,
-                                        37.365,
-                                      ],
-                                    ],
-                                    "type": "LineString",
-                                  },
-                                  "name": "Mock Pattern",
-                                  "pattern_id": "mock-pattern-id",
-                                  "stops": Array [
-                                    Object {
-                                      "stop_id": "1",
-                                      "stop_lat": 36.9707,
-                                      "stop_lon": -122.0246,
-                                      "stop_name": "Santa Cruz",
-                                    },
-                                    Object {
-                                      "stop_id": "2",
-                                      "stop_lat": 37.049,
-                                      "stop_lon": -122.0279,
-                                      "stop_name": "Scotts Valley",
-                                    },
-                                  ],
-                                  "trips": Array [
-                                    Object {
-                                      "duration": 1234,
-                                      "end_time": 13579,
-                                      "start_time": 12345,
-                                      "trip_headsign": "To Downtown",
-                                      "trip_id": "abcd",
-                                      "trip_short_name": "The Express",
-                                    },
-                                  ],
-                                },
-                              ],
-                              "route_id": "route1",
-                            },
-                          ]
-                        }
-                        placeholder="Select route"
-                        value={
-                          Array [
-                            Object {
-                              "label": "mock-route-label",
-                              "patterns": Array [
-                                Object {
-                                  "geometry": Object {
-                                    "coordinates": Array [
-                                      Array [
-                                        -122.0246,
-                                        36.9707,
-                                      ],
-                                      Array [
-                                        -122.0279,
-                                        37.049,
-                                      ],
-                                      Array [
-                                        -121.9799,
-                                        37.2299,
-                                      ],
-                                      Array [
-                                        -121.9445,
-                                        37.324,
-                                      ],
-                                      Array [
-                                        -121.936,
-                                        37.353,
-                                      ],
-                                      Array [
-                                        -121.924,
-                                        37.365,
-                                      ],
-                                    ],
-                                    "type": "LineString",
-                                  },
-                                  "name": "Mock Pattern",
-                                  "pattern_id": "mock-pattern-id",
-                                  "stops": Array [
-                                    Object {
-                                      "stop_id": "1",
-                                      "stop_lat": 36.9707,
-                                      "stop_lon": -122.0246,
-                                      "stop_name": "Santa Cruz",
-                                    },
-                                    Object {
-                                      "stop_id": "2",
-                                      "stop_lat": 37.049,
-                                      "stop_lon": -122.0279,
-                                      "stop_name": "Scotts Valley",
-                                    },
-                                  ],
-                                  "trips": Array [
-                                    Object {
-                                      "duration": 1234,
-                                      "end_time": 13579,
-                                      "start_time": 12345,
-                                      "trip_headsign": "To Downtown",
-                                      "trip_id": "abcd",
-                                      "trip_short_name": "The Express",
-                                    },
-                                  ],
-                                },
-                              ],
-                              "route_id": "route1",
-                            },
-                          ]
-                        }
-                      >
-                        <ReactSelect
-                          getOptionLabel={[Function]}
-                          getOptionValue={[Function]}
-                          innerRef={null}
-                          inputId="Route"
-                          isMulti={true}
-                          name="Route"
-                          onChange={[Function]}
-                          options={
-                            Array [
-                              Object {
-                                "label": "mock-route-label",
-                                "patterns": Array [
+                            <ReactSelect
+                              getOptionLabel={[Function]}
+                              getOptionValue={[Function]}
+                              innerRef={null}
+                              inputId="Route"
+                              isMulti={true}
+                              name="Route"
+                              onChange={[Function]}
+                              options={
+                                Array [
                                   Object {
-                                    "geometry": Object {
-                                      "coordinates": Array [
-                                        Array [
-                                          -122.0246,
-                                          36.9707,
-                                        ],
-                                        Array [
-                                          -122.0279,
-                                          37.049,
-                                        ],
-                                        Array [
-                                          -121.9799,
-                                          37.2299,
-                                        ],
-                                        Array [
-                                          -121.9445,
-                                          37.324,
-                                        ],
-                                        Array [
-                                          -121.936,
-                                          37.353,
-                                        ],
-                                        Array [
-                                          -121.924,
-                                          37.365,
-                                        ],
-                                      ],
-                                      "type": "LineString",
-                                    },
-                                    "name": "Mock Pattern",
-                                    "pattern_id": "mock-pattern-id",
-                                    "stops": Array [
+                                    "label": "mock-route-label",
+                                    "patterns": Array [
                                       Object {
-                                        "stop_id": "1",
-                                        "stop_lat": 36.9707,
-                                        "stop_lon": -122.0246,
-                                        "stop_name": "Santa Cruz",
-                                      },
-                                      Object {
-                                        "stop_id": "2",
-                                        "stop_lat": 37.049,
-                                        "stop_lon": -122.0279,
-                                        "stop_name": "Scotts Valley",
+                                        "geometry": Object {
+                                          "coordinates": Array [
+                                            Array [
+                                              -122.0246,
+                                              36.9707,
+                                            ],
+                                            Array [
+                                              -122.0279,
+                                              37.049,
+                                            ],
+                                            Array [
+                                              -121.9799,
+                                              37.2299,
+                                            ],
+                                            Array [
+                                              -121.9445,
+                                              37.324,
+                                            ],
+                                            Array [
+                                              -121.936,
+                                              37.353,
+                                            ],
+                                            Array [
+                                              -121.924,
+                                              37.365,
+                                            ],
+                                          ],
+                                          "type": "LineString",
+                                        },
+                                        "name": "Mock Pattern",
+                                        "pattern_id": "mock-pattern-id",
+                                        "stops": Array [
+                                          Object {
+                                            "stop_id": "1",
+                                            "stop_lat": 36.9707,
+                                            "stop_lon": -122.0246,
+                                            "stop_name": "Santa Cruz",
+                                          },
+                                          Object {
+                                            "stop_id": "2",
+                                            "stop_lat": 37.049,
+                                            "stop_lon": -122.0279,
+                                            "stop_name": "Scotts Valley",
+                                          },
+                                        ],
+                                        "trips": Array [
+                                          Object {
+                                            "duration": 1234,
+                                            "end_time": 13579,
+                                            "start_time": 12345,
+                                            "trip_headsign": "To Downtown",
+                                            "trip_id": "abcd",
+                                            "trip_short_name": "The Express",
+                                          },
+                                        ],
                                       },
                                     ],
-                                    "trips": Array [
-                                      Object {
-                                        "duration": 1234,
-                                        "end_time": 13579,
-                                        "start_time": 12345,
-                                        "trip_headsign": "To Downtown",
-                                        "trip_id": "abcd",
-                                        "trip_short_name": "The Express",
-                                      },
-                                    ],
+                                    "route_id": "route1",
                                   },
-                                ],
-                                "route_id": "route1",
-                              },
-                            ]
-                          }
-                          placeholder="Select route"
-                          styles={
-                            Object {
-                              "control": [Function],
-                              "menu": [Function],
-                              "option": [Function],
-                            }
-                          }
-                          value={
-                            Array [
-                              Object {
-                                "label": "mock-route-label",
-                                "patterns": Array [
+                                ]
+                              }
+                              placeholder="Select route"
+                              styles={
+                                Object {
+                                  "control": [Function],
+                                  "menu": [Function],
+                                  "option": [Function],
+                                }
+                              }
+                              value={
+                                Array [
                                   Object {
-                                    "geometry": Object {
-                                      "coordinates": Array [
-                                        Array [
-                                          -122.0246,
-                                          36.9707,
-                                        ],
-                                        Array [
-                                          -122.0279,
-                                          37.049,
-                                        ],
-                                        Array [
-                                          -121.9799,
-                                          37.2299,
-                                        ],
-                                        Array [
-                                          -121.9445,
-                                          37.324,
-                                        ],
-                                        Array [
-                                          -121.936,
-                                          37.353,
-                                        ],
-                                        Array [
-                                          -121.924,
-                                          37.365,
-                                        ],
-                                      ],
-                                      "type": "LineString",
-                                    },
-                                    "name": "Mock Pattern",
-                                    "pattern_id": "mock-pattern-id",
-                                    "stops": Array [
+                                    "label": "mock-route-label",
+                                    "patterns": Array [
                                       Object {
-                                        "stop_id": "1",
-                                        "stop_lat": 36.9707,
-                                        "stop_lon": -122.0246,
-                                        "stop_name": "Santa Cruz",
-                                      },
-                                      Object {
-                                        "stop_id": "2",
-                                        "stop_lat": 37.049,
-                                        "stop_lon": -122.0279,
-                                        "stop_name": "Scotts Valley",
+                                        "geometry": Object {
+                                          "coordinates": Array [
+                                            Array [
+                                              -122.0246,
+                                              36.9707,
+                                            ],
+                                            Array [
+                                              -122.0279,
+                                              37.049,
+                                            ],
+                                            Array [
+                                              -121.9799,
+                                              37.2299,
+                                            ],
+                                            Array [
+                                              -121.9445,
+                                              37.324,
+                                            ],
+                                            Array [
+                                              -121.936,
+                                              37.353,
+                                            ],
+                                            Array [
+                                              -121.924,
+                                              37.365,
+                                            ],
+                                          ],
+                                          "type": "LineString",
+                                        },
+                                        "name": "Mock Pattern",
+                                        "pattern_id": "mock-pattern-id",
+                                        "stops": Array [
+                                          Object {
+                                            "stop_id": "1",
+                                            "stop_lat": 36.9707,
+                                            "stop_lon": -122.0246,
+                                            "stop_name": "Santa Cruz",
+                                          },
+                                          Object {
+                                            "stop_id": "2",
+                                            "stop_lat": 37.049,
+                                            "stop_lon": -122.0279,
+                                            "stop_name": "Scotts Valley",
+                                          },
+                                        ],
+                                        "trips": Array [
+                                          Object {
+                                            "duration": 1234,
+                                            "end_time": 13579,
+                                            "start_time": 12345,
+                                            "trip_headsign": "To Downtown",
+                                            "trip_id": "abcd",
+                                            "trip_short_name": "The Express",
+                                          },
+                                        ],
                                       },
                                     ],
-                                    "trips": Array [
-                                      Object {
-                                        "duration": 1234,
-                                        "end_time": 13579,
-                                        "start_time": 12345,
-                                        "trip_headsign": "To Downtown",
-                                        "trip_id": "abcd",
-                                        "trip_short_name": "The Express",
-                                      },
-                                    ],
+                                    "route_id": "route1",
                                   },
-                                ],
-                                "route_id": "route1",
-                              },
-                            ]
-                          }
-                        >
-                          <div
-                            className="ReactSelectMock"
-                          />
-                        </ReactSelect>
-                      </ForwardRef>
-                    </div>
-                  </Styled(div)>
-                </FormControl>
-              </div>
-            </Styled(div)>
-          </Stack>
-        </SelectFeedAndRoutes>
+                                ]
+                              }
+                            >
+                              <div
+                                className="ReactSelectMock"
+                              />
+                            </ReactSelect>
+                          </ForwardRef>
+                        </div>
+                      </Styled(div)>
+                    </FormControl>
+                  </div>
+                </Styled(div)>
+              </Stack>
+            </SelectFeedAndRoutes>
+          </div>
+        </Box>
         <Stack
           key=".5"
           spacing={4}
@@ -1142,6 +2200,8 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
             __css={
               Object {
                 "& > *:not(style) ~ *:not(style)": Object {
+                  "marginBottom": 0,
+                  "marginEnd": 0,
                   "marginStart": 0,
                   "marginTop": 4,
                 },
@@ -1152,7 +2212,7 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
             flexDirection="column"
           >
             <div
-              className="chakra-stack css-4daikc"
+              className="chakra-stack css-egoftb"
             >
               <SelectPatterns
                 key=".0"
@@ -1202,7 +2262,7 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                           id="field-3-label"
                         >
                           <label
-                            className="chakra-form__label css-1qqx8g3"
+                            className="chakra-form__label css-10m1y3x"
                             htmlFor="Patterns"
                             id="field-3-label"
                           >
@@ -1510,7 +2570,7 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                   role="alert"
                 >
                   <div
-                    className="chakra-alert css-1m76rph"
+                    className="chakra-alert css-1adt752"
                     role="alert"
                   >
                     <AlertIcon>
@@ -1520,7 +2580,7 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                             "color": "blue.500",
                             "flexShrink": 0,
                             "h": 6,
-                            "mr": 3,
+                            "marginEnd": 3,
                             "w": 5,
                           }
                         }
@@ -1528,7 +2588,7 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                         display="inherit"
                       >
                         <span
-                          className="chakra-alert__icon css-8flyh"
+                          className="chakra-alert__icon css-n0gcl4"
                         >
                           <InfoIcon
                             h="100%"
@@ -1631,7 +2691,7 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                   type="button"
                 >
                   <button
-                    className="chakra-button css-1cu1u8l"
+                    className="chakra-button css-1k7w19f"
                     onClick={[Function]}
                     type="button"
                   >
@@ -1639,11 +2699,14 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                       marginEnd="0.5rem"
                     >
                       <Styled(span)
+                        alignSelf="center"
                         className="chakra-button__icon"
+                        display="inline-flex"
+                        flexShrink={0}
                         marginEnd="0.5rem"
                       >
                         <span
-                          className="chakra-button__icon css-ktvjz1"
+                          className="chakra-button__icon css-1wh2kri"
                         >
                           <FaPencilAlt
                             aria-hidden={true}
@@ -1740,7 +2803,7 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                     id="field-4-label"
                   >
                     <label
-                      className="chakra-form__label css-1qqx8g3"
+                      className="chakra-form__label css-10m1y3x"
                       data-invalid=""
                       htmlFor="00000000-0000-0000-0000-000000000000"
                       id="field-4-label"
@@ -1752,7 +2815,6 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                 <ForwardRef
                   id="00000000-0000-0000-0000-000000000000"
                   isInvalid={true}
-                  isValid={false}
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -1777,7 +2839,6 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                         <Input
                           id="00000000-0000-0000-0000-000000000000"
                           isInvalid={true}
-                          isValid={false}
                           key=".0"
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -1827,7 +2888,6 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                             className="chakra-input"
                             disabled={false}
                             id="00000000-0000-0000-0000-000000000000"
-                            isValid={false}
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}
@@ -1838,10 +2898,9 @@ exports[`Component AdjustSpeedComponent snapshot(mount) 1`] = `
                           >
                             <input
                               aria-invalid={true}
-                              className="chakra-input css-18q2db8"
+                              className="chakra-input css-ujci2j"
                               disabled={false}
                               id="00000000-0000-0000-0000-000000000000"
-                              isValid={false}
                               onBlur={[Function]}
                               onChange={[Function]}
                               onFocus={[Function]}

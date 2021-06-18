@@ -137,12 +137,16 @@ export const deleteVariant = (index) => async (dispatch, getState) => {
   )
 }
 
-export const editVariantName = ({index, name}) => (dispatch, getState) => {
-  const project = selectCurrentProject(getState())
-  return dispatch(
-    saveToServer({
-      ...project,
-      variants: project.variants.map((value, i) => (i === index ? name : value))
-    })
-  )
-}
+export const editVariantName =
+  ({index, name}) =>
+  (dispatch, getState) => {
+    const project = selectCurrentProject(getState())
+    return dispatch(
+      saveToServer({
+        ...project,
+        variants: project.variants.map((value, i) =>
+          i === index ? name : value
+        )
+      })
+    )
+  }

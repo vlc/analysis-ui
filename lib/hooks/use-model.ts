@@ -1,3 +1,4 @@
+import {FindOneOptions} from 'mongodb'
 import useSWR, {SWRConfiguration, SWRResponse} from 'swr'
 import {useCallback} from 'react'
 
@@ -9,6 +10,7 @@ import {
 } from 'lib/utils/safe-fetch'
 
 import {UseDataResponse} from './use-data'
+import useQueryURL from './use-query-url'
 import useUser from './use-user'
 
 export interface UseModelResponse<T> extends UseDataResponse<T> {
@@ -23,7 +25,10 @@ const SWRConfigDefaults: SWRConfiguration = {
   revalidateOnFocus: false
 }
 
-export function createUseModel<T extends CL.IModel>(collectionName: string) {
+export function createUseModel<T extends CL.IModel>(
+  collectionName: string,
+  options: FindOneOptions<T> = {}
+) {
   /**
    * _id may be `null` in cases where we are cascading fetches. Ex:
    * const {data: project} = useProject(projectId)
@@ -34,7 +39,7 @@ export function createUseModel<T extends CL.IModel>(collectionName: string) {
     config?: SWRConfiguration
   ): UseModelResponse<T> {
     const {isLoading, user} = useUser()
-    const url = `/api/db/${collectionName}/${_id}`
+    const url = useQueryURL(`/api/db/${collectionName}/${_id}`, null, options)
     const response = useSWR<T, ResponseError>(
       _id == null || isLoading ? null : [url, user],
       {
