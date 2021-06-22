@@ -1,14 +1,21 @@
-import useRoute from './use-route'
-import useStops from './use-stops'
+import uniq from 'lodash/uniq'
+import {useMemo} from 'react'
 
+import useRoutePatterns from './use-route-patterns'
+import useFeedStops from './use-feed-stops'
+
+/**
+ * Get all of the unique stops for a given route via it's patterns and trips.
+ */
 export default function useRouteStops(
-  feedGroupId: string,
+  bundleId: string,
   feedId: string,
   routeId: string
 ) {
-  const route = useRoute(feedGroupId, feedId, routeId)
-  const stops = useStops(feedGroupId, feedId)
-  return route.stops?.map(({stop_id}) =>
-    stops.find((s) => s.stop_id === stop_id)
-  )
+  const patterns = useRoutePatterns(bundleId, feedId, routeId)
+  const stops = useFeedStops(bundleId, feedId)
+  return useMemo(() => {
+    const uniqueIds = uniq(patterns.flatMap((p) => p.orderedStopIds))
+    return uniqueIds.map((id) => stops.find((s) => s.id === id))
+  }, [patterns, stops])
 }

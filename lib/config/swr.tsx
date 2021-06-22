@@ -11,7 +11,7 @@ const config: SWRConfiguration = {
 
 // For utilizing SWR without revalidation
 export const noRevalidateConfig: SWRConfiguration = {
-  dedupingInterval: 60_000,
+  dedupingInterval: 30_000, // in milliseconds
   revalidateOnFocus: false,
   revalidateOnReconnect: false
 }

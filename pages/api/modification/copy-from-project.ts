@@ -97,7 +97,7 @@ export default withApiAuthRequired(async function (req, res) {
       })
 
       // Second pass, match phasing pairs with new ids.
-      const newIds = fromModifications.map(async (mod: CL.IModification) => {
+      const newIds = fromModifications.map(async (mod: CL.Modification) => {
         if (mod.type === ADD_TRIP_PATTERN) {
           // Remove all phasing
           ;(mod as CL.AddTripPattern).timetables.forEach((tt) => {

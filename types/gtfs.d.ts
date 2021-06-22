@@ -1,22 +1,43 @@
 declare namespace GTFS {
   export type Pattern = {
-    name: string
-    pattern_id: string
+    associatedTripIds: string[]
+    id: string
     geometry: GeoJSON.LineString
+    name: string
+    orderedStopIds: string[]
   }
 
   export type Stop = {
-    stop_id: string
-    stop_lat: number
-    stop_lon: number
-    stop_name: string
+    id: string
+    lat: number
+    lon: number
+    name: string
+  }
+
+  export type FeedStops = {
+    feedId: string
+    stops: Stop[]
+  }
+
+  export type FeedScopedStop = {
+    feedId: string
+    scopedId: string
+    stop: Stop
   }
 
   export type Route = {
-    route_id: string
-    route_short_name?: string
-    route_long_name?: string
-    patterns?: Pattern[]
-    stops?: Partial<Stop>[]
+    color: string
+    id: string
+    name: string
+    type: number
+  }
+
+  export type Trip = {
+    directionId: number
+    duration: number
+    headsign: string
+    id: string
+    name: string
+    startTime: number
   }
 }

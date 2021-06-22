@@ -38,10 +38,10 @@ export function createUseModel<T extends CL.IModel>(
     _id?: string,
     config?: SWRConfiguration
   ): UseModelResponse<T> {
-    const {isLoading, user} = useUser()
+    const {user} = useUser()
     const url = useQueryURL(`/api/db/${collectionName}/${_id}`, null, options)
     const response = useSWR<T, ResponseError>(
-      _id == null || isLoading ? null : [url, user],
+      _id == null || user == null ? null : [url, user],
       {
         ...SWRConfigDefaults,
         ...config

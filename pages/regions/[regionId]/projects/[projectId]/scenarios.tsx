@@ -7,7 +7,7 @@ import {useProject} from 'lib/hooks/use-model'
 import withDataLayout from 'lib/hocs/with-data-layout'
 
 export default withDataLayout<{
-  modifications: CL.IModification[]
+  modifications: CL.Modification[]
   project: CL.Project
   scenarios: CL.Scenario[]
   scenariosModifications: CL.ScenariosModifications[]

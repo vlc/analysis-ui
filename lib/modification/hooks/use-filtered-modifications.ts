@@ -1,7 +1,7 @@
 import {useMemo, useState} from 'react'
 
 export default function useFilteredModifications(
-  modifications: CL.IModification[],
+  modifications: CL.Modification[],
   projectId: string
 ) {
   const [value, set] = useState('')
@@ -18,11 +18,11 @@ export default function useFilteredModifications(
 
 function filterModifications(
   filter: string,
-  modifications: CL.IModification[],
+  modifications: CL.Modification[],
   projectId: string
 ) {
   const filterLcase = filter != null ? filter.toLowerCase() : ''
-  const filteredModificationsByType: {[key: string]: CL.IModification[]} = {}
+  const filteredModificationsByType: {[key: string]: CL.Modification[]} = {}
 
   modifications
     .filter((m) => m.projectId === projectId)

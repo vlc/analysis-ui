@@ -41,7 +41,7 @@ export default withApiAuthRequired(async function (req, res) {
       'modifications',
       user
     )
-    const modification: CL.IModification = await modifications.findOne(
+    const modification: CL.Modification = await modifications.findOne(
       modificationId
     )
 
@@ -49,7 +49,7 @@ export default withApiAuthRequired(async function (req, res) {
       ...modification,
       name: `${modification.name} (copy)`
     })
-    const newModification = response.ops[0] as CL.IModification
+    const newModification = response.ops[0] as CL.Modification
 
     if (newModification.type === ADD_TRIP_PATTERN) {
       mapPhaseIds(

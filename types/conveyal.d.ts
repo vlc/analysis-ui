@@ -94,12 +94,48 @@ declare global {
       regionId: string
     }
 
-    export type Timetable = {
+    export interface AbstractTimetable {
       _id: string
-      segmentSpeeds: SegmentSpeeds
+      endTime: number
+      exactTimes: boolean
+      name: string
+      headwaySecs: number
+
+      startTime: number
       phaseFromTimetable?: string
+      /**
+       * Prefixed with the feedId. `${feedId}:${stopId}`
+       */
       phaseAtStop?: string
+      /**
+       * Prefixed with the feedId. `${feedId}:${stopId}`
+       */
       phaseFromStop?: string
+      phaseSeconds?: number
+
+      // Days active
+      monday: boolean
+      tuesday: boolean
+      wednesday: boolean
+      thursday: boolean
+      friday: boolean
+      saturday: boolean
+      sunday: boolean
+    }
+
+    export interface PhasedAbstractTimetable extends AbstractTimetable {
+      modificationId: string
+    }
+
+    export interface Timetable extends AbstractTimetable {
+      dwellTime: number
+      dwellTimes: number[]
+      segmentSpeeds: SegmentSpeeds
+    }
+
+    export interface FrequencyEntry extends AbstractTimetable {
+      patternTrips: string[]
+      sourceTrip?: string
     }
 
     /**
@@ -123,6 +159,7 @@ declare global {
     export interface IModification extends IModel {
       description: string
       projectId: string
+      type: CL.ModificationTypes
     }
 
     /**
@@ -131,6 +168,13 @@ declare global {
     export interface FeedModification {
       feed: string
       routes: string[]
+    }
+
+    /**
+     * Modification that specifies GTFS Trips
+     */
+    export interface TripsModification extends FeedModification {
+      trips: string[]
     }
 
     /**
@@ -147,24 +191,38 @@ declare global {
 
     export interface AddTripPattern extends IModification {
       bidirectional: boolean
+      color: string
       type: 'add-trip-pattern'
       segments: ModificationSegment[]
       timetables: Timetable[]
+      transitMode: number
     }
 
-    export interface AdjustDwellTime extends IModification, StopModification {
+    export interface AdjustDwellTime
+      extends IModification,
+        TripsModification,
+        StopModification {
       type: 'adjust-dwell-time'
+      scale: boolean
+      value: number
     }
 
-    export interface AdjustSpeed extends IModification, FeedModification {
+    export interface AdjustSpeed extends IModification, TripsModification {
       type: 'adjust-speed'
+      hops: string[][]
+      scale: number
     }
 
     export interface ConvertToFrequency
       extends IModification,
         FeedModification {
       type: 'convert-to-frequency'
-      entries: Timetable[]
+      entries: FrequencyEntry[]
+      retainTripsOutsideFrequencyEntries: boolean
+    }
+
+    export interface CustomModification extends IModification {
+      type: 'custom'
     }
 
     export interface ModifyStreets extends IModification {
@@ -172,17 +230,24 @@ declare global {
       polygons: GeoJSON.Position[][]
     }
 
-    export interface RemoveStops extends IModification, StopModification {
+    export interface RemoveStops
+      extends IModification,
+        StopModification,
+        TripsModification {
       type: 'remove-stops'
+      secondsSavedAtEachStop: number
     }
 
-    export interface RemoveTrips extends IModification, FeedModification {
+    export interface RemoveTrips extends IModification, TripsModification {
       type: 'remove-trips'
-      trips: string[]
     }
 
-    export interface Reroute extends FeedModification, IModification {
+    export interface Reroute extends IModification, TripsModification {
       type: 'reroute'
+      fromStop?: string
+      toStop?: string
+      dwellTime: number
+      dwellTimes: number[]
       segments: ModificationSegment[]
       segmentSpeeds: SegmentSpeeds
     }
@@ -193,6 +258,7 @@ declare global {
       | AdjustDwellTime
       | AdjustSpeed
       | ConvertToFrequency
+      | CustomModification
       | ModifyStreets
       | RemoveStops
       | RemoveTrips

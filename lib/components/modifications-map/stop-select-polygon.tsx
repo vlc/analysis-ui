@@ -1,25 +1,26 @@
 import pointInPolygon from '@turf/boolean-point-in-polygon'
 import {point} from '@turf/helpers'
-import React from 'react'
-import {useSelector} from 'react-redux'
-
-import selectRouteStops from 'lib/selectors/route-stops'
+import uniq from 'lodash/uniq'
 
 import DrawPolygon from './draw-polygon'
 
 /**
  * Select stops using a polygon select
  */
-export default function StopSelectPolygon(p) {
-  const routeStops = useSelector(selectRouteStops)
+export default function StopSelectPolygon(p: {
+  action: 'add' | 'new' | 'remove'
+  currentStops: string[]
+  stops: GTFS.Stop[]
+  update: (stops: string[]) => void
+}) {
   function onPolygon(polygon) {
-    const selectedStops = routeStops
-      .filter((s) => pointInPolygon(point([s.stop_lon, s.stop_lat]), polygon))
-      .map((s) => s.stop_id)
+    const selectedStops = p.stops
+      .filter((s) => pointInPolygon(point([s.lon, s.lat]), polygon))
+      .map((s) => s.id)
 
     switch (p.action) {
       case 'add':
-        p.update([...new Set([...p.currentStops, ...selectedStops])])
+        p.update(uniq([...p.currentStops, ...selectedStops]))
         break
       case 'new':
         p.update(selectedStops)

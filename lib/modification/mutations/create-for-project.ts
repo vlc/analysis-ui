@@ -10,5 +10,5 @@ export default function createModificationForProject(
   name: string
 ) {
   const url = `/api/modification/create`
-  return postJSON<CL.IModification>(url, {name, projectId, type})
+  return postJSON<CL.Modification>(url, {name, projectId, type})
 }

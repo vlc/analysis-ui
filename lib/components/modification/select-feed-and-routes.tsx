@@ -7,21 +7,14 @@ import {
   Stack
 } from '@chakra-ui/react'
 import fpGet from 'lodash/fp/get'
-import get from 'lodash/get'
-import {useEffect, useState} from 'react'
-import {useLeaflet} from 'react-leaflet'
-import {useSelector} from 'react-redux'
 
-import selectFeeds from 'lib/selectors/feeds-with-bundle-names'
-import selectModificationBounds from 'lib/selectors/modification-bounds'
-import selectRoutePatterns from 'lib/selectors/route-patterns'
-import selectModificationFeed from 'lib/selectors/modification-feed'
+import {useFeedRoutes} from 'lib/gtfs/hooks'
 
 import {AddIcon, MinusIcon} from '../icons'
 import Select from '../select'
 
 const getFeedLabel = fpGet('name')
-const getFeedValue = fpGet('id')
+const getFeedValue = fpGet('feedId')
 const getRouteLabel = fpGet('label')
 const getRouteValue = fpGet('route_id')
 
@@ -30,18 +23,19 @@ const getRouteValue = fpGet('route_id')
  */
 export default function SelectFeedAndRoutes({
   allowMultipleRoutes = false,
-  onChange,
-  selectedRouteIds
+  bundle,
+  modification,
+  onChange
 }: {
   allowMultipleRoutes?: boolean
-  onChange: (updates: any) => void
-  selectedRouteIds?: string[]
+  bundle: CL.Bundle
+  modification: CL.FeedModification
+  onChange: (feed: string, routes: string[]) => void
 }) {
+  /** TODO
   // Zoom to bounds on a route change
-  const feeds = useSelector(selectFeeds)
   const bounds = useSelector(selectModificationBounds)
   const routePatterns = useSelector(selectRoutePatterns)
-  const selectedFeed = useSelector(selectModificationFeed)
   const [currentRoutePatterns, setCurrentRoutePatterns] =
     useState(routePatterns)
   const leaflet = useLeaflet()
@@ -53,47 +47,47 @@ export default function SelectFeedAndRoutes({
       }
     }
   }, [bounds, leaflet, currentRoutePatterns, routePatterns])
+  **/
 
-  function _selectFeed(feed) {
-    onChange({feed: get(feed, 'id'), routes: null})
+  const feedRoutes = useFeedRoutes(bundle._id, modification.feed)
+  const selectedFeed = bundle.feeds.find((f) => f.feedId === modification.feed)
+
+  function _selectFeed(feed: CL.FeedSummary) {
+    onChange(feed.feedId, [])
   }
 
-  function _selectRoute(routes) {
-    onChange({
-      feed: get(selectedFeed, 'id'),
-      routes: !routes
+  function _selectRoute(routes: GTFS.Route[] | GTFS.Route) {
+    onChange(
+      modification.feed,
+      !routes
         ? []
         : Array.isArray(routes)
-        ? routes.map((r) => (r ? r.route_id : ''))
-        : [routes.route_id]
-    })
+        ? routes.map((r) => (r ? r.id : ''))
+        : [routes.id]
+    )
   }
 
   function _deselectAllRoutes() {
-    onChange({
-      feed: get(selectedFeed, 'id'),
-      routes: []
-    })
+    onChange(modification.feed, [])
   }
 
   function _selectAllRoutes() {
-    if (selectedFeed) {
-      onChange({
-        feed: selectedFeed.id,
-        routes: selectedFeed.routes.map((r) => r.route_id)
-      })
+    if (modification.feed) {
+      onChange(
+        modification.feed,
+        feedRoutes.map((r) => r.id)
+      )
     }
   }
 
-  const routeIds = selectedRouteIds || []
+  const routeIds = modification.routes || []
   const selectedRoutes = routeIds.map((id) =>
-    get(selectedFeed, 'routes', []).find((r) => r.route_id === id)
+    feedRoutes.find((r) => r.id === id)
   )
 
   const multipleRoutesSelected = routeIds.length > 1
-  const availableRoutes = get(selectedFeed, 'routes.length')
   const showSelectAllRoutes =
-    allowMultipleRoutes && selectedFeed && routeIds.length < availableRoutes
+    allowMultipleRoutes && selectedFeed && routeIds.length < feedRoutes.length
 
   return (
     <Stack spacing={4}>
@@ -105,7 +99,7 @@ export default function SelectFeedAndRoutes({
           getOptionLabel={getFeedLabel}
           getOptionValue={getFeedValue}
           onChange={_selectFeed}
-          options={feeds}
+          options={bundle.feeds}
           placeholder='Select feed'
           value={selectedFeed}
         />
@@ -119,9 +113,9 @@ export default function SelectFeedAndRoutes({
             inputId='Route'
             getOptionLabel={getRouteLabel}
             getOptionValue={getRouteValue}
-            isMulti={allowMultipleRoutes as any}
+            isMulti={allowMultipleRoutes}
             onChange={_selectRoute}
-            options={selectedFeed.routes}
+            options={feedRoutes}
             placeholder='Select route'
             value={allowMultipleRoutes ? selectedRoutes : selectedRoutes[0]}
           />

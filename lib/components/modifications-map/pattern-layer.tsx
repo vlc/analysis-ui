@@ -2,7 +2,7 @@ import {color as parseColor} from 'd3-color'
 import get from 'lodash/get'
 
 import colors from 'lib/constants/colors'
-import useRoute from 'lib/gtfs/hooks/use-route'
+import {useRoutePatterns} from 'lib/gtfs/hooks'
 import {getPatternsForModification} from 'lib/utils/patterns'
 
 import DirectionalMarkers from '../directional-markers'
@@ -15,17 +15,17 @@ export default function PatternLayer({
   activeTrips = null,
   color = colors.NEUTRAL,
   dim = false,
-  feedGroupId,
+  bundleId,
   modification
 }: {
-  activeTrips?: unknown[]
+  activeTrips?: string[]
   color?: string
   dim?: boolean
-  feedGroupId: string
+  bundleId: string
   modification: CL.FeedModification
 }) {
-  const route = useRoute(
-    feedGroupId,
+  const patterns = useRoutePatterns(
+    bundleId,
     modification.feed,
     get(modification, 'routes[0]')
   )
@@ -55,14 +55,11 @@ export default function PatternLayer({
   const parsedColor = parseColor(color)
   if (dim) parsedColor.opacity = 0.2
 
-  if (route?.patterns?.length > 0) {
+  if (patterns?.length > 0) {
     return (
       <>
-        <PatternGeometry color={parsedColor + ''} patterns={route.patterns} />
-        <DirectionalMarkers
-          color={parsedColor + ''}
-          patterns={route.patterns}
-        />
+        <PatternGeometry color={parsedColor + ''} patterns={patterns} />
+        <DirectionalMarkers color={parsedColor + ''} patterns={patterns} />
       </>
     )
   } else {

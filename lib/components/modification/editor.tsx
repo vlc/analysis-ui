@@ -2,6 +2,7 @@ import {
   Alert,
   AlertIcon,
   Box,
+  Button,
   Divider,
   Flex,
   Stack,
@@ -14,9 +15,9 @@ import {
   AlertDescription
 } from '@chakra-ui/react'
 import get from 'lodash/get'
-import {useCallback, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 
-import {useBundle, useModification} from 'lib/hooks/use-model'
+import {useModification} from 'lib/hooks/use-model'
 import useRouteTo from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 import copyModification from 'lib/modification/mutations/copy'
@@ -31,6 +32,7 @@ import AllModificationsMapDisplay from '../modifications-map/display-all'
 import FitBoundsButton from './fit-bounds'
 import JSONEditor from './json-editor'
 import ModificationType from './type'
+import {dequal} from 'dequal/lite'
 
 // Test modification name is valid
 const nameIsValid = (s) => s && s.length > 0
@@ -73,16 +75,20 @@ function CopiedModificationToast({
 }
 
 export default function ModificationEditor(p: {
-  modification: CL.Modification
+  bundle: CL.Bundle
+  modification: CL.IModification
   project: CL.Project
   query: CL.Query
 }) {
   const toast = useToast({position: 'top', isClosable: true, status: 'success'})
-  const {data: bundle} = useBundle(p.project.bundleId)
   const {remove, update} = useModification(p.modification._id, {
     initialData: p.modification
   })
   const [modification, setLocalModification] = useState(p.modification)
+  const saveDisabled = useMemo(
+    () => dequal(modification, p.modification),
+    [modification, p.modification]
+  )
 
   const goToAllModifications = useRouteTo('modifications', {
     regionId: p.query.regionId,
@@ -90,7 +96,7 @@ export default function ModificationEditor(p: {
   })
 
   const updateLocally = useCallback(
-    (p: Partial<CL.IModification>) =>
+    (p) =>
       setLocalModification((m) => ({
         ...m,
         ...p
@@ -135,13 +141,10 @@ export default function ModificationEditor(p: {
 
   return (
     <>
-      {bundle && (
-        <AllModificationsMapDisplay
-          bundle={bundle}
-          isEditingId={modification._id}
-          project={p.project}
-        />
-      )}
+      <AllModificationsMapDisplay
+        isEditingId={modification._id}
+        project={p.project}
+      />
 
       <Flex align='center' borderBottomWidth='1px' p={2} width='320px'>
         <IconButton label='Modifications' onClick={goToAllModifications}>
@@ -183,6 +186,9 @@ export default function ModificationEditor(p: {
         <Tabs align='end' p={4} variant='soft-rounded'>
           <TabPanels>
             <TabPanel p={0}>
+              <Button onClick={_save} size='sm' isDisabled={saveDisabled}>
+                Save
+              </Button>
               <Stack spacing={4}>
                 <Box>
                   <Editable
@@ -202,16 +208,16 @@ export default function ModificationEditor(p: {
 
                 <Box>
                   <ModificationType
-                    bundle={bundle}
+                    bundle={p.bundle}
                     modification={modification}
-                    type={modification.type}
                     update={updateLocally}
+                    type={modification.type}
                   />
                 </Box>
               </Stack>
             </TabPanel>
             <TabPanel p={0}>
-              <JSONEditor modification={modification} save={updateLocally} />
+              <JSONEditor modification={modification} save={_save} />
             </TabPanel>
           </TabPanels>
 

@@ -20,7 +20,6 @@ import {
 import toStartCase from 'lodash/startCase'
 import {memo} from 'react'
 
-import {useBundle} from 'lib/hooks/use-model'
 import useRouteTo from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 import useModificationsOnMap from 'lib/modification/hooks/use-modifications-on-map'
@@ -42,7 +41,6 @@ export default function ModificationsList({
   modifications: CL.Modification[]
   project: CL.Project
 }) {
-  const {data: bundle} = useBundle(project.bundleId)
   const modificationsOnMap = useModificationsOnMap()
   const filter = useFilteredModifications(modifications, project._id)
   const goToModificationImport = useRouteTo('modificationImport', {
@@ -52,12 +50,13 @@ export default function ModificationsList({
 
   return (
     <>
-      {bundle && (
-        <ModificationsMap
-          bundle={bundle}
-          modifications={modificationsOnMap.state[project._id]}
-        />
-      )}
+      <ModificationsMap
+        bundleId={project.bundleId}
+        modifications={modifications.filter(
+          (m) =>
+            !!modificationsOnMap.state[project._id].find((_id) => _id === m._id)
+        )}
+      />
 
       <Tabs isFitted isLazy width='320px'>
         <TabList>
@@ -188,7 +187,7 @@ function ModificationType({children, modificationCount, type}) {
 
 type ModificationItemProps = {
   isDisplayed: boolean
-  modification: CL.IModification
+  modification: CL.Modification
   regionId: string
   toggleMapDisplay: (_id: string) => void
 }

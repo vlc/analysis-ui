@@ -12,8 +12,8 @@ const RerouteLayer = dynamic(() => import('./reroute-layer'))
 const StopLayer = dynamic(() => import('./stop-layer'))
 
 export default function Display(p: {
+  bundleId: string
   dim?: boolean
-  feedGroupId: string
   modification: CL.Modification
 }) {
   const m = p.modification
@@ -57,7 +57,7 @@ export default function Display(p: {
         <PatternLayer
           color={colors.REMOVED}
           dim={p.dim}
-          feedGroupId={p.feedGroupId}
+          bundleId={p.bundleId}
           modification={m as CL.RemoveTrips}
         />
       )
@@ -66,7 +66,7 @@ export default function Display(p: {
         <PatternLayer
           color={colors.MODIFIED}
           dim={p.dim}
-          feedGroupId={p.feedGroupId}
+          bundleId={p.bundleId}
           modification={m as CL.ConvertToFrequency}
         />
       )
@@ -76,11 +76,11 @@ export default function Display(p: {
           <PatternLayer
             color={colors.NEUTRAL_LIGHT}
             dim={p.dim}
-            feedGroupId={p.feedGroupId}
+            bundleId={p.bundleId}
             modification={m as CL.RemoveStops}
           />
           <StopLayer
-            feedGroupId={p.feedGroupId}
+            bundleId={p.bundleId}
             modification={m as CL.RemoveStops}
             selectedColor={colors.REMOVED}
             unselectedColor={colors.NEUTRAL_LIGHT}
@@ -93,11 +93,11 @@ export default function Display(p: {
           <PatternLayer
             color={colors.NEUTRAL_LIGHT}
             dim={p.dim}
-            feedGroupId={p.feedGroupId}
+            bundleId={p.bundleId}
             modification={m as CL.AdjustDwellTime}
           />
           <StopLayer
-            feedGroupId={p.feedGroupId}
+            bundleId={p.bundleId}
             modification={m as CL.AdjustDwellTime}
             nullIsWildcard
             selectedColor={colors.MODIFIED}
@@ -106,17 +106,13 @@ export default function Display(p: {
       )
     case C.ADJUST_SPEED:
       return (
-        <AdjustSpeedLayer
-          dim={p.dim}
-          feedGroupId={p.feedGroupId}
-          modification={m}
-        />
+        <AdjustSpeedLayer dim={p.dim} bundleId={p.bundleId} modification={m} />
       )
     case C.REROUTE:
       return (
         <RerouteLayer
           dim={p.dim}
-          feedGroupId={p.feedGroupId}
+          bundleId={p.bundleId}
           modification={m as CL.Reroute}
         />
       )

@@ -6,11 +6,11 @@ import {useModifications} from 'lib/hooks/use-collection'
 const Display = dynamic(() => import('./display'), {ssr: false})
 
 export function DisplayAll({
-  bundle,
+  bundleId,
   isEditing = false,
   modifications
 }: {
-  bundle: CL.Bundle
+  bundleId: string
   isEditing?: boolean
   modifications: CL.Modification[]
 }) {
@@ -19,7 +19,7 @@ export function DisplayAll({
       {modifications.map((m) => (
         <Display
           dim={isEditing}
-          feedGroupId={bundle.feedGroupId}
+          bundleId={bundleId}
           key={m._id}
           modification={m}
         />
@@ -29,11 +29,9 @@ export function DisplayAll({
 }
 
 export default function ConnectedDisplayAll({
-  bundle,
   project,
   isEditingId
 }: {
-  bundle: CL.Bundle
   project: CL.Project
   isEditingId?: string
 }) {
@@ -45,7 +43,7 @@ export default function ConnectedDisplayAll({
 
   return (
     <DisplayAll
-      bundle={bundle}
+      bundleId={project.bundleId}
       isEditing={!!isEditingId}
       modifications={modifications.filter(
         (m) => m._id !== isEditingId && ids.includes(m._id)

@@ -11,12 +11,12 @@ const hasNull = (a: unknown[]) => a.find((v) => v == null) == null
  * Fetch a single route for a given feed group id, feed id, and route id.
  */
 export default function useRoute(
-  feedGroupId: string,
+  bundleId: string,
   feedId: string,
   routeId: string
-) {
+): GTFS.Route {
   const {user} = useUser()
-  const keyGroup = [feedGroupId, feedId, routeId, user]
+  const keyGroup = [bundleId, feedId, routeId, user]
   const key: Key = () => (hasNull(keyGroup) ? null : keyGroup)
   const response = useSWR<GTFS.Route, Error>(key, getRoute, noRevalidateConfig)
   return response.data
