@@ -10,14 +10,15 @@ import {ActivityContext, useActivitySync} from 'lib/hooks/use-activity'
  * API and to automatically log out the user, requiring them to log in again.
  */
 export default function ActivityProvider({children}) {
-  const res = useActivitySync()
+  const activity = useActivitySync()
   const router = useRouter()
 
   // Redirect if there is a 401 or 403 response to an activity request
-  const {error} = res.response
+  const {error} = activity.response
   useEffect(() => {
     if (
       error &&
+      error.response &&
       (error.response.status === 401 || error.response.status === 403)
     ) {
       router.push('/api/auth/logout')
@@ -25,6 +26,8 @@ export default function ActivityProvider({children}) {
   }, [error, router])
 
   return (
-    <ActivityContext.Provider value={res}>{children}</ActivityContext.Provider>
+    <ActivityContext.Provider value={activity}>
+      {children}
+    </ActivityContext.Provider>
   )
 }
