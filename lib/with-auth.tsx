@@ -30,7 +30,7 @@ const DevBar = () => (
       bg='red.500'
       height='1px'
       position='absolute'
-      width='100vw'
+      width='100%'
       zIndex={10000}
     />
   </>
