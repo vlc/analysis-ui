@@ -36,10 +36,19 @@ const NotOnline = () => (
   </BannerAlert>
 )
 
-const Unauthorized = () => (
+const NoUser = () => (
   <BannerAlert status='error' variant='solid'>
     <AlertIcon />
     <AlertTitle>You must be logged in to use Conveyal.</AlertTitle>
+  </BannerAlert>
+)
+
+const Unauthorized = () => (
+  <BannerAlert status='error' variant='solid'>
+    <AlertIcon />
+    <AlertTitle>
+      Unauthorized or expired access. Redirecting user to login again...
+    </AlertTitle>
   </BannerAlert>
 )
 
@@ -60,8 +69,12 @@ export default function APIStatusBar() {
   }, [isValidating])
 
   if (isOnline) {
-    if (!userResponse.isLoading && !userResponse.user) return <Unauthorized />
-    if (error) return <NoAPI />
+    if (!userResponse.isLoading && !userResponse.user) return <NoUser />
+    if (error) {
+      const status = error.response?.status
+      if (status === 401 || status === 403) return <Unauthorized />
+      return <NoAPI />
+    }
     if (isValidating && showIsValidating) return <IsValidating />
   } else if (error || showIsValidating) return <NotOnline />
   return null
