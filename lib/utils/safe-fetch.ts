@@ -5,6 +5,7 @@ export interface ResponseError {
   data?: unknown
   error: Error
   problem: string
+  response?: Response
 }
 
 export interface ResponseOk<T> extends Response {
@@ -106,10 +107,10 @@ export async function safeFetch<T>(
       }
     } else {
       return {
-        ...res,
         error: new Error(await parseErrorMessageFromResponse(res)),
         ok: false,
-        problem: getProblemFromResponse(res)
+        problem: getProblemFromResponse(res),
+        response: res
       }
     }
   } catch (e: unknown) {
