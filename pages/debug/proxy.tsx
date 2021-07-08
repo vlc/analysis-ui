@@ -30,11 +30,6 @@ export default function ProxyTest() {
 
   return (
     <table>
-      <style jsx global>{`
-        td: {
-          padding: 5px;
-        }
-      `}</style>
       <thead>
         <tr>
           <th>URL</th>
