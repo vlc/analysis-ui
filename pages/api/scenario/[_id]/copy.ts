@@ -1,12 +1,9 @@
-import {getSession, withApiAuthRequired} from '@auth0/nextjs-auth0'
-
+import withApiAuthRequired from 'lib/auth/with-api-auth-required'
 import AuthenticatedCollection from 'lib/db/authenticated-collection'
-import {userFromSession} from 'lib/user'
 import {errorToPOJO} from 'lib/utils/api'
 
-export default withApiAuthRequired(async function (req, res) {
+export default withApiAuthRequired(async function (req, res, user) {
   try {
-    const user = userFromSession(req, getSession(req, res))
     const scenarioId = req.query._id as string
     const scenarios = await AuthenticatedCollection.with('scenarios', user)
     const baseScenario = await scenarios.findOne(scenarioId)

@@ -20,6 +20,7 @@ import {SafeResponse} from 'lib/utils/safe-fetch'
 
 import useCopyScenario from '../hooks/use-copy-scenario'
 import useShowScenarioModifications from '../hooks/use-show-scenario-modifications'
+import removeScenarioModifications from '../mutations/remove-scenarios-modifications'
 
 const isValidName = (s?: string) => s && s.length > 0
 
@@ -58,7 +59,8 @@ export default function ScenariosEditor(p: {projectId: string}) {
           isFullWidth
           onClick={() =>
             scenarios.create({
-              name: `${message('scenario.name')} ${scenarios.data.length + 1}`
+              name: `${message('scenario.name')} ${scenarios.data.length + 1}`,
+              projectId: p.projectId
             })
           }
           colorScheme='green'
@@ -90,7 +92,10 @@ export default function ScenariosEditor(p: {projectId: string}) {
                 <Scenario
                   scenario={scenario}
                   copyScenario={() => _copyScenario(scenario)}
-                  deleteScenario={() => scenarios.remove(scenario._id)}
+                  deleteScenario={async () => {
+                    await removeScenarioModifications(scenario)
+                    return await scenarios.remove(scenario._id)
+                  }}
                   index={index}
                   onChangeName={(name: string) =>
                     scenarios.update(scenario._id, {name})

@@ -71,18 +71,18 @@ export const mockStop1 = {
   stopId: '1'
 }
 
-export const mockGtfsStop1 = {
-  stop_id: '1',
-  stop_lat: 36.9707,
-  stop_lon: -122.0246,
-  stop_name: 'Santa Cruz'
+export const mockGtfsStop1: GTFS.Stop = {
+  id: '1',
+  lat: 36.9707,
+  lon: -122.0246,
+  name: 'Santa Cruz'
 }
 
-const mockGtfsStop2 = {
-  stop_id: '2',
-  stop_lat: 37.049,
-  stop_lon: -122.0279,
-  stop_name: 'Scotts Valley'
+const mockGtfsStop2: GTFS.Stop = {
+  id: '2',
+  lat: 37.049,
+  lon: -122.0279,
+  name: 'Scotts Valley'
 }
 
 export const mockGtfsStops = [mockGtfsStop1, mockGtfsStop2]
@@ -206,17 +206,24 @@ export const mockProject = {
 export const mockModification = {
   ...mockModel,
   bidirectional: false,
+  color: 'blue',
   description: 'Mock description',
-  entries: [],
-  feed: mockFeed.id,
+  transitMode: 0,
+
   _id: '1234',
   name: 'Test Modification',
-  routes: [mockRoute.route_id],
+
   projectId: mockProject._id,
   segments: [mockSegment],
   timetables: [mockTimetable],
-  trips: ['abcd'],
+
   type: ADD_TRIP_PATTERN,
+
+  // Non ATP properties
+  entries: [],
+  feed: mockFeed.id,
+  routes: [mockRoute.route_id],
+  trips: ['abcd'],
   variants: [true]
 }
 

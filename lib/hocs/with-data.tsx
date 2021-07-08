@@ -52,7 +52,7 @@ function dataFromResults<T extends IResults>(results: UseDataResults<T>): T {
  * @param Component Next.js page component
  * @param useData React hook that returns an key/value object of
  */
-export default function withDataLayout<Results extends IResults>(
+export default function withData<Results extends IResults>(
   PageComponent: FunctionComponent<Results & {query?: CL.Query}>,
   useData: UseDataFn<Results>
 ): CL.Page<WithInitialDataProps<Results>> {

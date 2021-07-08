@@ -11,7 +11,9 @@ export default function useHopStops(
   const routeId = get(modification, 'routes[0]')
   const stops = useRouteStops(bundleId, modification.feed, routeId)
   const patterns = useRoutePatterns(bundleId, modification.feed, routeId)
+
   return useMemo(() => {
+    if (patterns.length === 0 || stops.length === 0) return []
     const filteredPatterns =
       modification.trips?.length > 0
         ? patterns.filter((p) =>
@@ -24,7 +26,7 @@ export default function useHopStops(
       )
     )
 
-    // smoosh hops from all patterns together
+    // Smoosh hops from all patterns together
     const candidateHops = hopsForPattern.filter((hop) => hop != null)
 
     return candidateHops.map((hop) => [

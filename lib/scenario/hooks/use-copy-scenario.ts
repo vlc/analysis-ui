@@ -7,14 +7,14 @@ import copyScenario from '../mutations/copy-scenario'
 export default function useCopyScenario(
   scenarios: UseCollectionResponse<CL.Scenario>
 ) {
-  const {revalidate} = scenarios.response
+  const {mutate} = scenarios.response
 
   return useCallback(
     async (scenario: CL.Scenario) => {
       const copyResponse = await copyScenario(scenario)
       if (copyResponse.ok === false) throw copyResponse.error
-      await revalidate()
+      await mutate()
     },
-    [revalidate]
+    [mutate]
   )
 }

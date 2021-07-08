@@ -1,4 +1,3 @@
-import uniq from 'lodash/uniq'
 import {useMemo} from 'react'
 
 import useRoutePatterns from './use-route-patterns'
@@ -15,7 +14,16 @@ export default function useRouteStops(
   const patterns = useRoutePatterns(bundleId, feedId, routeId)
   const stops = useFeedStops(bundleId, feedId)
   return useMemo(() => {
-    const uniqueIds = uniq(patterns.flatMap((p) => p.orderedStopIds))
-    return uniqueIds.map((id) => stops.find((s) => s.id === id))
+    if (stops.length === 0 || patterns.length === 0) return []
+    const uniqueIds = new Set<string>()
+    const uniqueStops: GTFS.Stop[] = []
+    for (const pattern of patterns) {
+      for (const stopId of pattern.orderedStopIds) {
+        if (uniqueIds.has(stopId)) continue
+        const stop = stops.find((s) => s.id === stopId)
+        if (stop) uniqueStops.push(stop)
+      }
+    }
+    return uniqueStops
   }, [patterns, stops])
 }

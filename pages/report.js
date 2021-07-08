@@ -1,21 +1,16 @@
-import {loadProjectAndModifications} from 'lib/actions/project'
 import Report from 'lib/components/report'
+import withData from 'lib/hocs/with-data'
+import {useModifications} from 'lib/hooks/use-collection'
+import {useProject} from 'lib/hooks/use-model'
 import withAuth from 'lib/with-auth'
-import withInitialFetch from 'lib/with-initial-fetch'
 import withRedux from 'lib/with-redux'
 
-const ReportPage = withInitialFetch(Report, async (dispatch, query) => {
-  const {projectId, index} = query
-  const {bundle, feeds, modifications, project} = await dispatch(
-    loadProjectAndModifications(projectId)
-  )
-
+const ReportPage = withData(Report, function useData(query) {
+  const project = useProject(query.projectId)
+  const modifications = useModifications()
   return {
-    bundle,
-    feeds,
-    modifications: modifications.filter((m) => m.variants[index]),
-    project,
-    variant: project.variants[index]
+    modifications: modifications.filter((m) => m.variants[query.index]),
+    project
   }
 })
 

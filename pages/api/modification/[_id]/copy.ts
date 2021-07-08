@@ -1,13 +1,12 @@
-import {getSession, withApiAuthRequired} from '@auth0/nextjs-auth0'
 import {ObjectID} from 'mongodb'
 
+import withApiAuthRequired from 'lib/auth/with-api-auth-required'
 import AuthenticatedCollection from 'lib/db/authenticated-collection'
 import {ADD_TRIP_PATTERN, CONVERT_TO_FREQUENCY} from 'lib/constants'
-import {userFromSession} from 'lib/user'
 import {errorToPOJO} from 'lib/utils/api'
 
 function mapPhaseIds(
-  timetables: CL.Timetable[],
+  timetables: CL.AbstractTimetable[],
   oldId: CL.ObjectID,
   newId: CL.ObjectID
 ) {
@@ -33,9 +32,8 @@ function mapPhaseIds(
 /**
  * TODO create a new entry for each modification in scenario-modifications
  */
-export default withApiAuthRequired(async function (req, res) {
+export default withApiAuthRequired(async function (req, res, user) {
   try {
-    const user = userFromSession(req, getSession(req, res))
     const modificationId = req.query._id as CL.ObjectID
     const modifications = await AuthenticatedCollection.with(
       'modifications',

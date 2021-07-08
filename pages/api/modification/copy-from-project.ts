@@ -1,11 +1,10 @@
-import {getSession, withApiAuthRequired} from '@auth0/nextjs-auth0'
 import fpOmit from 'lodash/fp/omit'
 import {ObjectID} from 'mongodb'
 
+import withApiAuthRequired from 'lib/auth/with-api-auth-required'
 import {ADD_TRIP_PATTERN, CONVERT_TO_FREQUENCY} from 'lib/constants'
 
 import AuthenticatedCollection from 'lib/db/authenticated-collection'
-import {userFromSession} from 'lib/user'
 import {errorToPOJO} from 'lib/utils/api'
 
 const omitId = fpOmit(['_id'])
@@ -13,9 +12,8 @@ const omitId = fpOmit(['_id'])
 /**
  * TODO create a new entry for each modification in scenario-modifications
  */
-export default withApiAuthRequired(async function (req, res) {
+export default withApiAuthRequired(async function (req, res, user) {
   try {
-    const user = userFromSession(req, getSession(req, res))
     const fromProjectId = req.body.fromProjectId as string
     const fromBundleId = req.body.fromBundleId as string
     const toProjectId = req.body.toProjectId as string

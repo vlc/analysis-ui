@@ -1,11 +1,13 @@
-import useSWR, {Key} from 'swr'
+import {Key} from 'swr'
+import useSWR from 'swr/immutable'
 
+import {EMPTY_ARRAY} from 'lib/constants'
 import {noRevalidateConfig} from 'lib/config/swr'
 import useUser from 'lib/hooks/use-user'
 
 import getRoutePatterns from '../queries/get-route-patterns'
 
-const hasNull = (a: unknown[]) => a.find((v) => v == null) == null
+const hasNull = (a: unknown[]) => a.findIndex((v) => v == null) !== -1
 
 /**
  * Fetch a single route for a given feed group id, feed id, and route id.
@@ -23,5 +25,5 @@ export default function useRoutePatterns(
     getRoutePatterns,
     noRevalidateConfig
   )
-  return response.data ?? []
+  return response.data ?? EMPTY_ARRAY
 }

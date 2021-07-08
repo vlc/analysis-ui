@@ -23,6 +23,7 @@ export default function RemoveTrips({
   return (
     <>
       <PatternLayer
+        activeTrips={modification.trips}
         bundleId={bundle._id}
         color={colors.REMOVED}
         modification={modification}

@@ -14,7 +14,7 @@ export default function scopeAddTripPatternStops(
     return {
       feedId,
       scopedId,
-      stop
+      ...stop
     }
   })
 }

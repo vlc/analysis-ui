@@ -1,11 +1,12 @@
-import useSWR, {Key} from 'swr'
+import {Key} from 'swr'
+import useSWR from 'swr/immutable'
 
 import {noRevalidateConfig} from 'lib/config/swr'
 import useUser from 'lib/hooks/use-user'
 
 import getRoute from '../queries/get-route'
 
-const hasNull = (a: unknown[]) => a.find((v) => v == null) == null
+const hasNull = (a: unknown[]) => a.findIndex((v) => v == null) !== -1
 
 /**
  * Fetch a single route for a given feed group id, feed id, and route id.

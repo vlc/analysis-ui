@@ -1,13 +1,10 @@
-import {getSession, withApiAuthRequired} from '@auth0/nextjs-auth0'
-
+import withApiAuthRequired from 'lib/auth/with-api-auth-required'
 import AuthenticatedCollection from 'lib/db/authenticated-collection'
 import {withDefaultValues} from 'lib/modification/modification-default-values'
-import {userFromSession} from 'lib/user'
 import {errorToPOJO} from 'lib/utils/api'
 
-export default withApiAuthRequired(async function (req, res) {
+export default withApiAuthRequired(async function (req, res, user) {
   try {
-    const user = userFromSession(req, getSession(req, res))
     const projectId = req.body.projectId as string
     const modifications = await AuthenticatedCollection.with(
       'modifications',

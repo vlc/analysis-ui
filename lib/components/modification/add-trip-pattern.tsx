@@ -10,8 +10,8 @@ import dynamic from 'next/dynamic'
 import {useMemo, useState} from 'react'
 
 import {useBundleStops} from 'lib/gtfs/hooks'
+import useNumberOfStops from 'lib/modification/hooks/use-number-of-stops'
 import scopeAddTripPatternStops from 'lib/modification/scope-add-trip-pattern-stops'
-import getStops from 'lib/utils/get-stops'
 
 import TransitModeSelector from '../transit-mode-selector'
 
@@ -31,12 +31,6 @@ function useGTFSStops(bundleId: string, modification: CL.AddTripPattern) {
   return useMemo(() => {
     return scopeAddTripPatternStops(modification, allStops)
   }, [modification, allStops])
-}
-
-function useNumberOfStops(modification: CL.AddTripPattern) {
-  return useMemo(() => {
-    return getStops(modification.segments)?.length
-  }, [modification.segments])
 }
 
 /**
@@ -82,6 +76,7 @@ export default function AddTripPattern({
 
         <Box>
           <EditAlignment
+            bundleId={bundle._id}
             isEditing={isEditing}
             modification={modification}
             numberOfStops={numberOfStops}

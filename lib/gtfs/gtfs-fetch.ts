@@ -4,7 +4,7 @@ import authFetch from 'lib/utils/auth-fetch'
 const toJSON = (response: Response) => response.json()
 
 const fetchOptions: RequestInit = {
-  cache: 'force-cache'
+  cache: process.env.NODE_ENV === 'production' ? 'force-cache' : 'no-cache'
 }
 
 export default function gtfsFetch<T>(

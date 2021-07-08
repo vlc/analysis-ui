@@ -6,7 +6,7 @@ import {useCallback} from 'react'
 import Select from '../select'
 
 const getOptionLabel = fpGet('name')
-const getOptionValue = fpGet('pattern_id')
+const getOptionValue = fpGet('id')
 
 /**
  * Select a pattern, given a route and a feed

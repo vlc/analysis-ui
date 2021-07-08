@@ -9,6 +9,7 @@ export function create(count: number): CL.FrequencyEntry {
     patternTrips: [],
     startTime: 7 * 3600,
     endTime: 22 * 3600,
+    exactTimes: false,
 
     // active every day
     monday: true,

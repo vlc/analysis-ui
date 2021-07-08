@@ -74,8 +74,8 @@ declare global {
       accessGroup: string
       nonce: ObjectID
       name: string
-      createdAt: Date
-      updatedAt: Date
+      createdAt: string | Date
+      updatedAt: string | Date
     }
 
     /**
@@ -184,16 +184,24 @@ declare global {
       stops: string[]
     }
 
+    /**
+     * Modification with segments.
+     */
+    export interface SegmentsModification {
+      segments: ModificationSegment[]
+    }
+
     export interface AddStreets extends IModification {
       type: 'add-streets'
       lineStrings: GeoJSON.Position[][]
     }
 
-    export interface AddTripPattern extends IModification {
+    export interface AddTripPattern
+      extends IModification,
+        SegmentsModification {
       bidirectional: boolean
       color: string
       type: 'add-trip-pattern'
-      segments: ModificationSegment[]
       timetables: Timetable[]
       transitMode: number
     }
@@ -242,13 +250,15 @@ declare global {
       type: 'remove-trips'
     }
 
-    export interface Reroute extends IModification, TripsModification {
+    export interface Reroute
+      extends IModification,
+        TripsModification,
+        SegmentsModification {
       type: 'reroute'
       fromStop?: string
       toStop?: string
       dwellTime: number
       dwellTimes: number[]
-      segments: ModificationSegment[]
       segmentSpeeds: SegmentSpeeds
     }
 
@@ -317,8 +327,8 @@ declare global {
     }
 
     export interface ScenariosModifications extends IModel {
-      scenarioId: string
       modificationId: string
+      scenarioId: string
     }
 
     export interface RegionalAnalysis extends GridHeader, IModel {
@@ -490,12 +500,40 @@ declare global {
       Layout?: React.FunctionComponent
     }
 
+    export type DecayFunctionType =
+      | 'step'
+      | 'logistic'
+      | 'exponential'
+      | 'linear'
+
     /**
      * A "profile request" object
      */
     export interface ProfileRequest {
+      accessModes: string
+      bikeSpeed: number
+      bikeTrafficStress: number
       bounds: CL.Bounds
+      date: string
+      decayFunction: {
+        standardDeviationMinutes?: number
+        type: DecayFunctionType
+        widthMinutes?: number
+      }
+      destinationPointSetIds: string[]
+      directModes: string
+      egressModes: string
+      fromTime: number
+      maxBikeTime: number
+      maxRides: number
+      maxWalkTime: number
+      monteCarloDraws: number
+      percentiles: number[]
+      toTime: number
+      transitModes: string
+      walkSpeed: number
       workerVersion: string
+      variantIndex: number
     }
   }
 }

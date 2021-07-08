@@ -39,7 +39,7 @@ export default function useAvailablePhaseStops(
       return stops.map((stop) => ({
         feedId: modification.feed,
         scopedId: `${modification.feed}:${stop.id}`,
-        stop
+        ...stop
       }))
     } else if (modification.type === 'add-trip-pattern') {
       return scopeAddTripPatternStops(modification, bundleStops)

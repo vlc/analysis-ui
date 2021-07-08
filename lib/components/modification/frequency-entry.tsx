@@ -42,7 +42,7 @@ export default function FrequencyEntry({
   const _selectPattern = (patternTrips: string[]) =>
     update({patternTrips, sourceTrip: patternTrips[0]})
 
-  const feedScopedModificationStops = useMemo(() => {
+  const feedScopedModificationStops: GTFS.FeedScopedStop[] = useMemo(() => {
     const patternStopIds = uniq(
       routePatterns
         .filter((pattern) =>
@@ -55,8 +55,8 @@ export default function FrequencyEntry({
       return {
         feedId,
         scopedId: `${feedId}:${stop.id}`,
-        stop
-      } as GTFS.FeedScopedStop
+        ...stop
+      }
     })
   }, [entry.patternTrips, feedId, routePatterns, routeStops])
 

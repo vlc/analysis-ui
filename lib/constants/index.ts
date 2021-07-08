@@ -193,10 +193,11 @@ export const TRAVEL_TIME_PERCENTILES = [5, 25, 50, 75, 95]
 /**
  * Default Profile Request object
  */
-export const PROFILE_REQUEST_DEFAULTS = {
+export const PROFILE_REQUEST_DEFAULTS: CL.ProfileRequest = {
   accessModes: 'WALK',
   bikeSpeed: 4.166666666666667,
   bikeTrafficStress: 4,
+  bounds: null,
   date:
     process.env.NODE_ENV === 'test'
       ? '2020-06-10'
@@ -229,3 +230,6 @@ export const FONT_URL =
   process.env.NODE_ENV === 'production'
     ? `https://assets.conveyal.com${fontPath}`
     : fontPath
+
+// Empty array is used as a default value so we can compare using `===`.
+export const EMPTY_ARRAY = []

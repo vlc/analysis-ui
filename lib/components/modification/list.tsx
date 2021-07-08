@@ -54,7 +54,9 @@ export default function ModificationsList({
         bundleId={project.bundleId}
         modifications={modifications.filter(
           (m) =>
-            !!modificationsOnMap.state[project._id].find((_id) => _id === m._id)
+            !!modificationsOnMap
+              .forProject(project._id)
+              .find((_id) => _id === m._id)
         )}
       />
 
@@ -64,7 +66,7 @@ export default function ModificationsList({
             {message('modification.plural')}{' '}
             <Badge ml={2}>{modifications.length}</Badge>
           </Tab>
-          <Tab _focus={{outline: 'none'}}>{message('variant.plural')}</Tab>
+          <Tab _focus={{outline: 'none'}}>{message('scenario.plural')}</Tab>
         </TabList>
 
         <TabPanels>

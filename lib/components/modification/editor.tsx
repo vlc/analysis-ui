@@ -2,18 +2,13 @@ import {
   Alert,
   AlertIcon,
   Box,
-  Button,
-  Divider,
   Flex,
   Stack,
-  Tab,
-  Tabs,
-  TabList,
-  TabPanel,
-  TabPanels,
   useToast,
-  AlertDescription
+  AlertDescription,
+  useDisclosure
 } from '@chakra-ui/react'
+import {dequal} from 'dequal/lite'
 import get from 'lodash/get'
 import {useCallback, useMemo, useState} from 'react'
 
@@ -21,18 +16,27 @@ import {useModification} from 'lib/hooks/use-model'
 import useRouteTo from 'lib/hooks/use-route-to'
 import message from 'lib/message'
 import copyModification from 'lib/modification/mutations/copy'
+import ScenariosSelector from 'lib/scenario/components/selector'
 
 import {ConfirmDialog} from '../confirm-button'
 import Editable from '../editable'
 import IconButton from '../icon-button'
-import {ChevronLeft, CodeIcon, CopyIcon, DeleteIcon, MouseIcon} from '../icons'
+import {
+  ChevronLeft,
+  CodeIcon,
+  CopyIcon,
+  DeleteIcon,
+  MouseIcon,
+  SaveIcon,
+  UndoIcon
+} from '../icons'
 import InnerDock from '../inner-dock'
 import AllModificationsMapDisplay from '../modifications-map/display-all'
 
 import FitBoundsButton from './fit-bounds'
 import JSONEditor from './json-editor'
 import ModificationType from './type'
-import {dequal} from 'dequal/lite'
+import TipButton from '../tip-button'
 
 // Test modification name is valid
 const nameIsValid = (s) => s && s.length > 0
@@ -76,17 +80,18 @@ function CopiedModificationToast({
 
 export default function ModificationEditor(p: {
   bundle: CL.Bundle
-  modification: CL.IModification
+  modification: CL.Modification
   project: CL.Project
   query: CL.Query
 }) {
+  const visualEditor = useDisclosure({defaultIsOpen: true})
   const toast = useToast({position: 'top', isClosable: true, status: 'success'})
   const {remove, update} = useModification(p.modification._id, {
     initialData: p.modification
   })
   const [modification, setLocalModification] = useState(p.modification)
-  const saveDisabled = useMemo(
-    () => dequal(modification, p.modification),
+  const unsavedChanges = useMemo<boolean>(
+    () => !dequal(modification, p.modification),
     [modification, p.modification]
   )
 
@@ -141,13 +146,16 @@ export default function ModificationEditor(p: {
 
   return (
     <>
-      <AllModificationsMapDisplay
-        isEditingId={modification._id}
-        project={p.project}
-      />
+      <AllModificationsMapDisplay isEditingId={modification._id} />
 
-      <Flex align='center' borderBottomWidth='1px' p={2} width='320px'>
-        <IconButton label='Modifications' onClick={goToAllModifications}>
+      <FitBoundsButton bundle={p.bundle} modification={modification} />
+
+      <Flex align='center' p={2} width='320px'>
+        <IconButton
+          isDisabled={unsavedChanges}
+          label='Modifications'
+          onClick={goToAllModifications}
+        >
           <ChevronLeft />
         </IconButton>
 
@@ -160,10 +168,23 @@ export default function ModificationEditor(p: {
         </Box>
 
         <Flex>
-          <div>
-            <FitBoundsButton />
-          </div>
+          {visualEditor.isOpen ? (
+            <IconButton
+              label='Edit JSON'
+              onClick={() => visualEditor.onClose()}
+            >
+              <CodeIcon />
+            </IconButton>
+          ) : (
+            <IconButton
+              label='Edit value'
+              onClick={() => visualEditor.onOpen()}
+            >
+              <MouseIcon />
+            </IconButton>
+          )}
           <IconButton
+            isDisabled={unsavedChanges}
             label={message('modification.copyModification')}
             onClick={() => _copyModification()}
           >
@@ -182,56 +203,91 @@ export default function ModificationEditor(p: {
           </ConfirmDialog>
         </Flex>
       </Flex>
+      {visualEditor.isOpen ? (
+        <VisualEditor
+          bundle={p.bundle}
+          modification={modification}
+          project={p.project}
+          save={_save}
+          saveDisabled={!unsavedChanges}
+          undo={() => setLocalModification(p.modification)}
+          updateLocally={updateLocally}
+        />
+      ) : (
+        <JSONEditor modification={modification} save={_save} />
+      )}
+    </>
+  )
+}
+
+function VisualEditor({
+  bundle,
+  modification,
+  project,
+  save,
+  saveDisabled,
+  undo,
+  updateLocally
+}: {
+  bundle: CL.Bundle
+  modification: CL.Modification
+  project: CL.Project
+  save: () => void
+  saveDisabled: boolean
+  undo: () => void
+  updateLocally: (updates: Partial<CL.Modification>) => void
+}) {
+  return (
+    <>
+      <Stack isInline spacing={0} width='100%'>
+        <TipButton
+          colorScheme='green'
+          onClick={save}
+          isDisabled={saveDisabled}
+          isFullWidth
+          label='Save changes'
+          leftIcon={<SaveIcon />}
+          rounded={0}
+        >
+          Save changes
+        </TipButton>
+        <TipButton
+          colorScheme='blue'
+          isDisabled={saveDisabled}
+          label='Undo changes'
+          onClick={undo}
+          rounded={0}
+        >
+          <UndoIcon />
+        </TipButton>
+      </Stack>
       <InnerDock>
-        <Tabs align='end' p={4} variant='soft-rounded'>
-          <TabPanels>
-            <TabPanel p={0}>
-              <Button onClick={_save} size='sm' isDisabled={saveDisabled}>
-                Save
-              </Button>
-              <Stack spacing={4}>
-                <Box>
-                  <Editable
-                    onChange={async (description) =>
-                      updateLocally({description})
-                    }
-                    placeholder={message('modification.addDescription')}
-                    value={modification.description}
-                  />
-                </Box>
+        <Stack px={4} pt={4} spacing={2}>
+          <Box>
+            <Editable
+              onChange={async (description) => updateLocally({description})}
+              placeholder={message('modification.addDescription')}
+              value={modification.description}
+            />
+          </Box>
 
-                {get(modification, 'routes.length') > 1 && (
-                  <Alert status='warning'>
-                    {message('modification.onlyOneRoute')}
-                  </Alert>
-                )}
+          {get(modification, 'routes.length') > 1 && (
+            <Alert status='warning'>
+              {message('modification.onlyOneRoute')}
+            </Alert>
+          )}
 
-                <Box>
-                  <ModificationType
-                    bundle={p.bundle}
-                    modification={modification}
-                    update={updateLocally}
-                    type={modification.type}
-                  />
-                </Box>
-              </Stack>
-            </TabPanel>
-            <TabPanel p={0}>
-              <JSONEditor modification={modification} save={_save} />
-            </TabPanel>
-          </TabPanels>
+          <Box>
+            <ModificationType
+              bundle={bundle}
+              modification={modification}
+              update={updateLocally}
+              type={modification.type}
+            />
+          </Box>
 
-          <Divider my={4} />
-
-          <TabList>
-            <Tab aria-label='Edit value'>
-              <MouseIcon />
-            </Tab>
-            <Tab aria-label='Edit JSON'>
-              <CodeIcon />
-            </Tab>
-          </TabList>
-        </Tabs>
+          <ScenariosSelector modification={modification} project={project} />
+        </Stack>
       </InnerDock>
     </>
   )

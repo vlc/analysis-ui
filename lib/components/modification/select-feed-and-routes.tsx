@@ -6,17 +6,21 @@ import {
   FormLabel,
   Stack
 } from '@chakra-ui/react'
+import {get} from 'lodash'
 import fpGet from 'lodash/fp/get'
+import {useEffect, useState} from 'react'
+import {useLeaflet} from 'react-leaflet'
 
-import {useFeedRoutes} from 'lib/gtfs/hooks'
+import {useFeedRoutes, useRoutePatterns} from 'lib/gtfs/hooks'
+import useModificationBounds from 'lib/modification/hooks/use-modification-bounds'
 
 import {AddIcon, MinusIcon} from '../icons'
 import Select from '../select'
 
 const getFeedLabel = fpGet('name')
 const getFeedValue = fpGet('feedId')
-const getRouteLabel = fpGet('label')
-const getRouteValue = fpGet('route_id')
+const getRouteLabel = fpGet('name')
+const getRouteValue = fpGet('id')
 
 /**
  * Select routes without selecting patterns
@@ -32,25 +36,28 @@ export default function SelectFeedAndRoutes({
   modification: CL.FeedModification
   onChange: (feed: string, routes: string[]) => void
 }) {
-  /** TODO
+  const feedRoutes = useFeedRoutes(bundle._id, modification.feed)
+  const selectedFeed = bundle.feeds.find((f) => f.feedId === modification.feed)
+
   // Zoom to bounds on a route change
-  const bounds = useSelector(selectModificationBounds)
-  const routePatterns = useSelector(selectRoutePatterns)
+  const bounds = useModificationBounds(bundle, modification as CL.Modification)
+  const routePatterns = useRoutePatterns(
+    bundle._id,
+    modification.feed,
+    get(modification, 'routes[0]')
+  )
   const [currentRoutePatterns, setCurrentRoutePatterns] =
     useState(routePatterns)
   const leaflet = useLeaflet()
+  const newRoutePatterns = routePatterns !== currentRoutePatterns
   useEffect(() => {
-    if (routePatterns !== currentRoutePatterns) {
+    if (newRoutePatterns) {
       setCurrentRoutePatterns(routePatterns)
       if (bounds) {
         leaflet.map.fitBounds(bounds)
       }
     }
-  }, [bounds, leaflet, currentRoutePatterns, routePatterns])
-  **/
-
-  const feedRoutes = useFeedRoutes(bundle._id, modification.feed)
-  const selectedFeed = bundle.feeds.find((f) => f.feedId === modification.feed)
+  }, [bounds, leaflet, newRoutePatterns, routePatterns])
 
   function _selectFeed(feed: CL.FeedSummary) {
     onChange(feed.feedId, [])

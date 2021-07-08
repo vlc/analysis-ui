@@ -8,7 +8,7 @@ export default function cleanProjectScenarioName(project, scenarioIndex) {
     return UNDEFINED_PROJECT_NAME
   }
   const scenarioName =
-    project.variants[scenarioIndex] || message('variant.baseline')
+    project.variants[scenarioIndex] || message('scenario.baseline')
   const description = `${project.name}-${scenarioName}`
   return description.replace(/[^a-zA-Z0-9]/, '-')
 }

@@ -4,12 +4,10 @@ import set from 'lodash/set'
 import dynamic from 'next/dynamic'
 import {useEffect, useRef, useState} from 'react'
 import {Map as ReactMap, Viewport, useLeaflet} from 'react-leaflet'
-import {useSelector} from 'react-redux'
 import MapControl from 'react-leaflet-control'
 
 import useCurrentRegion from 'lib/hooks/use-current-region'
 import useRouteChanging from 'lib/hooks/use-route-changing'
-import selectModificationSaveInProgress from 'lib/selectors/modification-save-in-progress'
 import {getParsedItem, stringifyAndSet} from 'lib/utils/local-storage'
 import {toLatLngBounds} from 'lib/utils/bounds'
 
@@ -108,7 +106,6 @@ export default function BaseMap({children, setLeafletContext}: MapProps) {
   const controlBg = useColorModeValue('whiteAlpha.400', 'blackAlpha.400')
   const leafletMapRef = useRef<ReactMap>()
   const viewport = useRecenterOnRegionEffect()
-  const saveInProgress = useSelector(selectModificationSaveInProgress)
   const [routeChanging] = useRouteChanging()
 
   // On mount, store the leaflet element
@@ -141,11 +138,7 @@ export default function BaseMap({children, setLeafletContext}: MapProps) {
   return (
     <ReactMap
       attributionControl={false}
-      className={
-        routeChanging || saveInProgress
-          ? 'disableAndDim'
-          : 'conveyal-leaflet-map'
-      }
+      className={routeChanging ? 'disableAndDim' : 'conveyal-leaflet-map'}
       minZoom={MIN_ZOOM}
       onViewportChanged={(v) => stringifyAndSet(VIEWPORT_KEY, v)}
       preferCanvas={true}
@@ -178,7 +171,7 @@ export default function BaseMap({children, setLeafletContext}: MapProps) {
         <MapboxGLLayer style={getStyle(style)} />
       )}
 
-      <Controls isDisabled={routeChanging || saveInProgress} />
+      <Controls isDisabled={routeChanging} />
 
       {!routeChanging && children ? children : null}
     </ReactMap>

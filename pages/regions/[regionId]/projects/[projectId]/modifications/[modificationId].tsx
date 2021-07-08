@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic'
 
-import ModificationsOnMapProvider from 'lib/modification/components/modifications-on-map-provider'
 import withDataLayout from 'lib/hocs/with-data-layout'
 import {useBundle, useModification, useProject} from 'lib/hooks/use-model'
 
@@ -17,15 +16,13 @@ export default withDataLayout<{
 }>(
   function Editor(p) {
     return (
-      <ModificationsOnMapProvider>
-        <ModificationEditor
-          bundle={p.bundle}
-          key={p.modification._id}
-          modification={p.modification}
-          project={p.project}
-          query={p.query}
-        />
-      </ModificationsOnMapProvider>
+      <ModificationEditor
+        bundle={p.bundle}
+        key={p.modification._id}
+        modification={p.modification}
+        project={p.project}
+        query={p.query}
+      />
     )
   },
   function useData({query}) {

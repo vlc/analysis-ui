@@ -19,10 +19,9 @@ declare namespace GTFS {
     stops: Stop[]
   }
 
-  export type FeedScopedStop = {
+  export type FeedScopedStop = Stop & {
     feedId: string
     scopedId: string
-    stop: Stop
   }
 
   export type Route = {

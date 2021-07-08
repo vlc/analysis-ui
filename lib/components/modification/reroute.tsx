@@ -205,6 +205,7 @@ export default function Reroute({
               bundleId={bundle._id}
               isEditing={isEditing}
               modification={modification}
+              numberOfStops={numberOfStops}
               setIsEditing={setIsEditing}
               update={update}
             />

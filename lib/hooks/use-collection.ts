@@ -41,7 +41,7 @@ export default function useCollection<T extends CL.IModel>(
     config
   )
   const emptyArray = useMemo<T[]>(() => [], [])
-  const {mutate, revalidate} = response
+  const {mutate} = response
   // Helper function for updating values when using a collection
   const update = useCallback(
     async (_id: string, newProperties: Partial<T>) => {
@@ -71,11 +71,11 @@ export default function useCollection<T extends CL.IModel>(
     async (properties: T) => {
       const res = await postJSON<T>(baseURL, properties)
       if (res.ok) {
-        await revalidate()
+        await mutate()
       }
       return res
     },
-    [baseURL, revalidate]
+    [baseURL, mutate]
   )
 
   // Helper function when removing values
@@ -83,11 +83,11 @@ export default function useCollection<T extends CL.IModel>(
     async (_id) => {
       const res = await safeDelete(`${baseURL}/${_id}`)
       if (res.ok) {
-        await revalidate()
+        await mutate()
       }
       return res
     },
-    [baseURL, revalidate]
+    [baseURL, mutate]
   )
 
   return {

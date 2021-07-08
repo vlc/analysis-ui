@@ -25,6 +25,7 @@ export default function AdjustSpeedLayer(p: {
       <>
         <Pane zIndex={500}>
           <PatternLayer
+            activeTrips={p.modification.trips}
             color={colors.NEUTRAL}
             dim={p.dim}
             bundleId={p.bundleId}
@@ -44,6 +45,7 @@ export default function AdjustSpeedLayer(p: {
   } else {
     return (
       <PatternLayer
+        activeTrips={p.modification.trips}
         color={colors.MODIFIED}
         dim={p.dim}
         bundleId={p.bundleId}

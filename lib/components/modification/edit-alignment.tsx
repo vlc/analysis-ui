@@ -134,7 +134,7 @@ export default function EditAlignment({
                 ? modification.toStop == null || modification.fromStop == null
                 : allowExtend
             }
-            allStops={allStops}
+            allStops={gtfsStops}
             extendFromEnd={extendFromEnd}
             followRoad={followRoad}
             modification={modification}

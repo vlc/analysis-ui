@@ -36,11 +36,11 @@ export default function ExportProject({onHide, project}) {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{message('variant.export')}</ModalHeader>
+        <ModalHeader>{message('scenario.export')}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Stack spacing={4} pb={6}>
-            <Box>{message('variant.exportExplanation')}</Box>
+            <Box>{message('scenario.exportExplanation')}</Box>
             {project.variants.map((name, index) => (
               <Box key={index}>
                 <Variant
@@ -90,28 +90,28 @@ function Variant({index, name, project}) {
           onClick={_downloadScenario}
           colorScheme='blue'
         >
-          {message('variant.saveJson')}
+          {message('scenario.saveJson')}
         </Button>
         <Button
           leftIcon={<PrintIcon />}
           onClick={goToReport}
           colorScheme='blue'
         >
-          {message('variant.print')}
+          {message('scenario.print')}
         </Button>
         <Button
           leftIcon={<DownloadIcon />}
           onClick={_downloadLines}
           colorScheme='blue'
         >
-          {message('variant.saveGeojson')}
+          {message('scenario.saveGeojson')}
         </Button>
         <Button
           leftIcon={<DownloadIcon />}
           onClick={_downloadStops}
           colorScheme='blue'
         >
-          {message('variant.saveStops')}
+          {message('scenario.saveStops')}
         </Button>
       </SimpleGrid>
     </Stack>
