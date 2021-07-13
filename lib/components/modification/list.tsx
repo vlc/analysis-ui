@@ -35,9 +35,11 @@ import {DisplayAll as ModificationsMap} from '../modifications-map/display-all'
 import CreateModification from './create'
 
 export default function ModificationsList({
+  bundle,
   modifications,
   project
 }: {
+  bundle: CL.Bundle
   modifications: CL.Modification[]
   project: CL.Project
 }) {
@@ -51,7 +53,7 @@ export default function ModificationsList({
   return (
     <>
       <ModificationsMap
-        bundleId={project.bundleId}
+        bundle={bundle}
         modifications={modifications.filter(
           (m) =>
             !!modificationsOnMap

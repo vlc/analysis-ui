@@ -24,21 +24,16 @@ import {memo, useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 import {setSearchParameter} from 'lib/actions'
-import {
-  setCopyRequestSettings,
-  setRequestsSettings,
-  updateRequestsSettings
-} from 'lib/actions/analysis/profile-request'
+import {setCopyRequestSettings} from 'lib/actions/analysis/profile-request'
+import {BASELINE_SCENARIO_ID, BASELINE_SCENARIO} from 'lib/constants'
+import {useScenarios} from 'lib/hooks/use-collection'
 import useCurrentRegion from 'lib/hooks/use-current-region'
 import useOnMount from 'lib/hooks/use-on-mount'
 import message from 'lib/message'
 import {activeOpportunityDataset} from 'lib/modules/opportunity-datasets/selectors'
 import CreateRegional from 'lib/regional/components/create'
-import selectProfileRequest from 'lib/selectors/profile-request'
 import selectProfileRequestLonLat from 'lib/selectors/profile-request-lonlat'
 import selectProfileRequestHasChanged from 'lib/selectors/profile-request-has-changed'
-import selectRegionBounds from 'lib/selectors/region-bounds'
-import {fromLatLngBounds} from 'lib/utils/bounds'
 import cleanProjectScenarioName from 'lib/utils/clean-project-scenario-name'
 import {secondsToHhMmString} from 'lib/utils/time'
 
@@ -51,7 +46,7 @@ import DownloadMenu from './download-menu'
 import ProfileRequestEditor from './profile-request-editor'
 import AdvancedSettings from './advanced-settings'
 import ModeSelector from './mode-selector'
-import {useProjects, useScenarios} from 'lib/hooks/use-collection'
+import useProfileRequest from 'lib/hooks/use-profile-request'
 
 const SPACING_XS = 2
 const SPACING = 5
@@ -59,12 +54,6 @@ const SPACING_LG = 8
 
 const getName = fpGet('name')
 const getId = fpGet('_id')
-
-const BASELINE_ID = 'baseline'
-const BASELINE_SCENARIO = {
-  _id: BASELINE_ID,
-  name: message('analysis.baseline')
-} as CL.Scenario
 
 function useIsFetchingIsochrone() {
   const isochroneFetchStatus = useSelector((s) =>
@@ -109,55 +98,40 @@ function PrimarySettings({
 }) {
   const dispatch = useDispatch<any>()
   const primaryBorder = useColorModeValue('blue.50', 'blue.900')
-  const updatePrimaryPR = useCallback(
-    (params) => {
-      dispatch(updateRequestsSettings({index: 0, params}))
-    },
-    [dispatch]
-  )
-  const requestsSettings = useSelector((s) =>
-    get(s, 'analysis.requestsSettings[0]')
-  )
+  const region = useCurrentRegion()
+  const {replace, settings, update} = useProfileRequest(0)
   const {data: scenarios} = useScenarios({query: {projectId: project?._id}})
   const currentScenario =
-    scenarios.find((s) => s._id === requestsSettings.scenarioId) ??
-    BASELINE_SCENARIO
+    scenarios.find((s) => s._id === settings.scenarioId) ?? BASELINE_SCENARIO
 
   // On initial load, the query string may be out of sync with the requestsSettings.projectId
   useOnMount(() => {
     const projectId = project?._id
     if (projectId != null && projectId !== 'undefined') {
       dispatch(setSearchParameter({projectId}))
-      updatePrimaryPR({projectId})
+      update({projectId})
     }
   })
 
   // Set the analysis bounds to be the region bounds if bounds do not exist
   useEffect(() => {
-    if (!profileRequest.bounds) {
-      updatePrimaryPR({bounds: fromLatLngBounds(regionBounds)})
+    if (!settings.bounds) {
+      update({bounds: region.bounds})
     }
-  }, [profileRequest, regionBounds, updatePrimaryPR])
+  }, [settings, region, update])
 
   // Current project is stored in the query string
   const _setCurrentProject = useCallback(
     (option: CL.Project) => {
       const projectId = option?._id
       dispatch(setSearchParameter({projectId}))
-      updatePrimaryPR({projectId, scenarioId: BASELINE_ID})
+      update({projectId, scenarioId: BASELINE_SCENARIO_ID})
     },
-    [dispatch, updatePrimaryPR]
+    [dispatch, update]
   )
-  const _setCurrentVariant = useCallback(
-    (option: CL.Scenario) => updatePrimaryPR({scenarioId: option._id}),
-    [updatePrimaryPR]
-  )
-
-  const replaceSettings = useCallback(
-    (newSettings) => {
-      dispatch(setRequestsSettings([newSettings, requestsSettings[1]]))
-    },
-    [dispatch, requestsSettings]
+  const _setScenario = useCallback(
+    (option: CL.Scenario) => update({scenarioId: option._id}),
+    [update]
   )
 
   return (
@@ -170,77 +144,58 @@ function PrimarySettings({
     >
       <RequestHeading
         colorScheme='blue'
-        profileRequest={requestsSettings}
+        profileRequest={settings}
         project={project}
         scenario={currentScenario}
       />
       <RequestSettings
         colorScheme='blue'
-        profileRequest={requestsSettings}
+        profileRequest={settings}
         project={project}
         projects={projects}
-        replaceSettings={(s) => replaceSettings(s)}
+        replaceSettings={replace}
         scenario={currentScenario}
         scenarios={scenarios}
         setProject={_setCurrentProject}
-        setScenario={_setCurrentVariant}
-        updateProfileRequest={updatePrimaryPR}
+        setScenario={_setScenario}
+        updateProfileRequest={update}
       />
     </Box>
   )
 }
 
 function ComparisonSettings({projects}: {projects: CL.Project[]}) {
-  const comparisonProjectId = useSelector((s) =>
-    get(s, 'analysis.requestsSettings[1].projectId')
-  )
+  const {replace, settings, update} = useProfileRequest(1)
+  const comparisonProjectId = settings?.projectId
   const comparisonProject = projects.find((p) => p._id === comparisonProjectId)
-  const dispatch = useDispatch<any>()
   const comparisonBorderColor = useColorModeValue('red.100', 'red.900')
-  const updateComparisonPR = useCallback(
-    (params) => {
-      dispatch(updateRequestsSettings({index: 1, params}))
-    },
-    [dispatch]
-  )
-  const requestsSettings = useSelector((s) =>
-    get(s, 'analysis.requestsSettings[1]')
-  )
   const {data: scenarios} = useScenarios({
     query: {projectId: comparisonProject?._id}
   })
   const currentScenario =
-    scenarios.find((s) => s._id === requestsSettings.scenarioId) ??
-    BASELINE_SCENARIO
+    scenarios.find((s) => s._id === settings.scenarioId) ?? BASELINE_SCENARIO
 
   // Current project is stored in the query string
   const _setComparisonProject = useCallback(
     (newProject) => {
       if (!comparisonProject) {
-        updateComparisonPR({
-          ...requestsSettings,
+        update({
+          ...settings,
           projectId: newProject._id,
-          scenarioId: BASELINE_ID
+          scenarioId: BASELINE_SCENARIO_ID
         })
       } else {
-        updateComparisonPR({
+        update({
           projectId: newProject._id,
-          scenarioId: BASELINE_ID
+          scenarioId: BASELINE_SCENARIO_ID
         })
       }
     },
-    [comparisonProject, requestsSettings, updateComparisonPR]
+    [comparisonProject, settings, update]
   )
   const _setCurrentScenario = useCallback(
-    (option: CL.Scenario) => updateComparisonPR({scenarioId: option._id}),
-    [updateComparisonPR]
-  )
-
-  const replaceSettings = useCallback(
-    (newSettings) => {
-      dispatch(setRequestsSettings([requestsSettings[0], newSettings]))
-    },
-    [dispatch, requestsSettings]
+    (option: CL.Scenario) => update({scenarioId: option._id}),
+    [update]
   )
 
   return (
@@ -254,22 +209,22 @@ function ComparisonSettings({projects}: {projects: CL.Project[]}) {
       <RequestHeading
         colorScheme='red'
         isComparison
-        profileRequest={requestsSettings}
+        profileRequest={settings}
         project={comparisonProject}
         scenario={currentScenario}
       />
       <RequestSettings
         colorScheme='red'
         isComparison
-        profileRequest={requestsSettings}
+        profileRequest={settings}
         project={comparisonProject}
         projects={projects}
-        replaceSettings={(s) => replaceSettings(s)}
+        replaceSettings={replace}
         scenario={currentScenario}
         scenarios={scenarios}
         setProject={_setComparisonProject}
         setScenario={_setCurrentScenario}
-        updateProfileRequest={updateComparisonPR}
+        updateProfileRequest={update}
       />
     </Box>
   )
@@ -310,7 +265,7 @@ function RequestHeading({
   scenario: CL.Scenario
 }) {
   const opportunityDataset = useSelector(activeOpportunityDataset)
-  const projectDownloadName = cleanProjectScenarioName(project, scenario)
+  const projectDownloadName = cleanProjectScenarioName(project, scenario.name)
   const resultsAreValid = useResultsValid(isComparison)
 
   return (
@@ -355,7 +310,7 @@ function RequestHeading({
         </Heading>
       )}
 
-      <Stack spacing={SPACING_XS} isInline>
+      <Stack spacing={SPACING_XS} isInline shouldWrapChildren>
         <DownloadMenu
           isComparison={isComparison}
           isDisabled={!resultsAreValid}
@@ -365,14 +320,12 @@ function RequestHeading({
           projectName={projectDownloadName}
           scenarioId={scenario?._id}
         />
-        <Box>
-          <CreateRegional
-            isComparison={isComparison}
-            isDisabled={!resultsAreValid}
-            projectId={get(project, '_id')}
-            scenarioId={scenario?._id}
-          />
-        </Box>
+        <CreateRegional
+          isComparison={isComparison}
+          isDisabled={!resultsAreValid}
+          projectId={get(project, '_id')}
+          scenarioId={scenario?._id}
+        />
       </Stack>
     </Flex>
   )

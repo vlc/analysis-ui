@@ -1,25 +1,20 @@
-import {get} from 'lodash'
-
 import colors from 'lib/constants/colors'
-import {useFeedStops, useRoutePatterns} from 'lib/gtfs/hooks'
+import {useFeedStops} from 'lib/gtfs/hooks'
 
 import Pane from '../map/pane'
 
 import PatternLayer from './pattern-layer'
 import HopLayer from './hop-layer'
+import useModificationPatterns from 'lib/modification/hooks/use-modification-patterns'
 
 /** Map layer for an adjust speed modification */
 export default function AdjustSpeedLayer(p: {
-  bundleId: string
+  bundle: CL.Bundle
   dim?: boolean
   modification: CL.AdjustSpeed
 }) {
-  const allStops = useFeedStops(p.bundleId, p.modification.feed)
-  const patterns = useRoutePatterns(
-    p.bundleId,
-    p.modification.feed,
-    get(p.modification, 'routes[0]')
-  )
+  const allStops = useFeedStops(p.bundle._id, p.modification.feed)
+  const patterns = useModificationPatterns(p.bundle, p.modification)
   if (p.modification.hops) {
     return (
       <>
@@ -28,7 +23,7 @@ export default function AdjustSpeedLayer(p: {
             activeTrips={p.modification.trips}
             color={colors.NEUTRAL}
             dim={p.dim}
-            bundleId={p.bundleId}
+            bundleId={p.bundle._id}
             modification={p.modification}
           />
         </Pane>
@@ -48,7 +43,7 @@ export default function AdjustSpeedLayer(p: {
         activeTrips={p.modification.trips}
         color={colors.MODIFIED}
         dim={p.dim}
-        bundleId={p.bundleId}
+        bundleId={p.bundle._id}
         modification={p.modification}
       />
     )

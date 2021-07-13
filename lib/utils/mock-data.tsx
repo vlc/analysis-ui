@@ -10,7 +10,11 @@ import {constructor as XorShift} from 'xorshift'
 import {MINIMUM_R5_VERSION} from 'lib/modules/r5-version/constants'
 
 import {responseToSurface} from '../actions/analysis'
-import {ADD_TRIP_PATTERN, TRAVEL_TIME_PERCENTILES} from '../constants'
+import {
+  ADD_TRIP_PATTERN,
+  BASELINE_SCENARIO_ID,
+  TRAVEL_TIME_PERCENTILES
+} from '../constants'
 
 import multi from './multi'
 
@@ -249,12 +253,12 @@ export const mockProfileRequest = {
   monteCarloDraws: 200,
   name: 'Profile Request Test',
   projectId: mockProject._id,
+  scenarioId: BASELINE_SCENARIO_ID,
   reachabilityThreshold: 0,
   regionId: mockRegion._id,
   toTime: 32400,
   transitModes: 'BUS,TRAM,RAIL,SUBWAY',
   travelTimePercentile: 50,
-  variantIndex: 0,
   walkSpeed: 1.3888888888888888,
   workerVersion: MINIMUM_R5_VERSION
 }

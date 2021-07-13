@@ -12,7 +12,7 @@ const RerouteLayer = dynamic(() => import('./reroute-layer'))
 const StopLayer = dynamic(() => import('./stop-layer'))
 
 export default function Display(p: {
-  bundleId: string
+  bundle: CL.Bundle
   dim?: boolean
   modification: CL.Modification
 }) {
@@ -21,7 +21,7 @@ export default function Display(p: {
     case C.ADD_STREETS: {
       const feature: GeoJSON.MultiLineString = {
         type: 'MultiLineString',
-        coordinates: (m as CL.AddStreets).lineStrings
+        coordinates: m.lineStrings
       }
       return (
         <GeoJSON
@@ -37,7 +37,7 @@ export default function Display(p: {
     case C.MODIFY_STREETS: {
       const geometryCollection: GeoJSON.GeometryCollection = {
         type: 'GeometryCollection',
-        geometries: (m as CL.ModifyStreets).polygons.map((p) => ({
+        geometries: m.polygons.map((p) => ({
           type: 'Polygon',
           coordinates: [p]
         }))
@@ -57,7 +57,7 @@ export default function Display(p: {
         <PatternLayer
           color={colors.REMOVED}
           dim={p.dim}
-          bundleId={p.bundleId}
+          bundleId={p.bundle._id}
           modification={m as CL.RemoveTrips}
         />
       )
@@ -66,7 +66,7 @@ export default function Display(p: {
         <PatternLayer
           color={colors.MODIFIED}
           dim={p.dim}
-          bundleId={p.bundleId}
+          bundleId={p.bundle._id}
           modification={m as CL.ConvertToFrequency}
         />
       )
@@ -76,11 +76,11 @@ export default function Display(p: {
           <PatternLayer
             color={colors.NEUTRAL_LIGHT}
             dim={p.dim}
-            bundleId={p.bundleId}
+            bundleId={p.bundle._id}
             modification={m as CL.RemoveStops}
           />
           <StopLayer
-            bundleId={p.bundleId}
+            bundleId={p.bundle._id}
             modification={m as CL.RemoveStops}
             selectedColor={colors.REMOVED}
             unselectedColor={colors.NEUTRAL_LIGHT}
@@ -93,11 +93,11 @@ export default function Display(p: {
           <PatternLayer
             color={colors.NEUTRAL_LIGHT}
             dim={p.dim}
-            bundleId={p.bundleId}
+            bundleId={p.bundle._id}
             modification={m as CL.AdjustDwellTime}
           />
           <StopLayer
-            bundleId={p.bundleId}
+            bundleId={p.bundle._id}
             modification={m as CL.AdjustDwellTime}
             nullIsWildcard
             selectedColor={colors.MODIFIED}
@@ -105,14 +105,12 @@ export default function Display(p: {
         </>
       )
     case C.ADJUST_SPEED:
-      return (
-        <AdjustSpeedLayer dim={p.dim} bundleId={p.bundleId} modification={m} />
-      )
+      return <AdjustSpeedLayer dim={p.dim} bundle={p.bundle} modification={m} />
     case C.REROUTE:
       return (
         <RerouteLayer
           dim={p.dim}
-          bundleId={p.bundleId}
+          bundleId={p.bundle._id}
           modification={m as CL.Reroute}
         />
       )

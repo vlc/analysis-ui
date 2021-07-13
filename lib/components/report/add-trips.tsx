@@ -2,9 +2,10 @@ import {Box, Stack} from '@chakra-ui/react'
 import sum from 'lodash/sum'
 import React from 'react'
 import turfLength from '@turf/length'
+import {feature} from '@turf/helpers'
 
 import message from 'lib/message'
-import L from 'lib/leaflet'
+import useModificationBounds from 'lib/modification/hooks/use-modification-bounds'
 import {secondsToHhMmString} from 'lib/utils/time'
 
 import AddTripPatternLayer from '../modifications-map/add-trip-pattern-layer'
@@ -18,19 +19,22 @@ import Speed from './speed'
 /**
  * The summary/report view of an add trip pattern modification
  */
-export default function AddTrips(p) {
-  const {modification} = p
+export default function AddTrips({
+  bundle,
+  modification
+}: {
+  bundle: CL.Bundle
+  modification: CL.AddTripPattern
+}) {
   const segments = modification.segments || []
-  const segmentDistances = segments.map((seg) => turfLength(seg.geometry))
-
+  const segmentDistances: number[] = []
+  for (const segment of segments) {
+    if (segment.geometry && segment.geometry.type === 'LineString') {
+      segmentDistances.push(turfLength(feature(segment.geometry)))
+    }
+  }
   const km = segmentDistances.reduce((a, b) => a + b, 0)
-  const bounds = L.latLngBounds(
-    [].concat(
-      ...segments.map((seg) =>
-        seg.geometry.coordinates.map(([lon, lat]) => [lat, lon])
-      )
-    )
-  )
+  const bounds = useModificationBounds(bundle, modification)
 
   return (
     <Stack>
@@ -65,9 +69,7 @@ export default function AddTrips(p) {
           {(modification.timetables || []).map((tt) => (
             <Timetable
               bidirectional={!!modification.bidirectional}
-              feedScopedStops={p.feedScopedStops}
               key={tt._id}
-              projectTimetables={p.projectTimetables}
               segmentDistances={segmentDistances}
               timetable={tt}
             />
@@ -80,10 +82,12 @@ export default function AddTrips(p) {
 
 function Timetable({
   bidirectional,
-  feedScopedStops,
-  projectTimetables,
   segmentDistances,
   timetable
+}: {
+  bidirectional: boolean
+  segmentDistances: number[]
+  timetable: CL.Timetable
 }) {
   const {endTime, headwaySecs, name, segmentSpeeds, startTime} = timetable
   // TODO may be off by one, for instance ten-minute service for an hour will usually be 5 trips not 6
@@ -105,7 +109,7 @@ function Timetable({
           <Speed kmh={speed} />
         </td>
         <td>
-          <DaysOfService {...timetable} />
+          <DaysOfService timetable={timetable} />
         </td>
         <td>{bidirectional ? nTrips * 2 : nTrips}</td>
       </tr>
@@ -114,11 +118,7 @@ function Timetable({
           <td />
           <td colSpan={6}>
             <div>
-              <Phase
-                projectTimetables={projectTimetables}
-                timetable={timetable}
-                feedScopedStops={feedScopedStops}
-              />
+              <Phase timetable={timetable} />
             </div>
           </td>
         </tr>

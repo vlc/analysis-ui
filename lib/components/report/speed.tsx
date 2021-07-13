@@ -1,5 +1,4 @@
 import message from 'lib/message'
-import React from 'react'
 
 /** conversions from km/h to appropriate units */
 const conversions = {
@@ -11,8 +10,13 @@ const conversions = {
 /**
  * Render speed in appropriate units
  */
-export default function Speed(p) {
-  const {kmh, units = ['kmh', 'mph']} = p
+export default function Speed({
+  kmh,
+  units = ['kmh', 'mph']
+}: {
+  kmh: number
+  units?: string[]
+}) {
   const main = `${Math.round(kmh * conversions[units[0]] * 10) / 10} ${message(
     `report.units.${units[0]}`
   )}`

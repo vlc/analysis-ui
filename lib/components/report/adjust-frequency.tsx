@@ -1,11 +1,10 @@
 import {Box, Heading, Stack} from '@chakra-ui/react'
 import turfLength from '@turf/length'
-import flatten from 'lodash/flatten'
-import React from 'react'
 
 import colors from 'lib/constants/colors'
-import L from 'lib/leaflet'
+import {useRoute, useRoutePatterns, useRouteTrips} from 'lib/gtfs/hooks'
 import message from 'lib/message'
+import useModificationBounds from 'lib/modification/hooks/use-modification-bounds'
 import {secondsToHhMmString} from 'lib/utils/time'
 
 import PatternLayer from '../modifications-map/pattern-layer'
@@ -18,32 +17,36 @@ import Phase from './phase'
 /**
  * Display an adjust-frequency modification
  */
-export default function AdjustFrequency(props) {
-  const {modification, feedsById} = props
-  const feed = feedsById[modification.feed]
-  const route = feed.routes.find((r) => r.route_id === modification.routes[0])
-
-  const bounds = L.latLngBounds(
-    flatten(
-      route.patterns.map((p) =>
-        p.geometry.coordinates.map(([lat, lon]) => [lon, lat])
-      )
-    )
+export default function AdjustFrequency({
+  bundle,
+  modification
+}: {
+  bundle: CL.Bundle
+  modification: CL.ConvertToFrequency
+}) {
+  const route = useRoute(bundle._id, modification.feed, modification.routes[0])
+  const routePatterns = useRoutePatterns(
+    bundle._id,
+    modification.feed,
+    modification.routes[0]
   )
+  const routeTrips = useRouteTrips(
+    bundle._id,
+    modification.feed,
+    modification.routes[0]
+  )
+  const bounds = useModificationBounds(bundle, modification)
 
   return (
     <Stack>
       <Heading size='sm'>
-        {message('common.route')}:{' '}
-        {!!route.route_short_name && route.route_short_name}{' '}
-        {!!route.route_long_name && route.route_long_name}
+        {message('common.route')}: {route.name}
       </Heading>
 
       <Box>
         <MiniMap bounds={bounds}>
           <PatternLayer
-            activeTrips={modification.trips}
-            feed={feed}
+            bundleId={bundle._id}
             color={colors.MODIFIED}
             modification={modification}
           />
@@ -74,7 +77,12 @@ export default function AdjustFrequency(props) {
         </thead>
         <tbody>
           {modification.entries.map((entry, i) => (
-            <TimetableEntry key={i} {...props} entry={entry} />
+            <TimetableEntry
+              key={i}
+              entry={entry}
+              routePatterns={routePatterns}
+              routeTrips={routeTrips}
+            />
           ))}
         </tbody>
       </Box>
@@ -82,28 +90,28 @@ export default function AdjustFrequency(props) {
   )
 }
 
-export function TimetableEntry(props) {
-  const {entry, feedsById, feedScopedStops, modification, projectTimetables} =
-    props
+export function TimetableEntry({
+  entry,
+  routePatterns,
+  routeTrips
+}: {
+  entry: CL.FrequencyEntry
+  routePatterns: GTFS.Pattern[]
+  routeTrips: GTFS.Trip[]
+}) {
   // ...rest will contain days of service
-  const {
-    name,
-    startTime,
-    endTime,
-    headwaySecs,
-    sourceTrip,
-    phaseAtStop,
-    ...rest
-  } = entry
+  const {name, startTime, endTime, headwaySecs, sourceTrip, phaseAtStop} = entry
   if (sourceTrip == null) return null // This can happen when a modification is new
 
-  const feed = feedsById[modification.feed]
-  const route = feed.routes.find((r) => r.route_id === modification.routes[0])
-  const pattern = route.patterns.find(
-    (p) => p.trips.findIndex((t) => t.trip_id === sourceTrip) > -1
+  const pattern = routePatterns.find(
+    (p) => p.associatedTripIds.findIndex((tripId) => tripId === sourceTrip) > -1
   )
-  const trip = pattern.trips.find((t) => t.trip_id === sourceTrip)
-  const km = turfLength(pattern.geometry)
+  const trip = routeTrips.find((t) => t.id === sourceTrip)
+  const km = turfLength({
+    type: 'Feature',
+    geometry: pattern.geometry,
+    properties: {}
+  })
 
   // TODO may be off by one, for instance ten-minute service for an hour will usually be 5 trips not 6
   const nTrips = Math.floor((endTime - startTime) / headwaySecs)
@@ -115,12 +123,12 @@ export function TimetableEntry(props) {
     <>
       <tr style={style}>
         <td>{name}</td>
-        <td>{trip.direction_id}</td>
+        <td>{trip.directionId}</td>
         <td>{secondsToHhMmString(startTime)}</td>
         <td>{secondsToHhMmString(endTime)}</td>
         <td>{Math.round(headwaySecs / 60)}</td>
         <td>
-          <DaysOfService {...rest} />
+          <DaysOfService timetable={entry} />
         </td>
         <td>{nTrips}</td>
         <td>
@@ -132,11 +140,7 @@ export function TimetableEntry(props) {
           <td />
           <td colSpan={7}>
             <>
-              <Phase
-                projectTimetables={projectTimetables}
-                timetable={entry}
-                feedScopedStops={feedScopedStops}
-              />
+              <Phase timetable={entry} />
             </>
           </td>
         </tr>

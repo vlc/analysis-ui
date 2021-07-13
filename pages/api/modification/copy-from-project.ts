@@ -2,8 +2,6 @@ import fpOmit from 'lodash/fp/omit'
 import {ObjectID} from 'mongodb'
 
 import withApiAuthRequired from 'lib/auth/with-api-auth-required'
-import {ADD_TRIP_PATTERN, CONVERT_TO_FREQUENCY} from 'lib/constants'
-
 import AuthenticatedCollection from 'lib/db/authenticated-collection'
 import {errorToPOJO} from 'lib/utils/api'
 
@@ -27,7 +25,7 @@ export default withApiAuthRequired(async function (req, res, user) {
     if (bundlesAreNotEqual) {
       const findQuery = {
         projectId: fromProjectId,
-        type: ADD_TRIP_PATTERN
+        type: {$in: ['add-trip-pattern', 'convert-to-frequency']}
       }
       const fromModifications = await modifications
         .findWhere(findQuery)
@@ -62,7 +60,7 @@ export default withApiAuthRequired(async function (req, res, user) {
       // Match up old and new modifications and timetables for phasing
       const modificationIdPairs = new Map<string, string>()
       const timetableIdPairs = new Map<string, string>()
-      const fromModifications = await modifications
+      const fromModifications: CL.Modification[] = await modifications
         .findWhere({
           projectId: fromProjectId
         })
@@ -79,46 +77,54 @@ export default withApiAuthRequired(async function (req, res, user) {
         const newModification = response.ops[0]
         modificationIdPairs.set(mod._id, newModification._id)
 
-        if (mod.type === ADD_TRIP_PATTERN) {
-          ;(newModification as CL.AddTripPattern).timetables.forEach((t) => {
-            const oldId = t._id
-            t._id = new ObjectID().toHexString()
-            timetableIdPairs.set(t._id, oldId)
-          })
-        } else if (mod.type === CONVERT_TO_FREQUENCY) {
-          ;(newModification as CL.ConvertToFrequency).entries.forEach((t) => {
-            const oldId = t._id
-            t._id = new ObjectID().toHexString()
-            timetableIdPairs.set(t._id, oldId)
-          })
+        switch (mod.type) {
+          case 'add-trip-pattern': {
+            ;(newModification as CL.AddTripPattern).timetables.forEach((t) => {
+              const oldId = t._id
+              t._id = new ObjectID().toHexString()
+              timetableIdPairs.set(t._id, oldId)
+            })
+            break
+          }
+          case 'convert-to-frequency': {
+            ;(newModification as CL.ConvertToFrequency).entries.forEach((t) => {
+              const oldId = t._id
+              t._id = new ObjectID().toHexString()
+              timetableIdPairs.set(t._id, oldId)
+            })
+            break
+          }
         }
       })
 
       // Second pass, match phasing pairs with new ids.
-      const newIds = fromModifications.map(async (mod: CL.Modification) => {
-        if (mod.type === ADD_TRIP_PATTERN) {
-          // Remove all phasing
-          ;(mod as CL.AddTripPattern).timetables.forEach((tt) => {
-            const pft = tt.phaseFromTimetable
-            if (pft?.length > 0) {
-              const pfts = pft.split(':')
-              tt.phaseFromTimetable = `${modificationIdPairs.get(
-                pfts[0]
-              )}:${timetableIdPairs.get(pfts[1])}`
-            }
-          })
-        } else if (mod.type === CONVERT_TO_FREQUENCY) {
-          ;(mod as CL.ConvertToFrequency).entries.forEach((tt) => {
-            const pft = tt.phaseFromTimetable
-            if (pft?.length > 0) {
-              const pfts = pft.split(':')
-              tt.phaseFromTimetable = `${modificationIdPairs.get(
-                pfts[0]
-              )}:${timetableIdPairs.get(pfts[1])}`
-            }
-          })
+      const newIds = fromModifications.map(async (mod) => {
+        switch (mod.type) {
+          case 'add-trip-pattern': {
+            ;(mod as CL.AddTripPattern).timetables.forEach((tt) => {
+              const pft = tt.phaseFromTimetable
+              if (pft?.length > 0) {
+                const pfts = pft.split(':')
+                tt.phaseFromTimetable = `${modificationIdPairs.get(
+                  pfts[0]
+                )}:${timetableIdPairs.get(pfts[1])}`
+              }
+            })
+            break
+          }
+          case 'convert-to-frequency': {
+            ;(mod as CL.ConvertToFrequency).entries.forEach((tt) => {
+              const pft = tt.phaseFromTimetable
+              if (pft?.length > 0) {
+                const pfts = pft.split(':')
+                tt.phaseFromTimetable = `${modificationIdPairs.get(
+                  pfts[0]
+                )}:${timetableIdPairs.get(pfts[1])}`
+              }
+            })
+            break
+          }
         }
-
         await modifications.update(mod._id, mod)
 
         return mod._id

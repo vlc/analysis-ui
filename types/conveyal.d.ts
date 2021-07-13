@@ -44,7 +44,7 @@ declare global {
      */
     export type ModificationSegment = {
       fromStopId: void | string
-      geometry: GeoJSON.Point | GeoJSON.LineString
+      geometry: GeoJSON.LineString | GeoJSON.Point
       spacing: number
       stopAtEnd: boolean
       stopAtStart: boolean
@@ -299,6 +299,8 @@ declare global {
     }
 
     export interface FeedSummary {
+      bundleScopedFeedId: string
+      checksum: number
       feedId: string
       name: string
       serviceStart: string
@@ -318,7 +320,6 @@ declare global {
     export interface Project extends IModel {
       bundleId: string
       regionId: string
-      variants: string[]
     }
 
     export interface Scenario extends IModel {
@@ -529,11 +530,12 @@ declare global {
       maxWalkTime: number
       monteCarloDraws: number
       percentiles: number[]
+      projectId: string
+      scenarioId: string
       toTime: number
       transitModes: string
       walkSpeed: number
       workerVersion: string
-      variantIndex: number
     }
   }
 }

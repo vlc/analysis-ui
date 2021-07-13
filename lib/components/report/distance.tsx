@@ -1,5 +1,4 @@
 import message from 'lib/message'
-import React from 'react'
 
 /** conversions from km to target unit */
 const conversions = {
@@ -8,10 +7,16 @@ const conversions = {
   furlong: 4.97096
 }
 
-/** render distance in appropriate units */
-/** if left with defaults, will return e.g. 16 km (10 mi) */
-export default function Distance(p) {
-  const {km, units = ['km', 'mi']} = p
+/**
+ * Render distance in appropriate units. If left with defaults, will return e.g. 16 km (10 mi)
+ */
+export default function Distance({
+  km,
+  units = ['km', 'mi']
+}: {
+  km: number
+  units?: string[]
+}) {
   const main = `${Math.round(km * conversions[units[0]] * 10) / 10} ${message(
     `report.units.${units[0]}`
   )}`

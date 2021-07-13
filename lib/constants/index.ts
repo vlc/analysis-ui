@@ -191,6 +191,15 @@ export const AUTOSAVE_EVERY_MS = 10 * 1000
 export const TRAVEL_TIME_PERCENTILES = [5, 25, 50, 75, 95]
 
 /**
+ * Baseline Scenario
+ */
+export const BASELINE_SCENARIO_ID = 'baseline'
+export const BASELINE_SCENARIO = {
+  _id: BASELINE_SCENARIO_ID,
+  name: 'Baseline'
+} as CL.Scenario
+
+/**
  * Default Profile Request object
  */
 export const PROFILE_REQUEST_DEFAULTS: CL.ProfileRequest = {
@@ -216,11 +225,12 @@ export const PROFILE_REQUEST_DEFAULTS: CL.ProfileRequest = {
   maxWalkTime: 20,
   monteCarloDraws: 200,
   percentiles: TRAVEL_TIME_PERCENTILES,
+  projectId: null,
+  scenarioId: BASELINE_SCENARIO_ID,
   toTime: 32400,
   transitModes: 'BUS,TRAM,RAIL,SUBWAY,FERRY,CABLE_CAR,GONDOLA,FUNICULAR',
   walkSpeed: 1.3888888888888888,
-  workerVersion: RECOMMENDED_R5_VERSION,
-  variantIndex: -1
+  workerVersion: RECOMMENDED_R5_VERSION
 }
 
 export const UNDEFINED_PROJECT_NAME = 'Not set'

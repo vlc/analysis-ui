@@ -13,9 +13,7 @@ import {useRoutePatterns} from 'lib/gtfs/hooks'
 
 const coordsFromSegments = (segments: CL.ModificationSegment[]) =>
   flatMap(segments, (s) =>
-    s.geometry.type === 'Point'
-      ? [new LatLng(s.geometry.coordinates[1], s.geometry.coordinates[0])]
-      : s.geometry.coordinates.map((p) => new LatLng(p[1], p[0]))
+    s.geometry.coordinates.map((p) => new LatLng(p[1], p[0]))
   )
 
 const coordsFromPatterns = (patterns: GTFS.Pattern[]) =>

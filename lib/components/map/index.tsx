@@ -17,7 +17,7 @@ import {ExternalLink} from '../link'
 
 import 'leaflet/dist/leaflet.css'
 
-const MapboxGLLayer = dynamic(() => import('./mapbox-gl'))
+const BaseMap = dynamic(() => import('./base-map'))
 
 const VIEWPORT_KEY = 'analysis-map-viewport'
 const ZOOM = 12
@@ -26,11 +26,6 @@ const DEFAULT_VIEWPORT: Viewport = {
   center: [38, -77],
   zoom: ZOOM
 }
-
-const lightStyle =
-  process.env.NEXT_PUBLIC_MAPBOX_STYLE ?? 'conveyal/cjwu7oipd0bf41cqqv15huoim'
-const darkStyle = 'conveyal/cklwkj6g529qi17nydq56jn9k'
-const getStyle = (style: string) => `mapbox://styles/${style}`
 
 type MapProps = {
   children?: React.ReactNode
@@ -100,8 +95,7 @@ function useRecenterOnRegionEffect(): Viewport {
   return viewport
 }
 
-export default function BaseMap({children, setLeafletContext}: MapProps) {
-  const style = useColorModeValue(lightStyle, darkStyle)
+export default function ConveyalMap({children, setLeafletContext}: MapProps) {
   const backgroundColor = useColorModeValue('gray.50', 'gray.800')
   const controlBg = useColorModeValue('whiteAlpha.400', 'blackAlpha.400')
   const leafletMapRef = useRef<ReactMap>()
@@ -167,9 +161,7 @@ export default function BaseMap({children, setLeafletContext}: MapProps) {
         </Box>
       </MapControl>
 
-      {process.env.NEXT_PUBLIC_BASEMAP_DISABLED !== 'true' && (
-        <MapboxGLLayer style={getStyle(style)} />
-      )}
+      {process.env.NEXT_PUBLIC_BASEMAP_DISABLED !== 'true' && <BaseMap />}
 
       <Controls isDisabled={routeChanging} />
 

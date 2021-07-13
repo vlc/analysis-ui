@@ -18,16 +18,13 @@ import {
   clearResults,
   fetchTravelTimeSurface
 } from 'lib/actions/analysis'
-import useCurrentProject, {
-  useCurrentProjectId
-} from 'lib/hooks/use-current-project'
+import {useCurrentProjectId} from 'lib/hooks/use-current-project'
 import useCurrentRegion, {
   useCurrentRegionId
 } from 'lib/hooks/use-current-region'
 import message from 'lib/message'
 
 import selectAnalysisBounds from 'lib/selectors/analysis-bounds'
-import selectMaxTripDurationMinutes from 'lib/selectors/max-trip-duration-minutes'
 import selectProfileRequestHasChanged from 'lib/selectors/profile-request-has-changed'
 import selectProfileRequestLonLat from 'lib/selectors/profile-request-lonlat'
 
@@ -194,11 +191,16 @@ export default function SinglePointAnalysis() {
 
       {currentRegion && (
         <InnerDock width={640}>
-          <Results
-            isDisabled={disableInputs}
-            isStale={profileRequestHasChanged}
-            region={currentRegion}
-          />
+          <Stack p={P.md} shouldWrapChildren>
+            <StackedPercentileSelector
+              disabled={disableInputs}
+              stale={profileRequestHasChanged}
+            />
+            <ResultsSliders
+              isDisabled={disableInputs}
+              isStale={profileRequestHasChanged}
+            />
+          </Stack>
 
           <SinglePointSettings
             currentProject={currentProject}
@@ -207,28 +209,6 @@ export default function SinglePointAnalysis() {
         </InnerDock>
       )}
     </>
-  )
-}
-
-function Results({
-  isDisabled,
-  isStale, // are the results out of sync with the form?
-  region
-}) {
-  const defaultCutoff = useSelector(selectMaxTripDurationMinutes)
-  return (
-    <Stack p={P.md}>
-      <StackedPercentileSelector
-        disabled={isDisabled}
-        stale={isStale}
-        regionId={region._id}
-      />
-      <ResultsSliders
-        defaultCutoff={defaultCutoff}
-        isDisabled={isDisabled}
-        isStale={isStale}
-      />
-    </Stack>
   )
 }
 

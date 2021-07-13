@@ -1,42 +1,38 @@
+import fpGet from 'lodash/fp/get'
 import {useCallback} from 'react'
-import createPersistedState from 'use-persisted-state'
+import {useDispatch, useSelector} from 'react-redux'
 
+import {
+  setRequestsSettings,
+  updateRequestsSettings
+} from 'lib/actions/analysis/profile-request'
 import {PROFILE_REQUEST_DEFAULTS} from 'lib/constants'
 
-import {useCurrentRegionId} from './use-current-region'
-
-const usePersistedState = createPersistedState('profileRequestsSettings')
-
 const initialState = [PROFILE_REQUEST_DEFAULTS, PROFILE_REQUEST_DEFAULTS]
+
+const getSettings = fpGet('analysis.requestsSettings')
 
 /**
  * For the current region, get the request setting for the given index. Extracts it from
  * local storage by default.
  */
 export default function useProfileRequest(index: number) {
-  const regionId = useCurrentRegionId()
-  const [state, setState] = usePersistedState<{
-    [regionId: string]: CL.ProfileRequest[]
-  }>({})
-
-  const settings = state[regionId] ?? initialState
-
+  const dispatch = useDispatch()
+  const settings: CL.ProfileRequest[] = useSelector(getSettings) ?? initialState
   const update = useCallback(
-    (updates: Partial<CL.ProfileRequest>) => {
-      setState((state) => {
-        const regionSettings = [...(state[regionId] ?? initialState)]
-        regionSettings[index] = {
-          ...regionSettings[index],
-          ...updates
-        }
-        return {
-          ...state,
-          [regionId]: regionSettings
-        }
-      })
+    (params: Partial<CL.ProfileRequest>) => {
+      dispatch(updateRequestsSettings({index, params}))
     },
-    [index, regionId, setState]
+    [dispatch, index]
+  )
+  const replace = useCallback(
+    (replacement: CL.ProfileRequest) => {
+      const newSettings = [...settings]
+      newSettings[index] = replacement
+      dispatch(setRequestsSettings(newSettings))
+    },
+    [dispatch, index, settings]
   )
 
-  return [settings[index], update]
+  return {settings: settings[index], replace, update}
 }

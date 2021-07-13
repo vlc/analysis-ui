@@ -1,15 +1,14 @@
-/** Display a reroute modification in the report view */
 import {Box, Heading, Stack} from '@chakra-ui/react'
-import flatten from 'lodash/flatten'
 import sum from 'lodash/sum'
-import React from 'react'
 import turfLength from '@turf/length'
 import lineSlice from '@turf/line-slice'
-import {point} from '@turf/helpers'
+import {feature, point} from '@turf/helpers'
 
-import L from 'lib/leaflet'
+import {useRouteStops} from 'lib/gtfs/hooks'
 import message from 'lib/message'
-import {getPatternsForModification} from 'lib/utils/patterns'
+import useModificationBounds from 'lib/modification/hooks/use-modification-bounds'
+import useModificationRoute from 'lib/modification/hooks/use-modification-route'
+import useModificationPatterns from 'lib/modification/hooks/use-modification-patterns'
 import getStops from 'lib/utils/get-stops'
 
 import RerouteLayer from '../modifications-map/reroute-layer'
@@ -18,58 +17,65 @@ import Speed from './speed'
 import MiniMap from './mini-map'
 import Distance from './distance'
 
-export default function Reroute(props) {
-  const {modification, feedsById} = props
-  const feed = feedsById[modification.feed]
-  const route = feed.routes.find((r) => r.route_id === modification.routes[0])
-
-  const bounds = L.latLngBounds(
-    flatten(
-      route.patterns.map((p) =>
-        p.geometry.coordinates.map(([lat, lon]) => [lon, lat])
-      )
-    ).concat(
-      flatten(
-        modification.segments.map((s) =>
-          s.geometry.coordinates.map(([lat, lon]) => [lon, lat])
-        )
-      )
-    )
+/**
+ * Display a reroute modification in the report view
+ */
+export default function Reroute({
+  bundle,
+  modification
+}: {
+  bundle: CL.Bundle
+  modification: CL.Reroute
+}) {
+  const bounds = useModificationBounds(bundle, modification)
+  const route = useModificationRoute(bundle, modification)
+  const patterns = useModificationPatterns(bundle, modification)
+  const stops = useRouteStops(
+    bundle._id,
+    modification.feed,
+    modification.routes[0]
   )
 
   return (
     <Stack>
       <Heading size='sm'>
-        {message('common.route')}:{' '}
-        {!!route.route_short_name && route.route_short_name}{' '}
-        {!!route.route_long_name && route.route_long_name}
+        {message('common.route')}: {route.name}
       </Heading>
 
       <Box>
         <MiniMap bounds={bounds}>
-          <RerouteLayer feed={feed} modification={modification} />
+          <RerouteLayer bundleId={bundle._id} modification={modification} />
         </MiniMap>
       </Box>
 
-      {getPatternsForModification({feed, modification}).map((pattern, i) => (
+      {patterns.map((pattern, i) => (
         <Box key={i}>
-          <Pattern pattern={pattern} {...props} />
+          <Pattern
+            modification={modification}
+            pattern={pattern}
+            routeStops={stops}
+          />
         </Box>
       ))}
     </Stack>
   )
 }
 
-function Pattern(props) {
-  const {modification, feedsById, pattern} = props
-  const feed = feedsById[modification.feed]
-
+function Pattern({
+  modification,
+  pattern,
+  routeStops
+}: {
+  modification: CL.Reroute
+  pattern: GTFS.Pattern
+  routeStops: GTFS.Stop[]
+}) {
   // all calculations below are in kilometers
-  const patternLength = turfLength(pattern.geometry)
+  const patternLength = turfLength(feature(pattern.geometry))
   const stops = getStops(modification.segments)
   const segmentLength = stops.slice(-1)[0].distanceFromStart / 1000
   const segmentDistances = modification.segments.map((seg) =>
-    turfLength(seg.geometry)
+    turfLength(feature(seg.geometry))
   )
 
   const {segmentSpeeds} = modification
@@ -81,19 +87,21 @@ function Pattern(props) {
   // figure out removed segment length
   const fromStopIndex =
     modification.fromStop != null
-      ? pattern.stops.findIndex((s) => s.stop_id === modification.fromStop)
+      ? pattern.orderedStopIds.findIndex(
+          (stopId) => stopId === modification.fromStop
+        )
       : 0
   // make sure to find a toStopIndex _after_ the fromStopIndex (helps with loop routes also)
   const toStopIndex =
     modification.toStop != null
-      ? pattern.stops.findIndex(
-          (s, i) => i >= fromStopIndex && s.stop_id === modification.toStop
+      ? pattern.orderedStopIds.findIndex(
+          (stopId, i) => i >= fromStopIndex && stopId === modification.toStop
         )
-      : pattern.stops.length - 1
+      : pattern.orderedStopIds.length - 1
 
   const modificationAppliesToThisPattern =
     fromStopIndex !== -1 && toStopIndex !== -1
-  if (!modificationAppliesToThisPattern) return []
+  if (!modificationAppliesToThisPattern) return null
 
   let nStopsRemoved = toStopIndex - fromStopIndex
   if (modification.fromStop && modification.toStop) nStopsRemoved-- // -1 because it's an exclusive interval on both sides, don't include from and to stops
@@ -106,17 +114,13 @@ function Pattern(props) {
 
   // NB using indices here so we get an object even if fromStop or toStop is null
   // stops in pattern are in fact objects but they only have stop ID.
-  const fromStop = feed.stopsById[pattern.stops[fromStopIndex].stop_id]
-  const toStop = feed.stopsById[pattern.stops[toStopIndex].stop_id]
+  const fromStop = routeStops.find((s) => s.id === modification.fromStop)
+  const toStop = routeStops.find((s) => s.id === modification.toStop)
 
   const geometry = lineSlice(
-    point([fromStop.stop_lon, fromStop.stop_lat]),
-    point([toStop.stop_lon, toStop.stop_lat]),
-    {
-      type: 'Feature',
-      geometry: pattern.geometry,
-      properties: {}
-    }
+    point([fromStop.lon, fromStop.lat]),
+    point([toStop.lon, toStop.lat]),
+    feature(pattern.geometry)
   )
 
   const removedLengthThisPattern = turfLength(geometry)
@@ -162,7 +166,7 @@ function Pattern(props) {
         </tr>
         <tr>
           <th>{message('modification.addedSegments.dwell')}</th>
-          <td>{modification.dwell}</td>
+          <td>{modification.dwellTime}</td>
         </tr>
         <tr>
           <th>{message('report.reroute.nStopsRemoved')}</th>
