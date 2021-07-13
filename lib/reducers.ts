@@ -8,7 +8,6 @@ import * as analysis from './reducers/analysis'
 import * as network from './reducers/network'
 import * as region from './reducers/region'
 import * as regionalAnalyses from './reducers/regional-analyses'
-import * as project from './reducers/project'
 
 /**
  * Simple reducer for storing the query string. This OVERWRITES the object so
@@ -67,6 +66,5 @@ export default {
     regionalAnalyses.initialState
   ),
   r5Version,
-  project: handleActions(project.reducers, project.initialState),
   user
 }
