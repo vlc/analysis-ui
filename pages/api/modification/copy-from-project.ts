@@ -79,7 +79,8 @@ export default withApiAuthRequired(async function (req, res, user) {
 
         switch (mod.type) {
           case 'add-trip-pattern': {
-            ;(newModification as CL.AddTripPattern).timetables.forEach((t) => {
+            const atp = newModification as CL.AddTripPattern
+            atp.timetables.forEach((t) => {
               const oldId = t._id
               t._id = new ObjectID().toHexString()
               timetableIdPairs.set(t._id, oldId)
@@ -87,7 +88,8 @@ export default withApiAuthRequired(async function (req, res, user) {
             break
           }
           case 'convert-to-frequency': {
-            ;(newModification as CL.ConvertToFrequency).entries.forEach((t) => {
+            const ctf = newModification as CL.ConvertToFrequency
+            ctf.entries.forEach((t) => {
               const oldId = t._id
               t._id = new ObjectID().toHexString()
               timetableIdPairs.set(t._id, oldId)
@@ -101,7 +103,8 @@ export default withApiAuthRequired(async function (req, res, user) {
       const newIds = fromModifications.map(async (mod) => {
         switch (mod.type) {
           case 'add-trip-pattern': {
-            ;(mod as CL.AddTripPattern).timetables.forEach((tt) => {
+            const atp = mod as CL.AddTripPattern
+            atp.timetables.forEach((tt) => {
               const pft = tt.phaseFromTimetable
               if (pft?.length > 0) {
                 const pfts = pft.split(':')
@@ -113,7 +116,8 @@ export default withApiAuthRequired(async function (req, res, user) {
             break
           }
           case 'convert-to-frequency': {
-            ;(mod as CL.ConvertToFrequency).entries.forEach((tt) => {
+            const ctf = mod as CL.ConvertToFrequency
+            ctf.entries.forEach((tt) => {
               const pft = tt.phaseFromTimetable
               if (pft?.length > 0) {
                 const pfts = pft.split(':')
