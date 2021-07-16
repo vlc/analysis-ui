@@ -8,8 +8,10 @@ import {
   TabList,
   TabPanel,
   TabPanels,
-  Tabs
+  Tabs,
+  useToast
 } from '@chakra-ui/react'
+import {useEffect} from 'react'
 import useSWR from 'swr'
 
 import {API} from 'lib/constants'
@@ -17,26 +19,80 @@ import {API} from 'lib/constants'
 import JobDashboard from 'lib/components/admin-job-dashboard'
 import TextLink from 'lib/components/text-link'
 import WorkerList from 'lib/components/admin-worker-list'
+import useUser from 'lib/hooks/use-user'
+import authFetch from 'lib/utils/auth-fetch'
+import {ResponseError} from 'lib/utils/safe-fetch'
 import withAuth from 'lib/with-auth'
 
 // Refresh every five seconds
 const refreshInterval = 5000
 
 // Fetcher
-const fetcher = (url, user) =>
-  fetch(url, {
-    headers: {
-      Authorization: `bearer ${user.idToken}`,
-      'X-Conveyal-Access-Group': user.adminTempAccessGroup
+async function fetcher<T>(url: string, user: CL.User) {
+  const res = await authFetch<T>(url, user)
+  if (res.ok === false) throw res
+  return res.data
+}
+
+const EMPTY_ARRAY = []
+
+function useRegionalJobs() {
+  const toast = useToast({status: 'error'})
+  const {user} = useUser()
+  const jobRequest = useSWR<CL.RegionalJob[], ResponseError>(
+    [API.Jobs, user],
+    fetcher,
+    {
+      refreshInterval
     }
-  }).then((res) => res.json())
+  )
 
-export default withAuth(function AdminDashboard({user}) {
-  const jobRequest = useSWR([API.Jobs, user], fetcher, {refreshInterval})
-  const workerRequest = useSWR([API.Workers, user], fetcher, {refreshInterval})
+  useEffect(() => {
+    if (jobRequest.error) {
+      toast({
+        title: 'Error loading regional jobs',
+        description: jobRequest.error.error.message
+      })
+    }
+  }, [jobRequest, toast])
 
-  const jobs = (jobRequest.data || []).filter((j) => j.graphId !== 'SUM')
-  const workers = workerRequest.data || []
+  return Array.isArray(jobRequest.data)
+    ? jobRequest.data.filter((j) => j.graphId !== 'SUM')
+    : EMPTY_ARRAY
+}
+
+function useRegionalWorkers() {
+  const {user} = useUser()
+  const workersRequest = useSWR<CL.RegionalWorker[]>(
+    [API.Workers, user],
+    fetcher,
+    {refreshInterval}
+  )
+
+  return workersRequest.data ?? EMPTY_ARRAY
+}
+
+const isAdmin = (user?: CL.User) =>
+  user && user.accessGroup === process.env.NEXT_PUBLIC_ADMIN_ACCESS_GROUP
+
+function useIsAdmin() {
+  const toast = useToast({status: 'error'})
+  const {user} = useUser()
+  useEffect(() => {
+    if (isAdmin(user) === false) {
+      toast({
+        title: 'Access denied',
+        description: 'You must be an admin to access this page.'
+      })
+    }
+  }, [toast, user])
+}
+
+export default withAuth(function AdminDashboard() {
+  useIsAdmin()
+
+  const jobs = useRegionalJobs()
+  const workers = useRegionalWorkers()
 
   return (
     <Flex p={16}>
